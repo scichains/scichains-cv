@@ -1,0 +1,160 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.filtering",
+  "name": "Sobel",
+  "id": "ad4f247f-7e9d-4182-861c-881b1dc99ac6",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.filtering.Sobel"
+  },
+  "tags": [
+    "java",
+    "images",
+    "express"
+  ],
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "resultDepth",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "UNCHANGED"
+        },
+        {
+          "value": "CV_8U"
+        },
+        {
+          "value": "CV_8S"
+        },
+        {
+          "value": "CV_16U"
+        },
+        {
+          "value": "CV_16S"
+        },
+        {
+          "value": "CV_32S"
+        },
+        {
+          "value": "CV_32F"
+        },
+        {
+          "value": "CV_64F"
+        }
+      ],
+      "default": "UNCHANGED"
+    },
+    {
+      "name": "dx",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 1
+    },
+    {
+      "name": "dy",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 1
+    },
+    {
+      "name": "kernelSize",
+      "value_type": "int",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": -1,
+          "caption": "Scharr"
+        },
+        {
+          "value": 1,
+          "caption": "1x3 / 3x1"
+        },
+        {
+          "value": 3
+        },
+        {
+          "value": 5
+        },
+        {
+          "value": 7
+        },
+        {
+          "value": 9
+        },
+        {
+          "value": 11
+        },
+        {
+          "value": 13
+        },
+        {
+          "value": 15
+        }
+      ],
+      "default": 3
+    },
+    {
+      "name": "scale",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "name": "delta",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "name": "borderType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "BORDER_DEFAULT"
+        },
+        {
+          "value": "BORDER_CONSTANT"
+        },
+        {
+          "value": "BORDER_REPLICATE"
+        },
+        {
+          "value": "BORDER_REFLECT"
+        },
+        {
+          "value": "BORDER_WRAP"
+        },
+        {
+          "value": "BORDER_REFLECT_101"
+        },
+        {
+          "value": "BORDER_TRANSPARENT"
+        }
+      ],
+      "default": "BORDER_DEFAULT"
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

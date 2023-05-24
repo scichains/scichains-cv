@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>net.algart.executors</groupId>
+    <artifactId>executors-cv</artifactId>
+    <version>4.0.1</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>17</maven.compiler.release>
+
+        <!-- extension folder name -->
+        <extension.name>net.algart.executors.cv</extension.name>
+
+        <!-- location of the server -->
+        <home.directory>${env.EXECUTORS_HOME}</home.directory>
+
+        <!-- home folder of extension under the server -->
+        <extension.server.home>${home.directory}/ext/${extension.name}</extension.server.home>
+
+        <build.directory>${project.build.directory}/build</build.directory>
+
+        <net.algart.executors.version>4.0.1</net.algart.executors.version>
+        <javacpp.version>1.5.8</javacpp.version>
+        <opencv.version>4.6.0-1.5.8</opencv.version>
+        <openblas.version>0.3.21-1.5.8</openblas.version>
+        <!-- openblas is used by opencv: we need to specify this version to generate correct classpath -->
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacpp-platform</artifactId>
+            <version>${javacpp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>opencv-platform</artifactId>
+            <version>${opencv.version}</version>
+        </dependency>
+        <!-- The following dependency is important for correct building with "gpu" jars -->
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>opencv-platform-gpu</artifactId>
+            <version>${opencv.version}</version>
+        </dependency>
+
+        <dependency>
+            <!--  Helps to understand more formats -->
+            <groupId>com.github.jai-imageio</groupId>
+            <artifactId>jai-imageio-core</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.algart.executors</groupId>
+            <artifactId>executors-core</artifactId>
+            <version>${net.algart.executors.version}</version>
+        </dependency>
+
+        <!-- test scope dependency -->
+        <dependency>
+            <groupId>net.algart.executors</groupId>
+            <artifactId>executors-core</artifactId>
+            <classifier>tests</classifier>
+            <type>test-jar</type>
+            <scope>test</scope>
+            <version>${net.algart.executors.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <includes>
+                    <include>extension.json</include>
+                    <!-- added to perform filtering; note that we need to exclude this later in maven-jar-plugin  -->
+                </includes>
+                <filtering>true</filtering>
+                <directory>build</directory>
+            </resource>
+            <resource>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                <filtering>false</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <compress>false</compress>
+                    </archive>
+                    <excludes>
+                        <exclude>extension.json</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test-jar</goal>
+                            <!-- necessary to make JAR also for test folder: it may contain some executors -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.4.2</version>
+                <configuration>
+                    <finalName>build</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptors>
+                        <descriptor>assembly-descriptor.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <!-- deploy current extension only if ${home.directory} exist -->
+        <profile>
+            <id>deploy.extension</id>
+            <activation>
+                <file>
+                    <exists>${home.directory}</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>id.clean</id>
+                                <phase>clean</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target>
+                                        <echo level="info"/>
+                                        <echo level="info">DELETING ${extension.server.home}</echo>
+                                        <echo level="info"/>
+                                        <delete dir="${extension.server.home}"/>
+                                    </target>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>id.install</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target>
+                                        <echo level="info"/>
+                                        <echo level="info">INSTALLING jars into ${extension.server.home}</echo>
+                                        <echo level="info"/>
+
+                                        <delete dir="${extension.server.home}"/>
+
+                                        <copy todir="${extension.server.home}/java">
+                                            <fileset dir="${project.build.directory}/build/java"/>
+                                        </copy>
+
+                                        <copy todir="${extension.server.home}/python">
+                                            <fileset dir="${project.build.directory}/build/python"/>
+                                        </copy>
+
+                                        <copy todir="${extension.server.home}"
+                                              file="${project.build.directory}/build/extension.json"/>
+
+                                        <copy todir="${extension.server.home}"
+                                              file="${project.build.directory}/build/.public"/>
+                                    </target>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <repositories>
+        <repository>
+            <!-- allows to use javacpp bytedeco SNAPSHOTs also -->
+            <id>oss-sonatype</id>
+            <name>oss-sonatype</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>${deploy-snapshots-id}</id>
+            <url>${deploy-snapshots-url}</url>
+        </snapshotRepository>
+        <repository>
+            <id>${deploy-id}</id>
+            <url>${deploy-url}</url>
+        </repository>
+    </distributionManagement>
+</project>

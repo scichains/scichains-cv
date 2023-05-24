@@ -1,0 +1,61 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.features.detection",
+  "name": "Line detection by Hough transform (probabilistic)",
+  "id": "d56fb4aa-2a55-4679-9616-476aa7dfe1a5",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.features.detection.HoughLinesProbabilistic"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "lines"
+    }
+  ],
+  "controls": [
+    {
+      "description": "Distance resolution of the accumulator in pixels.",
+      "name": "rho",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "description": "Angle resolution of the accumulator in degrees.",
+      "name": "thetaInDegree",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+
+      "description": "Accumulator threshold parameter. Only those lines are returned that get enough votes (>threshold).",
+      "name": "threshold",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 100
+    },
+    {
+      "description": "Minimum line length. Line segments shorter than that are rejected.",
+      "name": "minLineLength",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "description": "Maximum allowed gap between points on the same line to link them.",
+      "name": "maxLineGap",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    }
+  ]
+}

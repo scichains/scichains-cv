@@ -1,0 +1,114 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.filtering",
+  "name": "Non-local Means Denoising",
+  "id": "ae189322-002f-4e8b-9f22-8e94d7b66714",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.filtering.NonLocalMeansDenoising"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "algorithm",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "FAST_NL_MEANS",
+          "caption": "fastNlMeansDenoising"
+        },
+        {
+          "value": "FAST_NL_MEANS_COLORED",
+          "caption": "fastNlMeansDenoisingColored"
+        },
+        {
+          "value": "CUDA_NON_LOCAL_MEANS",
+          "caption": "(CUDA) nonLocalMeans"
+        },
+        {
+          "value": "CUDA_FAST_NL_MEANS",
+          "caption": "(CUDA) fastNlMeansDenoising"
+        },
+        {
+          "value": "CUDA_FAST_NL_MEANS_COLORED",
+          "caption": "(CUDA) fastNlMeansDenoisingColored"
+        }
+      ],
+      "default": "FAST_NL_MEANS"
+    },
+    {
+      "name": "h",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 3
+    },
+    {
+      "name": "hColor",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 10
+    },
+    {
+      "name": "searchWindowSize",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 21
+    },
+    {
+      "name": "blockSize",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 7
+    },
+    {
+      "name": "borderType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "BORDER_DEFAULT"
+        },
+        {
+          "value": "BORDER_CONSTANT"
+        },
+        {
+          "value": "BORDER_REPLICATE"
+        },
+        {
+          "value": "BORDER_REFLECT"
+        },
+        {
+          "value": "BORDER_WRAP"
+        },
+        {
+          "value": "BORDER_REFLECT_101"
+        },
+        {
+          "value": "BORDER_TRANSPARENT"
+        }
+      ],
+      "default": "BORDER_DEFAULT"
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

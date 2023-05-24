@@ -1,0 +1,55 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.thresholds",
+  "name": "Several thresholds",
+  "id": "6c746190-d34a-46f9-9edf-1b84788b3440",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.thresholds.SeveralThresholds"
+  },
+  "tags": [
+    "java",
+    "images",
+    "express"
+  ],
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    },
+    {
+      "value_type": "mat",
+      "name": "mask",
+      "hint": "[Optional] If specified, the result of thresholding is combined with this mask by AND operation"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "labels"
+    }
+  ],
+  "controls": [
+    {
+      "name": "thresholds",
+      "description": "Several (m) thresholds t₁,t₂,...,tₘ, separated by comma/space in ascending order.",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "name": "values",
+      "description": "Several (m+1) integer values v₀,v₁,v₂,...,vₘ, separated by comma/space. Each pixel of the matrix with intensity w is replaced with first vₖ, for which w≥tₖ, or with v₀ if x<t₁. If this array is too short, it is considered that absent elements vₖ=k.",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": "0"
+    },
+    {
+      "name": "rawValues",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

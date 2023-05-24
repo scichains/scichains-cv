@@ -1,0 +1,61 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.filtering",
+  "name": "Fast Global Smoother filter",
+  "id": "01672473-d570-4eb0-a4f6-4bbeb8d1356c",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.filtering.FastGlobalSmootherFilter"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    },
+    {
+      "value_type": "mat",
+      "name": "guide"
+    }
+   ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "lambda",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 10
+    },
+    {
+      "name": "sigmaColor",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.3
+    },
+    {
+      "name": "lambdaAttenuation",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.25
+    },
+    {
+      "name": "numberOfIterations",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 3
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

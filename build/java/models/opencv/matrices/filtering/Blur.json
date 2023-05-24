@@ -1,0 +1,81 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.filtering",
+  "name": "Simple Blur",
+  "id": "6728db16-0b4c-41a3-b5c9-0c9d53724ea7",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.filtering.Blur"
+  },
+  "tags": [
+    "java",
+    "images",
+    "express"
+  ],
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "kernelSizeX",
+      "description": "If zero or not specified, kernelSizeY is used instead.",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": "15"
+    },
+    {
+      "name": "kernelSizeY",
+      "value_type": "String",
+      "description": "If zero or not specified, kernelSizeX is used instead. If both kernelSizeX=kernelSizeY=0 (or not specified), this function returns unchanged image.",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "name": "borderType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "BORDER_DEFAULT"
+        },
+        {
+          "value": "BORDER_CONSTANT"
+        },
+        {
+          "value": "BORDER_REPLICATE"
+        },
+        {
+          "value": "BORDER_REFLECT"
+        },
+        {
+          "value": "BORDER_WRAP"
+        },
+        {
+          "value": "BORDER_REFLECT_101"
+        },
+        {
+          "value": "BORDER_TRANSPARENT"
+        }
+      ],
+      "default": "BORDER_DEFAULT"
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

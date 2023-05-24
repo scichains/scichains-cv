@@ -1,0 +1,50 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.objects.binary.boundaries",
+  "name": "Unpack optimized contours",
+  "id": "6e767795-4691-4fa4-96cb-b767b5d6473c",
+  "description": "Unpacks contours, packed by optimizing collinear steps. If source contours are not optimized, result will be identical to the source.",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.boundaries.UnpackContours"
+  },
+  "in_ports": [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Contours: serialized array of points."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Unpacked source contours."
+    },
+    {
+      "value_type": "scalar",
+      "name": "number_of_objects",
+      "caption": "number of objects",
+      "hint": "Total number of result contours."
+    }
+  ],
+  "controls": [
+    {
+      "name": "needToProcessDiagonals",
+      "caption": "Enforce unpacking diagonals",
+      "description": "If set, this function unpacks also non-horizontal and non-vertical segments of the contours (when they exists): they are converted to a series of segments (1,0) or (0,1). Such \"diagonal\" segments are usually considered as incorrect and should not appear while scanning binary objects, but can be added to contour array manually.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "cacheLastContours",
+      "caption": "Cache last contours",
+      "description": "If set, this function checks whether the input contours is the same as while the previous call. In this case, the function returns the previous result very quickly.\nThere is no sense to set this flag, if the function every time processes different contours — it will be better to save memory. But it is useful, for example, when you need to unpack the same set of not-too-large polygons many times (in \"Enforce unpacking diagonals\" mode).",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

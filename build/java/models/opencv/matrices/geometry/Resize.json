@@ -1,0 +1,82 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.geometry",
+  "name": "Resize",
+  "id": "9a6c0405-4a1d-457b-9c1c-3364939c7de1",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.geometry.Resize"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+   ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    },
+    {
+      "value_type": "scalar",
+      "name": "dim_x"
+    },
+    {
+      "value_type": "scalar",
+      "name": "dim_y"
+    }
+  ],
+  "controls": [
+    {
+      "name": "dimX",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "name": "dimY",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "name": "percents",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "interpolation",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "INTER_NEAREST"
+        },
+        {
+          "value": "INTER_LINEAR"
+        },
+        {
+          "value": "INTER_CUBIC"
+        },
+        {
+          "value": "INTER_AREA"
+        },
+        {
+          "value": "INTER_LANCZOS4"
+        }
+      ],
+      "default": "INTER_LINEAR"
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

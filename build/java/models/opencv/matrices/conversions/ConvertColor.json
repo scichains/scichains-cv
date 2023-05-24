@@ -1,0 +1,642 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.conversions",
+  "name": "Convert color space",
+  "id": "91890b14-4a91-4b9c-89a8-72af25390663",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.conversions.ConvertColor"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    },
+    {
+      "value_type": "mat",
+      "name": "channel_1",
+      "hint": "Channel #1 of the result (R for usual RGB color image)"
+    },
+    {
+      "value_type": "mat",
+      "name": "channel_2",
+      "hint": "Channel #2 of the result (G for usual RGB color image)"
+    },
+    {
+      "value_type": "mat",
+      "name": "channel_3",
+      "hint": "Channel #3 of the result (B for usual RGB color image)"
+    },
+    {
+      "value_type": "mat",
+      "name": "channel_4",
+      "hint": "Channel #4 of the result (Alpha for usual RGBA color image with transparency)"
+    },
+    {
+      "value_type": "mat",
+      "name": "raw_0",
+      "hint": "Channel with raw index 0 of the cvtColor function result (B for usual color image - OpenCV suppose BGR order)"
+    },
+    {
+      "value_type": "mat",
+      "name": "raw_1",
+      "hint": "Channel with raw index 1 of the cvtColor function result (G for usual color image - OpenCV suppose BGR order)"
+    },
+    {
+      "value_type": "mat",
+      "name": "raw_2",
+      "hint": "Channel with raw index 2 of the cvtColor function result (R for usual color image - OpenCV suppose BGR order)"
+    },
+    {
+      "value_type": "mat",
+      "name": "raw_3",
+      "hint": "Channel with raw index 3 of the cvtColor function result (other name for \"channel_4\" port)"
+    }
+  ],
+  "controls": [
+    {
+      "name": "colorConversion",
+      "caption": "Color conversion code",
+      "description": "Argument of standard OpenCV cvtColor function.",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "NONE",
+          "caption": "No conversion (stay unchanged)"
+        },
+        {
+          "value": "BGR2BGRA",
+          "caption": "BGR ➔ BGRA"
+        },
+        {
+          "value": "BGRA2BGR",
+          "caption": "BGRA ➔ BGR"
+        },
+        {
+          "value": "BGR2RGB_OR_RGB2BGR",
+          "caption": "BGR ⬌ RGB"
+        },
+        {
+          "value": "BGRA2RGBA_OR_RGBA2BGRA",
+          "caption": "BGRA ⬌ RGBA"
+        },
+        {
+          "value": "BGR2RGBA",
+          "caption": "BGR ➔ RGBA"
+        },
+        {
+          "value": "RGBA2BGR",
+          "caption": "RGBA ➔ BGR"
+        },
+        {
+          "value": "BGR2GRAY",
+          "caption": "BGR ➔ Gray"
+        },
+        {
+          "value": "RGB2GRAY",
+          "caption": "RGB ➔ Gray"
+        },
+        {
+          "value": "GRAY2BGR",
+          "caption": "Gray ➔ BGR (=RGB in this case)"
+        },
+        {
+          "value": "GRAY2BGRA",
+          "caption": "Gray ➔ BGRA (=RGBA in this case)"
+        },
+        {
+          "value": "BGRA2GRAY",
+          "caption": "BGRA ➔ Gray"
+        },
+        {
+          "value": "RGBA2GRAY",
+          "caption": "RGBA ➔ Gray"
+        },
+        {
+          "value": "BGR2BGR565",
+          "caption": "BGR ➔ BGR-565 (2 byte layers)"
+        },
+        {
+          "value": "RGB2BGR565",
+          "caption": "RGB ➔ BGR-565 (2 byte layers)"
+        },
+        {
+          "value": "BGR5652BGR",
+          "caption": "BGR-565 (2 byte layers) ➔ BGR"
+        },
+        {
+          "value": "BGR5652RGB",
+          "caption": "BGR-565 (2 byte layers) ➔ RGB"
+        },
+        {
+          "value": "BGRA2BGR565",
+          "caption": "BGRA ➔ BGR-565 (2 byte layers)"
+        },
+        {
+          "value": "RGBA2BGR565",
+          "caption": "RGBA ➔ BGR-565 (2 byte layers)"
+        },
+        {
+          "value": "BGR5652BGRA",
+          "caption": "BGR-565 (2 byte layers) ➔ BGRA"
+        },
+        {
+          "value": "BGR5652RGBA",
+          "caption": "BGR-565 (2 byte layers) ➔ RGBA"
+        },
+        {
+          "value": "GRAY2BGR565",
+          "caption": "Gray ➔ BGR-565 (2 byte layers)"
+        },
+        {
+          "value": "BGR5652GRAY",
+          "caption": "BGR-565 (2 byte layers) ➔ Gray"
+        },
+        {
+          "value": "BGR2BGR555",
+          "caption": "BGR ➔ BGR-555 (2 byte layers)"
+        },
+        {
+          "value": "RGB2BGR555",
+          "caption": "RGB ➔ BGR-555 (2 byte layers)"
+        },
+        {
+          "value": "BGR5552BGR",
+          "caption": "BGR-555 (2 byte layers) ➔ BGR"
+        },
+        {
+          "value": "BGR5552RGB",
+          "caption": "BGR-555 (2 byte layers) ➔ RGB"
+        },
+        {
+          "value": "BGRA2BGR555",
+          "caption": "BGRA ➔ BGR-555 (2 byte layers)"
+        },
+        {
+          "value": "RGBA2BGR555",
+          "caption": "RGBA ➔ BGR-555 (2 byte layers)"
+        },
+        {
+          "value": "BGR5552BGRA",
+          "caption": "BGR-555 (2 byte layers) ➔ BGRA"
+        },
+        {
+          "value": "BGR5552RGBA",
+          "caption": "BGR-555 (2 byte layers) ➔ RGBA"
+        },
+        {
+          "value": "GRAY2BGR555",
+          "caption": "Gray ➔ BGR-555 (2 byte layers)"
+        },
+        {
+          "value": "BGR5552GRAY",
+          "caption": "BGR-555 (2 byte layers) ➔ Gray"
+        },
+        {
+          "value": "BGR2XYZ",
+          "caption": "BGR ➔ XYZ"
+        },
+        {
+          "value": "RGB2XYZ",
+          "caption": "RGB ➔ XYZ"
+        },
+        {
+          "value": "XYZ2BGR",
+          "caption": "XYZ ➔ BGR"
+        },
+        {
+          "value": "XYZ2RGB",
+          "caption": "XYZ ➔ RGB"
+        },
+        {
+          "value": "BGR2YCrCb",
+          "caption": "BGR ➔ YCrCb"
+        },
+        {
+          "value": "RGB2YCrCb",
+          "caption": "RGB ➔ YCrCb"
+        },
+        {
+          "value": "YCrCb2BGR",
+          "caption": "YCrCb ➔ BGR"
+        },
+        {
+          "value": "YCrCb2RGB",
+          "caption": "YCrCb ➔ RGB"
+        },
+        {
+          "value": "BGR2HSV",
+          "caption": "BGR ➔ HSV"
+        },
+        {
+          "value": "RGB2HSV",
+          "caption": "RGB ➔ HSV"
+        },
+        {
+          "value": "BGR2Lab",
+          "caption": "BGR ➔ Lab"
+        },
+        {
+          "value": "RGB2Lab",
+          "caption": "RGB ➔ Lab"
+        },
+        {
+          "value": "BGR2Luv",
+          "caption": "BGR ➔ Luv"
+        },
+        {
+          "value": "RGB2Luv",
+          "caption": "RGB ➔ Luv"
+        },
+        {
+          "value": "BGR2HLS",
+          "caption": "BGR ➔ HLS"
+        },
+        {
+          "value": "RGB2HLS",
+          "caption": "RGB ➔ HLS"
+        },
+        {
+          "value": "HSV2BGR",
+          "caption": "HSV ➔ BGR"
+        },
+        {
+          "value": "HSV2RGB",
+          "caption": "HSV ➔ RGB"
+        },
+        {
+          "value": "Lab2BGR",
+          "caption": "Lab ➔ BGR"
+        },
+        {
+          "value": "Lab2RGB",
+          "caption": "Lab ➔ RGB"
+        },
+        {
+          "value": "Luv2BGR",
+          "caption": "Luv ➔ BGR"
+        },
+        {
+          "value": "Luv2RGB",
+          "caption": "Luv ➔ RGB"
+        },
+        {
+          "value": "HLS2BGR",
+          "caption": "HLS ➔ BGR"
+        },
+        {
+          "value": "HLS2RGB",
+          "caption": "HLS ➔ RGB"
+        },
+        {
+          "value": "BGR2HSV_FULL",
+          "caption": "BGR ➔ HSV, full H (OpenCV: COLOR_BGR2HSV_FULL)"
+        },
+        {
+          "value": "RGB2HSV_FULL",
+          "caption": "RGB ➔ HSV, full H (OpenCV: COLOR_RGB2HSV_FULL)"
+        },
+        {
+          "value": "BGR2HLS_FULL",
+          "caption": "BGR ➔ HLS, full H (OpenCV: COLOR_BGR2HLS_FULL)"
+        },
+        {
+          "value": "RGB2HLS_FULL",
+          "caption": "RGB ➔ HLS, full H (OpenCV: COLOR_RGB2HLS_FULL)"
+        },
+        {
+          "value": "HSV2BGR_FULL",
+          "caption": "HSV, full H ➔ BGR (OpenCV: COLOR_HSV2BGR_FULL)"
+        },
+        {
+          "value": "HSV2RGB_FULL",
+          "caption": "HSV, full H ➔ RGB (OpenCV: COLOR_HSV2RGB_FULL)"
+        },
+        {
+          "value": "HLS2BGR_FULL",
+          "caption": "HLS, full H ➔ BGR (OpenCV: COLOR_HLS2BGR_FULL)"
+        },
+        {
+          "value": "HLS2RGB_FULL",
+          "caption": "HLS, full H ➔ RGB (OpenCV: COLOR_HLS2RGB_FULL)"
+        },
+        {
+          "value": "LBGR2Lab",
+          "caption": "LBGR ➔ Lab"
+        },
+        {
+          "value": "LRGB2Lab",
+          "caption": "LRGB ➔ Lab"
+        },
+        {
+          "value": "LBGR2Luv",
+          "caption": "LBGR ➔ Luv"
+        },
+        {
+          "value": "LRGB2Luv",
+          "caption": "LRGB ➔ Luv"
+        },
+        {
+          "value": "Lab2LBGR",
+          "caption": "Lab ➔ LBGR"
+        },
+        {
+          "value": "Lab2LRGB",
+          "caption": "Lab ➔ LRGB"
+        },
+        {
+          "value": "Luv2LBGR",
+          "caption": "Luv ➔ LBGR"
+        },
+        {
+          "value": "Luv2LRGB",
+          "caption": "Luv ➔ LRGB"
+        },
+        {
+          "value": "BGR2YUV",
+          "caption": "BGR ➔ YUV"
+        },
+        {
+          "value": "RGB2YUV",
+          "caption": "RGB ➔ YUV"
+        },
+        {
+          "value": "YUV2BGR",
+          "caption": "YUV ➔ BGR"
+        },
+        {
+          "value": "YUV2RGB",
+          "caption": "YUV ➔ RGB"
+        },
+        {
+          "value": "YUV2RGB_NV12"
+        },
+        {
+          "value": "YUV2BGR_NV12"
+        },
+        {
+          "value": "YUV2RGB_NV21"
+        },
+        {
+          "value": "YUV2BGR_NV21"
+        },
+        {
+          "value": "YUV2RGBA_NV12"
+        },
+        {
+          "value": "YUV2BGRA_NV12"
+        },
+        {
+          "value": "YUV2RGBA_NV21"
+        },
+        {
+          "value": "YUV2BGRA_NV21"
+        },
+        {
+          "value": "YUV2RGB_YV12"
+        },
+        {
+          "value": "YUV2BGR_YV12"
+        },
+        {
+          "value": "YUV2RGB_IYUV"
+        },
+        {
+          "value": "YUV2BGR_IYUV"
+        },
+        {
+          "value": "YUV2RGBA_YV12"
+        },
+        {
+          "value": "YUV2BGRA_YV12"
+        },
+        {
+          "value": "YUV2RGBA_IYUV"
+        },
+        {
+          "value": "YUV2BGRA_IYUV"
+        },
+        {
+          "value": "YUV2GRAY_420"
+        },
+        {
+          "value": "YUV2RGB_UYVY"
+        },
+        {
+          "value": "YUV2BGR_UYVY"
+        },
+        {
+          "value": "YUV2RGBA_UYVY"
+        },
+        {
+          "value": "YUV2BGRA_UYVY"
+        },
+        {
+          "value": "YUV2RGB_YUY2"
+        },
+        {
+          "value": "YUV2BGR_YUY2"
+        },
+        {
+          "value": "YUV2RGB_YVYU"
+        },
+        {
+          "value": "YUV2BGR_YVYU"
+        },
+        {
+          "value": "YUV2RGBA_YUY2"
+        },
+        {
+          "value": "YUV2BGRA_YUY2"
+        },
+        {
+          "value": "YUV2RGBA_YVYU"
+        },
+        {
+          "value": "YUV2BGRA_YVYU"
+        },
+        {
+          "value": "YUV2GRAY_UYVY"
+        },
+        {
+          "value": "YUV2GRAY_YUY2"
+        },
+        {
+          "value": "RGBA2mRGBA"
+        },
+        {
+          "value": "mRGBA2RGBA"
+        },
+        {
+          "value": "RGB2YUV_I420"
+        },
+        {
+          "value": "BGR2YUV_I420"
+        },
+        {
+          "value": "RGBA2YUV_I420"
+        },
+        {
+          "value": "BGRA2YUV_I420"
+        },
+        {
+          "value": "RGB2YUV_YV12"
+        },
+        {
+          "value": "BGR2YUV_YV12"
+        },
+        {
+          "value": "RGBA2YUV_YV12"
+        },
+        {
+          "value": "BGRA2YUV_YV12"
+        },
+        {
+          "value": "BayerBG2BGR"
+        },
+        {
+          "value": "BayerGB2BGR"
+        },
+        {
+          "value": "BayerRG2BGR"
+        },
+        {
+          "value": "BayerGR2BGR"
+        },
+        {
+          "value": "BayerBG2GRAY"
+        },
+        {
+          "value": "BayerGB2GRAY"
+        },
+        {
+          "value": "BayerRG2GRAY"
+        },
+        {
+          "value": "BayerGR2GRAY"
+        },
+        {
+          "value": "BayerBG2BGR_VNG"
+        },
+        {
+          "value": "BayerGB2BGR_VNG"
+        },
+        {
+          "value": "BayerRG2BGR_VNG"
+        },
+        {
+          "value": "BayerGR2BGR_VNG"
+        },
+        {
+          "value": "BayerBG2BGR_EA"
+        },
+        {
+          "value": "BayerGB2BGR_EA"
+        },
+        {
+          "value": "BayerRG2BGR_EA"
+        },
+        {
+          "value": "BayerGR2BGR_EA"
+        },
+        {
+          "value": "BayerBG2BGRA"
+        },
+        {
+          "value": "BayerGB2BGRA"
+        },
+        {
+          "value": "BayerRG2BGRA"
+        },
+        {
+          "value": "BayerGR2BGRA"
+        }
+      ],
+      "default": "RGB2Lab"
+    },
+    {
+      "name": "floatResult",
+      "caption": "Floating-point result (recommended)",
+      "description": "This flag enforces conversion of non-float source matrix to standard float (CV_32F, range 0.0..1.0). This provides some standard behaviour: OpenCV will not try to pack the resulting color channels into 8 bit. Note that the results in some models will be not in range 0.0..1.0; for example, Lab channels will be in ranges 0.0..100.0, −127.0..127.0, −127.0..127.0.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "rgbOrder",
+      "caption": "Use RGB channels order (instead of BGR)",
+      "description": "This flag enforces using RGB channels order.\nNote: OpenCV standard for channels order is BGR; so, OpenCV channel #3 (#3 in terms of OpenCV from #1, #2, #3) has index #1 in this system, and vice versa.\nIf this flag is not set:\nwhen you want to convert usual RGB image into Lab model, you need to use BGR2Lab conversion, and you must remember that the channels #1, #2, #3 (in terms of this system, in particular, in the output ports channel_1, channel_2, channel_3) will b, a, L (not L, a, b!).\nIf this flag is set:\nthis function adds exchange of channels #1 and #3 before and after execution. So, behaviour is more obvious: you need to use RGB2Lab code to convert color image into Lab model, and the output ports channel_1, channel_2, channel_3 will be L, a, b.\nYou can also use output ports raw_0, raw_1, raw_2: \"raw\" ports ignore \"rgbOrder\" flag. So, you can be sure that \"L\" channel in resulting Lab model is always placed in the port raw_0, \"a\" channel in raw_1, \"b\" channel in raw_2.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "autoConvertGrayscaleToColor",
+      "caption": "Auto-conversion grayscale to color",
+      "description": "If this flag is set AND if the selected color conversion does not suppose that the source image is 1-channel grayscale one (i.e. in all cases excepting \"Gray ➔ BGR(A)\", \"Gray ➔ RGB(A)\", \"Gray ➔ BGR-565/555 (2 byte layers)\"), then the source grayscale 1-channel image is automatically converted to 3-channel RGB before the main conversion.\nUsually we recommend to set this flag: it allows to process grayscale source image in the same manner as color ones. (Without this flag, for example, conversion \"RGB ➔ anything\" will lead to exception if the source image is 1-channel.)",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "scale",
+      "caption": "Additional multiplier (scale) for the result",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "name": "visibleResult",
+      "caption": "Visible result",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "output",
+          "caption": "output interpreted as RGB (BGR in terms of OpenCV)"
+        },
+        {
+          "value": "channel_1"
+        },
+        {
+          "value": "channel_2"
+        },
+        {
+          "value": "channel_3"
+        },
+        {
+          "value": "channel_4"
+        },
+        {
+          "value": "raw_0"
+        },
+        {
+          "value": "raw_1"
+        },
+        {
+          "value": "raw_2"
+        },
+        {
+          "value": "raw_3"
+        }
+      ],
+      "default": "output"
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

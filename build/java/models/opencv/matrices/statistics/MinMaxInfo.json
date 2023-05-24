@@ -1,0 +1,40 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.statistics",
+  "name": "Min/max information",
+  "description": "Calculates minimum and maximum value at the matrix (OpenCV minMaxLoc, but without position)",
+  "id": "be17a76f-dcb0-46b2-8a90-f9599b38b1d4",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.statistics.MinMaxInfo"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    },
+    {
+      "value_type": "mat",
+      "name": "mask",
+      "hint": "Minimum and maximum are searching only for non-zero pixels of this mask"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "min_max",
+      "hint": "Values of minimum and maximum"
+    }
+  ],
+  "controls": [
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

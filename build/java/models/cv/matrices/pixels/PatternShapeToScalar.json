@@ -1,0 +1,36 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.pixels",
+  "name": "Pattern shape (matrix) to scalar",
+  "id": "1b7c4025-55f3-4d27-b4ef-fdc0f9a46b0e",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.pixels.PatternShapeToScalar"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input",
+      "hint": "Some matrix, containing pattern shape (usually binary).\nShould be single-channel, in other case it is automatically converted to grayscale."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "scalar",
+      "name": "shape_specification",
+      "caption": "shape specification",
+      "hint": "Multiline string, containing numeric values of all pixels of the source matrix, separated by spaces.\nRows of the matrix are separated by \\n."
+    }
+  ],
+  "controls": [
+    {
+      "caption": "Invert",
+      "name": "invert",
+      "description": "If true, the source matrix is inverted, i.e. every element v is replaced with max−v. where \"max\" corresponds to white color (1.0 for floating-point matrices, 255 for byte, 65535 for short, 2³¹−1 for int type).",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

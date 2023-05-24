@@ -1,0 +1,73 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.conversions",
+  "name": "Apply colormap to grayscale image",
+  "id": "3c7ea762-2155-4465-a2bb-238bd3041ed3",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.conversions.ApplyColorMap"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "colorMap",
+      "caption": "Colormap name",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "COLORMAP_AUTUMN"
+        },
+        {
+          "value": "COLORMAP_BONE"
+        },
+        {
+          "value": "COLORMAP_JET"
+        },
+        {
+          "value": "COLORMAP_WINTER"
+        },
+        {
+          "value": "COLORMAP_RAINBOW"
+        },
+        {
+          "value": "COLORMAP_OCEAN"
+        },
+        {
+          "value": "COLORMAP_SUMMER"
+        },
+        {
+          "value": "COLORMAP_SPRING"
+        },
+        {
+          "value": "COLORMAP_COOL"
+        },
+        {
+          "value": "COLORMAP_HSV"
+        },
+        {
+          "value": "COLORMAP_PINK"
+        },
+        {
+          "value": "COLORMAP_HOT"
+        },
+        {
+          "value": "COLORMAP_PARULA"
+        }
+      ],
+      "default": "COLORMAP_HSV"
+    }
+  ]
+}

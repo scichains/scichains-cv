@@ -1,0 +1,251 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.misc",
+  "name": "FloodFill",
+  "id": "ff6438bb-1813-4867-a6cf-60503905d144",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.misc.FloodFill"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    },
+    {
+      "value_type": "mat",
+      "name": "non_filled_mask",
+      "hint": "[Optional] If specified, then the pixels, for which this mask contains non-zero values, will be not filled:\nflood-filling algorithm cannot go across them."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "mask",
+      "hint": "Binary result: non-zero elements correspond to flood-filled pixels.\nIf \"Return only modified rectangle\" flag is set, it is the rectangular part of the mask, corresponding to \"modified rectangle\" below."
+    },
+    {
+      "value_type": "mat",
+      "name": "filled",
+      "hint": "Source image, filled by \"Filling color\". It is returned only if \"Filling mode\" is \"Fill with accumulating (mask + image)\".\nIf \"Return only modified rectangle\" flag is set, it is the rectangular part of the source, corresponding to \"modified rectangle\" below."
+    },
+    {
+      "value_type": "scalar",
+      "name": "dim_x",
+      "hint": "Source image width."
+    },
+    {
+      "value_type": "scalar",
+      "name": "dim_y",
+      "hint": "Source image height."
+    },
+    {
+      "value_type": "numbers",
+      "name": "modified_rectangle",
+      "caption": "modified rectangle",
+      "hint": "Rectangle, modified in the mask: min_x, max_x, min_y, max_y\n(in coordinates of the source image: 0 ≤ min_x, max_x < dim_x, 0 ≤ min_y, max_y < dim_y)."
+    },
+    {
+      "value_type": "scalar",
+      "name": "max_border",
+      "hint": "Maximal value among all 2 * (dim_x + dimY) − 4 elements of the border of the result mask.\nBut if \"Extended mask\" is set, the external 1-pixel boundary is excluded from the analysis (it dos not contain interesting values)."
+    },
+    {
+      "value_type": "scalar",
+      "name": "max_top",
+      "hint": "Maximal value among all dim_x elements of the top bound of the result mask.\nBut if \"Extended mask\", is set, the external 1-pixel boundary is excluded from the analysis (it dos not contain interesting values)."
+    },
+    {
+      "value_type": "scalar",
+      "name": "max_bottom",
+      "hint": "Maximal value among all dim_x elements of the bottom bound of the result mask.\nBut if \"Extended mask\" is set, the external 1-pixel boundary is excluded from the analysis (it dos not contain interesting values)."
+    },
+    {
+      "value_type": "scalar",
+      "name": "max_left",
+      "hint": "Maximal value among all dim_y elements of the left bound of the result mask.\nBut if \"Extended mask\" is set, the external 1-pixel boundary is excluded from the analysis (it dos not contain interesting values)."
+    },
+    {
+      "value_type": "scalar",
+      "name": "max_right",
+      "hint": "Maximal value among all dim_y elements of the right bound of the result mask.\nBut if \"Extended mask\" is set, the external 1-pixel boundary is excluded from the analysis (it dos not contain interesting values)."
+    }
+  ],
+  "controls": [
+    {
+      "name": "reset",
+      "description": "If set, this function initializes its state from the input ports; all previously accumulated information is removed. If cleared, this function works with stored image and masks and ignores input ports; it is the maximally quick mode.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "fillingMode",
+      "caption": "Filling mode",
+      "description": "\"Fill initial mask\" and \"Fill with accumulating\" modes differ if \"reset\" flag is cleared \"Fill initial mask\", after processing, resets the mask to initial state (empty or a copy of \"non_filled_mask\"); so, the following call will work with the initial, not a new mask.\n\"Fill with accumulating (mask + image)\" is the only mode, when this function modifies the input matrix; in all other modes, OpenCV floodFill function is executed with the flag FLOODFILL_MASK_ONLY.",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "FILL_INITIAL_MASK",
+          "caption": "Fill initial mask"
+        },
+        {
+          "value": "FILL_MASK",
+          "caption": "Fill with accumulating (mask only)"
+        },
+        {
+          "value": "FILL",
+          "caption": "Fill with accumulating (mask + image)"
+        },
+        {
+          "value": "FILL_AND_INSERT",
+          "caption": "Fill at initial mask and insert to accumulator"
+        },
+        {
+          "value": "FILL_AND_REMOVE",
+          "caption": "Fill at initial mask and remove from accumulator"
+        }
+      ],
+      "default": "FILL"
+    },
+    {
+      "name": "returnOnlyModifiedRectangle",
+      "caption": "Return only modified rectangle",
+      "description": "If set, this function returns (in \"mask\" and \"filled\" results) only the content of modified rectangle (returned in the corresponding output port). It allows to optimize speed and minimize the volume of returned data.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "percents",
+      "captions": "Percents of all image",
+      "description": "If set, seeding X/Y below are measured in percents of image sizes.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "x",
+      "caption": "Seeding X",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "y",
+      "caption": "Seeding Y",
+      "description": "Seeding X/Y are the coordinates of starting point for flood-filling algorithm.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "maxFillingSize",
+      "caption": "Maximal filling size D",
+      "description": "If D>0, this function restricts filling by circle with diameter D pixels around seeding X/Y.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "name": "loDiff",
+      "description": "\"loDiff\" argument of OpenCV floodFill function (for color image, it will be equal to this value for every channel).",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": "0.1"
+    },
+    {
+      "name": "upDiff",
+      "description": "\"upDiff\" argument of OpenCV floodFill function (for color image, it will be equal to this value for every channel).\nNote: you may skip one of \"loDiff\" and \"upDiff\" parameters (stay empty string), then the other from them will be used for both arguments of floodFill function. (If both parameters are not specified, 0.0 value will be used.)",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "name": "rawDiffValues",
+      "caption": "Raw xxDiff values",
+      "description": "If set, \"loDiff\" and \"upDiff\" values above are used as-is. So, for byte matrix they should be 1 or greater (like 5 or 10), but for floating-point one they should in 0..1 range (like 0.1). If cleared, these parameters are automatically scaled and should be in 0..1 range.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "floodFillFixedRange",
+      "caption": "Fixed flood-filling range",
+      "description": "If set, the difference between the current pixel and seed pixel is considered. Otherwise, the difference between neighbor pixels is considered (that is, the range is floating).\nIn other words, when this flag is cleared, the function fills throw smooth areas and stops only at sharp borders.. Corresponds to OpenCV flag FLOODFILL_FIXED_RANGE.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "fillColor",
+      "caption": "Filling color",
+      "description": "This argument is used only in the mode \"Fill with accumulating (mask + image)\".",
+      "value_type": "String",
+      "edition_type": "color",
+      "default": "#FFFFFF"
+    },
+    {
+      "name": "connectivity",
+      "caption": "Connectivity",
+      "description": "The connectivity of the filled area. In 8-connection mode, the filling algorithm ignores 1-pixel diagonal boundary (goes through it).",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "CONNECTIVITY_8",
+          "caption": "8-connectivity"
+        },
+        {
+          "value": "CONNECTIVITY_4",
+          "caption": "4-connectivity"
+        }
+      ],
+      "default": "CONNECTIVITY_4"
+    },
+    {
+      "name": "extendedMask",
+      "caption": "Extended mask",
+      "description": "If set, the returned mask and (if specified) the source non_filled_mask are extended by 1 pixel to each direction: the mask is 2 pixels wider and 2 pixels taller than the image. It increases performance a little. Usually it is more convenient to clear this flag.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "includeNonFilledMask",
+      "caption": "Include non-filled mask",
+      "description": "If set, the source non_filled_mask is also included in the result (this is default behaviour if OpenCV floodFill function). If cleared, the source non_filled_mask is removed from the result — but it requires additional time (maybe essential in comparison with flood-filling algorithm).",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "packBits",
+      "caption": "Pack bits in the result",
+      "description": "If set, bits in the resulting mask are packed (binary matrix). If cleared, every element in the result mask will occupy 1 byte.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "visibleResult",
+      "caption": "Visible result",
+      "description": "Note: the variant \"Image (filled with color)\" has a sense only in the mode \"Fill with accumulating (mask + image)\".",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "mask",
+          "caption": "Filling mask"
+        },
+        {
+          "value": "filled",
+          "caption": "Image (filled with color)"
+        }
+      ],
+      "default": "mask"
+    }
+  ]
+}

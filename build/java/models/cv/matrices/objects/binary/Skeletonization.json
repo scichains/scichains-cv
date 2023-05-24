@@ -1,0 +1,97 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.objects.binary",
+  "name": "Skeletonization",
+  "id": "25e7ca8f-606b-4eb0-a7ff-92b0984ddbac",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.Skeletonization"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "algorithm",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "OCTUPLE_PLUS_QUADRUPLE_THINNING",
+          "caption": "Octuple thinning + final quadruple 3x5 correction"
+        },
+        {
+          "value": "OCTUPLE_PLUS_STRONG_QUADRUPLE_THINNING",
+          "caption": "Octuple thinning + final strong quadruple 3x5 correction"
+        },
+        {
+          "value": "OCTUPLE_THINNING",
+          "caption": "Octuple thinning"
+        },
+        {
+          "value": "WEAK_OCTUPLE_THINNING",
+          "caption": "Weak octuple thinning"
+        },
+        {
+          "value": "QUADRUPLE_3_X_5_THINNING",
+          "caption": "Quadruple 3x5 thinning"
+        },
+        {
+          "value": "STRONG_QUADRUPLE_3_X_5_THINNING",
+          "caption": "Strong quadruple 3x5 thinning"
+        }
+      ],
+      "default": "OCTUPLE_PLUS_STRONG_QUADRUPLE_THINNING"
+    },
+    {
+      "name": "diagonalThinning",
+      "caption": "Diagonal thinning",
+      "description": "Ignored for \"Quadruple 3x5 thinning\" and \"Strong quadruple 3x5 thinning\"",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "topological",
+      "caption": "Topological mode",
+      "description": "Ignored for \"Quadruple 3x5 thinning\" and \"Strong quadruple 3x5 thinning\"",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "maxNumberOfIterations",
+      "caption": "Maximal number of iterations",
+      "description": "Negative value means full skeletonization (it finishs when the image stops changing after new skeletonization step).",
+      "value_type": "long",
+      "edition_type": "value",
+      "default": -1
+    },
+    {
+      "name": "numberOfAdditionalTopologicalIterations",
+      "caption": "Number of additional topological iterations",
+      "description": "If >0, this function performs the specified number of steps of the topological skeletonization at the final stage. It allows to shorten branches of the usual skeleton. Of course, this has no sense if the main skeletonization is topological (\"Topological mode\" flag).",
+      "value_type": "long",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "addBorder",
+      "caption": "Add border",
+      "description": "Add 1-pixel border before skeletonization. Can be useful in topological mode.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.features",
+  "name": "Corner eigenvalues and eigenvectors",
+  "id": "b279183c-43d2-435d-9a81-30acfc6c09fe",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.features.CornerEigenValsAndVecs"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    },
+    {
+      "value_type": "mat",
+      "name": "lambda1",
+      "caption": "λ1"
+    },
+    {
+      "value_type": "mat",
+      "name": "lambda2",
+      "caption": "λ2"
+    },
+    {
+      "value_type": "mat",
+      "name": "x1"
+    },
+    {
+      "value_type": "mat",
+      "name": "y1"
+    },
+    {
+      "value_type": "mat",
+      "name": "x2"
+    },
+    {
+      "value_type": "mat",
+      "name": "y2"
+    }
+  ],
+  "controls": [
+    {
+      "name": "blockSize",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 15
+    },
+    {
+      "name": "kernelSizeSobel",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 5
+    },
+    {
+      "name": "borderType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "BORDER_DEFAULT"
+        },
+        {
+          "value": "BORDER_CONSTANT"
+        },
+        {
+          "value": "BORDER_REPLICATE"
+        },
+        {
+          "value": "BORDER_REFLECT"
+        },
+        {
+          "value": "BORDER_WRAP"
+        },
+        {
+          "value": "BORDER_REFLECT_101"
+        },
+        {
+          "value": "BORDER_TRANSPARENT"
+        }
+      ],
+      "default": "BORDER_DEFAULT"
+    },
+    {
+      "name": "visibleResult",
+      "caption": "Visible result",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "none"
+        },
+        {
+          "value": "lambda1",
+          "caption": "λ1"
+        },
+        {
+          "value": "lambda2",
+          "caption": "λ2"
+        },
+        {
+          "value": "x1"
+        },
+        {
+          "value": "y1"
+        },
+        {
+          "value": "x2"
+        },
+        {
+          "value": "y2"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.filtering",
+  "name": "Bilateral filter",
+  "id": "c7be1d62-33db-41b0-a455-9972a52fdf22",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.filtering.BilateralFilter"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "diameterOfNeighborhood",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 5
+    },
+    {
+      "name": "sigmaSpace",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 75
+    },
+    {
+      "name": "sigmaColor",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.3
+    },
+    {
+      "name": "borderType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "BORDER_DEFAULT"
+        },
+        {
+          "value": "BORDER_CONSTANT"
+        },
+        {
+          "value": "BORDER_REPLICATE"
+        },
+        {
+          "value": "BORDER_REFLECT"
+        },
+        {
+          "value": "BORDER_WRAP"
+        },
+        {
+          "value": "BORDER_REFLECT_101"
+        },
+        {
+          "value": "BORDER_TRANSPARENT"
+        }
+      ],
+      "default": "BORDER_DEFAULT"
+    },
+    {
+      "caption": "Optimizing scale",
+      "hint": "If >1, the image is compressed in \"scale\" times before processing and the result is stretched back to original sizes after processing.\nIt allows to essentially increase speed of processing.",
+      "name": "optimizingScale",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

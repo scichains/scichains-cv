@@ -1,0 +1,47 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.objects.binary.boundaries",
+  "name": "Revive/check contours' containing rectangles",
+  "id": "3b07e509-a81a-441b-ba64-2309af9838d5",
+  "description": "Recalculate all containing rectangles, stored in the contour array. Usually it is not necessary, because all functions, creating contour array, always store there correct minimal containing rectangles for every contour. However, it may be useful, if the contour array was modified manually or by some non-standard way.",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.boundaries.ReviveContourContainingRectangles"
+  },
+  "in_ports": [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Existing contours: serialized array of several contours."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "The same contours with guaranteed correct containing rectangles."
+    },
+    {
+      "value_type": "scalar",
+      "name": "changed",
+      "hint": "[Optional] The boolean flag:\nfalse, if the result contours are identical to the source,\nor true in other case (some rectangles really were revived)."
+    },
+    {
+      "value_type": "scalar",
+      "caption": "some rectangles were incorrect",
+      "name": "were_incorrect",
+      "hint": "[Optional] The boolean flag:\nfalse, if all containing rectangles in the source array did really contain the contours (but, maybe, were too large),\nor true in other case (some rectangles were incorrect: they did not actually contain corresponding contours)."
+    }
+  ],
+  "controls": [
+    {
+      "name": "throwExceptionIfChanged",
+      "caption": "Throw exception if changed",
+      "description": "If set, this function throws an exception, if it changed something, i.e. if some containing rectangles really needed to be recalculated. Can be set to check, that some correctly built contour array was not damaged.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

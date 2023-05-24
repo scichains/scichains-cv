@@ -1,0 +1,10 @@
+out
+target
+.idea/workspace.xml
+.idea/jarRepositories.xml
+/src/test/cpp/SimpleCPPOpenCV/*.dll
+/src/test/cpp/SimpleCPPOpenCV/*.png
+.idea/**/libraries
+*.iml
+*.pyc
+

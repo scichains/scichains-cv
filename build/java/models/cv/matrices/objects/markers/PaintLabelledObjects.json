@@ -1,0 +1,123 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.objects.markers",
+  "name": "Paint labelled objects",
+  "id": "f091c447-0402-4da8-867f-15c276661c8c",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.markers.PaintLabelledObjects"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "labels"
+    },
+    {
+      "value_type": "mat",
+      "name": "background"
+    },
+    {
+      "value_type": "numbers",
+      "name": "palette",
+      "hint": "[Optional] Multi-column number array, where every block #K−B, B is \"Indexing base\" value,\ndescribes all channels of the value in the result matrix, corresponding the label K in the source matrix.\nIf specified, the number of channels in the result will be equal to number of columns in this array."
+    },
+    {
+      "value_type": "scalar",
+      "name": "json_palette",
+      "hint": "[Optional] JSON, consisting of pairs: either \"INDEX\": \"VALUE\", or \"nn\": VALUE, where:\nINDEX is a symbolic name from \"json_index_names\";\n\"nn\" is some integer like  \"1\", \"2\", ...;\nVALUE is a string, describing some color like #FFFF00,\nor a simple number from 0.0 to 1.0, describing grayscale intensity.\nNote: \"json_index_names\" is not necessary, if all indexes are specified in the second form — as integer numbers \"nn\".\nIt is ignored if \"palette\" above is specified."
+    },
+    {
+      "value_type": "scalar",
+      "name": "json_named_indexes",
+      "hint": "[Optional] JSON with a table of several numbers (INDEXes in the result), listed by their symbolic names.\nIt consists of pairs:\n\"KEY\": xxx\nwhere KEY is a symbolic name, xxx is an integer non-negative number, represented in keys of \"json_palette\" under this name."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "elementType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "boolean",
+          "caption": "boolean"
+        },
+        {
+          "value": "byte",
+          "caption": "byte"
+        },
+        {
+          "value": "short",
+          "caption": "short"
+        },
+        {
+          "value": "int",
+          "caption": "int"
+        },
+        {
+          "value": "float",
+          "caption": "float"
+        },
+        {
+          "value": "double",
+          "caption": "double"
+        }
+      ],
+      "default": "byte"
+    },
+    {
+      "name": "rawValues",
+      "caption": "Raw value",
+      "description": "How to interpret result values: normalized (0..1) or raw (as-is). Warning: if this flag is not set (default value), all values of palette are considered to be float values in 0.0..1.0 range.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "randomPalette",
+      "caption": "Random palette",
+      "description": "If \"random palette\" and the input palette is too short or not specified, then the missing colors (GREATER than indexing base + palette length − 1 if palette is specified), will be chosen randomly. But other missing colors, for example less than the indexing base, will be zero in any case. (Without this flag, \"palette\" or \"json_palette\" is required, and all missing colors for labels will be zero.)",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Rand-seed for random palette (0 to generate new sequence always)",
+      "name": "randSeed",
+      "value_type": "long",
+      "edition_type": "value",
+      "default": 1
+    },
+    {
+      "caption": "Indexing base",
+      "name": "indexingBase",
+      "description": "For every label K in the source labels matrix, the corresponding block (row) index in the palette is #K−B, where B = this parameter.\nNote: labels, less than this indexing base, are not painted (stays zero if there is no background).",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 1
+    },
+    {
+      "name": "processAlpha",
+      "caption": "Process α-channel",
+      "description": "If set, the 4th channel (α-channel) in the palette will be used to combine existing value (zero if there is no background) with the palette color. In this case, 4th channel in the result will become 1.0.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Default number of result channels",
+      "name": "defaultNumberOfChannels",
+      "description": "Defines the number of result channels, if the source \"palette\" is not specified.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 3
+    }
+  ]
+}

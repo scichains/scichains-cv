@@ -1,0 +1,150 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.objects",
+  "name": "Measuring labelled objects",
+  "description": "Measure objects, specified by the &quot;labels&quot; input map (usually 31-bit int): all pixels with the value 1 belong to the object #1, all pixels with the value 2 belong to the object #1, etc. Note: <b>the pixels with value 0 are ignored</b> (they are considered to be a background)",
+  "id": "ff2f2763-d8ec-4848-a71a-3a8bda41d9e3",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.MeasureLabelledObjects"
+  },
+  "tags": [
+    "java",
+    "images",
+    "express"
+  ],
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "labels",
+      "hint": "Labels of the source objects (1 for the object #1, 2 for the object #2, etc.; zero values mean the background and are not measured)"
+    },
+    {
+      "value_type": "mat",
+      "name": "mask",
+      "hint": "If set, all pixels outside this mask (zeros in this image) are also interpreted as the background, in the same way as 0 values in \"labels\""
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "area"
+    },
+    {
+      "value_type": "numbers",
+      "name": "sqrt_area",
+      "hint": "Square roots from areas"
+    },
+    {
+      "value_type": "numbers",
+      "name": "boundary",
+      "hint": "Lengths of 8-connected boundaries"
+    },
+    {
+      "value_type": "numbers",
+      "name": "thickness",
+      "hint": "Relation: S/(½P), S — area, P — boundary"
+    },
+    {
+      "value_type": "numbers",
+      "name": "shape_factor",
+      "hint": "Shape factor: sqrt(4πS)/P, S — area, P — boundary"
+    },
+    {
+      "value_type": "numbers",
+      "name": "centroid"
+    },
+    {
+      "value_type": "numbers",
+      "name": "containing_rectangle",
+      "hint": "Minimal circumscribed rectangles for every objects (with sides, parallel to coordinate axes): center x, center y, width, height (4 numbers per rectangle)"
+    },
+    {
+      "value_type": "scalar",
+      "name": "number_of_objects"
+    }
+  ],
+  "controls": [
+    {
+      "caption": "Automatically split into connected components (for bit input only)",
+      "name": "autoSplitBitInputIntoConnectedComponents",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "pixelSize",
+      "caption": "Pixel size",
+      "description": "The side of every pixel in some units, for example, in microns. All parameters of objects will be measured in this units (microns or square microns).",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "caption": "Connectivity type (for bit input only)",
+      "name": "bitInputConnectivityType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "STRAIGHT_AND_DIAGONAL",
+          "caption": "8-connectivity"
+        },
+        {
+          "value": "STRAIGHT_ONLY",
+          "caption": "4-connectivity"
+        }
+      ],
+      "default": "STRAIGHT_AND_DIAGONAL"
+    },
+    {
+      "caption": "What is the boundary length of the object?",
+      "name": "boundaryLineType",
+      "hint": "In a case \"Number of pixels at the boundary\" the boundary length of the object is calculated as the number of PIXELS, that have at least one neighbouring pixel, not belonging to this object, multiplied by \"Pixel size\" parameter.\nFor example, if the object consists of a single isolated pixel, the boundary length will be equal to \"Pixel size\".\nIn a case \"Number of inter-pixel segments at the boundary\" we suppose, that every pixel of the object is a little square, and the boundary length is calculated as the summary length\nof SEGMENTS (sides of squares), separating pixels of this object from background and other objects (the length of every segment is equal to \"Pixel size\" parameter).\nFor example, if the object consists of a single isolated pixel, the boundary length will be equal to 4*(\"Pixel size\").\nThis mode is important only for \"boundary\", \"thickness\" and \"shape factor\" results.",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "BOUNDARY_PIXELS",
+          "caption": "Number of pixels at the boundary"
+        },
+        {
+          "value": "BOUNDARY_INTERPIXEL_SEGMENTS",
+          "caption": "Number of inter-pixel segments at the boundary"
+        }
+      ],
+      "default": "BOUNDARY_PIXELS"
+    },
+    {
+      "name": "visibleResult",
+      "caption": "Visible result",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "area"
+        },
+        {
+          "value": "sqrt_area"
+        },
+        {
+          "value": "boundary"
+        },
+        {
+          "value": "thickness"
+        },
+        {
+          "value": "shape_factor"
+        },
+        {
+          "value": "centroid"
+        },
+        {
+          "value": "containing_rectangle"
+        }
+      ],
+      "default": "area"
+    }
+  ]
+}

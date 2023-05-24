@@ -1,0 +1,25 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.filtering",
+  "name": "Simple gradient by 3x3 cross",
+  "id": "6eb767aa-8b02-495f-aa56-1f5c9f10a7f6",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.filtering.SimpleGradient3x3"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+  ]
+}

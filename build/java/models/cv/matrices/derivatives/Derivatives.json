@@ -1,0 +1,240 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.derivatives",
+  "name": "Derivatives",
+  "id": "c2248417-a148-4fcf-abe5-09bebc99e8d3",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.derivatives.Derivatives"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "gaussianBlurOfSource",
+      "caption": "Gaussian blur at preprocessing stage",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "gaussianBlurKernelSizeX",
+      "caption": "Gaussian blur: kernel x-size",
+      "hint": "Value 0 means usage of y-size (equal x/y-sizes)",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 5
+    },
+    {
+      "name": "gaussianBlurKernelSizeY",
+      "caption": "Gaussian blur: kernel y-size",
+      "hint": "Value 0 means usage of x-size (equal x/y-sizes)",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "caption": "Continuation mode",
+      "name": "continuationMode",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "DEFAULT",
+          "caption": "default (pseudo-cyclic)"
+        },
+        {
+          "value": "CYCLIC",
+          "caption": "cyclic"
+        },
+        {
+          "value": "MIRROR_CYCLIC",
+          "caption": "mirror-cyclic"
+        },
+        {
+          "value": "ZERO_CONSTANT",
+          "caption": "0"
+        },
+        {
+          "value": "POSITIVE_INFINITY",
+          "caption": "+∞"
+        },
+        {
+          "value": "NEGATIVE_INFINITY",
+          "caption": "−∞"
+        },
+        {
+          "value": "NAN_CONSTANT",
+          "caption": "NaN"
+        }
+      ],
+      "default": "MIRROR_CYCLIC"
+    },
+    {
+      "name": "combiningChannelsMetric",
+      "caption": "Metric of combining channels",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "SINGLE_CHANNEL",
+          "caption": "Single channel result (use intensity)"
+        },
+        {
+          "value": "SINGLE_CHANNEL_PLUS_HALF",
+          "caption": "Single channel result + 0.5 | 127 | 32657 (float | 8-bit | 16-bit)"
+        },
+        {
+          "value": "EUCLIDEAN",
+          "caption": "Euclidean: sqrt(x²+y²+...)"
+        },
+        {
+          "value": "NORMALIZED_EUCLIDEAN",
+          "caption": "Normalized Euclidean: sqrt((x²+y²+...)/M)"
+        },
+        {
+          "value": "SUM_OF_ABSOLUTE_VALUES",
+          "caption": "Sum of absolute values: |x|+|y|+..."
+        },
+        {
+          "value": "MEAN_ABSOLUTE_VALUE",
+          "caption": "Mean absolute value: (|x|+|y|+...)/M"
+        },
+        {
+          "value": "MAX_ABSOLUTE_VALUE",
+          "caption": "Max absolute value: max(|x|,|y|,...)"
+        }
+      ],
+      "default": "SINGLE_CHANNEL"
+    },
+    {
+      "name": "channelsWeights",
+      "caption": "Weights for channels",
+      "description": "Several weights w₁,w₂,..., separated by comma/spaces",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "name": "additionalMultiplier",
+      "caption": "Additional multiplier for the result",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "name": "onlyFirst3Channels",
+      "caption": "Only first 3 channels",
+      "description": "Process ≤3 first channels. It allows to avoid strange results on RGBA images. Please clear this flag if you want to process multichannel matrices without special alpha-channel.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "floatResult",
+      "caption": "Floating-point result (recommended)",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "operation",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "DX_PAIR",
+          "caption": "∂/∂x (2 pixels)"
+        },
+        {
+          "value": "DY_PAIR",
+          "caption": "∂/∂y (2 pixels)"
+        },
+        {
+          "value": "DX",
+          "caption": "∂/∂x (3 pixels)"
+        },
+        {
+          "value": "DY",
+          "caption": "∂/∂y (3 pixels)"
+        },
+        {
+          "value": "SOBEL_X",
+          "caption": "Sobel-X (3x3)"
+        },
+        {
+          "value": "SOBEL_Y",
+          "caption": "Sobel-Y (3x3)"
+        },
+        {
+          "value": "SCALED_SOBEL_X",
+          "caption": "Scaled Sobel-X (3x3)"
+        },
+        {
+          "value": "SCALED_SOBEL_Y",
+          "caption": "Scaled Sobel-Y (3x3)"
+        },
+        {
+          "value": "SCHARR_X",
+          "caption": "Scharr-X (3x3)"
+        },
+        {
+          "value": "SCHARR_Y",
+          "caption": "Scharr-Y (3x3)"
+        },
+        {
+          "value": "SCALED_SCHARR_X",
+          "caption": "Scaled Scharr-X (3x3)"
+        },
+        {
+          "value": "SCALED_SCHARR_Y",
+          "caption": "Scaled Scharr-Y (3x3)"
+        },
+        {
+          "value": "ROBERTS_CROSS_QUADRANT_1",
+          "caption": "Roberts cross (diagonal), quadrant 1"
+        },
+        {
+          "value": "ROBERTS_CROSS_QUADRANT_2",
+          "caption": "Roberts cross (diagonal), quadrant 2"
+        },
+        {
+          "value": "SCALED_ROBERTS_CROSS_QUADRANT_1",
+          "caption": "Scaled Roberts cross, quadrant 1"
+        },
+        {
+          "value": "SCALED_ROBERTS_CROSS_QUADRANT_2",
+          "caption": "Scaled Roberts cross, quadrant 2"
+        },
+        {
+          "value": "D2_DX2",
+          "caption": "∂²/∂x²"
+        },
+        {
+          "value": "D2_DY2",
+          "caption": "∂²/∂y²"
+        },
+        {
+          "value": "D2_DXDY",
+          "caption": "∂²/∂x∂y"
+        },
+        {
+          "value": "LAPLACIAN",
+          "caption": "Laplacian (3x3)"
+        }
+      ],
+      "default": "DX_PAIR"
+    }
+  ]
+}

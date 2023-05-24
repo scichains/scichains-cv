@@ -1,0 +1,44 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.arithmetic",
+  "name": "Phase: atan(y/x)",
+  "id": "76f50670-9d7f-4edc-a6b6-9465498c8784",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.arithmetic.Phase"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "x"
+    },
+    {
+      "value_type": "mat",
+      "name": "y"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "caption": "Result angle in degrees",
+      "name": "angleInDegrees",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

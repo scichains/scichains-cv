@@ -1,0 +1,186 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.ml.training",
+  "name": "Train Boost for pixels",
+  "id": "6ba16b05-a7fe-4beb-a5f7-2b533d9ee196",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.ml.training.MLTrainBoost",
+    "new_instance_method": "newTrainPixels"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "samples"
+    },
+    {
+      "value_type": "mat",
+      "caption": "training responses",
+      "name": "training_responses",
+      "hint": "It should be a matrix of integer labels. Pixels with zero labels are excluded from training."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    },
+    {
+      "value_type": "numbers",
+      "caption": "actual training responses",
+      "name": "training_responses"
+    },
+    {
+      "value_type": "scalar",
+      "name": "model_file"
+    },
+    {
+      "value_type": "scalar",
+      "name": "metadata"
+    },
+    {
+      "value_type": "scalar",
+      "name": "error"
+    },
+    {
+      "value_type": "scalar",
+      "name": "is_classifier"
+    },
+    {
+      "value_type": "numbers",
+      "name": "var_importance"
+    }
+  ],
+  "controls": [
+    {
+      "name": "statModelFile",
+      "caption": "File of statistical model",
+      "description": "Model file, that will be create. It will be resolved relative the current folder, containing the executed chain.\nAlso you can use in this string Java system properties: \"${name}\", for example: \"${java.io.tmpdir}\", and executor system properties \"${path.name.ext}\", \"${path.name}\", \"${file.name.ext}\", \"${file.name}\", \"${resources}\" (chain path/file name with/without extension, resource folder of the platform, containing this function).",
+      "value_type": "String",
+      "edition_type": "file",
+      "default": ""
+    },
+    {
+      "name": "boostType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "DISCRETE"
+        },
+        {
+          "value": "REAL"
+        },
+        {
+          "value": "LOGIT"
+        },
+        {
+          "value": "GENTLE"
+        }
+      ],
+      "default": "REAL"
+    },
+    {
+      "name": "weakCount",
+      "description": "The number of weak classifiers. Default value is 100.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 100
+    },
+    {
+      "name": "weightTrimRate",
+      "description": "A threshold between 0 and 1 used to save computational time. Samples with summary weight ≤1−weighttrimrate do not participate in the next iteration of training. Set this parameter to 0 to turn off this functionality. Default value is 0.95.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.95
+    },
+    {
+      "name": "cvFolds",
+      "description": "If cvFolds > 1 then algorithms prunes the built decision tree using K-fold cross-validation procedure where K is equal to cvFolds. Default value is 10.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 1
+    },
+    {
+      "name": "maxCategories",
+      "description": "Cluster possible values of a categorical variable into K<=maxCategories clusters to find a suboptimal split. If a discrete variable, on which the training procedure tries to make a split, takes more than maxCategories values, the precise best subset estimation may take a very long time because the algorithm is exponential. Instead, many decision trees engines (including our implementation) try to find sub-optimal split in this case by clustering all the samples into maxCategories clusters that is some categories are merged together. The clustering is applied only in n > 2-class classification problems for categorical variables with N > max_categories possible values. In case of regression and 2-class classification the optimal split can be found efficiently without employing clustering, thus the parameter is not used in these cases. Default value is 10.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 10
+    },
+    {
+      "name": "maxDepth",
+      "description": "The maximum possible depth of the tree. That is the training algorithms attempts to split a node while its depth is less than maxDepth. The root node has zero depth. The actual depth may be smaller if the other termination criteria are met (see the outline of the training procedure here), and/or if the tree is pruned. Default value is INT_MAX (empty string).",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "name": "minSampleCount",
+      "description": "If the number of samples in a node is less than this parameter then the node will not be split. Default value is 10.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 10
+    },
+    {
+      "name": "priors",
+      "description": "Comma-separated array, for example, \"2.0, 2.0\". If this parameter is an empty string, it is ignored.\nIt is the array of a priori class probabilities, sorted by the class label value.\nThe parameter can be used to tune the decision tree preferences toward a certain class. For example, if you want to detect some rare anomaly occurrence, the training base will likely contain much more normal cases than anomalies, so a very good classification performance will be achieved just by considering every case as normal. To avoid this, the priors can be specified, where the anomaly probability is artificially increased (up to 0.5 or even greater), so the weight of the misclassified anomalies becomes much bigger, and the tree is adjusted properly.\nYou can also think about this parameter as weights of prediction categories which determine relative weights that you give to misclassification. That is, if the weight of the first category is 1 and the weight of the second category is 10, then each mistake in predicting the second category is equivalent to making 10 mistakes in predicting the first category. Default value is empty Mat (when this parameter is an empty string)." ,
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "name": "regressionAccuracy",
+      "description": "Termination criteria for regression trees. If all absolute differences between an estimated value in a node and values of train samples in this node are less than this parameter then the node will not be split further. Default value is 0.01.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.01
+    },
+    {
+      "name": "truncatePrunedTree",
+      "description": "If true then pruned branches are physically removed from the tree. Otherwise they are retained and it is possible to get results from the original unpruned (or pruned less aggressively) tree. Default value is true.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "use1SERule",
+      "description": "If true then a pruning will be harsher. This will make a tree more compact and more resistant to the training data noise but a bit less accurate. Default value is true.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "useSurrogates",
+      "description": "If true then surrogate splits will be built. These splits allow to work with missing data and compute variable importance correctly. Default value is false.\nNote: currently it's not implemented.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Calculate error",
+      "description": "If set, OpenCV calcError() method is called and its results is returned as \"error\" and result image. Note: in this case, the result will be calculated only for pixels with non-zero labels (training responses).",
+      "name": "calculateError",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "caption": "Auto-test model",
+      "description": "If set, this function tests model by OpenCV predict() method of the same samples and returns the result. If \"Calculate error\" flag is set, the result of prediction overwrites result of calcError() method. If both flags are cleared, the result array stays to be not initialized.",
+      "name": "testPredictTrainedSamples",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

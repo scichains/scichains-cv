@@ -1,0 +1,37 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.arithmetic",
+  "name": "Min",
+  "id": "6e6ae696-bdd7-4546-b7c6-26d280c47c39",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.arithmetic.Min"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input_1"
+    },
+    {
+      "value_type": "mat",
+      "name": "input_2"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

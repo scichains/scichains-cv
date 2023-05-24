@@ -1,0 +1,38 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.objects",
+  "name": "Labels' boundaries",
+  "description": "Finds (binary) boundaries between labelled objects and (if exists) background areas.",
+  "id": "dd2cd2dc-94dd-45ba-bf63-b890aa42f171",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.LabelsBoundaries"
+  },
+  "tags": [
+    "java",
+    "images",
+    "express"
+  ],
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "labels"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "caption": "invert (but background, if exists, still zero)",
+      "name": "invert",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

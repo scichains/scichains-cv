@@ -1,0 +1,140 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.segmentation",
+  "name": "Watershed",
+  "id": "829bbf7e-872a-4935-9908-8e8826c343f7",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.segmentation.Watershed"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    },
+    {
+      "value_type": "mat",
+      "name": "labels",
+      "hint": "[Optional] Source labels (seeds) for starting watershed algorithm (see interpretation mode; if skipped, it is built from the source image by OTSU binarization)"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "labels",
+      "hint": "Result of watershed algorithm: labels 1,2,3,... or −1 for borders between labels"
+    },
+    {
+      "value_type": "mat",
+      "name": "boundaries"
+    },
+    {
+      "value_type": "mat",
+      "name": "source_labels",
+      "caption": "source labels (seeds)",
+      "hint": "Copy of source labels or the seeding labels, built automatically before starting watershed (see interpretation mode)"
+    }
+  ],
+  "controls": [
+    {
+      "name": "seedingMode",
+      "caption": "Seeding mode",
+      "description": "Seeding mode: how to interpret the labels input port (in 1st case the seeds MUST be specified in the labels port, in other cases seeds may be build from source by OTSU threshold)",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "SEEDING_LABELS",
+          "caption": "Seeding labels 1,2,3,...; 0 for unknown (must be specified in input labels port)"
+        },
+        {
+          "value": "ONE_FOREGROUND_AND_ONE_BACKGROUND",
+          "caption": "2 labels (binary image): background and foreground"
+        },
+        {
+          "value": "CONNECTED_COMPONENTS_ONLY",
+          "caption": "N labels (binary image): N connected components of foreground"
+        },
+        {
+          "value": "CONNECTED_COMPONENTS_AND_ONE_BACKGROUND",
+          "caption": "N+1 labels (binary image): 1 background and N connected components of foreground"
+        }
+      ],
+      "default": "SEEDING_LABELS"
+    },
+    {
+      "name": "autoLabellingForegroundErosionKernelSize",
+      "caption": "Pattern size for erosion of foreground (not used for \"ready labels\" mode)",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "caption": "Pattern size for erosion of background (not used for \"ready labels\" and \"N connected components\")",
+      "name": "autoLabellingBackgroundErosionKernelSize",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 32
+    },
+    {
+      "name": "valuesOnBoundaries",
+      "caption": "Values on boundaries",
+      "description": "Values on boundaries in the watershed result. By default, OpenCV indicate boundaries by special −1 value, but it is inconvenient for many processing functions. We can either replace it with zero (boundaries will still exist, but will be indicated by 0 instead of −1), or with the nearest positive pixel, if it exists in some little aperture (in this case we actually returns map of labels 1,2,3,... without boundaries).\nNote: the last variant essentially slows down execution!",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "MINUS_ONE",
+          "caption": "−1 (default OpenCV behaviour)"
+        },
+        {
+          "value": "ZERO",
+          "caption": "0 (all −1 are replaced with 0)"
+        },
+        {
+          "value": "NEAREST_LABEL",
+          "caption": "Value of nearest label"
+        }
+      ],
+      "default": "MINUS_ONE"
+    },
+    {
+      "name": "drawingBoundariesStyle",
+      "caption": "Drawing boundaries style",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "BOUNDARIES"
+        },
+        {
+          "value": "BOUNDARIES_ON_SOURCE"
+        }
+      ],
+      "default": "BOUNDARIES_ON_SOURCE"
+    },
+    {
+      "name": "drawingBoundariesColor",
+      "caption": "Drawing boundaries color",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": "#FFFFFF"
+    },
+    {
+      "name": "visibleBoundaries",
+      "caption": "Visible boundaries (in other case, you will see auto-contrasted labels)",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

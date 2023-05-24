@@ -1,0 +1,49 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.filtering",
+  "name": "Guided filter",
+  "id": "62780b44-0d86-4981-a7e1-81b13737aa9e",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.filtering.GuidedFilter"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    },
+    {
+      "value_type": "mat",
+      "name": "guide"
+    }
+   ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "radius",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 10
+    },
+    {
+      "name": "eps",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.05
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

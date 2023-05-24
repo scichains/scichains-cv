@@ -1,0 +1,133 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.filtering",
+  "name": "Fast eigenvalues",
+  "id": "df8e53c7-b7ea-424b-8cc5-eda72ffcf651",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.filtering.FastEigenValues"
+  },
+  "tags": [
+    "java",
+    "images",
+    "express"
+  ],
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "caption": "λ₁",
+      "name": "lambda1"
+    },
+    {
+      "value_type": "mat",
+      "caption": "λ₂",
+      "name": "lambda2"
+    },
+    {
+      "value_type": "mat",
+      "caption": "λ₁⁺",
+      "name": "lambda1_plus"
+    },
+    {
+      "value_type": "mat",
+      "caption": "λ₁⁻",
+      "name": "lambda1_minus"
+    },
+    {
+      "value_type": "mat",
+      "caption": "λ₂⁺",
+      "name": "lambda2_plus"
+    },
+    {
+      "value_type": "mat",
+      "caption": "λ₂⁻",
+      "name": "lambda2_minus"
+    }
+  ],
+  "controls": [
+    {
+      "name": "scale",
+      "caption": "Scale (additional multiplier)",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "name": "borderType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "BORDER_DEFAULT"
+        },
+        {
+          "value": "BORDER_CONSTANT"
+        },
+        {
+          "value": "BORDER_REPLICATE"
+        },
+        {
+          "value": "BORDER_REFLECT"
+        },
+        {
+          "value": "BORDER_WRAP"
+        },
+        {
+          "value": "BORDER_REFLECT_101"
+        },
+        {
+          "value": "BORDER_TRANSPARENT"
+        }
+      ],
+      "default": "BORDER_DEFAULT"
+    },
+    {
+      "name": "visibleResult",
+      "caption": "Visible result",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "lambda1",
+          "caption": "λ₁"
+        },
+        {
+          "value": "lambda2",
+          "caption": "λ₂"
+        },
+        {
+          "value": "lambda1_plus",
+          "caption": "λ₁⁺"
+        },
+        {
+          "value": "lambda1_minus",
+          "caption": "λ₁⁻"
+        },
+        {
+          "value": "lambda2_plus",
+          "caption": "λ₂⁺"
+        },
+        {
+          "value": "lambda2_minus",
+          "caption": "λ₂⁻"
+        }
+      ],
+      "default": "lambda1"
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

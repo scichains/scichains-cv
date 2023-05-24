@@ -1,0 +1,81 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.objects.binary.components",
+  "name": "Filter connected binary objects by areas",
+  "id": "35ba7348-56eb-401f-b8f5-7f4a4d3ecd1c",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.components.FilterConnectedObjectsByAreas"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "objects"
+    },
+    {
+      "value_type": "mat",
+      "name": "mask"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "mode",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "RETAIN",
+          "caption": "retain connected components with minArea <= area (at mask) <= maxArea"
+        },
+        {
+          "value": "REMOVE",
+          "caption": "remove connected components with minArea <= area (at mask) <= maxArea"
+        }
+      ],
+      "default": "RETAIN"
+    },
+    {
+      "name": "areaInterpretation",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "NUMBER_OF_PIXELS",
+          "caption": "number of pixels"
+        },
+        {
+          "value": "FRACTION_OF_WHOLE_IMAGE_0_1",
+          "caption": "fraction of whole image from 0.0 to 1.0"
+        }
+      ],
+      "default": "FRACTION_OF_WHOLE_IMAGE_0_1"
+    },
+    {
+      "name": "minArea",
+      "hint": "If set (some number, not an empty string), objects with area<minArea will be removed.",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "name": "maxArea",
+      "hint": "If set (some number, not an empty string), objects with area>maxArea will be removed.",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "name": "invertMask",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

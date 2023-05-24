@@ -1,0 +1,70 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.objects.binary.boundaries",
+  "name": "Transform contours (scale and shift)",
+  "id": "be660975-f1df-4296-9b7e-a0fd251d654a",
+  "description": "Transform contours: every contour point (<i>x</i>, <i>y</i>) is replaced with ([(<i>s₁x</i>+<i>d₁</i>], [<i>s₂y</i>+<i>d₂</i>]), where [<i>a</i>] means rounding &mdash; an integer, nearest to <i>a</i> (like in <tt>Math.round</tt> Java function).",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.boundaries.TransformContours"
+  },
+  "in_ports": [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Contours: serialized array of points."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Transformed and packed (optimized) contours."
+    },
+    {
+      "value_type": "scalar",
+      "name": "number_of_objects",
+      "caption": "number of objects",
+      "hint": "Number of result contours."
+    }
+  ],
+  "controls": [
+    {
+      "name": "scaleX",
+      "caption": "X-scale s₁",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "name": "scaleY",
+      "caption": "Y-scale s₂",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "name": "shiftX",
+      "caption": "X-shift d₁",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "name": "shiftY",
+      "caption": "Y-shift d₂",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "name": "removeDegeneratedContours",
+      "caption": "Remove degenerated contours",
+      "description": "If this flag is set and it some transformed contour is degenerated, i.e. its containing rectangle has zero width (Nx0) or height (0xN), such a contour is not add to result. It is possible, for example, when scales are less than 1.0.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

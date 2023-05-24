@@ -1,0 +1,74 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.misc",
+  "name": "Test border pixels",
+  "id": "269c6906-7c25-494b-b93a-b8170b327adb",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.misc.TestBorderPixels"
+  },
+  "tags": [
+    "java",
+    "images",
+    "express"
+  ],
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "output",
+      "hint": "All pixels (byte elements) along the border.\nNote: corner pixels are duplicated twice, 1 time for horizontal bound and 1 time for vertical bound.\nSo, the length of this array is 2 * (dim_x + dim_y)."
+    },
+    {
+      "value_type": "scalar",
+      "name": "dim_x",
+      "hint": "Analysed width = source width − 2 * outside indent."
+    },
+    {
+      "value_type": "scalar",
+      "name": "dim_y",
+      "hint": "Analysed height = source height − 2 * outside indent."
+    },
+    {
+      "value_type": "scalar",
+      "name": "max_border",
+      "hint": "Maximal value among all 2 * (dim_x + dimY) − 4 border pixels."
+    },
+    {
+      "value_type": "scalar",
+      "name": "max_top",
+      "hint": "Maximal value among all dim_x pixels at the top bound."
+    },
+    {
+      "value_type": "scalar",
+      "name": "max_bottom",
+      "hint": "Maximal value among all dim_x pixels at the bottom bound."
+    },
+    {
+      "value_type": "scalar",
+      "name": "max_left",
+      "hint": "Maximal value among all dim_y pixels at the left bound."
+    },
+    {
+      "value_type": "scalar",
+      "name": "max_right",
+      "hint": "Maximal value among all dim_y pixels at the right bound."
+    }
+  ],
+  "controls": [
+    {
+      "name": "outsideIndent",
+      "caption": "Outside indent",
+      "description": "If it is zero, this function extracts and analyses top, right, bottom and left bounds of the image in clockwise order (if y is increased downward).\nIf it has a positive value D, this function, before extracting, performs indent into the image from the outside by D pixels: the topmost,  rightmost,topmost, bottommost and rightmost D pixels are ignored (as if the image was cropped from all sides by this indent). If width or height of the source image is ≤2*D, result array will be empty and result maximal values will stay non-initialized.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    }
+  ]
+}

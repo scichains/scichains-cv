@@ -1,0 +1,33 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.arithmetic",
+  "name": "Abs: |x|",
+  "id": "c536fd5c-609f-48fb-b2d8-6f0febb97465",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.arithmetic.Abs"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

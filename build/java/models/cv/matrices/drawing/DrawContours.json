@@ -1,0 +1,177 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.drawing",
+  "name": "Draw contours",
+  "id": "f33e6de1-925e-4779-85dd-5342d1899e45",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.drawing.DrawContours"
+  },
+  "in_ports":  [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Contours: serialized array of points."
+    },
+    {
+      "value_type": "mat",
+      "name": "input",
+      "hint": "[Optional] Background image, on which the contours will be drawn"
+    },
+    {
+      "value_type": "numbers",
+      "caption": "image position",
+      "name": "image_position",
+      "hint": "[Optional] Point, describing position of the background image in coordinate system of contours.\nIf specified, it will be used instead of \"Start X/Y\" parameters.\nAlso can contain 4 numbers min_x, max_x, min_y, max_y (rectangle); then its left top corner will be the position."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    },
+    {
+      "value_type": "scalar",
+      "caption": "number of objects",
+      "name": "number_of_objects",
+      "hint": "Total number of contours"
+    }
+  ],
+  "controls": [
+    {
+      "caption": "What to draw?",
+      "name": "drawnFeatures",
+      "description": "Exact contours are drawn strictly at the specified coordinates as byte 0/1 value; if a point belongs to N>1 contours, the value will be N.\nObject labels are just the labels (31-bit integer) of the corresponding objects, stored in contour array.\nNote: indexes of contours are started FROM 1, not from 0!\nIn 3 last modes, contours are drawn at the pixels of corresponding boundary (internal or external), that differs from some contour points by 1.",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "STRICT_BYTE_CONTOURS",
+          "caption": "exact contours"
+        },
+        {
+          "value": "NOT_INTERSECTED_LABELS_OF_CONTOURS",
+          "caption": "object labels (int)"
+        },
+        {
+          "value": "NOT_INTERSECTED_INDEXES_OF_CONTOURS",
+          "caption": "indexes of contours (int)"
+        },
+        {
+          "value": "NOT_INTERSECTED_RANDOMLY_COLORED_CONTOURS",
+          "caption": "random values (byte)"
+        }
+      ],
+      "default": "STRICT_BYTE_CONTOURS"
+    },
+    {
+      "caption": "Exact contours multiplier",
+      "name": "strictByteMultiplier",
+      "description": "If >1, in \"exact contours\" mode the result value is multiplied by this value: if a point belongs to N contours, the result value at this point will be N*(Exact contours multiplier).",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 1
+    },
+    {
+      "caption": "What contours to draw?",
+      "name": "drawnContourKinds",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "ALL",
+          "caption": "all"
+        },
+        {
+          "value": "EXTERNAL",
+          "caption": "only external"
+        },
+        {
+          "value": "INTERNAL",
+          "caption": "only internal"
+        }
+      ],
+      "default": "ALL"
+    },
+    {
+      "name": "firstIndex",
+      "caption": "First index of contour",
+      "description": "First index of drawn contours; can be 0..N-1, where N = number of contours. Contours with less indexes are not drawn.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0,
+      "advanced": true
+    },
+    {
+      "name": "numberOfContours",
+      "caption": "Number of contours to draw",
+      "value_type": "int",
+      "description": "Maximal number of drawn contours; can be 0..N-1, where N = number of source contours.\n0 values is special and means \"draw until the last contour\": the actual number of drawn contours will be max(1,N−K), where K = first index of contour above.",
+      "edition_type": "value",
+      "default": 0,
+      "advanced": true
+    },
+    {
+      "name": "needToProcessDiagonals",
+      "caption": "Enforce processing diagonals",
+      "description": "If set, this function draws also non-horizontal and non-vertical segments of the contours (when they exists). Such \"diagonal\" segments are usually considered as incorrect and should not appear while scanning binary objects, but can be added to contour array manually.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Default dimX (width)",
+      "name": "dimX",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 1000
+    },
+    {
+      "caption": "Default dimY (height)",
+      "name": "dimY",
+      "description": "dimX/dimY will be the sizes of result matrix, if the input background image is not specified.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 1000
+    },
+    {
+      "caption": "Scale",
+      "description": "Scale: increase the sizes of drawn image in several times. Allows to correctly view boundaries of little objects (1-2 pixels).",
+      "name": "scale",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 1
+    },
+    {
+      "caption": "Background start X",
+      "name": "imageStartX",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "caption": "Background start Y",
+      "name": "imageStartY",
+      "description": "These start X/Y are subtracted from coordinates of all contour points.\nIf you specify background image, this can be interpreted as coordinates of left/top corner of this image tin coordinate system of contours.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "caption": "Rand-seed for random palette (0 to generate new sequence always)",
+      "name": "randSeed",
+      "value_type": "long",
+      "edition_type": "value",
+      "default": 1
+    },
+    {
+      "caption": "Contrast background",
+      "name": "contrastBackground",
+      "description": "Can be useful when background is int-32 matrix of labels.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.recognition",
+  "name": "CascadeClassifier",
+  "id": "d89bed66-7ec7-4a60-9e14-021c65c63bca",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.recognition.CascadeClassifier"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+   ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "output"
+    },
+    {
+      "value_type": "mat",
+      "name": "visual_results"
+    }
+  ],
+  "controls": [
+    {
+      "caption": "Classifier model file",
+      "name": "classifierFile",
+      "description": "You can use here relative paths (without starting \"/\" or \"c:\\\"), for example, \"test.json\" or \"samples/test.json\". They will be resolved relative the current folder, containing the executed chain.\nIf this path starts with substring %TEMP%, %TEMP%/ or %TEMP%x. where x is OS-depended file separator character, this substring is replaced with the full path to the system temp directory (System.getProperty(\"java.io.tmpdir\")) with ending file separator. For example, it is correct to write here %TEMP%file, %TEMP%/file or (in Windows) %TEMP%\\file.\nAlso you can use in this string Java system properties: \"${name}\", for example: \"${java.io.tmpdir}\", and executor system properties \"${path.name.ext}\", \"${path.name}\", \"${file.name.ext}\", \"${file.name}\", \"${resources}\" (chain path/file name with/without extension, resource folder of the platform, containing this function).",
+      "value_type": "String",
+      "edition_type": "file",
+      "default": "${resources}/opencv/matrices/recognition/haarcascades/haarcascade_frontalface_alt.xml"
+    },
+    {
+      "name": "scaleFactor",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.1
+    },
+    {
+      "name": "minNeighbors",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 3
+    },
+    {
+      "name": "minSizeX",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "minSizeY",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "maxSizeX",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "maxSizeY",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "caption": "return only x,y (if false, result contains x,y,width,height)",
+      "name": "finsOnlyCenters",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "drawOnInput",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "resultMarkerType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "RECTANGLE",
+          "caption": "rectangle"
+        },
+        {
+          "value": "ELLIPSE",
+          "caption": "ellipse"
+        },
+        {
+          "value": "CIRCLE",
+          "caption": "circle"
+        }
+      ],
+      "default": "RECTANGLE"
+    },
+    {
+      "name": "drawingLineThickness",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "app": "executors-extension",
+  "platforms": [
+    {
+      "id": "7c87e960-19b7-40d3-bc8b-d904228c23d3",
+      "name": "CV",
+      "category": "cv",
+      "description": "Computer vision, Java",
+      "technology": "jvm",
+      "language": "java",
+      "folders": {
+        "models": "java/models",
+        "resources": "java/resources"
+      },
+      "configuration": {
+        "classpath": [
+          "java/lib/javacpp/javacpp-${javacpp.version}.jar",
+          "java/lib/javacpp/javacpp-platform-${javacpp.version}.jar",
+          "java/lib/javacpp/openblas-${openblas.version}.jar",
+          "java/lib/javacpp/openblas-platform-${openblas.version}.jar",
+          "java/lib/javacpp/opencv-${opencv.version}.jar",
+          "java/lib/javacpp/opencv-platform-${opencv.version}.jar",
+          "java/lib/javacpp/opencv-platform-gpu-${opencv.version}.jar",
+          "java/lib/jai-imageio-core-1.4.0.jar",
+          "java/lib/${artifactId}-${version}.jar",
+          "java/lib/${artifactId}-${version}-tests.jar"
+        ],
+        "classpath_windows-x86_64": [
+          "java/lib/javacpp/javacpp-${javacpp.version}-windows-x86_64.jar",
+          "java/lib/javacpp/openblas-${openblas.version}-windows-x86_64.jar",
+          "java/lib/javacpp/opencv-${opencv.version}-windows-x86_64.jar",
+          "java/lib/javacpp/opencv-${opencv.version}-windows-x86_64-gpu.jar"
+        ],
+        "classpath_linux-x86_64": [
+          "java/lib/javacpp/javacpp-${javacpp.version}-linux-x86_64.jar",
+          "java/lib/javacpp/openblas-${openblas.version}-linux-x86_64.jar",
+          "java/lib/javacpp/opencv-${opencv.version}-linux-x86_64.jar",
+          "java/lib/javacpp/opencv-${opencv.version}-linux-x86_64-gpu.jar"
+        ],
+        "classpath_linux-arm64": [
+          "java/lib/javacpp/javacpp-${javacpp.version}-linux-arm64.jar",
+          "java/lib/javacpp/openblas-${openblas.version}-linux-arm64.jar",
+          "java/lib/javacpp/opencv-${opencv.version}-linux-arm64.jar"
+        ],
+        "classpath_linux-ppc64le": [
+          "java/lib/javacpp/javacpp-${javacpp.version}-linux-ppc64le.jar",
+          "java/lib/javacpp/openblas-${openblas.version}-linux-ppc64le.jar",
+          "java/lib/javacpp/opencv-${opencv.version}-linux-ppc64le.jar"
+        ],
+        "classpath_macosx-x86_64": [
+          "java/lib/javacpp/javacpp-${javacpp.version}-macosx-x86_64.jar",
+          "java/lib/javacpp/openblas-${openblas.version}-macosx-x86_64.jar",
+          "java/lib/javacpp/opencv-${opencv.version}-macosx-x86_64.jar"
+        ],
+        "classpath_macosx-arm64": [
+          "java/lib/javacpp/javacpp-${javacpp.version}-macosx-arm64.jar",
+          "java/lib/javacpp/openblas-${openblas.version}-macosx-arm64.jar",
+          "java/lib/javacpp/opencv-${opencv.version}-macosx-arm64.jar"
+        ],
+        "classpath_android-x86_64": [
+          "java/lib/javacpp/javacpp-${javacpp.version}-android-x86_64.jar",
+          "java/lib/javacpp/openblas-${openblas.version}-android-x86_64.jar",
+          "java/lib/javacpp/opencv-${opencv.version}-android-x86_64.jar"
+        ],
+        "classpath_android-arm64": [
+          "java/lib/javacpp/javacpp-${javacpp.version}-android-arm64.jar",
+          "java/lib/javacpp/openblas-${openblas.version}-android-arm64.jar",
+          "java/lib/javacpp/opencv-${opencv.version}-android-arm64.jar"
+        ],
+        "classpath_ios-x86_64": [
+          "java/lib/javacpp/javacpp-${javacpp.version}-ios-x86_64.jar",
+          "java/lib/javacpp/openblas-${openblas.version}-ios-x86_64.jar",
+          "java/lib/javacpp/opencv-${opencv.version}-ios-x86_64.jar"
+        ],
+        "classpath_ios-arm64": [
+          "java/lib/javacpp/javacpp-${javacpp.version}-ios-arm64.jar",
+          "java/lib/javacpp/openblas-${openblas.version}-ios-arm64.jar",
+          "java/lib/javacpp/opencv-${opencv.version}-ios-arm64.jar"
+        ],
+        "vm_options": [
+          "-Dnet.algart.executors.modules.opencv.useGPU_=false"
+        ]
+      }
+    },
+    {
+      "id": "c71c53b5-6f03-4213-a5e1-aeaefb027440",
+      "category": "cv",
+      "name": "CV-Python",
+      "description": "(Not used yet: reserved for future needs)",
+      "technology": "jep",
+      "language": "python",
+      "folders": {
+      }
+    }
+  ]
+}

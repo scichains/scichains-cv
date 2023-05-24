@@ -1,0 +1,83 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.geometry",
+  "name": "SubMatrix",
+  "id": "483ee1a1-59ce-4640-bd52-8e89681af8cb",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.geometry.SubMatrix"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+   ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "left",
+      "description": "Specifies x₁ (in pixels or percents) for submatrix x₁≤x≤x₂, y₁≤y≤y₂",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "top",
+      "description": "Specifies y₁ (in pixels or percents) for submatrix x₁≤x≤x₂, y₁≤y≤y₂",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "right",
+      "description": "Specifies x₂ (in pixels or percents) for submatrix x₁≤x≤x₂, y₁≤y≤y₂; if x₂<0, it is replaced with dimX+x₂ (where dimX is image width); ignored if width>0",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "bottom",
+      "description": "Specifies y₂ (in pixels or percents) for submatrix x₁≤x≤x₂, y₁≤y≤y₂; if y₂<0, it is replaced with dimY+y₂ (where dimY is image height); ignored if height>0",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "width",
+      "description": "If width>0, it overrides x₂ above and specifies result width x₂−x₁+1 (in pixels or percents) of submatrix x₁≤x≤x₂, y₁≤y≤y₂; ignored if zero",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "height",
+      "description": "If height>0, it overrides y₂ above and specifies result height y₂−y₁+1 (in pixels or percents) of submatrix x₁≤x≤x₂, y₁≤y≤y₂; ignored if zero",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "outsideColor",
+      "caption": "Outside color",
+      "description": "If submatrix is not fully inside the source matrix (for example, x₁<0), it is supposed that the space outside the source matrix is filled by this color.\nSee supported color formats in \"Create constant matrix\" function.",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": "#000000"
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

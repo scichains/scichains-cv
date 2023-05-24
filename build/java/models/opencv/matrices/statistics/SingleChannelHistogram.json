@@ -1,0 +1,66 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.statistics",
+  "name": "Single-channel histogram",
+  "id": "ce33c446-9c0a-47d2-b3ff-c83937c620db",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.statistics.SingleChannelHistogram"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    },
+    {
+      "value_type": "mat",
+      "name": "mask",
+      "hint": "Histogram is calculated only for non-zero pixels of this mask"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "histogram"
+    }
+  ],
+  "controls": [
+    {
+      "name": "channelIndex",
+      "caption": "Index of channel to analyse",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "histogramSize",
+      "caption": "Histogram size (number of bins)",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 256
+    },
+    {
+      "name": "min",
+      "caption": "Min (range start)",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "name": "max",
+      "caption": "Max (range end)",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 256.0
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

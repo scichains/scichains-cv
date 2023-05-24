@@ -1,0 +1,137 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.objects.binary.boundaries",
+  "name": "Join contours",
+  "id": "772741cb-20a2-4ac4-b227-6447e3195907",
+  "description": "Joins all contours, having the same label and common points.<br>Note: frame ID is removed from the resulting newly created (joined) contours, because the function is typically used for joining contours from <i>different</i> frames. For contours, that are not joined with anything and are simply copied into result, existing frame ID is preserved.",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.boundaries.JoinContours"
+  },
+  "in_ports": [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Contours: serialized array of points."
+    },
+    {
+      "value_type": "numbers",
+      "caption": "joining map",
+      "name": "joining_map",
+      "hint": "Label map for joining: this function tries to join two contours,\nif this map contains identical values for corresponding two object labels\nand if these contours have common points."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Joined contours."
+    },
+    {
+      "value_type": "numbers",
+      "caption": "object label",
+      "name": "object_label",
+      "hint": "Label: pixel value of the source matrix"
+    },
+    {
+      "value_type": "numbers",
+      "caption": "internal boundary",
+      "name": "internal_boundary",
+      "hint": "Indicator of internal contour: 1 for internal contour, 0 for external contour"
+    },
+    {
+      "value_type": "numbers",
+      "name": "containing_all_rectangle",
+      "caption": "rectangle, containing all contours",
+      "hint": "Minimal rectangle, containing all contours."
+    },
+    {
+      "value_type": "scalar",
+      "caption": "number of objects",
+      "name": "number_of_objects",
+      "hint": "Total number of joined contours"
+    }
+  ],
+  "controls": [
+    {
+      "name": "joiningOrder",
+      "caption": "Joining order",
+      "description": "Joining in natural order tries to preserve the original order of contours.",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "UNORDERED",
+          "caption": "No ordering guaranteed"
+        },
+        {
+          "value": "NATURAL",
+          "caption": "Natural"
+        },
+        {
+          "value": "SMALL_FIRST",
+          "caption": "Small first"
+        },
+        {
+          "value": "LARGE_FIRST",
+          "caption": "Large first"
+        }
+      ],
+      "default": "UNORDERED",
+      "advanced": true
+    },
+    {
+      "caption": "Grid step logarithm",
+      "name": "gridStepLog",
+      "description": "If contain non-empty string, it should an integer. It can be 0 or an integer 3,4,... (cases 1 and 2 are prohibited). If it is a positive value n, it is used for grid-based optimization. All area, occupied by all contours, is divided into cells 2ⁿ*2ⁿ to check, where a contour overlaps every cell. Every cell is a bitmap 8x8 (1 \"long\" value), indicating whether a contour passes one of 64 little squares.\nNote that this function allocate temporary arrays with sizes ⌈W/2ⁿ⌉x⌈H/2ⁿ⌉, where WxH is the maximal rectangle, containing all contours with the same label (re-indexed by \"joining map\"), and every element occupies 12 bytes. So, please choose n relatively large. For example, value n=5 (2ⁿ=32, every \"little square\" is 4x4) guarantees that contours, occupying even space 256000x256000, in the worst case will required a grid matrix only 8000x8000, i.e. 8000*8000*12=768 MB.\nZero value disables this optimization.\nIf this parameter is not specified (empty), it is chosen automatically according the maximal cluster (set of contours with same label) to allocate not too large memory (less than 384 MB).",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": "",
+      "advanced": "true"
+    },
+    {
+      "caption": "Indexing base of joining map",
+      "name": "indexingBase",
+      "description": "Indexing base of joining map: this function tries to join two contours with object labels L1 and L2, when map[L1−B]=map[L2−B]=m, where B is this base (0 or 1). Label of the result joined contour will be equal to this value m. Note that the elements of joining map must not be less than this base, in other case this function will throw an exception.",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "ZERO_BASED",
+          "caption": "0 (zero-based numbering)"
+        },
+        {
+          "value": "ONE_BASED",
+          "caption": "1 (one-based numbering)"
+        }
+      ],
+      "default": "ZERO_BASED"
+    },
+    {
+      "caption": "Default joining label",
+      "name": "defaultJoinedLabel",
+      "description": "Used when the joining map is not specified. In this case, and if this parameter is set to some non-negative integer value, this function tries to join ALL contours, and the result labels of joined ones will become equal to this value. Contours, that cannot be joined with any other contours, will preserve their previous label.",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "name": "automaticallyPackResultContours",
+      "caption": "Automatically pack (optimize) contours",
+      "description": "If set, the result joined contours are automatically optimized: sequences of collinear (horizontal or vertical) segments of length 1 are replaced with single segment with length >1.\nNote: the isolated source contours, that cannot be joined, are also packed in this case. If this flag is cleared, they are stored in the result as-is (without unpacking or packing).",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "measuringTimingLevel",
+      "caption": "Measuring timing level (0..3)",
+      "description": "Used only if logging level if CONFIG or higher. Greater values increase detailing of timing information in logs, but little decrease speed (detailed timing itself requires time).",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0,
+      "advanced": true
+    }
+  ]
+}

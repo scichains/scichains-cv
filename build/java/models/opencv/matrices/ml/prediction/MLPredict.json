@@ -1,0 +1,120 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.ml.prediction",
+  "name": "ML prediction",
+  "id": "29418012-c1e0-45ae-81a8-d188b9e660b5",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.ml.prediction.MLPredict",
+    "new_instance_method": "newPredictNumbers"
+  },
+  "in_ports": [
+    {
+      "value_type": "numbers",
+      "name": "samples"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "hint": "Results or prediction",
+      "name": "output"
+    },
+    {
+      "value_type": "scalar",
+      "hint": "Type of loaded statistical model: SVM, ANN_MLP, etc.",
+      "name": "model_kind"
+    },
+    {
+      "value_type": "scalar",
+      "name": "is_classifier"
+    }
+  ],
+  "controls": [
+    {
+      "name": "statModelFile",
+      "caption": "File of statistical model",
+      "description": "Model file, that will be used for prediction. It will be resolved relative the current folder, containing the executed chain.\nAlso you can use in this string Java system properties: \"${name}\", for example: \"${java.io.tmpdir}\", and executor system properties \"${path.name.ext}\", \"${path.name}\", \"${file.name.ext}\", \"${file.name}\", \"${resources}\" (chain path/file name with/without extension, resource folder of the platform, containing this function).",
+      "value_type": "String",
+      "edition_type": "file",
+      "default": ""
+    },
+    {
+      "name": "defaultPredictor",
+      "caption": "Default ML predictor kind",
+      "description": "Default kind of the model file. It is to choose ML classifier, corresponding to this file format, if there is no .meta-file with this information, automatically created by MLTrain... functions.",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "ANN_MLP"
+        },
+        {
+          "value": "BOOST",
+          "caption": "Boost"
+        },
+        {
+          "value": "R_TREES",
+          "caption": "RTrees"
+        },
+        {
+          "value": "NORMAL_BAYES_CLASSIFIER",
+          "caption": "NormalBayesClassifier"
+        },
+        {
+          "value": "SVM"
+        },
+        {
+          "value": "SVM_SGD"
+        }
+      ],
+      "default": "SVM"
+    },
+    {
+      "name": "predictionRawOutput",
+      "description": "RAW_OUTPUT flag for predict() method in cv::ml::StatModel.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "predictionDTreesSum",
+      "description": "PREDICT_SUM flag for predict() method in cv::ml::DTrees (RTrees and Boost algorithms only).",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "predictionDTreesMaxVote",
+      "description": "PREDICT_MAX_VOTE flag for predict() method in cv::ml::DTrees (RTrees and Boost algorithms only).",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "predictionRoundResponses",
+      "caption": "Round responses",
+      "description": "If set and if the result responses are floating-point, the result is automatically cast to 32-bit integer with rounding to the nearest integer. This flag is ignored if the mode \"Select indexes of maximum\" is used.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "selectIndexesOfMaximalResponses",
+      "caption": "Select indexes of maximum",
+      "description": "If set and if the result responses are multi-column (M>1 responses), the every response block in the result is automatically converted to a single 32-bit integer index K (categorical response), 0≤K<M — index of the result element in the given response with maximal value. It is useful for regression models, if you trained it with flag \"Convert categorical responses\".\nNote: if the response is a single-column, of if the loaded statistical model is a classifier (not a regression), this flag is ignored and considered to be cleared.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.objects.binary.boundaries",
+  "name": "Add contours to array",
+  "id": "3080844a-423d-40b3-83b3-bd0bd29219a8",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.boundaries.AddContoursToArray"
+  },
+  "in_ports": [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Existing contours: serialized array of several contours.\nCan be skipped; then new points will be the only contours in the result."
+    },
+    {
+      "value_type": "numbers",
+      "name": "added",
+      "hint": "Serialized contours array or list of points of a single contour: it will be added to the existing contours.\nCan be skipped: then \"list of points\" parameter will be used instead."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Resulting array of contours."
+    },
+    {
+      "value_type": "scalar",
+      "name": "number_of_objects",
+      "caption": "number of objects",
+      "hint": "Total number of result contours."
+    }
+  ],
+  "controls": [
+    {
+      "name": "objectLabel",
+      "caption": "Object label",
+      "description": "Label, that will be associated with the new contour(s).",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 1
+    },
+    {
+      "name": "internalContour",
+      "caption": "Internal contour",
+      "description": "Whether new contour(s) is an internal (pore) or external (particle).\nThis and previous argument are ignored, if \"added\" input port contains serialized contour array.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "points",
+      "caption": "List of points",
+      "description": "Used when the source points array is not specified. Must contain 2N integer numbers, separated by spaces or commas, where N is the number of points in a new contour. You may specify here several contours, separated by ;\nNote: if the list of points is empty, the original contour array is returned unchanged.",
+      "value_type": "String",
+      "edition_type": "value",
+      "multiline": true,
+      "default": ""
+    }
+  ]
+}

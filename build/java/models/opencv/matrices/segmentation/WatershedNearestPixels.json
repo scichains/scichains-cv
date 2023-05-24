@@ -1,0 +1,42 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.segmentation",
+  "name": "Watershed-based nearest pixels",
+  "id": "beb58cfc-12f5-4b5a-80e1-ba669b92d3b7",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.segmentation.WatershedNearestPixels"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "sample_image",
+      "hint": "If specified, this image defines dimensions of the result. Content of this image is ignored."
+    },
+    {
+      "value_type": "numbers",
+      "name": "positions"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "labels"
+    }
+  ],
+  "controls": [
+    {
+      "name": "dimX",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 100
+    },
+    {
+      "name": "dimY",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 100
+    }
+  ]
+}

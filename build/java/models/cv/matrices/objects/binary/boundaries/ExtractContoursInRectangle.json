@@ -1,0 +1,119 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.objects.binary.boundaries",
+  "name": "Extract/remove contours inside the rectangle",
+  "id": "030bcba5-d420-486f-b902-6ce115db705d",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.boundaries.ExtractContoursInRectangle"
+  },
+  "in_ports": [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Contours: serialized array of points."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Array of source contours inside the specified rectangle."
+    },
+    {
+      "value_type": "numbers",
+      "name": "other_contours",
+      "hint": "All other contours in source array.\nActually this port is the result of REMOVING all previous rectangles from the source contours array."
+    },
+    {
+      "value_type": "numbers",
+      "name": "containing_all_rectangle",
+      "caption": "rectangle, containing all contours",
+      "hint": "Minimal rectangle, containing all source contours (not resulting!)."
+    },
+    {
+      "value_type": "scalar",
+      "caption": "number of source contours",
+      "name": "number_of_source_contours",
+      "hint": "Total number of source contours."
+    },
+    {
+      "value_type": "scalar",
+      "caption": "number of result contours",
+      "name": "number_of_result_contours",
+      "hint": "Total number of result contours (i.e. source contours inside the specified rectangle)."
+    }
+  ],
+  "controls": [
+    {
+      "name": "doAction",
+      "caption": "Do action",
+      "description": "If cleared, this function does nothing and just returns original unchanged contours. Can be convenient if you want to  disable modifications sometimes.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true,
+      "advanced": true
+    },
+    {
+      "caption": "Selection mode",
+      "name": "selectionMode",
+      "description": "Defines what does mean \"a contour C is inside the specified rectangle R\". (This function finds and extracts all contours, for which this condition is fulfilled.)",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "FULLY_INSIDE",
+          "caption": "Fully inside: C fully lies inside R"
+        },
+        {
+          "value": "CONTAINING_RECTANGLE_INTERSECTS",
+          "caption": "Intersection of rectangles: containing rectangle of C intersects R"
+        }
+      ],
+      "default": "FULLY_INSIDE"
+    },
+    {
+      "name": "left",
+      "description": "Specifies x₁ for checked rectangle x₁≤x≤x₂, y₁≤y≤y₂",
+      "value_type": "long",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "top",
+      "description": "Specifies y₁ for checked rectangle x₁≤x≤x₂, y₁≤y≤y₂",
+      "value_type": "long",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "right",
+      "description": "Specifies x₂ for checked rectangle x₁≤x≤x₂, y₁≤y≤y₂,; ignored if width>0.",
+      "value_type": "long",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "bottom",
+      "description": "Specifies y₂ for checked rectangle x₁≤x≤x₂, y₁≤y≤y₂; ignored if height>0.",
+      "value_type": "long",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "width",
+      "description": "If width>0, it overrides x₂ above and specifies result width x₂−x₁+1 of submatrix x₁≤x≤x₂, y₁≤y≤y₂; ignored if zero.",
+      "value_type": "long",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "height",
+      "description": "If height>0, it overrides y₂ above and specifies result height y₂−y₁+1 of submatrix x₁≤x≤x₂, y₁≤y≤y₂; ignored if zero",
+      "value_type": "long",
+      "edition_type": "value",
+      "default": 0
+    }
+  ]
+}

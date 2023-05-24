@@ -1,0 +1,124 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.objects.binary",
+  "name": "Find nearest pixels at matrix",
+  "description": "For every position from the given set, this function finds one or several unit/zero pixels at the source mask",
+  "id": "9937be33-1a57-44cb-b701-11a092a7c795",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.NearestMatrixPixels"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "mask",
+      "hint": "The source binary matrix (mask)"
+    },
+    {
+      "value_type": "numbers",
+      "name": "positions",
+      "hint": "Positions (x₀,y₀), to which we find the nearest pixel at the source matrix"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "nearest_pixels",
+      "caption": "nearest pixels",
+      "hint": "Positions (x,y) of all nearest pixels to every source position (x₀,y₀)"
+    },
+    {
+      "value_type": "numbers",
+      "name": "numbers_of_nearest",
+      "caption": "numbers of nearest",
+      "hint": "Number of nearest pixels, found for every source position (x₀,y₀)"
+    },
+    {
+      "value_type": "mat",
+      "name": "lines_to_nearest",
+      "caption": "lines to nearest",
+      "hint": "Lines from every source position (x₀,y₀) to all nearest pixels (x,y), drawn on the source matrix"
+    }
+  ],
+  "controls": [
+    {
+      "name": "maxApertureSize",
+      "caption": "Maximal aperture size",
+      "description": "Search aperture diameter: for every source position (x₀,y₀), the nearest pixels are searched only inside circle with this diameter and with the center at (x₀,y₀)",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 10
+    },
+    {
+      "name": "neighbourhoodSizeForNearest",
+      "caption": "Neighbourhood size for checking nearest",
+      "description": "Little neighbourhood aperture diameter: the pixel (x,y) is called \"nearest\" to the given center (x₀,y₀), if in the circle with given diameter and with the center (x,y) there are no closer pixels to (x₀,y₀). It is not important if the maximal number of neighbours = 1.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 3
+    },
+    {
+      "name": "maxNumberOfNeighbours",
+      "caption": "Maximal number of neighbours (M)",
+      "description": "For every source position (x₀,y₀), this function finds ≤M nearest pixels at the source matrix. If 1, this function finds only the most nearest pixel.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 1
+    },
+    {
+      "name": "invertSourceMask",
+      "caption": "Invert source mask",
+      "description": "If not set (default), this function finds nearest pixels among all UNIT (non-zero) pixels of the source mask. If set, this function finds nearest among all ZERO pixels of the source mask.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "skipPositionsAtMaks",
+      "caption": "Skip positions at maks",
+      "description": "If the central pixel (x₀,y₀) is suitable itself (unit at the source mask or zero when \"Invert source mask\" is set), so that the distance to the nearest pixel = 0, this position will be ignored if this flag is set, or this pixel will be added as the 1st nearest pixel if this flag is cleared.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "returnPairsOfThisAndNearestPixel",
+      "caption": "Return pairs of this and nearest pixel",
+      "description": "If set, result nearest pixels port will contain blocks of 4 numbers (x₀,y₀,x,y), in other case it will contain blocks of 2 numbers (x,y)",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "drawingLinesThickness",
+      "caption": "Thickness of drawn lines",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 1
+    },
+    {
+      "name": "drawingLinesColor",
+      "caption": "Color of drawn lines",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": "#FFFFFF"
+    },
+    {
+      "name": "convertMonoToColorForDrawingLines",
+      "caption": "Convert to color",
+      "description": "Convert monochrome (1-channel) source matrix image to 3-channel 8-bit color image; if not set, the resulting matrix will be binary (and any line color excepting #000000 is interpreted as white)",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "visibleLinesToNearest",
+      "caption": "Visible lines-to-nearest",
+      "description": "If set, the visible result will be the image \"lines to nearest\" instead of default array \"nearest pixels\".",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

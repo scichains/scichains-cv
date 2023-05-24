@@ -1,0 +1,71 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.recognition",
+  "name": "MatchTemplate",
+  "id": "9dcc7e0b-6874-49e8-b849-b018983a294d",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.recognition.MatchTemplate"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    },
+    {
+      "value_type": "mat",
+      "name": "template"
+    }
+   ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    },
+    {
+      "value_type": "scalar",
+      "name": "x"
+    },
+    {
+      "value_type": "scalar",
+      "name": "y"
+    }
+  ],
+  "controls": [
+    {
+      "name": "templateMatchMode",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "TM_SQDIFF"
+        },
+        {
+          "value": "TM_SQDIFF_NORMED"
+        },
+        {
+          "value": "TM_CCORR"
+        },
+        {
+          "value": "TM_CCORR_NORMED"
+        },
+        {
+          "value": "TM_CCOEFF"
+        },
+        {
+          "value": "TM_CCOEFF_NORMED"
+        }
+      ],
+      "default": "TM_SQDIFF"
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

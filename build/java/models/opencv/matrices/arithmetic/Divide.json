@@ -1,0 +1,85 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.arithmetic",
+  "name": "Divide: x/y (elementwise)",
+  "id": "25bc83f4-ec9d-4cea-a10a-56f47fd0c814",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.arithmetic.Divide"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "x"
+    },
+    {
+      "value_type": "mat",
+      "name": "y"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "resultDepth",
+      "caption": "Result depth",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "UNCHANGED",
+          "caption": "Unchanged (useful for simple scale αx+β)"
+        },
+        {
+          "value": "CV_8U",
+          "caption": "CV_8U (8-bit 0..255)"
+        },
+        {
+          "value": "CV_8S",
+          "caption": "CV_8S (signed 8-bit −128..127)"
+        },
+        {
+          "value": "CV_16U",
+          "caption": "CV_16U (16-bit 0..65535)"
+        },
+        {
+          "value": "CV_16S",
+          "caption": "CV_16S (signed 16-bit -32768..32767)"
+        },
+        {
+          "value": "CV_32S",
+          "caption": "CV_32S (signed 32-bit -2147483648..2147483647)"
+        },
+        {
+          "value": "CV_32F",
+          "caption": "CV_32F (32-bit float, usually 0.0..1.0)"
+        },
+        {
+          "value": "CV_64F",
+          "caption": "CV_64F (64-bit double, usually 0.0..1.0)"
+        }
+      ],
+      "default": "UNCHANGED"
+    },
+    {
+      "name": "scale",
+      "caption": "Additional multiplier (scale)",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.segmentation",
+  "name": "Threshold",
+  "id": "2645c3c9-7c81-4dda-b278-077d7be35a8b",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.segmentation.Threshold"
+  },
+  "tags": [
+    "java",
+    "images",
+    "express"
+  ],
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+   ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "algorithm",
+      "caption": "Algorithm",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "SIMPLE",
+          "caption": "Simple threshold"
+        },
+        {
+          "value": "OTSU",
+          "caption": "Otsu algorithm"
+        },
+        {
+          "value": "TRIANGLE",
+          "caption": "Triangle algorithm"
+        },
+        {
+          "value": "NIBLACK",
+          "caption": "Niblack's algorithm"
+        },
+        {
+          "value": "SAUVOLA",
+          "caption": "Sauvola's algorithm"
+        },
+        {
+          "value": "WOLF",
+          "caption": "Wolf's algorithm"
+        },
+        {
+          "value": "NICK",
+          "caption": "NICK  algorithm"
+        },
+        {
+          "value": "ADAPTIVE_MEAN",
+          "caption": "Adaptive: mean − constant"
+        },
+        {
+          "value": "ADAPTIVE_GAUSSIAN_C",
+          "caption": "Adaptive: Gaussian mean − constant"
+        }
+      ],
+      "default": "OTSU"
+    },
+    {
+      "name": "thresholdType",
+      "caption": "Threshold type",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "PACKED_BITS",
+          "caption": "Packed bits ( > threshold ? 1 : 0 (THRESH_BINARY))"
+        },
+        {
+          "value": "PACKED_BITS_INV",
+          "caption": "Packed inverted bits ( > threshold ? 0 : 1) (THRESH_BINARY_INV)"
+        },
+        {
+          "value": "THRESH_BINARY",
+          "caption": "> threshold ? maxValue : 0 (THRESH_BINARY)"
+        },
+        {
+          "value": "THRESH_BINARY_INV",
+          "caption": "> threshold ? 0 : maxValue (THRESH_BINARY_INV)"
+        },
+        {
+          "value": "THRESH_TRUNC",
+          "caption": "> threshold ? threshold : unchanged (THRESH_TRUNC)"
+        },
+        {
+          "value": "THRESH_TOZERO",
+          "caption": "> threshold ? value : 0 (THRESH_TOZERO)"
+        },
+        {
+          "value": "THRESH_TOZERO_INV",
+          "caption": "> threshold ? 0 : unchanged (THRESH_TOZERO_INV)"
+        }
+      ],
+      "default": "PACKED_BITS"
+    },
+    {
+      "name": "threshold",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.5
+    },
+    {
+      "name": "maxValue",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "name": "rawValues",
+      "caption": "Raw values",
+      "description": "If set, \"threshold\" and \"maxValue\" are \"raw\" (not normalized): these values are used as-is. If cleared, they should be normalized values in 0..1 range.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "gaussianBlurKernelSize",
+      "caption": "Gaussian blur for preprocessing: kernel size",
+      "description": "If >0, Gaussian blur with this kernel is performed before all other operations",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "caption": "Kernel size",
+      "name": "kernelSize",
+      "description": "Aperture size. Used by adaptive threshold and Niblack's algorithms (Niblack's, Sauvola's, Wolf's, NICK).",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 65
+    },
+    {
+      "name": "k",
+      "caption": "K or C",
+      "description": "C parameter for adaptive threshold (constant subtracted from the mean or weighted mean).\nK parameter for Niblack's algorithms (Niblack's, Sauvola's, Wolf's, NICK).  For Niblack, this is normally a value between 0 and 1 that is multiplied with the standard deviation and subtracted from the mean. Note that difference between Niblack's, Sauvola's, Wolf's, NICK appear with non-zero K.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "name": "r",
+      "caption": "r",
+      "description": "r parameter for Niblack's algorithm: the user-adjustable parameter used by Sauvola's technique. This is the dynamic range of standard deviation.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 128.0
+    },
+    {
+      "caption": "Convert source to byte",
+      "name": "convertToByte",
+      "description": "Automatically change precision of the source image to byte (unsigned 8-bit, 0 for black, 255 for white). Can be useful in some versions of the thresholding algorithm, that do not support the source precision. (For example, in OpenCV 3.4, OTSU algorithm does not work with float or 16-bit images.)",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.pixels",
+  "name": "Get pixel(s) at specified position(s)",
+  "id": "0bbd26f8-310b-4b8b-9966-8ee5071c73bb",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.pixels.GetPixelAtPosition"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    },
+    {
+      "value_type": "numbers",
+      "name": "positions",
+      "hint": "[Optional] Integer positions of pixels to get.\nIf specified, the function parameters \"x\" and \"y\" are ignored"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "x",
+      "value_type": "long",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "y",
+      "value_type": "long",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "caption": "Raw pixel values",
+      "name": "rawPixelValues",
+      "description": "If true, the pixel values are read as-is. If false, the pixel values are normalized to the range 0..1.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

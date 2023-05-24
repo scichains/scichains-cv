@@ -1,0 +1,131 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.segmentation",
+  "name": "Superpixel SLIC (Simple Linear Iterative Clustering)",
+  "id": "0a8f1bdf-f4e1-4a4d-8951-e2deb82da94b",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.segmentation.SuperpixelSLIC"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "labels"
+    },
+    {
+      "value_type": "mat",
+      "name": "boundaries"
+    }
+  ],
+  "controls": [
+    {
+      "name": "slicAlgorithm",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "SLIC"
+        },
+        {
+          "value": "SLICO"
+        },
+        {
+          "value": "MSLIC"
+        }
+      ],
+      "default": "SLICO"
+    },
+    {
+      "name": "regionSize",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 10
+    },
+    {
+      "name": "ruler",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 10.0
+    },
+    {
+      "name": "enforceLabelConnectivityMinElementSize",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "numberOfIterations",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 10
+    },
+    {
+      "caption": "Indexing base of labels",
+      "description": "If indexing base is 1, the result labels will be numbered from 1. This is compatible with behaviour of other functions, where 0 value is reserved for the background. (In OpenCV superpixel functions, labels are numbered from 0.)",
+      "name": "indexingBase",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "ZERO_BASED",
+          "caption": "0 (zero-based numbering)"
+        },
+        {
+          "value": "ONE_BASED",
+          "caption": "1 (one-based numbering)"
+        }
+      ],
+      "default": "ONE_BASED"
+    },
+    {
+      "caption": "Optimizing scale",
+      "hint": "If >1, the image is compressed in \"scale\" times before processing and the result is stretched back to original sizes after processing.\nIt allows to essentially increase speed of processing.",
+      "name": "optimizingScale",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "name": "drawingBoundariesStyle",
+      "caption": "Drawing boundaries style",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "BOUNDARIES"
+        },
+        {
+          "value": "THICK_BOUNDARIES"
+        },
+        {
+          "value": "BOUNDARIES_ON_SOURCE"
+        },
+        {
+          "value": "THICK_BOUNDARIES_ON_SOURCE"
+        }
+      ],
+      "default": "THICK_BOUNDARIES_ON_SOURCE"
+    },
+    {
+      "name": "drawingBoundariesColor",
+      "caption": "Drawing boundaries color",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": "#FFFFFF"
+    },
+    {
+      "name": "visibleBoundaries",
+      "caption": "Visible boundaries (in other case, you will see auto-contrasted labels)",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

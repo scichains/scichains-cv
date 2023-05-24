@@ -1,0 +1,422 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.ml.training",
+  "name": "Train SVM",
+  "id": "5de22b7d-f57f-44c2-9b4a-58275dd315c9",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.ml.training.MLTrainSVM",
+    "new_instance_method": "newTrainNumbers"
+  },
+  "in_ports": [
+    {
+      "value_type": "numbers",
+      "name": "samples"
+    },
+    {
+      "value_type": "numbers",
+      "caption": "training responses",
+      "name": "training_responses"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "output"
+    },
+    {
+      "value_type": "numbers",
+      "caption": "actual training responses",
+      "name": "training_responses"
+    },
+    {
+      "value_type": "scalar",
+      "name": "model_file"
+    },
+    {
+      "value_type": "scalar",
+      "name": "metadata"
+    },
+    {
+      "value_type": "scalar",
+      "name": "error"
+    },
+    {
+      "value_type": "scalar",
+      "name": "is_classifier"
+    },
+    {
+      "value_type": "scalar",
+      "name": "c"
+    },
+    {
+      "value_type": "scalar",
+      "name": "gamma"
+    },
+    {
+      "value_type": "scalar",
+      "name": "p"
+    },
+    {
+      "value_type": "scalar",
+      "name": "nu"
+    },
+    {
+      "value_type": "scalar",
+      "name": "coef"
+    },
+    {
+      "value_type": "scalar",
+      "name": "degree"
+    }
+  ],
+  "controls": [
+    {
+      "caption": "Combined samples/responses",
+      "description": "If set, responses should be stored in the last column, samples in the previous columns. In this case, \"training responses\" port is ignored.",
+      "name": "trainingCombinedSamplesAndResponses",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "statModelFile",
+      "caption": "File of statistical model",
+      "description": "Model file, that will be create. It will be resolved relative the current folder, containing the executed chain.\nAlso you can use in this string Java system properties: \"${name}\", for example: \"${java.io.tmpdir}\", and executor system properties \"${path.name.ext}\", \"${path.name}\", \"${file.name.ext}\", \"${file.name}\", \"${resources}\" (chain path/file name with/without extension, resource folder of the platform, containing this function).",
+      "value_type": "String",
+      "edition_type": "file",
+      "default": ""
+    },
+    {
+      "name": "svmType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "C_SVC"
+        },
+        {
+          "value": "NU_SVC"
+        },
+        {
+          "value": "ONE_CLASS"
+        },
+        {
+          "value": "EPS_SVR"
+        },
+        {
+          "value": "NU_SVR"
+        }
+      ],
+      "default": "C_SVC"
+    },
+    {
+      "name": "kernelType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "LINEAR"
+        },
+        {
+          "value": "POLY"
+        },
+        {
+          "value": "RBF"
+        },
+        {
+          "value": "SIGMOID"
+        },
+        {
+          "value": "CHI2"
+        },
+        {
+          "value": "INTER"
+        }
+      ],
+      "default": "RBF"
+    },
+    {
+      "name": "c",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "name": "gamma",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "name": "p",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "name": "nu",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "name": "coef",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "name": "degree",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "name": "terminationMaxCount",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "terminationEpsilon",
+      "description": "You may set either non-zero terminationMaxCount, or non-zero terminationEpsilon, or both criteria. Note: if both parameters are 0, default termination criteria will be used.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "caption": "Auto-training",
+      "description": "If set, this function uses OpenCV SVM::trainAuto function instead of common StatModel::train. Parameters for this function are specified below.",
+      "name": "autoTraining",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "kFold",
+      "description": "Cross-validation parameter. The training set is divided into kFold subsets. One subset is used to test the model, the others form the train set. So, the SVM algorithm is executed kFold times.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 10
+    },
+    {
+      "name": "cGridCustom",
+      "caption": "Use custom grid for \"c\"",
+      "description": "If set, SVM::trainAuto will use custom grid for \"c\" parameter, specified below. In other case, the following 3 parameters are ignored.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "advanced": true,
+      "default": false
+    },
+    {
+      "name": "cGridMin",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 0.0
+    },
+    {
+      "name": "cGridMax",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 1.0
+    },
+    {
+      "name": "cGridLogStep",
+      "description": "Note: the grid is logarithmic, so this step must always be greater than 1. It is is ≤1.0, optimization of \"c\"  parameter will be skipped.",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 1.0
+    },
+    {
+      "name": "gammaGridCustom",
+      "caption": "Use custom grid for \"gamma\"",
+      "description": "If set, SVM::trainAuto will use custom grid for \"gamma\" parameter, specified below. In other case, the following 3 parameters are ignored.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "advanced": true,
+      "default": false
+    },
+    {
+      "name": "gammaGridMin",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 0.0
+    },
+    {
+      "name": "gammaGridMax",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 1.0
+    },
+    {
+      "name": "gammaGridLogStep",
+      "description": "Note: the grid is logarithmic, so this step must always be greater than 1. It is is ≤1.0, optimization of \"gamma\"  parameter will be skipped.",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 1.0
+    },
+    {
+      "name": "pGridCustom",
+      "caption": "Use custom grid for \"p\"",
+      "description": "If set, SVM::trainAuto will use custom grid for \"p\" parameter, specified below. In other case, the following 3 parameters are ignored.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "advanced": true,
+      "default": false
+    },
+    {
+      "name": "pGridMin",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 0.0
+    },
+    {
+      "name": "pGridMax",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 1.0
+    },
+    {
+      "name": "pGridLogStep",
+      "description": "Note: the grid is logarithmic, so this step must always be greater than 1. It is is ≤1.0, optimization of \"p\"  parameter will be skipped.",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 1.0
+    },
+    {
+      "name": "nuGridCustom",
+      "caption": "Use custom grid for \"nu\"",
+      "description": "If set, SVM::trainAuto will use custom grid for \"nu\" parameter, specified below. In other case, the following 3 parameters are ignored.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "advanced": true,
+      "default": false
+    },
+    {
+      "name": "nuGridMin",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 0.0
+    },
+    {
+      "name": "nuGridMax",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 1.0
+    },
+    {
+      "name": "nuGridLogStep",
+      "description": "Note: the grid is logarithmic, so this step must always be greater than 1. It is is ≤1.0, optimization of \"nu\"  parameter will be skipped.",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 1.0
+    },
+    {
+      "name": "coefGridCustom",
+      "caption": "Use custom grid for \"coef\"",
+      "description": "If set, SVM::trainAuto will use custom grid for \"coef\" parameter, specified below. In other case, the following 3 parameters are ignored.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "advanced": true,
+      "default": false
+    },
+    {
+      "name": "coefGridMin",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 0.0
+    },
+    {
+      "name": "coefGridMax",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 1.0
+    },
+    {
+      "name": "coefGridLogStep",
+      "description": "Note: the grid is logarithmic, so this step must always be greater than 1. It is is ≤1.0, optimization of \"coef\"  parameter will be skipped.",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 1.0
+    },
+    {
+      "name": "degreeGridCustom",
+      "caption": "Use custom grid for \"degree\"",
+      "description": "If set, SVM::trainAuto will use custom grid for \"degree\" parameter, specified below. In other case, the following 3 parameters are ignored.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "advanced": true,
+      "default": false
+    },
+    {
+      "name": "degreeGridMin",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 0.0
+    },
+    {
+      "name": "degreeGridMax",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 1.0
+    },
+    {
+      "name": "degreeGridLogStep",
+      "description": "Note: the grid is logarithmic, so this step must always be greater than 1. It is is ≤1.0, optimization of \"degree\"  parameter will be skipped.",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 1.0
+    },
+    {
+      "name": "balanced",
+      "description": "If true and the problem is 2-class classification then the method creates more balanced cross-validation subsets that is proportions between classes in subsets are close to such proportion in the whole train dataset.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Calculate error",
+      "description": "If set, OpenCV calcError() method is called and its results is returned as \"error\" and result array.",
+      "name": "calculateError",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "caption": "Auto-test model",
+      "description": "If set, this function tests model by OpenCV predict() method of the same samples and returns the result. If \"Calculate error\" flag is set, the result of prediction overwrites result of calcError() method. If both flags are cleared, the result array stays to be not initialized.",
+      "name": "testPredictTrainedSamples",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

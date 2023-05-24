@@ -1,0 +1,41 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.features.detection",
+  "name": "Structured edge detection",
+  "id": "df5c5870-ff29-4c07-9ae1-c8e5dc93553c",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.features.detection.StructuredEdgeDetection"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+   ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "caption": "Model file",
+      "name": "modelFile",
+      "description": "You can use here relative paths (without starting \"/\" or \"c:\\\"), for example, \"test.json\" or \"samples/test.json\". They will be resolved relative the current folder, containing the executed chain.\nIf this path starts with substring %TEMP%, %TEMP%/ or %TEMP%x. where x is OS-depended file separator character, this substring is replaced with the full path to the system temp directory (System.getProperty(\"java.io.tmpdir\")) with ending file separator. For example, it is correct to write here %TEMP%file, %TEMP%/file or (in Windows) %TEMP%\\file.\nAlso you can use in this string Java system properties: \"${name}\", for example: \"${java.io.tmpdir}\", and executor system properties \"${path.name.ext}\", \"${path.name}\", \"${file.name.ext}\", \"${file.name}\", \"${resources}\" (chain path/file name with/without extension, resource folder of the platform, containing this function).",
+      "value_type": "String",
+      "edition_type": "file",
+      "default": "${resources}/opencv/matrices/features/detection/model.yml.gz"
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

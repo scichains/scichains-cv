@@ -1,0 +1,72 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.filtering",
+  "name": "Domain transform filter",
+  "id": "8821f045-8a3d-4689-98a2-6af3e5dc381d",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.filtering.DomainTransformFilter"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    },
+    {
+      "value_type": "mat",
+      "name": "guide"
+    }
+   ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "sigmaSpace",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 75
+    },
+    {
+      "name": "sigmaColor",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.3
+    },
+    {
+      "name": "mode",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "DTF_NC"
+        },
+        {
+          "value": "DTF_IC"
+        },
+        {
+          "value": "DTF_RF"
+        }
+      ],
+      "default": "DTF_NC"
+    },
+    {
+      "name": "numberOfIterations",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 3
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

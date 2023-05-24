@@ -1,0 +1,278 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.derivatives",
+  "name": "Hessian eigenvalues / eigenvectors",
+  "description": "Calculates eigenvalues and eigenvectors of 2x2 Hessian matrix:<blockquote><table><tr><td><sup>∂²</sup>/<sub>∂x²</sub></td><td><sup>∂²</sup>/<sub>∂x∂y</sub></td></tr><tr><td><sup>∂²</sup>/<sub>∂x∂y</sub></td><td><sup>∂²</sup>/<sub>∂y²</sub></td></tr></table></blockquote><p>Eigenvalues λ₁ and λ₂ and chosen so that λ₁≥λ₂ or, if flag \"Order eigenvalues by absolute value\" is set, that |λ₁|≥|λ₂|. In comments below, the eigenvector v₁ (vx₁,vy₁) always corresponds to eigenvalue λ₁, and the eigenvector v₂ (vx₂,vy₂) always corresponds to λ₂. Note that eigenvectors of the Hessian are always orthogonal: v₁⟂v₂.<p>In addition, this function calculates λ₁⁺=max(λ₁,0), λ₂⁺=max(λ₂,0), λ₁⁻=min(λ₁,0) and λ₂⁻=min(λ₂,0). If the flag \"Order eigenvalues by absolute value\" is set, it also swaps λ₁⁺↔λ₂⁻ if |λ₁⁺|<|λ₂⁻| and swaps λ₁⁻↔λ₂⁺ if |λ₁⁻|<|λ₂⁺|, so that in the result we always have |λ₁⁺|≥|λ₂⁻| and |λ₁⁻|≥|λ₂⁺|. Note: it is obvious that, in this case, λ₁⁺≡λ₁ (if λ₁<0, λ₁⁺ is swapped with λ₂⁻=λ₂, i.e. ordered λ₁) and λ₂⁺≡0 (if λ₂>0, then λ₂⁺ is swapped with λ₁⁻=0, if λ₂<=0, then |λ₂⁺| already has minimal possible value 0 and is not swapped).",
+  "id": "d474e488-590e-4c16-b197-10f7f906877a",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.derivatives.HessianEigenValuesAndVectors"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "lambda1",
+      "caption": "λ₁"
+    },
+    {
+      "value_type": "mat",
+      "name": "lambda2",
+      "caption": "λ₂"
+    },
+    {
+      "value_type": "mat",
+      "name": "lambda1_plus",
+      "caption": "λ₁⁺"
+    },
+    {
+      "value_type": "mat",
+      "name": "lambda2_plus",
+      "caption": "λ₂⁺"
+    },
+    {
+      "value_type": "mat",
+      "name": "lambda1_minus",
+      "caption": "λ₁⁻"
+    },
+    {
+      "value_type": "mat",
+      "name": "lambda2_minus",
+      "caption": "λ₂⁻"
+    },
+    {
+      "value_type": "mat",
+      "name": "vx1",
+      "caption": "vx₁"
+    },
+    {
+      "value_type": "mat",
+      "name": "vy1",
+      "caption": "vy₁"
+    },
+    {
+      "value_type": "mat",
+      "name": "vx2",
+      "caption": "vx₂"
+    },
+    {
+      "value_type": "mat",
+      "name": "vy2",
+      "caption": "vy₂"
+    },
+    {
+      "value_type": "mat",
+      "name": "gradient_v1_scalar_product",
+      "caption": "v₁·∇z"
+    },
+    {
+      "value_type": "mat",
+      "name": "gradient_v2_scalar_product",
+      "caption": "v₂·∇z"
+    }
+  ],
+  "controls": [
+    {
+      "name": "gaussianBlurOfSource",
+      "caption": "Gaussian blur at preprocessing stage",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "gaussianBlurKernelSizeX",
+      "caption": "Gaussian blur: kernel x-size",
+      "hint": "Value 0 means usage of y-size (equal x/y-sizes)",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 5
+    },
+    {
+      "name": "gaussianBlurKernelSizeY",
+      "caption": "Gaussian blur: kernel y-size",
+      "hint": "Value 0 means usage of x-size (equal x/y-sizes)",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "caption": "Continuation mode",
+      "name": "continuationMode",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "DEFAULT",
+          "caption": "default (pseudo-cyclic)"
+        },
+        {
+          "value": "CYCLIC",
+          "caption": "cyclic"
+        },
+        {
+          "value": "MIRROR_CYCLIC",
+          "caption": "mirror-cyclic"
+        },
+        {
+          "value": "ZERO_CONSTANT",
+          "caption": "0"
+        },
+        {
+          "value": "POSITIVE_INFINITY",
+          "caption": "+∞"
+        },
+        {
+          "value": "NEGATIVE_INFINITY",
+          "caption": "−∞"
+        },
+        {
+          "value": "NAN_CONSTANT",
+          "caption": "NaN"
+        }
+      ],
+      "default": "MIRROR_CYCLIC"
+    },
+    {
+      "name": "combiningChannelsMetric",
+      "caption": "Metric of combining channels",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "SINGLE_CHANNEL",
+          "caption": "Single channel result (use intensity)"
+        },
+        {
+          "value": "EUCLIDEAN",
+          "caption": "Euclidean: sqrt(x²+y²+...)"
+        },
+        {
+          "value": "NORMALIZED_EUCLIDEAN",
+          "caption": "Normalized Euclidean: sqrt((x²+y²+...)/M)"
+        },
+        {
+          "value": "SUM_OF_ABSOLUTE_VALUES",
+          "caption": "Sum of absolute values: |x|+|y|+..."
+        },
+        {
+          "value": "MEAN_ABSOLUTE_VALUE",
+          "caption": "Mean absolute value: (|x|+|y|+...)/M"
+        },
+        {
+          "value": "MAX_ABSOLUTE_VALUE",
+          "caption": "Max absolute value: max(|x|,|y|,...)"
+        }
+      ],
+      "default": "NORMALIZED_EUCLIDEAN"
+    },
+    {
+      "name": "channelsWeights",
+      "caption": "Weights for channels",
+      "description": "Several weights w1,w2,..., separated by comma/spaces",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "name": "additionalMultiplier",
+      "caption": "Additional multiplier for the result",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "name": "onlyFirst3Channels",
+      "caption": "Only first 3 channels",
+      "description": "Process ≤3 first channels. It allows to avoid strange results on RGBA images. Please clear this flag if you want to process multichannel matrices without special alpha-channel.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "orderEigenValuesByMagnitude",
+      "caption": "Order eigenvalues by absolute value",
+      "description": "Order eigenvalues by absolute value: |λ₁|≥|λ₂|. (In other case, they are ordered by signed value: λ₁≥λ₂.) Note that in this mode λ₁⁺≡λ₁ and λ₂⁺≡0.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "stableEigenVectorsSignumX",
+      "caption": "Stable signum of eigenvectors x",
+      "description": "Stable signum of eigenvectors x-component: we will always choose the singum of eigenvector components so that vx₁≥0 and vx₂≤0 (if the eigenvalues and eigenvectors are not ordered by absolute value: see previous flag).",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "normalizeEigenVectors",
+      "caption": "Normalized eigenvectors",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "visibleResult",
+      "caption": "Visible result",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "lambda1",
+          "caption": "λ₁"
+        },
+        {
+          "value": "lambda2",
+          "caption": "λ₂"
+        },
+        {
+          "value": "lambda1_plus",
+          "caption": "λ₁⁺"
+        },
+        {
+          "value": "lambda2_plus",
+          "caption": "λ₂⁺"
+        },
+        {
+          "value": "lambda1_minus",
+          "caption": "λ₁⁻"
+        },
+        {
+          "value": "lambda2_minus",
+          "caption": "λ₂⁻"
+        },
+        {
+          "value": "vx1",
+          "caption": "vx₁"
+        },
+        {
+          "value": "vy1",
+          "caption": "vy₁"
+        },
+        {
+          "value": "vx2",
+          "caption": "vx₂"
+        },
+        {
+          "value": "vy2",
+          "caption": "vy₂"
+        },
+        {
+          "value": "gradient_v1_scalar_product",
+          "caption": "v₁·∇z"
+        },
+        {
+          "value": "gradient_v2_scalar_product",
+          "caption": "v₂·∇z"
+        }
+      ],
+      "default": "lambda1"
+    }
+  ]
+}

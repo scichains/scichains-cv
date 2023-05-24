@@ -1,0 +1,63 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.conversions",
+  "name": "LUT (translate Mat by table)",
+  "id": "ea77ab44-469f-45c8-97fe-d5b404021b8b",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.conversions.LUT"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "labels"
+    },
+    {
+      "value_type": "numbers",
+      "name": "table",
+      "hint": "Translation table: each label is replaced with table[label] or table[label−1] (depending on \"translate zero labels\")."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "labels"
+    }
+  ],
+  "controls": [
+    {
+      "caption": "Cast to byte",
+      "name": "castTo8U",
+      "description": "If this flag is true, and if the source matrix is not byte (CV_8U or CV_8S), it will be automatically cast to CV_8U. (If this flag is false, non-byte labels will lead to an exception.)\nNote: it is simple cast, without any scaling.\nNote: 16- or 32-bit labels will be cast incorrectly, if they contain too high values (>255): they will be replaced with 255. But it is not too important, because this function switchs to other (slower and universal) algorithm, if the number of elements in the translation table >255.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Indexing base of labels",
+      "name": "indexingBase",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "ZERO_BASED",
+          "caption": "0 (zero-based numbering)"
+        },
+        {
+          "value": "ONE_BASED",
+          "caption": "1 (one-based numbering)"
+        }
+      ],
+      "default": "ONE_BASED"
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

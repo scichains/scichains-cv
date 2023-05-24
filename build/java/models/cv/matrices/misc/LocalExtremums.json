@@ -1,0 +1,185 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.misc",
+  "name": "Local extremums",
+  "id": "778dfd40-e087-40af-976f-ceae3514d4dc",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.misc.LocalExtremums"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input",
+      "hint": "Source grayscale matrix, on which we search for local maximums or minimums."
+    },
+    {
+      "value_type": "mat",
+      "name": "mask",
+      "hint": "[Optional] If specified, local extremums are searched only among the pixels, for which the corresponding pixels at this mask are non-zero.\nSource values, for which the corresponding pixels at this mask are zero, are excluded from comparison."
+    },
+    {
+      "value_type": "mat",
+      "name": "ignore",
+      "hint": "[Optional] If specified, local extremums are excluded from the result, if the corresponding pixels at this matrix are non-zero.\nUnlike the mask, this matrix does not affect to the comparison, it only allows to exclude some pixels from the final result."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "extremums",
+      "hint": "List of x/y-coordinates of all found local extremums"
+    },
+    {
+      "value_type": "mat",
+      "caption": "extremums mask",
+      "name": "extremums_mask",
+      "hint": "[Optional] Binary matrix, containing 1 at all result extremums positions from \"extremums\" list,\ndilated by circle, specified by \"Result circle size\" parameter (it is >1)"
+    },
+    {
+      "value_type": "mat",
+      "caption": "extremums on source",
+      "name": "extremums_on_source",
+      "hint": "[Optional] The \"extremums mask\" matrix, drawn by the specified color at the BLURRED and (if requested) CONTRASTED source matrix"
+    }
+  ],
+  "controls": [
+    {
+      "name": "resultValues",
+      "caption": "Result values",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "MAXIMUMS",
+          "caption": "maximums"
+        },
+        {
+          "value": "MINIMUMS",
+          "caption": "minimums"
+        }
+      ],
+      "default": "MAXIMUMS"
+    },
+    {
+      "name": "gaussianBlurKernelSize",
+      "caption": "Gaussian blur: kernel size",
+      "description": "If zero, blur is not performed",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 5
+    },
+    {
+      "name": "apertureSize",
+      "caption": "Aperture size",
+      "description": "Diameter of the aperture to check maximum/minimum",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 5
+    },
+    {
+      "name": "depthApertureSize",
+      "caption": "Alternative aperture size for measuring depth",
+      "description": "Diameter of the aperture to check opposite minimum/maximum. If zero or not set, the same aperture is tested.",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "name": "depthApertureRing",
+      "caption": "Alternative aperture is ring",
+      "description": "If set (even if alternative aperture size above is 0), the opposite minimum/maximum is checked ONLY at the circumference (ring), not inside the circle.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "minimalDepth",
+      "caption": "Minimal depth",
+      "description": "Minimal difference between the local maximum/minimum (M) and the opposite minimum/maximum (μ) in the same or alternative aperture. If the difference is less than this threshold, the local extremum is skipped.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "name": "depthAnalysisMode",
+      "caption": "Mode of depth analysis",
+      "description": "How to calculate the opposite minimum/maximum (μ)",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "PERCENTILE",
+          "caption": "Percentile (its level is specified below)"
+        },
+        {
+          "value": "MEAN",
+          "caption": "Mean (faster than percentile, when it's level ≠1.0)"
+        }
+      ],
+      "default": "PERCENTILE"
+    },
+    {
+      "name": "depthPercentileLevel",
+      "caption": "Percentile level for depth",
+      "description": "If 1.0, the opposite extremum μ is really an exact minimum/maximum. If other value from 0 to 1, the opposite extremum μ is calculated as a percentile: 0.99 is almost minimum/maximum, 0.5 is median, 0.0 is maximum/minimum (last case makes sense for ring alternative aperture), etc. Note that values <1 essentially slow down the function. This parameter is ignored if mode of depth analysys is \"Mean\".",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "name": "resultAtPlateau",
+      "caption": "Result at plateau",
+      "description": "What to return as extremums, if near the local extremum there are several pixels with the equal value.",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "ALL_PIXELS",
+          "caption": "All pixels at the plateu are returned"
+        },
+        {
+          "value": "CENTROID",
+          "caption": "Centroid of all plateus are returned"
+        },
+        {
+          "value": "CENTROID_OF_CIRCLE",
+          "caption": "Centroid of all plateus, dilated by the circle, are returned"
+        }
+      ],
+      "default": "CENTROID"
+    },
+    {
+      "name": "resultCircleSize",
+      "caption": "Result circle size",
+      "description": "Diameter of the circle, drawn at every found extremums. These circles are returned in \"extremums mask\" and used to find the positions of extremums in last variant of \"Result at plateau\"",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 1
+    },
+    {
+      "name": "drawingExtremumsColor",
+      "caption": "Color for drawing extremums on source",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": "#00FF00"
+    },
+    {
+      "name": "autoContrastSourceUnderExtremums",
+      "caption": "Automatically contrast source before drawing extremums",
+      "description": "If set, the blurred source matrix in \"extremums on source\" is automatically contrasted",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "visibleExtremumsOnSource",
+      "caption": "Visible extremums on source",
+      "description": "If set, the visible result will be \"extremums on source\" instead of default \"extremums mask\" (see hint to \"extremums on source\")",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

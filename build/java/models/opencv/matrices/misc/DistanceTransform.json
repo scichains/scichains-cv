@@ -1,0 +1,106 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.misc",
+  "name": "Distance transform",
+  "id": "cae24cb7-beeb-4653-ace4-497b8df930da",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.misc.DistanceTransform"
+  },
+  "tags": [
+    "java",
+    "images",
+    "express"
+  ],
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    },
+    {
+      "value_type": "mat",
+      "name": "labels"
+    }
+
+  ],
+  "controls": [
+    {
+      "name": "distanceType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "DIST_L1"
+        },
+        {
+          "value": "DIST_L2"
+        },
+        {
+          "value": "DIST_C"
+        }
+      ],
+      "default": "DIST_L2"
+    },
+    {
+      "name": "resultDepth",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "CV_8U"
+        },
+        {
+          "value": "CV_32F"
+        }
+      ],
+      "default": "CV_32F"
+    },
+    {
+      "name": "maskSize",
+      "value_type": "int",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": 0,
+          "caption": "CV_DIST_MASK_PRECISE"
+        },
+        {
+          "value": 3
+        },
+        {
+          "value": 5
+        }
+      ],
+      "default": 3
+    },
+    {
+      "name": "labelType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "DIST_LABEL_CCOMP"
+        },
+        {
+          "value": "DIST_LABEL_PIXEL"
+        }
+      ],
+      "default": "DIST_LABEL_CCOMP"
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.drawing",
+  "name": "Draw pattern(s)",
+  "id": "3129d33c-1ee1-4d14-9d64-a5fa6e945c38",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.drawing.DrawPattern"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    },
+    {
+      "value_type": "numbers",
+      "name": "positions"
+    },
+    {
+      "value_type": "numbers",
+      "name": "colors"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "x",
+      "value_type": "long",
+      "edition_type": "value",
+      "default": 30
+    },
+    {
+      "name": "y",
+      "value_type": "long",
+      "edition_type": "value",
+      "default": 30
+    },
+    {
+      "name": "color",
+      "caption": "Color",
+      "value_type": "String",
+      "description": "See supported color formats in \"Create constant matrix\" function.",
+      "edition_type": "color",
+      "default": "#FFFFFF"
+    },
+    {
+      "name": "shape",
+      "caption": "Pattern shape",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "SPHERE",
+          "caption": "2D circle / 3D sphere / 1D segment..."
+        },
+        {
+          "value": "CUBE",
+          "caption": "2D square / 3D cube / 1D segment..."
+        }
+      ],
+      "default": "SPHERE"
+    },
+    {
+      "name": "patternSize",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 15
+    },
+    {
+      "name": "customPatternSpecification",
+      "caption": "Custom pattern specification",
+      "description": "If specified, overrides pattern shape and size. Example: \"rect 300 100 0 0\", \"circle 30\" etc.\nOne of possible formats: binary matrix NxM of digits 0 and 1 (probably with spaces, they are ignored and removed), where 1 means a point of pattern and the coordinate origin is located at the element (⌊N/2⌋, ⌊M/2⌋) of the matrix",
+      "value_type": "String",
+      "edition_type": "value",
+      "multiline": true,
+      "default": ""
+    },
+    {
+      "caption": "Continuation mode",
+      "name": "continuationMode",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "DEFAULT",
+          "caption": "default (pseudo-cyclic)"
+        },
+        {
+          "value": "CYCLIC",
+          "caption": "cyclic"
+        },
+        {
+          "value": "ZERO_CONSTANT",
+          "caption": "none"
+        }
+      ],
+      "default": "ZERO_CONSTANT"
+    },
+    {
+      "caption": "Clear source",
+      "name": "clearSource",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

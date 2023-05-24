@@ -1,0 +1,34 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "$$[inputs/outputs].matrices",
+  "name": "Output/copy Mat (OpenCV)",
+  "description": "Analog of \"Output/copy image\", providing better performance for OpenCV matrix",
+  "options": {
+    "behavior": {
+      "copy": true,
+      "output": true
+    }
+  },
+  "id": "44b0bcb8-f6f4-4fd3-9c6f-d9d3da54b88f",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.copying.CopyMat"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output",
+      "caption": "external output",
+      "hint": "One of output ports of the chain: a copy of the input"
+    }
+  ],
+  "controls": [
+  ]
+}

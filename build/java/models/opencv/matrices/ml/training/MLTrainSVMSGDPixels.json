@@ -1,0 +1,153 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.ml.training",
+  "name": "Train SVMSGD for pixels",
+  "id": "1b629e5a-2218-4fab-a09c-9d969410c089",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.ml.training.MLTrainSVMSGD",
+    "new_instance_method": "newTrainPixels"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "samples"
+    },
+    {
+      "value_type": "mat",
+      "caption": "training responses",
+      "name": "training_responses",
+      "hint": "It should be a matrix of integer labels. Pixels with zero labels are excluded from training."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    },
+    {
+      "value_type": "numbers",
+      "caption": "actual training responses",
+      "name": "training_responses"
+    },
+    {
+      "value_type": "scalar",
+      "name": "model_file"
+    },
+    {
+      "value_type": "scalar",
+      "name": "metadata"
+    },
+    {
+      "value_type": "scalar",
+      "name": "error"
+    },
+    {
+      "value_type": "scalar",
+      "name": "is_classifier"
+    }
+  ],
+  "controls": [
+    {
+      "name": "statModelFile",
+      "caption": "File of statistical model",
+      "description": "Model file, that will be create. It will be resolved relative the current folder, containing the executed chain.\nAlso you can use in this string Java system properties: \"${name}\", for example: \"${java.io.tmpdir}\", and executor system properties \"${path.name.ext}\", \"${path.name}\", \"${file.name.ext}\", \"${file.name}\", \"${resources}\" (chain path/file name with/without extension, resource folder of the platform, containing this function).",
+      "value_type": "String",
+      "edition_type": "file",
+      "default": ""
+    },
+    {
+      "name": "svmSgdType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "SGD",
+          "caption": "SGD: Stochastic Gradient Descent"
+        },
+        {
+          "value": "ASGD",
+          "caption": "ASGD: Average Stochastic Gradient Descent"
+        }
+      ],
+      "default": "ASGD"
+    },
+    {
+      "name": "marginType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "SOFT_MARGIN"
+        },
+        {
+          "value": "HARD_MARGIN"
+        }
+      ],
+      "default": "SOFT_MARGIN"
+    },
+    {
+      "name": "optimalParameters",
+      "description": "If set, the following parameters are ignored: they will be set automatically for optimal work with the chosen \"svmSgdType\" and \"marginType\".",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "marginRegularization",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.00001
+    },
+    {
+      "name": "initialStepSize",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.05
+    },
+    {
+      "name": "stepDecreasingPower",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.75
+    },
+    {
+      "name": "terminationMaxCount",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "terminationEpsilon",
+      "description": "You may set either non-zero terminationMaxCount, or non-zero terminationEpsilon, or both criteria. Note: if both parameters are 0, default termination criteria will be used.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "caption": "Calculate error",
+      "description": "If set, OpenCV calcError() method is called and its results is returned as \"error\" and result image. Note: in this case, the result will be calculated only for pixels with non-zero labels (training responses).",
+      "name": "calculateError",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "caption": "Auto-test model",
+      "description": "If set, this function tests model by OpenCV predict() method of the same samples and returns the result. If \"Calculate error\" flag is set, the result of prediction overwrites result of calcError() method. If both flags are cleared, the result array stays to be not initialized.",
+      "name": "testPredictTrainedSamples",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

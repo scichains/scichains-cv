@@ -1,0 +1,59 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.filtering",
+  "name": "CLAHE (Contrast Limited Adaptive Histogram Equalization)",
+  "description": "Splits up the image into tiles and equalizes those locally, then stitches them together (Bilinear interpolation is applied on the tile borders)",
+  "id": "88aa3bd0-76c1-4e46-ab4e-b03d00b8f715",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.filtering.CLAHE"
+  },
+  "tags": [
+    "java",
+    "images",
+    "express"
+  ],
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "tileGridSize",
+      "value_type": "int",
+      "edition_type": "value",
+      "description": "The size of the local region around a pixel for which the histogram is equalized. This size should be larger than the size of features to be preserved.",
+      "default": 8
+    },
+    {
+      "name": "clipLimit",
+      "value_type": "double",
+      "edition_type": "value",
+      "description": "If any histogram bin is above the specified contrast limit (by default 40 in OpenCV), those pixels are clipped and distributed uniformly to other bins before applying histogram equalization",
+      "default": 40
+    },
+    {
+      "name": "autoConvertToGrayscale",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.objects.binary.boundaries",
+  "name": "Translate contours' labels",
+  "id": "7f454bdd-1fae-4a0a-9867-0aa3f0ca5a91",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.boundaries.TranslateContourLabels"
+  },
+  "in_ports": [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Existing contours: serialized array of several contours."
+    },
+    {
+      "value_type": "numbers",
+      "name": "table",
+      "hint": "Translation table: label L of each contour is replaced with  table[L] or table[L−1] (depending on \"translate zero indexes\")."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Changed array of contours."
+    },
+    {
+      "value_type": "scalar",
+      "name": "number_of_objects",
+      "caption": "number of contours"
+    }
+  ],
+  "controls": [
+    {
+      "caption": "Indexing base",
+      "name": "indexingBase",
+      "description": "For every label L in the source array of contours, the result label after translation will be equal to\ntable[V−B], where B = this indexing base.",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "ZERO_BASED",
+          "caption": "0 (zero-based numbering)"
+        },
+        {
+          "value": "ONE_BASED",
+          "caption": "1 (one-based numbering)"
+        }
+      ],
+      "default": "ONE_BASED"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.morphology",
+  "name": "Morphology transform",
+  "id": "4dcc20c7-246d-4d7b-8487-ae893fb53a8e",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.morphology.MorphologyTransform"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "caption": "Transform operation",
+      "name": "transformOperation",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "EROSION",
+          "caption": "erosion transform"
+        },
+        {
+          "value": "OPENING",
+          "caption": "opening transform (granulometry)"
+        }
+      ],
+      "default": "EROSION"
+    },
+    {
+      "caption": "Resulting element type",
+      "name": "resultElementType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "BYTE",
+          "caption": "\"byte\" type"
+        },
+        {
+          "value": "SHORT",
+          "caption": "\"short\" type"
+        },
+        {
+          "value": "INT",
+          "caption": "\"int\" type"
+        },
+        {
+          "value": "FLOAT",
+          "caption": "\"float\" type"
+        }
+      ],
+      "default": "FLOAT"
+    },
+    {
+      "name": "maxNumberOfIterations",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": "200"
+    },
+    {
+      "name": "patternsSpecification",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": "cross | square 3"
+    },
+    {
+      "caption": "Continuation mode",
+      "name": "continuationMode",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "DEFAULT",
+          "caption": "default (pseudo-cyclic)"
+        },
+        {
+          "value": "CYCLIC",
+          "caption": "cyclic"
+        },
+        {
+          "value": "MIRROR_CYCLIC",
+          "caption": "mirror-cyclic"
+        },
+        {
+          "value": "ZERO_CONSTANT",
+          "caption": "0"
+        },
+        {
+          "value": "POSITIVE_INFINITY",
+          "caption": "+∞"
+        },
+        {
+          "value": "NEGATIVE_INFINITY",
+          "caption": "−∞"
+        },
+        {
+          "value": "NAN_CONSTANT",
+          "caption": "NaN"
+        }
+      ],
+      "default": "ZERO_CONSTANT"
+    },
+    {
+      "caption": "Convert multi-channel matrix to monochrome",
+      "name": "convertToMono",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

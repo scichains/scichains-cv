@@ -1,0 +1,55 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.video",
+  "name": "BackgroundSubtractorMOG2",
+  "id": "2841e67b-da8a-47d9-bcf3-697a6105b8e3",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.video.BackgroundSubtractorMOG2"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+   ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    },
+    {
+      "value_type": "mat",
+      "name": "background"
+    }
+  ],
+  "controls": [
+    {
+      "name": "reset",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "varThreshold",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 16
+    },
+    {
+      "name": "detectShadows",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

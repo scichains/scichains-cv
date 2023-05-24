@@ -1,0 +1,55 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.copying",
+  "name": "Copy Mat",
+  "description": "Analog of simple Copy operation, but can provide better performance if the result should be OpenCV matrix (but the source is not OpenCV)",
+  "id": "bfc674c1-f8a6-472c-b0bf-25c968d87144",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.copying.CopyMat"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "resultType",
+      "caption": "Result type",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "MAT",
+          "caption": "OpenCV Mat"
+        },
+        {
+          "value": "UMAT",
+          "caption": "OpenCV UMat (matrix in GPU)"
+        },
+        {
+          "value": "UMAT_FOR_UMAT_INPUT",
+          "caption": "UMat if the input is UMat, else Mat"
+        }
+      ],
+      "default": "UMAT_FOR_UMAT_INPUT"
+    },
+    {
+      "caption": "Clone data",
+      "name": "cloneData",
+      "description": "Without this flag, this function will pass only the reference (if it is possible, i.e. if the input matrix is already OpenCV Mat/UMat, according the previous parameter).\nFor UMat result, cloning allows to guarantee that the result will be actually placed in GPU memory.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

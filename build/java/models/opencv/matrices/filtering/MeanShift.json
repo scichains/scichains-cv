@@ -1,0 +1,71 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.filtering",
+  "name": "Mean shift",
+  "id": "a839c15e-d22a-4f98-9fa6-0d0992f35457",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.filtering.MeanShift"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+   ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "spatialRadius",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 15
+    },
+    {
+      "name": "colorRadius",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.1
+    },
+    {
+      "name": "maxPyramidLevel",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 3
+    },
+    {
+      "name": "terminationMaxCount",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "terminationEpsilon",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "caption": "Optimizing scale",
+      "hint": "If >1, the image is compressed in \"scale\" times before processing and the result is stretched back to original sizes after processing.\nIt allows to essentially increase speed of processing.",
+      "name": "optimizingScale",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

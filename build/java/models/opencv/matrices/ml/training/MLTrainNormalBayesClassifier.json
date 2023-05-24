@@ -1,0 +1,92 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.ml.training",
+  "name": "Train normal Bayes classifier",
+  "id": "b44bab90-f8f3-4c43-bf07-1d16c695bd4a",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.ml.training.MLTrainNormalBayesClassifier",
+    "new_instance_method": "newTrainNumbers"
+  },
+  "in_ports": [
+    {
+      "value_type": "numbers",
+      "name": "samples"
+    },
+    {
+      "value_type": "numbers",
+      "caption": "training responses",
+      "name": "training_responses"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "output"
+    },
+    {
+      "value_type": "numbers",
+      "caption": "actual training responses",
+      "name": "training_responses"
+    },
+    {
+      "value_type": "scalar",
+      "name": "model_file"
+    },
+    {
+      "value_type": "scalar",
+      "name": "metadata"
+    },
+    {
+      "value_type": "scalar",
+      "name": "error"
+    },
+    {
+      "value_type": "scalar",
+      "name": "is_classifier"
+    }
+  ],
+  "controls": [
+    {
+      "caption": "Combined samples/responses",
+      "description": "If set, responses should be stored in the last column, samples in the previous columns. In this case, \"training responses\" port is ignored.",
+      "name": "trainingCombinedSamplesAndResponses",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "statModelFile",
+      "caption": "File of statistical model",
+      "description": "Model file, that will be create. It will be resolved relative the current folder, containing the executed chain.\nAlso you can use in this string Java system properties: \"${name}\", for example: \"${java.io.tmpdir}\", and executor system properties \"${path.name.ext}\", \"${path.name}\", \"${file.name.ext}\", \"${file.name}\", \"${resources}\" (chain path/file name with/without extension, resource folder of the platform, containing this function).",
+      "value_type": "String",
+      "edition_type": "file",
+      "default": ""
+    },
+    {
+      "caption": "Calculate error",
+      "description": "If set, OpenCV calcError() method is called and its results is returned as \"error\" and result array.",
+      "name": "calculateError",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "caption": "Auto-test model",
+      "description": "If set, this function tests model by OpenCV predict() method of the same samples and returns the result. If \"Calculate error\" flag is set, the result of prediction overwrites result of calcError() method. If both flags are cleared, the result array stays to be not initialized.",
+      "name": "testPredictTrainedSamples",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

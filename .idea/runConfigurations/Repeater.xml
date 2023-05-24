@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Repeater" type="Application" factoryName="Application" nameIsGenerated="true">
+    <option name="MAIN_CLASS_NAME" value="net.algart.executors.build.callers.Repeater" />
+    <module name="executors-cv" />
+    <option name="PROGRAM_PARAMETERS" value="-trimTrailingWhitespace -warningOnTabs src\main\java\**\*.java src\test\java\**\*.java" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="net.algart.executors.build.callers.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

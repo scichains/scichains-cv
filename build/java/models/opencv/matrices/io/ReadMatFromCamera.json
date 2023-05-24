@@ -1,0 +1,59 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.io",
+  "name": "Read from camera (OpenCV)",
+  "id": "db85bbdd-4bdd-4973-a9db-79deb930f5fd",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.io.ReadMatFromCamera"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input",
+      "caption": "optional input",
+      "hint": "If specified, this function simply returns a copy of this image (other arguments are ignored)."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "cameraIndex",
+      "caption": "Camera ID (0 for default)",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "apiPreference",
+      "caption": "Video preference",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "AUTO",
+          "caption": "auto detect"
+        },
+        {
+          "value": "VFW",
+          "caption": "Video For Windows (platform native)"
+        }
+      ],
+      "default": "AUTO"
+    },
+    {
+      "name": "lockCameraForFurtherUsage",
+      "caption": "Lock camera for further usage by this chain",
+      "hint": "If true, this function leaves video driver opened for further usage;\nit will work much faster, but will interfere with using camera by other functions.\nNote: if there are several instances of this function in the chain, they should have identical state of this flag.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

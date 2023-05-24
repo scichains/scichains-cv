@@ -1,0 +1,33 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.filtering",
+  "name": "Average by 3x3 square",
+  "id": "2ad4c1ed-6666-4c88-96e5-9aca3525394b",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.filtering.Average3x3"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "rounding",
+      "caption": "Rounding",
+      "description": "This flag is used for integer matrix elements.\nIf set, the real average value α is converted into integer result as (w0 + w1 + w2 + w3 + w4 + w5 + w6 + w7 + w8 + 4) / 9 instead of simple (w0 + w1 + w2 + w3 + w4 + w5 + w6 + w7 + w8) / 9. For non-negative values (usual situation), it means rounding to the nearest integer.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

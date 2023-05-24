@@ -1,0 +1,41 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.conversions",
+  "name": "Convert to monochrome",
+  "id": "1a958744-75b2-4668-8fa9-ed2597314607",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.conversions.ConvertToMono"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "floatResult",
+      "caption": "Floating-point result",
+      "description": "If set, the matrix is automatically converted to CV_32F type before processing (with necessary scaling: 8-bit 255 or 16-bit 65535 is converted to 1.0)",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

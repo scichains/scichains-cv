@@ -1,0 +1,315 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.ml.training",
+  "name": "Train ANN MLP",
+  "id": "277c6c83-6122-4500-bc89-3e51d5ab5d84",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.ml.training.MLTrainANNMLP",
+    "new_instance_method": "newTrainNumbers"
+  },
+  "in_ports": [
+    {
+      "value_type": "numbers",
+      "name": "samples"
+    },
+    {
+      "value_type": "numbers",
+      "caption": "training responses",
+      "name": "training_responses"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "output"
+    },
+    {
+      "value_type": "numbers",
+      "caption": "actual training responses",
+      "name": "training_responses"
+    },
+    {
+      "value_type": "scalar",
+      "name": "model_file"
+    },
+    {
+      "value_type": "scalar",
+      "name": "metadata"
+    },
+    {
+      "value_type": "scalar",
+      "name": "error"
+    },
+    {
+      "value_type": "scalar",
+      "name": "is_classifier"
+    },
+    {
+      "value_type": "numbers",
+      "name": "layer_weights",
+      "hint": "Array of weights of the layer #\"Index of layer to get its weights\", returned by OpenCV ANN_MLP.getWeights() method."
+    }
+  ],
+  "controls": [
+    {
+      "caption": "Combined samples/responses",
+      "description": "If set, responses should be stored in the last column, samples in the previous columns. In this case, \"training responses\" port is ignored.",
+      "name": "trainingCombinedSamplesAndResponses",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "statModelFile",
+      "caption": "File of statistical model",
+      "description": "Model file, that will be create. It will be resolved relative the current folder, containing the executed chain.\nAlso you can use in this string Java system properties: \"${name}\", for example: \"${java.io.tmpdir}\", and executor system properties \"${path.name.ext}\", \"${path.name}\", \"${file.name.ext}\", \"${file.name}\", \"${resources}\" (chain path/file name with/without extension, resource folder of the platform, containing this function).",
+      "value_type": "String",
+      "edition_type": "file",
+      "default": ""
+    },
+    {
+      "name": "trainingMethod",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "BACKPROP"
+        },
+        {
+          "value": "RPROP"
+        },
+        {
+          "value": "ANNEAL"
+        }
+      ],
+      "default": "RPROP"
+    },
+    {
+      "name": "trainingMethodParam1",
+      "description": "Passed to setRpropDW0 for ANN_MLP::RPROP and to setBackpropWeightScale for ANN_MLP::BACKPROP and to initialT for ANN_MLP::ANNEAL.",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 0.0
+    },
+    {
+      "name": "trainingMethodParam2",
+      "description": "Passed to setRpropDWMin for ANN_MLP::RPROP and to setBackpropMomentumScale for ANN_MLP::BACKPROP and to finalT for ANN_MLP::ANNEAL.",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 0.0
+    },
+    {
+      "name": "activationFunction",
+      "description": "Initialize the activation function for each neuron. Currently the default and the only fully supported activation function is ANN_MLP::SIGMOID_SYM.",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "IDENTITY"
+        },
+        {
+          "value": "SIGMOID_SYM"
+        },
+        {
+          "value": "GAUSSIAN"
+        },
+        {
+          "value": "RELU"
+        },
+        {
+          "value": "LEAKYRELU"
+        }
+      ],
+      "default": "SIGMOID_SYM"
+    },
+    {
+      "name": "activationFunctionParam1",
+      "description": "The first parameter of the activation function, α. Default value is 0.",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 0.0
+    },
+    {
+      "name": "activationFunctionParam2",
+      "description": "The second parameter of the activation function, β. Default value is 0.",
+      "value_type": "double",
+      "edition_type": "value",
+      "advanced": true,
+      "default": 0.0
+    },
+    {
+      "name": "hiddenLayerSizes",
+      "caption": "Sizes of hidden layers",
+      "description": "Comma-separated list of hidden layer sizes, for example, \"5, 10\" or \"3\". The \"layerSizes\" parameter of OpenCV ANN_MLP class is built from this list by adding the number of columns N (block length) of \"samples\" array into the beginning and number of columns M (block length) of \"training responses\" array into the end. (If \"Combined samples/responses\" flag is set, N will be equal to number of columns of  \"samples\" − 1, and M will be always equal to 1.)" ,
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "name": "backpropMomentumScale",
+      "description": "BPROP: Strength of the momentum term (the difference between weights on the 2 previous iterations). This parameter provides some inertia to smooth the random fluctuations of the weights. It can vary from 0 (the feature is disabled) to 1 and beyond. The value 0.1 or so is good enough. Default value is 0.1.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.1
+    },
+    {
+      "name": "backpropWeightScale",
+      "description": "BPROP: Strength of the weight gradient term. The recommended value is about 0.1. Default value is 0.1.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.1
+    },
+    {
+      "name": "rpropDW0",
+      "description": "RPROP: Initial value Δ0 of update-values Δij. Default value is 0.1.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.1
+    },
+    {
+      "name": "rpropDWMax",
+      "description": "RPROP: Update-values upper limit Δmax. It must be >1. Default value is 50.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 50.0
+    },
+    {
+      "name": "rpropDWMin",
+      "description": "RPROP: Update-values lower limit Δmin. It must be positive. Default value is FLT_EPSILON.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0000001
+    },
+    {
+      "name": "rpropDWMinus",
+      "description": "RPROP: Decrease factor η−. It must be <1. Default value is 0.5.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.5
+    },
+    {
+      "name": "rpropDWPlus",
+      "description": "RPROP: Increase factor η+. It must be >1. Default value is 1.2.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.2
+    },
+    {
+      "name": "annealCoolingRatio",
+      "description": "ANNEAL: Update cooling ratio. It must be >0 and less than 1. Default value is 0.95.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.95
+    },
+    {
+      "name": "annealFinalT",
+      "description": "ANNEAL: Update final temperature. It must be >=0 and less than initialT. Default value is 0.1.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.1
+    },
+    {
+      "name": "annealInitialT",
+      "description": "ANNEAL: Update initial temperature. It must be >=0. Default value is 10.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 10.0
+    },
+    {
+      "name": "annealItePerStep",
+      "description": "ANNEAL: Update iteration per step. It must be >0 . Default value is 10.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 10
+    },
+    {
+      "name": "annealEnergyRandSeed",
+      "description": "If specified, it should be 32-bit integer value, and the function setAnnealEnergyRNG(rng) is called while customization with argument rng = new RNG(annealEnergyRandSeed). If skipped (empty string), setAnnealEnergyRNG() is not called.",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "name": "updateWeights",
+      "caption": "UPDATE_WEIGHTS flag",
+      "description": "Update the network weights, rather than compute them from scratch. In the latter case the weights are initialized using the Nguyen-Widrow algorithm.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "noInputScale",
+      "caption": "NO_INPUT_SCALE flag",
+      "description": "Do not normalize the input vectors. If this flag is not set, the training algorithm normalizes each input feature independently, shifting its mean value to 0 and making the standard deviation equal to 1. If the network is assumed to be updated frequently, the new training data could be much different from original one. In this case, you should take care of proper normalization.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "noOutputScale",
+      "caption": "NO_OUTPUT_SCALE flag",
+      "description": "Do not normalize the output vectors. If the flag is not set, the training algorithm normalizes each output feature independently, by transforming it to the certain range depending on the used activation function.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "terminationMaxCount",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "terminationEpsilon",
+      "description": "You may set either non-zero terminationMaxCount, or non-zero terminationEpsilon, or both criteria. Note: if both parameters are 0, default termination criteria will be used.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "name": "layerIndexToGetWeights",
+      "caption": "Index of layer to get its weights",
+      "description": "Index of layer, for which this function returns array of layer weights in the output \"layer_weights\" (with help of OpenCV ANN_MLP.getWeights() method).",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "caption": "Calculate error",
+      "description": "If set, OpenCV calcError() method is called and its results is returned as \"error\" and result array.",
+      "name": "calculateError",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "caption": "Convert categorical responses",
+      "description": "If set, training responses are considered as integer categories (kinds), and they are automatically converted to multi-column response matrix, where every row, corresponding to an original integer response K, contains 1.0 in position #K and 0.0 in all other positions.",
+      "name": "convertCategoricalResponses",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Auto-test model",
+      "description": "If set, this function tests model by OpenCV predict() method of the same samples and returns the result. If \"Calculate error\" flag is set, the result of prediction overwrites result of calcError() method. If both flags are cleared, the result array stays to be not initialized.",
+      "name": "testPredictTrainedSamples",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

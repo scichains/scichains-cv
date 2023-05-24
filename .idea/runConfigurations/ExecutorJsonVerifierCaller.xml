@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ExecutorJsonVerifierCaller" type="Application" factoryName="Application" nameIsGenerated="true">
+    <option name="MAIN_CLASS_NAME" value="net.algart.executors.build.callers.ExecutorJsonVerifierCaller" />
+    <module name="executors-cv" />
+    <option name="PROGRAM_PARAMETERS" value="-check_classes ${home}\ext\net.algart.executors.cv" />
+    <option name="VM_PARAMETERS" value="-ea -esa -Dpolyglot.engine.WarnInterpreterOnly=false" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

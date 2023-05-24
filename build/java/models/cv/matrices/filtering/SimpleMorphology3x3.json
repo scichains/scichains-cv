@@ -1,0 +1,68 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.filtering",
+  "name": "Simple morphology by 3x3 square/cross",
+  "id": "4bae589f-42c2-4b7c-85ee-4923690b4f42",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.filtering.SimpleMorphology3x3"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "operation",
+      "caption": "Morphology operation",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "DILATION",
+          "caption": "dilation"
+        },
+        {
+          "value": "EROSION",
+          "caption": "erosion"
+        },
+        {
+          "value": "CLOSING",
+          "caption": "closing (= dilation(erosion(A)))"
+        },
+        {
+          "value": "OPENING",
+          "caption": "opening (= erosion(dilation(A)))"
+        }
+      ],
+      "default": "DILATION"
+    },
+    {
+      "name": "shape",
+      "caption": "Pattern shape",
+      "description": "Note: all operations are performed in the simple cyclic continuation mode.\nAlso note: this function works not too quick for binary matrices.",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "CROSS",
+          "caption": "Cross 3x3 (5 points)"
+        },
+        {
+          "value": "SQUARE",
+          "caption": "Square 3x3 (9 points)"
+        }
+      ],
+      "default": "SQUARE"
+    }
+  ]
+}

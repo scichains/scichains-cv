@@ -1,0 +1,101 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.objects.binary.boundaries",
+  "name": "Fill main boundary around point (binary)",
+  "id": "55cee272-ee33-46c0-8fe1-d2a583d63952",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.boundaries.FillMainBoundaryAroundPoint"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    },
+    {
+      "value_type": "scalar",
+      "hint": "Will be true if the point is inside some main boundary, false if it is outside all boundaries.",
+      "name": "is_inside"
+    },
+    {
+      "value_type": "scalar",
+      "hint": "If \"is_inside\" is true, will contain the x-coordinate of some pixel at the left side of the found boundary.\nIf not, will stay non-initialized.",
+      "name": "found_x"
+    },
+    {
+      "value_type": "scalar",
+      "hint": "If \"is_inside\" is true, will contain the y-coordinate of some pixel at the left side of the found boundary.\nIf not, will stay non-initialized.",
+      "name": "found_y"
+    },
+    {
+      "value_type": "scalar",
+      "hint": "If \"is_inside\" is true, will contain number of pixels inside the found boundary.\nIf not, will stay non-initialized.",
+      "name": "area"
+    },
+    {
+      "value_type": "numbers",
+      "hint": "If \"is_inside\" is true, will contain minimal rectangle containing all boundary.\nIf not, will become non-initialized.",
+      "name": "containing_rectangle"
+    }
+  ],
+  "controls": [
+    {
+      "name": "x",
+      "value_type": "long",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "y",
+      "description": "Coordinates of some point in the matrix. This function finds the main boundary in the source matrix, containing this point inside, and fills it (if found) and/or clears all outside it.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "caption": "What to do with the found main boundary?",
+      "name": "mode",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "FILL_INSIDE",
+          "caption": "fill all elements inside the boundary with 1"
+        },
+        {
+          "value": "CLEAR_OUTSIDE",
+          "caption": "clear all elements outside the boundary to 0"
+        },
+        {
+          "value": "FILL_IN_NEW_MATRIX",
+          "caption": "fill all inside with 1 + clear all outside to 0"
+        }
+      ],
+      "default": "CLEAR_OUTSIDE"
+    },
+    {
+      "caption": "Connectivity type",
+      "name": "connectivityType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "STRAIGHT_AND_DIAGONAL",
+          "caption": "8-connectivity"
+        },
+        {
+          "value": "STRAIGHT_ONLY",
+          "caption": "4-connectivity"
+        }
+      ],
+      "default": "STRAIGHT_AND_DIAGONAL"
+    }
+  ]
+}

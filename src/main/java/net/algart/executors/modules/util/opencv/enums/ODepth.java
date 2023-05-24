@@ -1,0 +1,62 @@
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2017-2023 Daniel Alievsky, AlgART Laboratory (http://algart.net)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+package net.algart.executors.modules.util.opencv.enums;
+
+import org.bytedeco.opencv.global.opencv_core;
+
+public enum ODepth {
+    CV_8U(opencv_core.CV_8U, 255),
+    CV_8S(opencv_core.CV_8S, 127),
+    CV_16U(opencv_core.CV_16U, 0xFFFF),
+    CV_16S(opencv_core.CV_16S, 0x7FFF),
+    CV_32S(opencv_core.CV_32S, 0x7FFFFFFF),
+    CV_32F(opencv_core.CV_32F, 1.0),
+    CV_64F(opencv_core.CV_64F, 1.0);
+
+    private final int code;
+    private final double maxValue;
+
+    public int code() {
+        return code;
+    }
+
+    public double maxValue() {
+        return maxValue;
+    }
+
+    public static ODepth valueOf(int code) {
+        for (ODepth value : values()) {
+            if (value.code == code) {
+                return value;
+            }
+        }
+        throw new IllegalArgumentException("Unknown depth code " + code);
+    }
+
+    ODepth(int code, double maxValue) {
+        this.code = code;
+        this.maxValue = maxValue;
+    }
+}

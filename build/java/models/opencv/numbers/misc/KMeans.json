@@ -1,0 +1,96 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.numbers.misc",
+  "name": "KMeans (OpenCV)",
+  "id": "08266812-594e-466e-9384-5c3a3c3db7a8",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.numbers.misc.KMeans"
+  },
+  "in_ports":  [
+    {
+      "value_type": "numbers",
+      "name": "input",
+      "hint": "Set of M-dimensional points (block length = M)"
+    },
+    {
+      "value_type": "numbers",
+      "name": "labels",
+      "hint": "[Optional] Initial integer labels"
+    }
+   ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "labels"
+    },
+    {
+      "value_type": "numbers",
+      "name": "centers",
+      "hint": "Set of M-dimensional centers of clusters"
+    },
+    {
+      "value_type": "numbers",
+      "name": "distances",
+      "hint": "Euclidean distances from source points to to centers of clusters"
+    }
+  ],
+  "controls": [
+    {
+      "name": "numberOfClusters",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 1
+    },
+    {
+      "name": "centersMode",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "KMEANS_RANDOM_CENTERS"
+        },
+        {
+          "value": "KMEANS_PP_CENTERS"
+        }
+      ],
+      "default": "KMEANS_PP_CENTERS"
+    },
+    {
+      "name": "attempts",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 3
+    },
+    {
+      "name": "terminationMaxCount",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "terminationEpsilon",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.1
+    },
+    {
+      "caption": "Indexing base",
+      "name": "indexingBase",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "ZERO_BASED",
+          "caption": "0 (zero-based numbering)"
+        },
+        {
+          "value": "ONE_BASED",
+          "caption": "1 (one-based numbering)"
+        }
+      ],
+      "default": "ONE_BASED"
+    }
+  ]
+}

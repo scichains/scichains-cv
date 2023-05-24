@@ -1,0 +1,54 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.thresholds",
+  "name": "Best-boundary threshold",
+  "description": "Automatic thresholding, where threshold leads to maximal value of<br>&nbsp;&nbsp;&nbsp;&nbsp;min(<i>S</i><sub>black</sub>, <i>S</i><sub>white</sub>) / (α(<i>N</i> + <i>M</i>) + <i>P</i>)<sup>γ</sup><br><i>S</i><sub>black</sub>&nbsp;/&nbsp;<i>S</i><sub>white</sub> is the number of pixels under/over the threshold (black or white in the resulting binary matrix), <i>N</i>×<i>M</i> are the dimensions of the matrix, <i>P</i> is the length of the boundary between black and white areas, α and γ are the parameters specified below. By default α=γ=1, that means search for minimal boundary in comparison with area of the object/background or, in other words, the maximal \"thickness\" of the found objects",
+  "id": "94661419-597c-4427-ac54-0ede18dded9a",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.thresholds.BestBoundaryThreshold"
+  },
+  "tags": [
+    "java",
+    "images",
+    "express"
+  ],
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "alpha",
+      "caption": "α (addition)",
+      "description": "α parameter (see description of the function). Non-zero value increases stability of behaviour.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "name": "gamma",
+      "caption": "γ (exponent)",
+      "description": "γ parameter: exponent for boundary length (see description of the function). Values >1 (like 2) can be useful to find threshold for images containing boundaries between objects instead of objects themselves.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "name": "invert",
+      "caption": "Invert result",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

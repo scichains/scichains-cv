@@ -1,0 +1,37 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.arithmetic",
+  "name": "AbsDiff: |x−y|",
+  "id": "abdbe1e3-f4cf-4ef5-bbbe-ad1c5798cd14",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.arithmetic.AbsDiff"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "x"
+    },
+    {
+      "value_type": "mat",
+      "name": "y"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

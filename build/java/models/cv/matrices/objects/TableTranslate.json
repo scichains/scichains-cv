@@ -1,0 +1,86 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "algart.matrices.objects",
+  "name": "Translate labels by table",
+  "id": "8f56ea3e-f3eb-469d-9d57-cfd9d363798f",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.TableTranslate"
+  },
+  "tags": [
+    "java",
+    "images",
+    "express"
+  ],
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "labels"
+    },
+    {
+      "value_type": "numbers",
+      "name": "table",
+      "hint": "Translation table: each label is replaced with table[label] or table[label−1],\ndepending on \"Indexing base of labels\" parameter."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "labels"
+    }
+  ],
+  "controls": [
+    {
+      "name": "resultElementType",
+      "caption": "Result element type",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "INT",
+          "caption": "int"
+        },
+        {
+          "value": "FLOAT",
+          "caption": "float"
+        }
+      ],
+      "default": "INT"
+    },
+    {
+      "caption": "Indexing base of labels",
+      "name": "indexingBase",
+      "description": "For every value V in the source matrix, the result value after translation will be equal to\ntable[V−B], where B = this indexing base.",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "ZERO_BASED",
+          "caption": "0 (zero-based numbering)"
+        },
+        {
+          "value": "ONE_BASED",
+          "caption": "1 (one-based numbering)"
+        }
+      ],
+      "default": "ONE_BASED"
+    },
+    {
+      "caption": "Replacement for elements outside the table",
+      "name": "replacementForNotExisting",
+      "description": "If not specified, elements outside the table stay unchanged",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "caption": "Invert table",
+      "name": "invertTable",
+      "description": "If set, the source table will be inverted before using for translation by \"Invert table of indexes\" function. In other words, we will replace every source value V not with table[V-B] (B=0/1 is the indexing base), but with INDEX of the value V inside the table.\nNote: this mode requires \"int\" result element type (so, the table must contain integers). In other case, this function will throw an exception.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.features.detection",
+  "name": "Fast line detector",
+  "id": "a148d4bc-09bf-4241-a6c3-2caf52a8ca46",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.features.detection.FastLineDetector"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "lines"
+    },
+    {
+      "value_type": "mat",
+      "caption": "drawn segments",
+      "name": "drawn_segments",
+      "hint": "Source image with found segments, drawn on it by OpenCV class (for testing).\nTo build this matrix, \"Draw found segments\" flag must be set."
+    }
+  ],
+  "controls": [
+    {
+      "description": "Segments shorter than this will be discarded.",
+      "name": "lengthThreshold",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 10
+    },
+    {
+
+      "description": "A point placed from a hypothesis line segment farther than this will be regarded as an outlier.",
+      "name": "distanceThreshold",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.414213562
+    },
+    {
+      "description": "First threshold for hysteresis procedure in Canny().",
+      "name": "cannyTh1",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 50.0
+    },
+    {
+      "description": "Second threshold for hysteresis procedure in Canny().",
+      "name": "cannyTh2",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 50.0
+    },
+    {
+      "description": "Aperture size for the sobel operator in Canny(). If zero, Canny() is not applied and the input image is taken as an edge image.",
+      "name": "cannyApertureSize",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 3
+    },
+    {
+      "name": "doMerge",
+      "description": "If true, incremental merging of segments will be performed.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Draw found segments",
+      "name": "drawFoundSegments",
+      "description": "If set, OpenCV drawSegments() function will be called to draw the found segments at the source image, and the result will be returned in \"drawn_segments\".\nIf cleared, the output \"drawn_segments\" stays to be non-initialized.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "description": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

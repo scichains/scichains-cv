@@ -1,0 +1,57 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.photo",
+  "name": "Inpaint",
+  "id": "163204e2-9516-43b1-9cc7-0cfad6edb99f",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.photo.Inpaint"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    },
+    {
+      "value_type": "mat",
+      "name": "mask"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "inpaintRadius",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 10
+    },
+    {
+      "name": "algorithm",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "INPAINT_NS"
+        },
+        {
+          "value": "INPAINT_TELEA"
+        }
+      ],
+      "default": "INPAINT_NS"
+    },
+    {
+      "caption": "Use GPU",
+      "name": "useGPU",
+      "hint": "Use OpenCV GPU optimization when possible",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    }
+  ]
+}

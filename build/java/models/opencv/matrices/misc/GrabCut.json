@@ -1,0 +1,202 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "opencv.matrices.misc",
+  "name": "GrabCut",
+  "id": "5daca6a8-09e2-4b25-9a57-b5f8c5809d43",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.opencv.matrices.misc.GrabCut"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    },
+    {
+      "value_type": "mat",
+      "name": "mask",
+      "hint": "[Optional] Initial mask, consisting of  possible elements GC_BGD=0, GC_FGD=1, GC_PR_BGD=2 or GC_PR_FGD=3.\nUsually you need to set some points GC_BGD, some points GC_FGD, and fill all other points with GC_PR_BGD or GC_PR_FGD.\nIt is used only if \"reset\" flag is set or if the mode is \"GC_INIT_WITH_MASK\"."
+    },
+    {
+      "value_type": "mat",
+      "name": "figure",
+      "hint": "[Optional] Additional figure (binary picture), that is combined with the current mask "
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "mask",
+      "hint": "Result mask, consisting of  possible elements GC_BGD=0, GC_FGD=1, GC_PR_BGD=2 or GC_PR_FGD=3."
+    },
+    {
+      "value_type": "mat",
+      "name": "mask_bgd"
+    },
+    {
+      "value_type": "mat",
+      "name": "mask_fgd"
+    },
+    {
+      "value_type": "mat",
+      "name": "mask_pr_bgd"
+    },
+    {
+      "value_type": "mat",
+      "name": "mask_pr_fgd"
+    },
+    {
+      "value_type": "scalar",
+      "name": "success",
+      "hint": "Usually contains \"true\", excepting the case when \"Require non-trivial samples\" is false\nand the mask does not contain required elements; in the latter case contains \"false\"."
+    }
+  ],
+  "controls": [
+    {
+      "name": "reset",
+      "description": "If set, this function initializes its state. Please clear it to allow this function to accumulate information about processed images.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "mode",
+      "caption": "Mode",
+      "value_type": "String",
+      "description": "Note: if \"reset\" flag is set, this parameter must be \"GC_INIT_WITH_RECT\" or \"GC_INIT_WITH_MASK\". In the second  case, you still may omit the input initial mask; in this case, it will be filled automatically according \"Initial mask filler\" parameter.\nAlso note: while resetting in the mode \"GC_INIT_WITH_MASK\", you must specify some initial mask and/or the input figure, that will be drawn over the mask/mask filler; the mask (after adding the figure) should contain at least one GC_BGD/GC_PR_BGD and at least one GC_FGD/GC_PR_FGD element.",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "GC_INIT_WITH_RECT"
+        },
+        {
+          "value": "GC_INIT_WITH_MASK"
+        },
+        {
+          "value": "GC_EVAL"
+        },
+        {
+          "value": "GC_EVAL_FREEZE_MODEL"
+        }
+      ],
+      "default": "GC_EVAL"
+    },
+    {
+      "name": "figureKind",
+      "caption": "What is \"figure\"?",
+      "value_type": "String",
+      "description": "If input \"figure\" is specified, it can be \"drawn\" on the current mask as the specified value before calling grabCut function.\nNote that GC_PR_BGD and GC_PR_FGD cases may be used for ERASING some surely classified samples from already EXISTING mask.",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "NONE",
+          "caption": "None (unused)"
+        },
+        {
+          "value": "GC_BGD",
+          "caption": "Non-zero elements of \"figure\" are GC_BGD (surely background)"
+        },
+        {
+          "value": "GC_FGD",
+          "caption": "Non-zero elements of \"figure\" are GC_FGD (surely foreground)"
+        },
+        {
+          "value": "GC_PR_BGD",
+          "caption": "Non-zero elements of \"figure\" are GC_PR_BGD (possible background)"
+        },
+        {
+          "value": "GC_PR_FGD",
+          "caption": "Non-zero elements of \"figure\" are GC_PR_FGD (possible foreground)"
+        }
+      ],
+      "default": "NONE"
+    },
+    {
+      "name": "initialMaskFiller",
+      "caption": "Initial mask filler",
+      "value_type": "String",
+      "description": "If \"reset\" flag is set, initially created mask is filled by this value. It is usually should be GC_PR_BGD or GC_PR_FGD (that means \"you are not sure\") — GC_BGD or GC_FGD fillers will lead to mask where nothing to do: all is known.\nThis argument is ignored (not important) if there is the input initial \"mask\" or if \"GC_INIT_WITH_RECT\" mode is selected.",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "GC_BGD",
+          "caption": "GC_BGD=0 (surely background)"
+        },
+        {
+          "value": "GC_FGD",
+          "caption": "GC_FGD=1 (surely foreground)"
+        },
+        {
+          "value": "GC_PR_BGD",
+          "caption": "GC_PR_BGD=2 (possible background)"
+        },
+        {
+          "value": "GC_PR_FGD",
+          "caption": "GC_PR_FGD=3 (possible foreground)"
+        }
+      ],
+      "default": "GC_PR_BGD"
+    },
+    {
+      "name": "requireNonTrivialSamples",
+      "caption": "Require non-trivial samples",
+      "description": "If true, then in \"GC_INIT_WITH_MASK\" this function requires that the mask (maybe after drawing the \"figure\") must contain at least one GC_BGD/GC_PR_BGD and at least one GC_FGD/GC_PR_FGD element; in other case, it throws an exception. If false,  exception is not thrown in such situation; instead,  the mask is returned without changes and the result \"success\" flag will contain false.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "percents",
+      "captions": "Percents of all image",
+      "description": "If true, start X/Y and sizes below are measured in percents of image sizes.\nNote: start X/Y and sizes are used only in \"GC_INIT_WITH_RECT\" mode.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "caption": "Start X",
+      "name": "startX",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "caption": "Start Y",
+      "name": "startY",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "caption": "X-size (width)",
+      "name": "sizeX",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 50
+    },
+    {
+      "caption": "Y-size (height)",
+      "name": "sizeY",
+      "description": "Note: zero x/y-size means all space from start x/y until the right/bottom bound of the image.\nAlso note: the selected rectangle should be less than the full image.",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 50
+    },
+    {
+      "caption": "Iteration count",
+      "name": "iterCount",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 1
+    },
+    {
+      "name": "packBits",
+      "caption": "Pack bits in the result",
+      "description": "If set, bits in the resulting masks \"mask_bgd\", \"mask_fgd\", \"mask_pr_bgd\",  \"mask_pr_fgd\" are packed (binary matrix). If cleared, every element in these matrices will occupy 1 byte and will be equal to 0 (zero bit) or 255 (unit bit).\nNote: the main result \"mask\" is always a byte matrix with possible elements GC_BGD=0, GC_FGD=1, GC_PR_BGD=2 or GC_PR_FGD=3.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}
