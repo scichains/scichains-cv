@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact name="executors-cv:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/executors_cv_jar</output-path>
+  <artifact name="scichains-cv:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/scichains_cv_jar</output-path>
     <root id="root">
       <element id="file-copy" path="$PROJECT_DIR$/additional/usage_examples/execute_chain.cmd" />
       <element id="library" level="project" name="Maven: net.algart:algart:1.3.0" />
@@ -10,7 +10,7 @@
         <element id="dir-copy" path="$PROJECT_DIR$/build" />
       </element>
       <element id="directory" name="net.algart.executors.core">
-        <element id="dir-copy" path="$PROJECT_DIR$/../executors-core/build" />
+        <element id="dir-copy" path="$PROJECT_DIR$/../scichains-core/build" />
       </element>
       <element id="library" level="project" name="Maven: com.ibm.icu:icu4j:71.1" />
       <element id="library" level="project" name="Maven: org.graalvm.js:js-scriptengine:22.2.0" />
@@ -22,11 +22,11 @@
       <element id="library" level="project" name="Maven: black.ninia:jep:4.1.0" />
       <element id="library" level="project" name="Maven: org.eclipse.parsson:jakarta.json:1.1.1" />
       <element id="archive" name="executors-cv.jar">
-        <element id="module-output" name="executors-cv" />
-        <element id="module-test-output" name="executors-cv" />
+        <element id="module-output" name="scichains-cv" />
+        <element id="module-test-output" name="scichains-cv" />
       </element>
-      <element id="library" level="project" name="Maven: net.algart.executors:executors-core:4.0.1" />
-      <element id="library" level="project" name="Maven: net.algart.executors:executors-core:test-jar:tests:4.0.1" />
+      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:4.1.0" />
+      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:test-jar:tests:4.1.0" />
       <element id="library" level="project" name="Maven: org.bytedeco:opencv-platform-gpu:4.6.0-1.5.8" />
       <element id="library" level="project" name="Maven: org.bytedeco:javacpp-platform:1.5.8" />
       <element id="library" level="project" name="Maven: org.bytedeco:javacpp:1.5.8" />

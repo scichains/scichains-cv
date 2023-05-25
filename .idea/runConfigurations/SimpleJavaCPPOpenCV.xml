@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="SimpleJavaCPPOpenCV" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="net.algart.executors.modules.opencv.matrices.SimpleJavaCPPOpenCV" />
-    <module name="executors-cv" />
+    <module name="scichains-cv" />
     <option name="PROGRAM_PARAMETERS" value="\TMP\girl.png" />
     <method v="2">
       <option name="Make" enabled="true" />

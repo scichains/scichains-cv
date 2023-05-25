@@ -5,8 +5,8 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.algart.executors</groupId>
-    <artifactId>executors-cv</artifactId>
-    <version>4.0.1</version>
+    <artifactId>scichains-cv</artifactId>
+    <version>4.1.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,7 +25,7 @@
 
         <build.directory>${project.build.directory}/build</build.directory>
 
-        <net.algart.executors.version>4.0.1</net.algart.executors.version>
+        <net.algart.scichains-core.version>4.1.0</net.algart.scichains-core.version>
         <javacpp.version>1.5.8</javacpp.version>
         <opencv.version>4.6.0-1.5.8</opencv.version>
         <openblas.version>0.3.21-1.5.8</openblas.version>
@@ -59,18 +59,18 @@
 
         <dependency>
             <groupId>net.algart.executors</groupId>
-            <artifactId>executors-core</artifactId>
-            <version>${net.algart.executors.version}</version>
+            <artifactId>scichains-core</artifactId>
+            <version>${net.algart.scichains-core.version}</version>
         </dependency>
 
         <!-- test scope dependency -->
         <dependency>
             <groupId>net.algart.executors</groupId>
-            <artifactId>executors-core</artifactId>
+            <artifactId>scichains-core</artifactId>
             <classifier>tests</classifier>
             <type>test-jar</type>
             <scope>test</scope>
-            <version>${net.algart.executors.version}</version>
+            <version>${net.algart.scichains-core.version}</version>
         </dependency>
     </dependencies>
 
