@@ -154,8 +154,8 @@
     </build>
 
     <profiles>
-        <!-- deploy current extension only if ${home.directory} exist -->
         <profile>
+            <!-- deploy current extension only if ${home.directory} exist -->
             <id>deploy.extension</id>
             <activation>
                 <file>
