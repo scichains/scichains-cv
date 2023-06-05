@@ -155,8 +155,8 @@
 
     <profiles>
         <profile>
-            <!-- deploy current extension only if ${home.directory} exist -->
-            <id>deploy.extension</id>
+            <!-- Installing executors extension if ${home.directory} exist -->
+            <id>executors-extension</id>
             <activation>
                 <file>
                     <exists>${home.directory}</exists>
@@ -170,7 +170,7 @@
                         <version>3.1.0</version>
                         <executions>
                             <execution>
-                                <id>id.clean</id>
+                                <id>executors-extension-clean</id>
                                 <phase>clean</phase>
                                 <goals>
                                     <goal>run</goal>
@@ -185,7 +185,7 @@
                                 </configuration>
                             </execution>
                             <execution>
-                                <id>id.install</id>
+                                <id>executors-extension-install</id>
                                 <phase>install</phase>
                                 <goals>
                                     <goal>run</goal>
