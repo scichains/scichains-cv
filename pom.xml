@@ -6,7 +6,33 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.algart.executors</groupId>
     <artifactId>scichains-cv</artifactId>
-    <version>4.1.0</version>
+    <version>4.1.2</version>
+
+    <name>SciChains computer vision, base functions</name>
+    <description>Open-source libraries, providing the base functions for SciChains product in area of computer vision.</description>
+    <url>http://scichains.com/</url>
+
+    <licenses>
+        <license>
+            <name>The MIT License (MIT)</name>
+            <url>http://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Daniel Alievsky</name>
+            <email>daniel@iskrael.org</email>
+            <organization>AlgART laboratory</organization>
+            <organizationUrl>http://algart.net</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/scichains/scichains-core.git</connection>
+        <developerConnection>scm:git:https://github.com/scichains/scichains-core.git</developerConnection>
+        <url>https://github.com/scichains/scichains-core.git</url>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,7 +51,7 @@
 
         <build.directory>${project.build.directory}/build</build.directory>
 
-        <net.algart.scichains-core.version>4.1.0</net.algart.scichains-core.version>
+        <net.algart.scichains-core.version>4.1.2</net.algart.scichains-core.version>
         <javacpp.version>1.5.8</javacpp.version>
         <opencv.version>4.6.0-1.5.8</opencv.version>
         <openblas.version>0.3.21-1.5.8</openblas.version>
@@ -119,7 +145,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.2.1</version>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -154,6 +180,65 @@
     </build>
 
     <profiles>
+        <profile>
+            <!-- Signing JARs by GnuPG (requirement of Maven Central) -->
+            <!-- Please ACTIVATE this profile before deployment! -->
+            <id>release-maven-central</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.5.0</version>
+                        <configuration>
+                            <encoding>UTF-8</encoding>
+                            <doclint>none</doclint>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>attach-javadoc</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.13</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <name>Sonatype Nexus Snapshots</name>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+
         <profile>
             <!-- Installing executors extension if ${home.directory} exist -->
             <id>executors-extension</id>
@@ -220,27 +305,4 @@
             </build>
         </profile>
     </profiles>
-
-    <repositories>
-        <repository>
-            <!-- allows to use javacpp bytedeco SNAPSHOTs also -->
-            <id>oss-sonatype</id>
-            <name>oss-sonatype</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>${deploy-snapshots-id}</id>
-            <url>${deploy-snapshots-url}</url>
-        </snapshotRepository>
-        <repository>
-            <id>${deploy-id}</id>
-            <url>${deploy-url}</url>
-        </repository>
-    </distributionManagement>
 </project>

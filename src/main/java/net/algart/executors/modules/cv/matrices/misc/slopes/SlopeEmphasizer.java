@@ -208,7 +208,7 @@ public class SlopeEmphasizer {
      * array: V(i)=<tt>values[i]</tt>, <tt>from</tt>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<tt>to</tt>.
      * This method finds all ranges x1..x2, where:</p>
      * <ul>
-     *     <li><tt>from</tt> &le; x1 &le x2 &lt <tt>to</tt>;</li>
+     *     <li><tt>from</tt> &le; x1 &le; x2 &lt; <tt>to</tt>;</li>
      *     <li>the function is strictly monotone inside the range: V(x1)&lt;V(x1+1)&lt;...&lt;V(x2) or
      *     V(x1)&gt;V(x1+1)&gt;...&gt;V(x2);
      *     if property {@link #setProcessAscending(boolean) processAscending} is cleared, first type of ranges
@@ -404,7 +404,7 @@ public class SlopeEmphasizer {
      * array: V(i)=<tt>values[i]</tt>, <tt>from</tt>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<tt>to</tt>.
      * This method finds all ranges x1..x2, where:</p>
      * <ul>
-     *     <li><tt>from</tt> &le; x1 &le x2 &lt <tt>to</tt>;</li>
+     *     <li><tt>from</tt> &le; x1 &le; x2 &lt; <tt>to</tt>;</li>
      *     <li>the function is strictly monotone inside the range: V(x1)&lt;V(x1+1)&lt;...&lt;V(x2) or
      *     V(x1)&gt;V(x1+1)&gt;...&gt;V(x2);
      *     if property {@link #setProcessAscending(boolean) processAscending} is cleared, first type of ranges
@@ -600,7 +600,7 @@ public class SlopeEmphasizer {
      * array: V(i)=<tt>values[i]</tt>, <tt>from</tt>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<tt>to</tt>.
      * This method finds all ranges x1..x2, where:</p>
      * <ul>
-     *     <li><tt>from</tt> &le; x1 &le x2 &lt <tt>to</tt>;</li>
+     *     <li><tt>from</tt> &le; x1 &le; x2 &lt; <tt>to</tt>;</li>
      *     <li>the function is strictly monotone inside the range: V(x1)&lt;V(x1+1)&lt;...&lt;V(x2) or
      *     V(x1)&gt;V(x1+1)&gt;...&gt;V(x2);
      *     if property {@link #setProcessAscending(boolean) processAscending} is cleared, first type of ranges
@@ -796,7 +796,7 @@ public class SlopeEmphasizer {
      * array: V(i)=<tt>values[i]</tt>, <tt>from</tt>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<tt>to</tt>.
      * This method finds all ranges x1..x2, where:</p>
      * <ul>
-     *     <li><tt>from</tt> &le; x1 &le x2 &lt <tt>to</tt>;</li>
+     *     <li><tt>from</tt> &le; x1 &le; x2 &lt; <tt>to</tt>;</li>
      *     <li>the function is strictly monotone inside the range: V(x1)&lt;V(x1+1)&lt;...&lt;V(x2) or
      *     V(x1)&gt;V(x1+1)&gt;...&gt;V(x2);
      *     if property {@link #setProcessAscending(boolean) processAscending} is cleared, first type of ranges
@@ -992,7 +992,7 @@ public class SlopeEmphasizer {
      * array: V(i)=<tt>values[i]</tt>, <tt>from</tt>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<tt>to</tt>.
      * This method finds all ranges x1..x2, where:</p>
      * <ul>
-     *     <li><tt>from</tt> &le; x1 &le x2 &lt <tt>to</tt>;</li>
+     *     <li><tt>from</tt> &le; x1 &le; x2 &lt; <tt>to</tt>;</li>
      *     <li>the function is strictly monotone inside the range: V(x1)&lt;V(x1+1)&lt;...&lt;V(x2) or
      *     V(x1)&gt;V(x1+1)&gt;...&gt;V(x2);
      *     if property {@link #setProcessAscending(boolean) processAscending} is cleared, first type of ranges
@@ -1188,7 +1188,7 @@ public class SlopeEmphasizer {
      * array: V(i)=<tt>values[i]</tt>, <tt>from</tt>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<tt>to</tt>.
      * This method finds all ranges x1..x2, where:</p>
      * <ul>
-     *     <li><tt>from</tt> &le; x1 &le x2 &lt <tt>to</tt>;</li>
+     *     <li><tt>from</tt> &le; x1 &le; x2 &lt; <tt>to</tt>;</li>
      *     <li>the function is strictly monotone inside the range: V(x1)&lt;V(x1+1)&lt;...&lt;V(x2) or
      *     V(x1)&gt;V(x1+1)&gt;...&gt;V(x2);
      *     if property {@link #setProcessAscending(boolean) processAscending} is cleared, first type of ranges
@@ -1384,7 +1384,7 @@ public class SlopeEmphasizer {
      * array: V(i)=<tt>values[i]</tt>, <tt>from</tt>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<tt>to</tt>.
      * This method finds all ranges x1..x2, where:</p>
      * <ul>
-     *     <li><tt>from</tt> &le; x1 &le x2 &lt <tt>to</tt>;</li>
+     *     <li><tt>from</tt> &le; x1 &le; x2 &lt; <tt>to</tt>;</li>
      *     <li>the function is strictly monotone inside the range: V(x1)&lt;V(x1+1)&lt;...&lt;V(x2) or
      *     V(x1)&gt;V(x1+1)&gt;...&gt;V(x2);
      *     if property {@link #setProcessAscending(boolean) processAscending} is cleared, first type of ranges

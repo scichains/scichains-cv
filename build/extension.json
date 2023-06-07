@@ -5,7 +5,7 @@
       "id": "7c87e960-19b7-40d3-bc8b-d904228c23d3",
       "name": "CV",
       "category": "cv",
-      "description": "Computer vision, Java",
+      "description": "Computer vision base functions, Java",
       "technology": "jvm",
       "language": "java",
       "folders": {
