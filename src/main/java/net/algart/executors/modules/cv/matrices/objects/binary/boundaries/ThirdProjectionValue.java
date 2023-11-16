@@ -61,6 +61,10 @@ public enum ThirdProjectionValue {
     // Really pixelSize is not used by current implementations
     abstract Double thirdProjectionValue(Boundary2DProjectionMeasurer measurer, int projectionIndex, double pixelSize);
 
+    public int oneIfExist() {
+        return this == NONE ? 0 : 1;
+    }
+
     private static double normalizeGreater180(double greater180) {
         return greater180 >= 180.0 ? greater180 - 180.0 : greater180;
     }

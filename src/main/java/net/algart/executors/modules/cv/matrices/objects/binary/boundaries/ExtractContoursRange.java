@@ -66,7 +66,7 @@ public final class ExtractContoursRange extends NumbersFilter implements ReadOnl
         final Contours contours = Contours.deserialize(source.toIntArray());
         final int length = this.numberOfContours != 0 ?
                 this.numberOfContours :
-                Math.max(1, contours.numberOfContours() - firstIndex);
+                contours.numberOfContours() - firstIndex;
         final int toIndex = Math.addExact(firstIndex, length);
         final Contours result = contours.contoursRange(firstIndex, toIndex);
         if (isOutputNecessary(OUTPUT_OTHER_CONTOURS)) {

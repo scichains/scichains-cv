@@ -179,8 +179,12 @@ public final class ScanAndMeasureBoundariesProjections extends AbstractScanAndMe
         for (int k = 0; k < parametersArray.length; k++) {
             final ProjectionParameter p = parametersArray[k];
             final MutablePNumberArray a = statisticsArray[k];
-            assert a.length() % count == 0 : "Non-even number of statistics elements";
-            resultStatistics.get(p).setTo(a, (int) (a.length() / count));
+            final int blockLength = p.parameterLength(measurer, thirdProjectionValue);
+            if (a.length() != count * blockLength) {
+                throw new AssertionError("Number of statistics elements " + a.length() +
+                        " mismatches with objects count (" + count + ") * length (" + blockLength + ") for " + p);
+            }
+            resultStatistics.get(p).setTo(a, blockLength);
         }
         return ScanAndMeasureBoundaries.getLabels(scanner);
     }

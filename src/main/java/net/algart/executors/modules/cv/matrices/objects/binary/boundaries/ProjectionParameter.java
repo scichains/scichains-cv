@@ -29,21 +29,22 @@ import net.algart.matrices.scanning.Boundary2DProjectionMeasurer;
 
 import java.util.Collection;
 import java.util.Objects;
+import java.util.function.BiFunction;
 
 public enum ProjectionParameter {
-    AREA() {
+    AREA((measurer, third) -> 1) {
         @Override
         double getStatistics(Boundary2DProjectionMeasurer measurer, double pixelSize) {
             return measurer.area() * (pixelSize * pixelSize);
         }
     },
-    PERIMETER() {
+    PERIMETER((measurer, third) -> 1) {
         @Override
         double getStatistics(Boundary2DProjectionMeasurer measurer, double pixelSize) {
             return measurer.perimeter() * pixelSize;
         }
     },
-    ALL_PROJECTIONS() {
+    ALL_PROJECTIONS((measurer, third) -> measurer.numberOfDirections()) {
         @Override
         public void getStatistics(
                 MutablePNumberArray result,
@@ -66,7 +67,7 @@ public enum ProjectionParameter {
             }
         }
     },
-    SELECTED_PROJECTION() {
+    SELECTED_PROJECTION((measurer, third) -> 2 + third.oneIfExist()) {
         @Override
         public void getStatistics(
                 MutablePNumberArray result,
@@ -77,13 +78,13 @@ public enum ProjectionParameter {
             pushProjectionPair(result, measurer, 0, pixelSize, second, third);
         }
     },
-    MEAN_PROJECTION() {
+    MEAN_PROJECTION((measurer, third) -> 1) {
         @Override
         double getStatistics(Boundary2DProjectionMeasurer measurer, double pixelSize) {
             return measurer.meanProjectionLength() * pixelSize;
         }
     },
-    MAX_PROJECTION() {
+    MAX_PROJECTION((measurer, third) -> 2 + third.oneIfExist()) {
         @Override
         public void getStatistics(
                 MutablePNumberArray result,
@@ -94,7 +95,7 @@ public enum ProjectionParameter {
             pushProjectionPair(result, measurer, measurer.indexOfMaxProjectionLength(), pixelSize, second, third);
         }
     },
-    MIN_PROJECTION() {
+    MIN_PROJECTION((measurer, third) -> 2 + third.oneIfExist()) {
         @Override
         public void getStatistics(
                 MutablePNumberArray result,
@@ -105,7 +106,7 @@ public enum ProjectionParameter {
             pushProjectionPair(result, measurer, measurer.indexOfMinProjectionLength(), pixelSize, second, third);
         }
     },
-    MAX_SIZE_RELATION() {
+    MAX_SIZE_RELATION((measurer, third) -> 2 + third.oneIfExist()) {
         @Override
         public void getStatistics(
                 MutablePNumberArray result,
@@ -126,7 +127,7 @@ public enum ProjectionParameter {
             pushProjectionPair(result, measurer, index, pixelSize, second, third);
         }
     },
-    MIN_CIRCUMSCRIBED_SQUARE_SIDE() {
+    MIN_CIRCUMSCRIBED_SQUARE_SIDE((measurer, third) -> 2 + third.oneIfExist()) {
         @Override
         public void getStatistics(
                 MutablePNumberArray result,
@@ -143,13 +144,13 @@ public enum ProjectionParameter {
                     third);
         }
     },
-    SHAPE_FACTOR() {
+    SHAPE_FACTOR((measurer, third) -> 1) {
         @Override
         double getStatistics(Boundary2DProjectionMeasurer measurer, double pixelSize) {
             return BoundaryParameter.shapeFactorCircularity(measurer.area(), measurer.perimeter());
         }
     },
-    COMPACT_FACTOR() {
+    COMPACT_FACTOR((measurer, third) -> 1) {
         @Override
         double getStatistics(Boundary2DProjectionMeasurer measurer, double pixelSize) {
             final double meanProjection = measurer.meanProjectionLength();
@@ -157,19 +158,25 @@ public enum ProjectionParameter {
             return measurer.area() / meanCircleArea;
         }
     },
-    IRREGULARITY_FACTOR() {
+    IRREGULARITY_FACTOR((measurer, third) -> 1) {
         @Override
         double getStatistics(Boundary2DProjectionMeasurer measurer, double pixelSize) {
             final double meanCircleLength = Math.PI * measurer.meanProjectionLength();
             return meanCircleLength / measurer.perimeter();
         }
     },
-    NESTING_LEVEL() {
+    NESTING_LEVEL((measurer, third) -> 1) {
         @Override
         double getStatistics(Boundary2DProjectionMeasurer measurer, double pixelSize) {
             return measurer.nestingLevel();
         }
     };
+
+    private final BiFunction<Boundary2DProjectionMeasurer, ThirdProjectionValue, Integer> parameterLength;
+
+    ProjectionParameter(BiFunction<Boundary2DProjectionMeasurer, ThirdProjectionValue, Integer> parameterLength) {
+        this.parameterLength = parameterLength;
+    }
 
     double getStatistics(Boundary2DProjectionMeasurer measurer, double pixelSize) {
         throw new UnsupportedOperationException();
@@ -191,6 +198,10 @@ public enum ProjectionParameter {
         } else {
             throw new UnsupportedOperationException("Unsupported type of " + result);
         }
+    }
+
+    public int parameterLength(Boundary2DProjectionMeasurer measurer, ThirdProjectionValue third) {
+        return parameterLength.apply(measurer, third);
     }
 
     public static boolean needSecondBuffer(Collection<ProjectionParameter> parameters) {

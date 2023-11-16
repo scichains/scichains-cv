@@ -159,14 +159,11 @@ public enum BoundaryParameter {
     }
 
     public int parameterLength() {
-        switch (this) {
-            case CONTAINING_RECTANGLE:
-                return 4;
-            case CENTROID:
-                return 2;
-            default:
-                return 1;
-        }
+        return switch (this) {
+            case CONTAINING_RECTANGLE -> 4;
+            case CENTROID -> 2;
+            default -> 1;
+        };
     }
 
     public static void pushRectangle(MutablePNumberArray result, double minX, double minY, double maxX, double maxY) {

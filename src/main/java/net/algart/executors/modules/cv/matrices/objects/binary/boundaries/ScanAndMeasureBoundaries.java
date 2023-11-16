@@ -125,7 +125,8 @@ public final class ScanAndMeasureBoundaries extends AbstractScanAndMeasureBounda
                 + "for calculating " + parametersArray.length + " parameters " + parameters + " at " + objects);
         for (int k = 0; k < parametersArray.length; k++) {
             final BoundaryParameter p = parametersArray[k];
-            resultStatistics.get(p).setTo(statisticsArray[k], p.parameterLength());
+            final int blockLength = p.parameterLength();
+            resultStatistics.get(p).setTo(statisticsArray[k], blockLength);
         }
         return getLabels(scanner);
     }
