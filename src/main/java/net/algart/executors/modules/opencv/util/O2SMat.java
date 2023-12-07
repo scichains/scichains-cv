@@ -22,11 +22,10 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv;
+package net.algart.executors.modules.opencv.util;
 
 import net.algart.arrays.*;
 import net.algart.multimatrix.MultiMatrix2D;
-import net.algart.executors.api.SystemEnvironment;
 import net.algart.executors.api.data.ConvertibleByteBufferMatrix;
 import net.algart.executors.api.data.SMat;
 import net.algart.executors.api.data.SNumbers;

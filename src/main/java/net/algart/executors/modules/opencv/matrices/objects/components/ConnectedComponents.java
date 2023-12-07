@@ -25,7 +25,7 @@
 package net.algart.executors.modules.opencv.matrices.objects.components;
 
 import net.algart.executors.modules.opencv.common.VoidResultUMatFilter;
-import net.algart.executors.modules.util.opencv.enums.OConnectivity;
+import net.algart.executors.modules.opencv.util.enums.OConnectivity;
 import org.bytedeco.opencv.global.opencv_core;
 import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_imgproc;

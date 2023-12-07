@@ -22,22 +22,41 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv.enums;
+package net.algart.executors.modules.opencv.util.enums;
 
-import org.bytedeco.opencv.global.opencv_ximgproc;
+import org.bytedeco.opencv.global.opencv_core;
 
-public enum ODomainTransformMode {
-    DTF_NC(opencv_ximgproc.DTF_NC),
-    DTF_IC(opencv_ximgproc.DTF_IC),
-    DTF_RF(opencv_ximgproc.DTF_RF);
+public enum ODepth {
+    CV_8U(opencv_core.CV_8U, 255),
+    CV_8S(opencv_core.CV_8S, 127),
+    CV_16U(opencv_core.CV_16U, 0xFFFF),
+    CV_16S(opencv_core.CV_16S, 0x7FFF),
+    CV_32S(opencv_core.CV_32S, 0x7FFFFFFF),
+    CV_32F(opencv_core.CV_32F, 1.0),
+    CV_64F(opencv_core.CV_64F, 1.0);
 
     private final int code;
+    private final double maxValue;
 
     public int code() {
         return code;
     }
 
-    ODomainTransformMode(int code) {
+    public double maxValue() {
+        return maxValue;
+    }
+
+    public static ODepth valueOf(int code) {
+        for (ODepth value : values()) {
+            if (value.code == code) {
+                return value;
+            }
+        }
+        throw new IllegalArgumentException("Unknown depth code " + code);
+    }
+
+    ODepth(int code, double maxValue) {
         this.code = code;
+        this.maxValue = maxValue;
     }
 }

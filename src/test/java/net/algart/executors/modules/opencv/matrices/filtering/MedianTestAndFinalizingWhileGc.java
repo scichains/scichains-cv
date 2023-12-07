@@ -28,7 +28,7 @@ import net.algart.arrays.Matrices;
 import net.algart.arrays.Matrix;
 import net.algart.arrays.PArray;
 import net.algart.arrays.ShortArray;
-import net.algart.executors.modules.util.opencv.O2SMat;
+import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.external.ExternalAlgorithmCaller;
 import net.algart.math.functions.LinearFunc;
 import net.algart.multimatrix.MultiMatrix;

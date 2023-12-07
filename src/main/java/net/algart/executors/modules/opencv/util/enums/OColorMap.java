@@ -22,19 +22,24 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv.enums;
+package net.algart.executors.modules.opencv.util.enums;
 
 import org.bytedeco.opencv.global.opencv_imgproc;
 
-public enum OMorphType {
-    ERODE(opencv_imgproc.MORPH_ERODE),
-    DILATE(opencv_imgproc.MORPH_DILATE),
-    OPEN(opencv_imgproc.MORPH_OPEN),
-    CLOSE(opencv_imgproc.MORPH_CLOSE),
-    GRADIENT(opencv_imgproc.MORPH_GRADIENT),
-    TOPHAT(opencv_imgproc.MORPH_TOPHAT),
-    BLACKHAT(opencv_imgproc.MORPH_BLACKHAT),
-    HITMISS(opencv_imgproc.MORPH_HITMISS);
+public enum OColorMap {
+    COLORMAP_AUTUMN (opencv_imgproc.COLORMAP_AUTUMN),
+    COLORMAP_BONE(opencv_imgproc.COLORMAP_BONE),
+    COLORMAP_JET(opencv_imgproc.COLORMAP_JET),
+    COLORMAP_WINTER(opencv_imgproc.COLORMAP_WINTER),
+    COLORMAP_RAINBOW(opencv_imgproc.COLORMAP_RAINBOW),
+    COLORMAP_OCEAN(opencv_imgproc.COLORMAP_OCEAN),
+    COLORMAP_SUMMER(opencv_imgproc.COLORMAP_SUMMER),
+    COLORMAP_SPRING(opencv_imgproc.COLORMAP_SPRING),
+    COLORMAP_COOL(opencv_imgproc.COLORMAP_COOL),
+    COLORMAP_HSV(opencv_imgproc.COLORMAP_HSV),
+    COLORMAP_PINK(opencv_imgproc.COLORMAP_PINK),
+    COLORMAP_HOT(opencv_imgproc.COLORMAP_HOT),
+    COLORMAP_PARULA(opencv_imgproc.COLORMAP_PARULA);
 
     private final int code;
 
@@ -42,7 +47,7 @@ public enum OMorphType {
         return code;
     }
 
-    OMorphType(int code) {
+    OColorMap(int code) {
         this.code = code;
     }
 }

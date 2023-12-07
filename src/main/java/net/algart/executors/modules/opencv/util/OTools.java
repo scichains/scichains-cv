@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv;
+package net.algart.executors.modules.opencv.util;
 
 import net.algart.arrays.SizeMismatchException;
 import net.algart.arrays.TooLargeArrayException;

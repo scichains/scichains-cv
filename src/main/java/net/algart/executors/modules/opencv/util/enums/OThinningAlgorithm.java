@@ -22,11 +22,13 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv.enums;
+package net.algart.executors.modules.opencv.util.enums;
 
-public enum OConnectivity {
-    CONNECTIVITY_8(8),
-    CONNECTIVITY_4(4);
+import org.bytedeco.opencv.global.opencv_ximgproc;
+
+public enum OThinningAlgorithm {
+    THINNING_ZHANGSUEN(opencv_ximgproc.THINNING_ZHANGSUEN),
+    THINNING_GUOHALL(opencv_ximgproc.THINNING_GUOHALL);
 
     private final int code;
 
@@ -34,7 +36,7 @@ public enum OConnectivity {
         return code;
     }
 
-    OConnectivity(int code) {
+    OThinningAlgorithm(int code) {
         this.code = code;
     }
 }

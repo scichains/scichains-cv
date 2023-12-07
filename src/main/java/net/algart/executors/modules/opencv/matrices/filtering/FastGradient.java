@@ -25,9 +25,9 @@
 package net.algart.executors.modules.opencv.matrices.filtering;
 
 import net.algart.executors.modules.opencv.common.UMatFilter;
-import net.algart.executors.modules.util.opencv.O2SMat;
-import net.algart.executors.modules.util.opencv.OTools;
-import net.algart.executors.modules.util.opencv.enums.OBorderType;
+import net.algart.executors.modules.opencv.util.O2SMat;
+import net.algart.executors.modules.opencv.util.OTools;
+import net.algart.executors.modules.opencv.util.enums.OBorderType;
 import net.algart.executors.api.ReadOnlyExecutionInput;
 import org.bytedeco.opencv.global.opencv_core;
 import org.bytedeco.opencv.opencv_core.*;

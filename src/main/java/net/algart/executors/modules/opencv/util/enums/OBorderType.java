@@ -22,17 +22,18 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv.enums;
+package net.algart.executors.modules.opencv.util.enums;
 
-import org.bytedeco.opencv.global.opencv_imgproc;
+import org.bytedeco.opencv.global.opencv_core;
 
-public enum OTemplateMatchMode {
-    TM_SQDIFF(opencv_imgproc.TM_SQDIFF),
-    TM_SQDIFF_NORMED(opencv_imgproc.TM_SQDIFF_NORMED),
-    TM_CCORR(opencv_imgproc.TM_CCORR),
-    TM_CCORR_NORMED(opencv_imgproc.TM_CCORR_NORMED),
-    TM_CCOEFF(opencv_imgproc.TM_CCOEFF),
-    TM_CCOEFF_NORMED(opencv_imgproc.TM_CCOEFF_NORMED);
+public enum OBorderType {
+    BORDER_DEFAULT(opencv_core.BORDER_DEFAULT),
+    BORDER_CONSTANT(opencv_core.BORDER_CONSTANT),
+    BORDER_REPLICATE (opencv_core.BORDER_REPLICATE),
+    BORDER_REFLECT(opencv_core.BORDER_REFLECT),
+    BORDER_WRAP(opencv_core.BORDER_WRAP),
+    BORDER_REFLECT_101(opencv_core.BORDER_REFLECT),
+    BORDER_TRANSPARENT(opencv_core.BORDER_TRANSPARENT);
 
     private final int code;
 
@@ -40,7 +41,7 @@ public enum OTemplateMatchMode {
         return code;
     }
 
-    OTemplateMatchMode(int code) {
+    OBorderType(int code) {
         this.code = code;
     }
 }

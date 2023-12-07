@@ -22,24 +22,14 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv.enums;
+package net.algart.executors.modules.opencv.util.enums;
 
 import org.bytedeco.opencv.global.opencv_imgproc;
 
-public enum OColorMap {
-    COLORMAP_AUTUMN (opencv_imgproc.COLORMAP_AUTUMN),
-    COLORMAP_BONE(opencv_imgproc.COLORMAP_BONE),
-    COLORMAP_JET(opencv_imgproc.COLORMAP_JET),
-    COLORMAP_WINTER(opencv_imgproc.COLORMAP_WINTER),
-    COLORMAP_RAINBOW(opencv_imgproc.COLORMAP_RAINBOW),
-    COLORMAP_OCEAN(opencv_imgproc.COLORMAP_OCEAN),
-    COLORMAP_SUMMER(opencv_imgproc.COLORMAP_SUMMER),
-    COLORMAP_SPRING(opencv_imgproc.COLORMAP_SPRING),
-    COLORMAP_COOL(opencv_imgproc.COLORMAP_COOL),
-    COLORMAP_HSV(opencv_imgproc.COLORMAP_HSV),
-    COLORMAP_PINK(opencv_imgproc.COLORMAP_PINK),
-    COLORMAP_HOT(opencv_imgproc.COLORMAP_HOT),
-    COLORMAP_PARULA(opencv_imgproc.COLORMAP_PARULA);
+public enum OMorphShape {
+    SQUARE(opencv_imgproc.MORPH_RECT),
+    CROSS(opencv_imgproc.MORPH_CROSS),
+    CIRCLE(opencv_imgproc.MORPH_ELLIPSE);
 
     private final int code;
 
@@ -47,7 +37,7 @@ public enum OColorMap {
         return code;
     }
 
-    OColorMap(int code) {
+    OMorphShape(int code) {
         this.code = code;
     }
 }

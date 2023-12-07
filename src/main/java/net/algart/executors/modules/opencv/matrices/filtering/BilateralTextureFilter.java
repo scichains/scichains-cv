@@ -25,7 +25,7 @@
 package net.algart.executors.modules.opencv.matrices.filtering;
 
 import net.algart.executors.modules.opencv.common.VoidResultUMatFilter;
-import net.algart.executors.modules.util.opencv.enums.OInterpolation;
+import net.algart.executors.modules.opencv.util.enums.OInterpolation;
 import org.bytedeco.opencv.global.opencv_ximgproc;
 import org.bytedeco.opencv.opencv_core.*;
 

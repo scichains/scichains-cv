@@ -22,18 +22,18 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv.enums;
+package net.algart.executors.modules.opencv.util.enums;
 
-import org.bytedeco.opencv.global.opencv_core;
+import org.bytedeco.opencv.global.opencv_imgproc;
 
-public enum OBorderType {
-    BORDER_DEFAULT(opencv_core.BORDER_DEFAULT),
-    BORDER_CONSTANT(opencv_core.BORDER_CONSTANT),
-    BORDER_REPLICATE (opencv_core.BORDER_REPLICATE),
-    BORDER_REFLECT(opencv_core.BORDER_REFLECT),
-    BORDER_WRAP(opencv_core.BORDER_WRAP),
-    BORDER_REFLECT_101(opencv_core.BORDER_REFLECT),
-    BORDER_TRANSPARENT(opencv_core.BORDER_TRANSPARENT);
+public enum ODistanceType {
+    DIST_L1(opencv_imgproc.CV_DIST_L1),
+    DIST_L2(opencv_imgproc.CV_DIST_L2),
+    DIST_C(opencv_imgproc.CV_DIST_C),
+    DIST_L12(opencv_imgproc.CV_DIST_L12),
+    DIST_FAIR(opencv_imgproc.CV_DIST_FAIR),
+    DIST_WELSCH(opencv_imgproc.CV_DIST_WELSCH),
+    DIST_HUBER(opencv_imgproc.CV_DIST_HUBER);
 
     private final int code;
 
@@ -41,7 +41,7 @@ public enum OBorderType {
         return code;
     }
 
-    OBorderType(int code) {
+    ODistanceType(int code) {
         this.code = code;
     }
 }

@@ -25,9 +25,9 @@
 package net.algart.executors.modules.opencv.matrices.misc;
 
 import net.algart.executors.modules.opencv.common.VoidResultMatFilter;
-import net.algart.executors.modules.util.opencv.O2SMat;
-import net.algart.executors.modules.util.opencv.OTools;
-import net.algart.executors.modules.util.opencv.enums.OGrabCutMode;
+import net.algart.executors.modules.opencv.util.O2SMat;
+import net.algart.executors.modules.opencv.util.OTools;
+import net.algart.executors.modules.opencv.util.enums.OGrabCutMode;
 import net.algart.arrays.Arrays;
 import org.bytedeco.javacpp.PointerScope;
 import org.bytedeco.opencv.global.opencv_core;

@@ -25,9 +25,9 @@
 package net.algart.executors.modules.opencv.matrices.misc;
 
 import net.algart.executors.modules.opencv.common.OpenCVExecutor;
-import net.algart.executors.modules.util.opencv.O2SMat;
-import net.algart.executors.modules.util.opencv.OTools;
-import net.algart.executors.modules.util.opencv.enums.OConnectivity;
+import net.algart.executors.modules.opencv.util.O2SMat;
+import net.algart.executors.modules.opencv.util.OTools;
+import net.algart.executors.modules.opencv.util.enums.OConnectivity;
 import net.algart.math.IPoint;
 import net.algart.math.IRectangularArea;
 import org.bytedeco.opencv.global.opencv_core;

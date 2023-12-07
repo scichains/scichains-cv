@@ -22,18 +22,15 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv.enums;
+package net.algart.executors.modules.opencv.util.enums;
 
 import org.bytedeco.opencv.global.opencv_imgproc;
 
-public enum ODistanceType {
-    DIST_L1(opencv_imgproc.CV_DIST_L1),
-    DIST_L2(opencv_imgproc.CV_DIST_L2),
-    DIST_C(opencv_imgproc.CV_DIST_C),
-    DIST_L12(opencv_imgproc.CV_DIST_L12),
-    DIST_FAIR(opencv_imgproc.CV_DIST_FAIR),
-    DIST_WELSCH(opencv_imgproc.CV_DIST_WELSCH),
-    DIST_HUBER(opencv_imgproc.CV_DIST_HUBER);
+public enum OGrabCutMode {
+    GC_INIT_WITH_RECT(opencv_imgproc.GC_INIT_WITH_RECT),
+    GC_INIT_WITH_MASK(opencv_imgproc.GC_INIT_WITH_MASK),
+    GC_EVAL(opencv_imgproc.GC_EVAL),
+    GC_EVAL_FREEZE_MODEL(opencv_imgproc.GC_EVAL_FREEZE_MODEL);
 
     private final int code;
 
@@ -41,7 +38,11 @@ public enum ODistanceType {
         return code;
     }
 
-    ODistanceType(int code) {
+    public boolean initialization() {
+        return this == GC_INIT_WITH_RECT || this == GC_INIT_WITH_MASK;
+    }
+
+    OGrabCutMode(int code) {
         this.code = code;
     }
 }

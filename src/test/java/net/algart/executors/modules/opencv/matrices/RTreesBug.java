@@ -24,8 +24,8 @@
 
 package net.algart.executors.modules.opencv.matrices;
 
-import net.algart.executors.modules.util.opencv.O2SMat;
-import net.algart.executors.modules.util.opencv.OTools;
+import net.algart.executors.modules.opencv.util.O2SMat;
+import net.algart.executors.modules.opencv.util.OTools;
 import org.bytedeco.opencv.global.opencv_core;
 import org.bytedeco.opencv.global.opencv_ml;
 import org.bytedeco.opencv.opencv_core.Mat;

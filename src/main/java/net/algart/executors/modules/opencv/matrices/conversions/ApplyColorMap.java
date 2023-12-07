@@ -25,8 +25,8 @@
 package net.algart.executors.modules.opencv.matrices.conversions;
 
 import net.algart.executors.modules.opencv.common.VoidResultMatFilter;
-import net.algart.executors.modules.util.opencv.OTools;
-import net.algart.executors.modules.util.opencv.enums.OColorMap;
+import net.algart.executors.modules.opencv.util.OTools;
+import net.algart.executors.modules.opencv.util.enums.OColorMap;
 import net.algart.executors.api.ReadOnlyExecutionInput;
 import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_imgproc;

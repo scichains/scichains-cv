@@ -25,8 +25,8 @@
 package net.algart.executors.modules.opencv.matrices.segmentation;
 
 import net.algart.executors.modules.opencv.common.UMatFilter;
-import net.algart.executors.modules.util.opencv.O2SMat;
-import net.algart.executors.modules.util.opencv.OTools;
+import net.algart.executors.modules.opencv.util.O2SMat;
+import net.algart.executors.modules.opencv.util.OTools;
 import org.bytedeco.opencv.opencv_core.Mat;
 import org.bytedeco.opencv.opencv_core.UMat;
 

@@ -22,21 +22,37 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv.enums;
+package net.algart.executors.modules.opencv.util.enums;
 
-import org.bytedeco.opencv.global.opencv_imgproc;
+import org.bytedeco.opencv.global.opencv_core;
 
-public enum ODistanceLabelType {
-    DIST_LABEL_CCOMP(opencv_imgproc.CV_DIST_LABEL_CCOMP),
-    DIST_LABEL_PIXEL(opencv_imgproc.CV_DIST_LABEL_PIXEL);
+public enum ODepthOrUnchanged {
+    UNCHANGED(-1, Double.NaN),
+    CV_8U(opencv_core.CV_8U, 255),
+    CV_8S(opencv_core.CV_8S, 127),
+    CV_16U(opencv_core.CV_16U, 0xFFFF),
+    CV_16S(opencv_core.CV_16S, 0x7FFF),
+    CV_32S(opencv_core.CV_32S, 0x7FFFFFFF),
+    CV_32F(opencv_core.CV_32F, 1.0),
+    CV_64F(opencv_core.CV_64F, 1.0);
 
     private final int code;
+    private final double maxValue;
 
     public int code() {
         return code;
     }
 
-    ODistanceLabelType(int code) {
+    public int code(int defaultValue) {
+        return this == UNCHANGED ? defaultValue : code;
+    }
+
+    public double maxValue() {
+        return maxValue;
+    }
+
+    ODepthOrUnchanged(int code, double maxValue) {
         this.code = code;
+        this.maxValue = maxValue;
     }
 }

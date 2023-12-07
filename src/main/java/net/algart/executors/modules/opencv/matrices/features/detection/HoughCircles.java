@@ -25,8 +25,8 @@
 package net.algart.executors.modules.opencv.matrices.features.detection;
 
 import net.algart.executors.modules.opencv.common.MatToNumbers;
-import net.algart.executors.modules.util.opencv.OTools;
-import net.algart.executors.modules.util.opencv.enums.OHoughMode;
+import net.algart.executors.modules.opencv.util.OTools;
+import net.algart.executors.modules.opencv.util.enums.OHoughMode;
 import net.algart.executors.api.data.SNumbers;
 import org.bytedeco.opencv.global.opencv_imgproc;
 import org.bytedeco.opencv.opencv_core.Mat;

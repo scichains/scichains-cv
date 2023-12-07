@@ -22,16 +22,13 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv.enums;
+package net.algart.executors.modules.opencv.util.enums;
 
-import org.bytedeco.opencv.global.opencv_imgproc;
+import org.bytedeco.opencv.global.opencv_photo;
 
-public enum OHoughMode {
-    HOUGH_STANDARD (opencv_imgproc.HOUGH_STANDARD),
-    HOUGH_PROBABILISTIC(opencv_imgproc.HOUGH_PROBABILISTIC),
-    HOUGH_MULTI_SCALE(opencv_imgproc.HOUGH_MULTI_SCALE),
-    HOUGH_GRADIENT(opencv_imgproc.HOUGH_GRADIENT),
-    HOUGH_GRADIENT_ALT(opencv_imgproc.HOUGH_GRADIENT_ALT);
+public enum OInpaintAlgorithm {
+    INPAINT_NS(opencv_photo.INPAINT_NS),
+    INPAINT_TELEA(opencv_photo.INPAINT_TELEA);
 
     private final int code;
 
@@ -39,7 +36,7 @@ public enum OHoughMode {
         return code;
     }
 
-    OHoughMode(int code) {
+    OInpaintAlgorithm(int code) {
         this.code = code;
     }
 }

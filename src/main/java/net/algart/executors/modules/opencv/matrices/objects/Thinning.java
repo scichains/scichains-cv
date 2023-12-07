@@ -25,7 +25,7 @@
 package net.algart.executors.modules.opencv.matrices.objects;
 
 import net.algart.executors.modules.opencv.common.UMatFilter;
-import net.algart.executors.modules.util.opencv.enums.OThinningAlgorithm;
+import net.algart.executors.modules.opencv.util.enums.OThinningAlgorithm;
 import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_imgproc;
 import org.bytedeco.opencv.global.opencv_ximgproc;

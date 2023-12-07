@@ -25,8 +25,8 @@
 package net.algart.executors.modules.opencv.matrices.ml;
 
 import net.algart.executors.modules.opencv.common.OpenCVExecutor;
-import net.algart.executors.modules.util.opencv.O2SMat;
-import net.algart.executors.modules.util.opencv.OTools;
+import net.algart.executors.modules.opencv.util.O2SMat;
+import net.algart.executors.modules.opencv.util.OTools;
 import net.algart.arrays.*;
 import net.algart.arrays.Arrays;
 import net.algart.executors.modules.core.common.io.PathPropertyReplacement;

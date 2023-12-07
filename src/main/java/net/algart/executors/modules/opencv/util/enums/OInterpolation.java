@@ -22,41 +22,24 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv.enums;
+package net.algart.executors.modules.opencv.util.enums;
 
-import org.bytedeco.opencv.global.opencv_core;
+import org.bytedeco.opencv.global.opencv_imgproc;
 
-public enum ODepth {
-    CV_8U(opencv_core.CV_8U, 255),
-    CV_8S(opencv_core.CV_8S, 127),
-    CV_16U(opencv_core.CV_16U, 0xFFFF),
-    CV_16S(opencv_core.CV_16S, 0x7FFF),
-    CV_32S(opencv_core.CV_32S, 0x7FFFFFFF),
-    CV_32F(opencv_core.CV_32F, 1.0),
-    CV_64F(opencv_core.CV_64F, 1.0);
+public enum OInterpolation {
+    INTER_NEAREST(opencv_imgproc.INTER_NEAREST),
+    INTER_LINEAR(opencv_imgproc.INTER_LINEAR),
+    INTER_CUBIC(opencv_imgproc.INTER_CUBIC),
+    INTER_AREA(opencv_imgproc.INTER_AREA),
+    INTER_LANCZOS4(opencv_imgproc.INTER_LANCZOS4);
 
     private final int code;
-    private final double maxValue;
 
     public int code() {
         return code;
     }
 
-    public double maxValue() {
-        return maxValue;
-    }
-
-    public static ODepth valueOf(int code) {
-        for (ODepth value : values()) {
-            if (value.code == code) {
-                return value;
-            }
-        }
-        throw new IllegalArgumentException("Unknown depth code " + code);
-    }
-
-    ODepth(int code, double maxValue) {
+    OInterpolation(int code) {
         this.code = code;
-        this.maxValue = maxValue;
     }
 }

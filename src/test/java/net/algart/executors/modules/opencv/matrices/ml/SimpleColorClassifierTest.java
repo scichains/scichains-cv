@@ -25,7 +25,7 @@
 package net.algart.executors.modules.opencv.matrices.ml;
 
 import net.algart.executors.modules.opencv.matrices.ml.training.MLTrainSVM;
-import net.algart.executors.modules.util.opencv.O2SMat;
+import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.arrays.Arrays;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.arrays.*;

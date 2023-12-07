@@ -25,7 +25,7 @@
 package net.algart.executors.modules.opencv.matrices.recognition;
 
 import net.algart.executors.modules.opencv.common.VoidResultTwoUMatFilter;
-import net.algart.executors.modules.util.opencv.enums.OTemplateMatchMode;
+import net.algart.executors.modules.opencv.util.enums.OTemplateMatchMode;
 import org.bytedeco.opencv.global.opencv_core;
 import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_imgproc;

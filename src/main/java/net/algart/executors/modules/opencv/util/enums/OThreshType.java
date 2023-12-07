@@ -22,13 +22,19 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv.enums;
+package net.algart.executors.modules.opencv.util.enums;
 
-import org.bytedeco.opencv.global.opencv_ximgproc;
+import org.bytedeco.opencv.global.opencv_imgproc;
 
-public enum OThinningAlgorithm {
-    THINNING_ZHANGSUEN(opencv_ximgproc.THINNING_ZHANGSUEN),
-    THINNING_GUOHALL(opencv_ximgproc.THINNING_GUOHALL);
+public enum OThreshType {
+    PACKED_BITS(opencv_imgproc.CV_THRESH_BINARY),
+    PACKED_BITS_INV(opencv_imgproc.CV_THRESH_BINARY_INV),
+    // - AlgART packed results
+    THRESH_BINARY(opencv_imgproc.CV_THRESH_BINARY),
+    THRESH_BINARY_INV(opencv_imgproc.CV_THRESH_BINARY_INV),
+    THRESH_TRUNC(opencv_imgproc.CV_THRESH_TRUNC),
+    THRESH_TOZERO(opencv_imgproc.CV_THRESH_TOZERO),
+    THRESH_TOZERO_INV(opencv_imgproc.CV_THRESH_TOZERO_INV);
 
     private final int code;
 
@@ -36,7 +42,11 @@ public enum OThinningAlgorithm {
         return code;
     }
 
-    OThinningAlgorithm(int code) {
+    public boolean packedBits() {
+        return this == PACKED_BITS || this == PACKED_BITS_INV;
+    }
+
+    OThreshType(int code) {
         this.code = code;
     }
 }

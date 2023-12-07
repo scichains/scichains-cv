@@ -22,16 +22,14 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv.enums;
+package net.algart.executors.modules.opencv.util.enums;
 
-import org.bytedeco.opencv.global.opencv_imgproc;
+import org.bytedeco.opencv.global.opencv_ximgproc;
 
-public enum OInterpolation {
-    INTER_NEAREST(opencv_imgproc.INTER_NEAREST),
-    INTER_LINEAR(opencv_imgproc.INTER_LINEAR),
-    INTER_CUBIC(opencv_imgproc.INTER_CUBIC),
-    INTER_AREA(opencv_imgproc.INTER_AREA),
-    INTER_LANCZOS4(opencv_imgproc.INTER_LANCZOS4);
+public enum ODomainTransformMode {
+    DTF_NC(opencv_ximgproc.DTF_NC),
+    DTF_IC(opencv_ximgproc.DTF_IC),
+    DTF_RF(opencv_ximgproc.DTF_RF);
 
     private final int code;
 
@@ -39,7 +37,7 @@ public enum OInterpolation {
         return code;
     }
 
-    OInterpolation(int code) {
+    ODomainTransformMode(int code) {
         this.code = code;
     }
 }

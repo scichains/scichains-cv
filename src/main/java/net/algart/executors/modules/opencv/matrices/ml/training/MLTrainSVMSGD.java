@@ -28,7 +28,7 @@ import net.algart.executors.modules.opencv.matrices.ml.AbstractMLTrain;
 import net.algart.executors.modules.opencv.matrices.ml.MLKind;
 import net.algart.executors.modules.opencv.matrices.ml.MLSamplesType;
 import net.algart.executors.modules.opencv.matrices.ml.MLStatModelTrainer;
-import net.algart.executors.modules.util.opencv.OTools;
+import net.algart.executors.modules.opencv.util.OTools;
 import org.bytedeco.opencv.opencv_core.TermCriteria;
 import org.bytedeco.opencv.opencv_ml.SVMSGD;
 

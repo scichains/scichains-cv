@@ -22,15 +22,17 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv.enums;
+package net.algart.executors.modules.opencv.util.enums;
 
 import org.bytedeco.opencv.global.opencv_imgproc;
 
-public enum OGrabCutMode {
-    GC_INIT_WITH_RECT(opencv_imgproc.GC_INIT_WITH_RECT),
-    GC_INIT_WITH_MASK(opencv_imgproc.GC_INIT_WITH_MASK),
-    GC_EVAL(opencv_imgproc.GC_EVAL),
-    GC_EVAL_FREEZE_MODEL(opencv_imgproc.GC_EVAL_FREEZE_MODEL);
+public enum OTemplateMatchMode {
+    TM_SQDIFF(opencv_imgproc.TM_SQDIFF),
+    TM_SQDIFF_NORMED(opencv_imgproc.TM_SQDIFF_NORMED),
+    TM_CCORR(opencv_imgproc.TM_CCORR),
+    TM_CCORR_NORMED(opencv_imgproc.TM_CCORR_NORMED),
+    TM_CCOEFF(opencv_imgproc.TM_CCOEFF),
+    TM_CCOEFF_NORMED(opencv_imgproc.TM_CCOEFF_NORMED);
 
     private final int code;
 
@@ -38,11 +40,7 @@ public enum OGrabCutMode {
         return code;
     }
 
-    public boolean initialization() {
-        return this == GC_INIT_WITH_RECT || this == GC_INIT_WITH_MASK;
-    }
-
-    OGrabCutMode(int code) {
+    OTemplateMatchMode(int code) {
         this.code = code;
     }
 }

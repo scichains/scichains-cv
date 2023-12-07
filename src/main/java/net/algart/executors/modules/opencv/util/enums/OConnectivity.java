@@ -22,13 +22,11 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv.enums;
+package net.algart.executors.modules.opencv.util.enums;
 
-import org.bytedeco.opencv.global.opencv_photo;
-
-public enum OInpaintAlgorithm {
-    INPAINT_NS(opencv_photo.INPAINT_NS),
-    INPAINT_TELEA(opencv_photo.INPAINT_TELEA);
+public enum OConnectivity {
+    CONNECTIVITY_8(8),
+    CONNECTIVITY_4(4);
 
     private final int code;
 
@@ -36,7 +34,7 @@ public enum OInpaintAlgorithm {
         return code;
     }
 
-    OInpaintAlgorithm(int code) {
+    OConnectivity(int code) {
         this.code = code;
     }
 }

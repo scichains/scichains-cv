@@ -25,9 +25,9 @@
 package net.algart.executors.modules.opencv.matrices.conversions;
 
 import net.algart.executors.modules.opencv.common.VoidResultUMatFilter;
-import net.algart.executors.modules.util.opencv.OTools;
-import net.algart.executors.modules.util.opencv.enums.ODepth;
-import net.algart.executors.modules.util.opencv.enums.ODepthOrUnchanged;
+import net.algart.executors.modules.opencv.util.OTools;
+import net.algart.executors.modules.opencv.util.enums.ODepth;
+import net.algart.executors.modules.opencv.util.enums.ODepthOrUnchanged;
 import net.algart.executors.api.ReadOnlyExecutionInput;
 import org.bytedeco.opencv.opencv_core.*;
 

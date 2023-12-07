@@ -25,7 +25,7 @@
 package net.algart.executors.modules.opencv.matrices.conversions;
 
 import net.algart.executors.modules.opencv.common.UMatFilter;
-import net.algart.executors.modules.util.opencv.OTools;
+import net.algart.executors.modules.opencv.util.OTools;
 import org.bytedeco.opencv.opencv_core.*;
 
 public final class ConvertToMono extends UMatFilter {

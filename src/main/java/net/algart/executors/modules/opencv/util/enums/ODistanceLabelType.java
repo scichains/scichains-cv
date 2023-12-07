@@ -22,19 +22,13 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv.enums;
+package net.algart.executors.modules.opencv.util.enums;
 
 import org.bytedeco.opencv.global.opencv_imgproc;
 
-public enum OThreshType {
-    PACKED_BITS(opencv_imgproc.CV_THRESH_BINARY),
-    PACKED_BITS_INV(opencv_imgproc.CV_THRESH_BINARY_INV),
-    // - AlgART packed results
-    THRESH_BINARY(opencv_imgproc.CV_THRESH_BINARY),
-    THRESH_BINARY_INV(opencv_imgproc.CV_THRESH_BINARY_INV),
-    THRESH_TRUNC(opencv_imgproc.CV_THRESH_TRUNC),
-    THRESH_TOZERO(opencv_imgproc.CV_THRESH_TOZERO),
-    THRESH_TOZERO_INV(opencv_imgproc.CV_THRESH_TOZERO_INV);
+public enum ODistanceLabelType {
+    DIST_LABEL_CCOMP(opencv_imgproc.CV_DIST_LABEL_CCOMP),
+    DIST_LABEL_PIXEL(opencv_imgproc.CV_DIST_LABEL_PIXEL);
 
     private final int code;
 
@@ -42,11 +36,7 @@ public enum OThreshType {
         return code;
     }
 
-    public boolean packedBits() {
-        return this == PACKED_BITS || this == PACKED_BITS_INV;
-    }
-
-    OThreshType(int code) {
+    ODistanceLabelType(int code) {
         this.code = code;
     }
 }

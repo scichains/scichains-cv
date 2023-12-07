@@ -22,14 +22,12 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv.enums;
+package net.algart.executors.modules.opencv.util.enums;
 
-import org.bytedeco.opencv.global.opencv_imgproc;
-
-public enum OMorphShape {
-    SQUARE(opencv_imgproc.MORPH_RECT),
-    CROSS(opencv_imgproc.MORPH_CROSS),
-    CIRCLE(opencv_imgproc.MORPH_ELLIPSE);
+public enum OLineType {
+    LINE_4(4),   // opencv_imgproc.LINE_4 in new JavaCPP
+    LINE_8(8),   // opencv_imgproc.LINE_8 in new JavaCPP
+    LINE_AA(16); // opencv_imgproc.LINE_AA in new JavaCPP
 
     private final int code;
 
@@ -37,7 +35,7 @@ public enum OMorphShape {
         return code;
     }
 
-    OMorphShape(int code) {
+    OLineType(int code) {
         this.code = code;
     }
 }

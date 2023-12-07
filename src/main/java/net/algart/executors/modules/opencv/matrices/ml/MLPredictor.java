@@ -24,7 +24,7 @@
 
 package net.algart.executors.modules.opencv.matrices.ml;
 
-import net.algart.executors.modules.util.opencv.OTools;
+import net.algart.executors.modules.opencv.util.OTools;
 import org.bytedeco.opencv.opencv_core.*;
 
 public interface MLPredictor extends AutoCloseable {

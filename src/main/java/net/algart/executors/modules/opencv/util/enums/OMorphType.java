@@ -22,37 +22,27 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv.enums;
+package net.algart.executors.modules.opencv.util.enums;
 
-import org.bytedeco.opencv.global.opencv_core;
+import org.bytedeco.opencv.global.opencv_imgproc;
 
-public enum ODepthOrUnchanged {
-    UNCHANGED(-1, Double.NaN),
-    CV_8U(opencv_core.CV_8U, 255),
-    CV_8S(opencv_core.CV_8S, 127),
-    CV_16U(opencv_core.CV_16U, 0xFFFF),
-    CV_16S(opencv_core.CV_16S, 0x7FFF),
-    CV_32S(opencv_core.CV_32S, 0x7FFFFFFF),
-    CV_32F(opencv_core.CV_32F, 1.0),
-    CV_64F(opencv_core.CV_64F, 1.0);
+public enum OMorphType {
+    ERODE(opencv_imgproc.MORPH_ERODE),
+    DILATE(opencv_imgproc.MORPH_DILATE),
+    OPEN(opencv_imgproc.MORPH_OPEN),
+    CLOSE(opencv_imgproc.MORPH_CLOSE),
+    GRADIENT(opencv_imgproc.MORPH_GRADIENT),
+    TOPHAT(opencv_imgproc.MORPH_TOPHAT),
+    BLACKHAT(opencv_imgproc.MORPH_BLACKHAT),
+    HITMISS(opencv_imgproc.MORPH_HITMISS);
 
     private final int code;
-    private final double maxValue;
 
     public int code() {
         return code;
     }
 
-    public int code(int defaultValue) {
-        return this == UNCHANGED ? defaultValue : code;
-    }
-
-    public double maxValue() {
-        return maxValue;
-    }
-
-    ODepthOrUnchanged(int code, double maxValue) {
+    OMorphType(int code) {
         this.code = code;
-        this.maxValue = maxValue;
     }
 }

@@ -25,7 +25,7 @@
 package net.algart.executors.modules.opencv.matrices.photo;
 
 import net.algart.executors.modules.opencv.common.VoidResultTwoUMatFilter;
-import net.algart.executors.modules.util.opencv.enums.OInpaintAlgorithm;
+import net.algart.executors.modules.opencv.util.enums.OInpaintAlgorithm;
 import org.bytedeco.opencv.global.opencv_photo;
 import org.bytedeco.opencv.opencv_core.*;
 

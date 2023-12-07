@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv;
+package net.algart.executors.modules.opencv.util;
 
 import net.algart.executors.api.data.SMat;
 import org.bytedeco.opencv.opencv_core.UMat;

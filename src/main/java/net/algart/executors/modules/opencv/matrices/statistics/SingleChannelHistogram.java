@@ -25,7 +25,7 @@
 package net.algart.executors.modules.opencv.matrices.statistics;
 
 import net.algart.executors.modules.opencv.common.UMatToNumbers;
-import net.algart.executors.modules.util.opencv.O2SMat;
+import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.api.ReadOnlyExecutionInput;
 import net.algart.executors.api.data.SNumbers;
 import org.bytedeco.opencv.opencv_core.*;

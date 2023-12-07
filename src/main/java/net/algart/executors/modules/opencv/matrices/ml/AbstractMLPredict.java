@@ -24,8 +24,8 @@
 
 package net.algart.executors.modules.opencv.matrices.ml;
 
-import net.algart.executors.modules.util.opencv.O2SMat;
-import net.algart.executors.modules.util.opencv.OTools;
+import net.algart.executors.modules.opencv.util.O2SMat;
+import net.algart.executors.modules.opencv.util.OTools;
 import net.algart.executors.api.Port;
 import net.algart.executors.api.data.SMat;
 import net.algart.executors.api.data.SNumbers;

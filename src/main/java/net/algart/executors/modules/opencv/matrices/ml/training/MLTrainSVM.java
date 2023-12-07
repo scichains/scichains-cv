@@ -25,7 +25,7 @@
 package net.algart.executors.modules.opencv.matrices.ml.training;
 
 import net.algart.executors.modules.opencv.matrices.ml.*;
-import net.algart.executors.modules.util.opencv.OTools;
+import net.algart.executors.modules.opencv.util.OTools;
 import org.bytedeco.opencv.opencv_core.TermCriteria;
 import org.bytedeco.opencv.opencv_ml.ParamGrid;
 import org.bytedeco.opencv.opencv_ml.SVM;

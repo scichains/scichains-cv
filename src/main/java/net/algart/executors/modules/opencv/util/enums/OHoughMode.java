@@ -22,12 +22,16 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.util.opencv.enums;
+package net.algart.executors.modules.opencv.util.enums;
 
-public enum OLineType {
-    LINE_4(4),   // opencv_imgproc.LINE_4 in new JavaCPP
-    LINE_8(8),   // opencv_imgproc.LINE_8 in new JavaCPP
-    LINE_AA(16); // opencv_imgproc.LINE_AA in new JavaCPP
+import org.bytedeco.opencv.global.opencv_imgproc;
+
+public enum OHoughMode {
+    HOUGH_STANDARD (opencv_imgproc.HOUGH_STANDARD),
+    HOUGH_PROBABILISTIC(opencv_imgproc.HOUGH_PROBABILISTIC),
+    HOUGH_MULTI_SCALE(opencv_imgproc.HOUGH_MULTI_SCALE),
+    HOUGH_GRADIENT(opencv_imgproc.HOUGH_GRADIENT),
+    HOUGH_GRADIENT_ALT(opencv_imgproc.HOUGH_GRADIENT_ALT);
 
     private final int code;
 
@@ -35,7 +39,7 @@ public enum OLineType {
         return code;
     }
 
-    OLineType(int code) {
+    OHoughMode(int code) {
         this.code = code;
     }
 }

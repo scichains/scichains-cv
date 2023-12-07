@@ -25,10 +25,10 @@
 package net.algart.executors.modules.opencv.matrices.misc;
 
 import net.algart.executors.modules.opencv.common.VoidResultUMatFilter;
-import net.algart.executors.modules.util.opencv.O2SMat;
-import net.algart.executors.modules.util.opencv.enums.ODepth;
-import net.algart.executors.modules.util.opencv.enums.ODistanceLabelType;
-import net.algart.executors.modules.util.opencv.enums.ODistanceType;
+import net.algart.executors.modules.opencv.util.O2SMat;
+import net.algart.executors.modules.opencv.util.enums.ODepth;
+import net.algart.executors.modules.opencv.util.enums.ODistanceLabelType;
+import net.algart.executors.modules.opencv.util.enums.ODistanceType;
 import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_imgproc;
 

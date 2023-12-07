@@ -25,7 +25,7 @@
 package net.algart.executors.modules.opencv.matrices.geometry;
 
 import net.algart.executors.modules.opencv.common.UMatFilter;
-import net.algart.executors.modules.util.opencv.OTools;
+import net.algart.executors.modules.opencv.util.OTools;
 import net.algart.executors.api.ReadOnlyExecutionInput;
 import org.bytedeco.opencv.opencv_core.*;
 
