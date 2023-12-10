@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.ml.training",
+  "category": "matrices.ml.training",
   "name": "Train SVM for pixels",
   "id": "f7ccb4b7-c038-4355-8573-ed5870ba58e6",
   "language": "java",

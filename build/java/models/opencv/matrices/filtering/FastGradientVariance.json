@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.filtering",
+  "category": "matrices.filtering",
   "name": "Fast gradient variance",
   "id": "58779acf-00f0-40d7-ac4f-2b338f2a1c43",
   "language": "java",

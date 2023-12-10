@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.filtering",
+  "category": "matrices.filtering",
   "name": "Median",
   "id": "2c6225cf-0c9d-4e3c-976d-3588b56866ad",
   "language": "java",

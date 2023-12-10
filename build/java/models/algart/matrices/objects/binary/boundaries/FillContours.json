@@ -1,0 +1,174 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.objects.binary.boundaries",
+  "name": "Fill contours",
+  "id": "f4b27f82-3754-411e-8ba4-6c7f1f035e3c",
+  "description": "Fills every contour by the corresponding label.",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.boundaries.FillContours"
+  },
+  "in_ports": [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Contours: serialized array of points."
+    },
+    {
+      "value_type": "numbers",
+      "name": "labels_map",
+      "caption": "filling labels map",
+      "hint": "[Optional] Every contour with object label M is filled (drawn) by the value map[M] or map[M−1],\ndepending on \"Indexing base of labels\" parameter. If not specified, it is filled by original M value."
+    },
+    {
+      "value_type": "numbers",
+      "name": "rectangle",
+      "hint": "[Optional] If specified, it must be either 4 numbers, describing a rectangle area which should be drawn: min_x, max_x, min_y, max_y,\nor 2 numbers (x, y), describing the start position \"Start X\" and \"Start Y\".\nIn the first case, block length must be 2, in the second case, it must be 1."
+    },
+    {
+      "value_type": "mat",
+      "name": "background",
+      "advanced": true,
+      "hint": "[Optional] If specified, its sizes (width and height) will be the dimensions of the result \"labels\".\nIn this case, sizes of previous \"rectangle\" and the parameters \"X-size (width)\", \"Y-size (height)\" are ignored.\nNote: the content of this image is always ignored, it is used only to specify result dimensions."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "labels",
+      "hint": "Labels matrix, scanning of which will lead to creating the specified contour array."
+    },
+    {
+      "value_type": "scalar",
+      "name": "number_of_objects",
+      "caption": "number of objects",
+      "hint": "Total number of contours."
+    }
+  ],
+  "controls": [
+    {
+      "caption": "Do action",
+      "name": "doAction",
+      "description": "If cleared, this function does nothing and returns non-initialized labels matrix. (The input \"contours\" may be omitted in this case.)\nYou may use this flag, for example, if you want to create a binary mask on the base of some contours, but you want to control whether this mask should be processed or not. In this case, you should probably also clear the flag \"Zero result for empty contours\".\nNormally this flag is set (true).",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "elementType",
+      "caption": "Element type",
+      "description": "Element type of the labels matrix. Usually should be int (32-bit integer) for storing all possible labels. Sometimes 1-bit type is more suitable, if you actually need only to build a mask and the values of labels are not important.",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "boolean",
+          "caption": "boolean (1-bit)"
+        },
+        {
+          "value": "byte",
+          "caption": "byte"
+        },
+        {
+          "value": "short",
+          "caption": "short"
+        },
+        {
+          "value": "int",
+          "caption": "int"
+        },
+        {
+          "value": "float",
+          "caption": "float"
+        },
+        {
+          "value": "double",
+          "caption": "double"
+        }
+      ],
+      "default": "int"
+    },
+    {
+      "name": "needToProcessDiagonals",
+      "caption": "Enforce processing diagonals",
+      "description": "If set, this function fills also non-horizontal and non-vertical segments of the contours (when they exists). Such \"diagonal\" segments are usually considered as incorrect and should not appear while scanning binary objects, but can be added to contour array manually.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "cacheUnpackedContours",
+      "caption": "Cache unpacked contours",
+      "description": "If set, this function unpacks the input contours into an internal form, ready for quick processing, and caches it: if the input contours is the same as while the previous call, the function reuses previous unpacked contours. It can improve performance, if this function processes the same contours array many times, especially if all contours consists of a few segments, but these segments are long and they are non-horizontal and non-vertical.\nThere is no sense to set this flag, if the function every time process different contours — it will be better to save memory.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "advanced": true,
+      "default": false
+    },
+    {
+      "name": "zeroResultForEmptyContours",
+      "caption": "Zero result for empty contours",
+      "description": "If set, this function returns zero (black) labels matrix, when the input contours array is empty (0  contours).\nIf cleared, and if the input contours array is empty (0 contours), this function returns non-initialized labels matrix. It is more suitable if the case \"no contours\" should be processed in a special way.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "caption": "Start X",
+      "name": "startX",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "caption": "Start Y",
+      "name": "startY",
+      "description": "Left/top corner of the result image in coordinate system of contours. In other words, start X/Y are subtracted from any segment of the contours before using it for filling the result.\nNote: if there is the input \"rectangle\", containing a rectangle or a point, 2 parameters above are ignored.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "caption": "X-size (width)",
+      "name": "sizeX",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 1000
+    },
+    {
+      "caption": "Y-size (height)",
+      "name": "sizeY",
+      "description": "Sizes of result matrix.\nNote: if the input \"rectangle\" contains a rectangle (4 numbers), all 4 parameters above are ignored. If there is an input \"background\", 2 parameters above are ignored.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 1000
+    },
+    {
+      "caption": "Indexing base of joining map",
+      "name": "indexingBase",
+      "description": "Indexing base of the filling labels map: if it is specified, a contour with object label M is filled (drawn) by the value map[M−B], where B is this base (0 or 1). Note that the object labels outside this map (outside range B..B+map.length−1) are not translated by map and used for filling without translation (if \"Default filler\" parameter is empty).",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "ZERO_BASED",
+          "caption": "0 (zero-based numbering)"
+        },
+        {
+          "value": "ONE_BASED",
+          "caption": "1 (one-based numbering)"
+        }
+      ],
+      "default": "ZERO_BASED"
+    },
+    {
+      "caption": "Default filler",
+      "name": "defaultFiller",
+      "description": "If specified, it should be an integer value, and the object labels outside the map (see above) will be replaced with this value. In other case, they will not be translated and will be used for filling as-is.",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    }
+  ]
+}

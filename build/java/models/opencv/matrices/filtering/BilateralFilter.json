@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.filtering",
+  "category": "matrices.filtering",
   "name": "Bilateral filter",
   "id": "c7be1d62-33db-41b0-a455-9972a52fdf22",
   "language": "java",

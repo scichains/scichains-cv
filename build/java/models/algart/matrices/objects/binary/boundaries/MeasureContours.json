@@ -1,0 +1,239 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.objects.binary.boundaries",
+  "name": "Measure contours",
+  "id": "683f7705-6422-4877-bd3e-1bd5441549a8",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.boundaries.MeasureContours"
+  },
+  "in_ports": [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Contours: serialized array of points."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "object_label",
+      "caption": "object labels",
+      "hint": "Label: pixel value of the source matrix."
+    },
+    {
+      "value_type": "numbers",
+      "name": "parent_contour_index",
+      "caption": "parent contours indexes",
+      "hint": "Index of smallest contour, containing this one strictly inside, or −1 if there is no containing contour.\nMay be incorrect it there are contours, nesting one into second, but touching each other!\n(Touching from external side, without nesting, is allowed.)"
+    },
+    {
+      "value_type": "numbers",
+      "name": "nesting_level",
+      "caption": "nesting level",
+      "hint": "Number of contours, containing this one strictly inside.\nMay be incorrect it there are contours, nesting one into second, but touching each other!\n(Touching from external side, without nesting, is allowed.)"
+    },
+    {
+      "value_type": "numbers",
+      "name": "strict_area",
+      "caption": "areas",
+      "hint": "Strict area: number of pixels inside objects' boundary.\nArea is signed: for contours of pores it is negative."
+    },
+    {
+      "value_type": "numbers",
+      "name": "segment_centers_area",
+      "caption": "segment-centers areas",
+      "hint": "Area inside the polyline between middles of boundary segments.\nNote: it is not too good result when the contours were created with optimizing collinear steps!",
+      "advanced": true
+    },
+    {
+      "value_type": "numbers",
+      "name": "strict_perimeter",
+      "caption": "perimeters",
+      "hint": "Strict perimeter (contour length): number of boundary segments (every segment has length 1.0)."
+    },
+    {
+      "value_type": "numbers",
+      "name": "segment_centers_perimeter",
+      "caption": "segment-centers perimeters",
+      "hint": "Length of the polyline between middles of boundary segments.\nNote: it is not too good result when the contours were created with optimizing collinear steps!",
+      "advanced": true
+    },
+    {
+      "value_type": "numbers",
+      "name": "precise_doubled_area",
+      "caption": "precise doubled area",
+      "hint": "Precise doubled area: exact (63-bit integer) number of pixels inside objects' boundary, multiplied by 2.\nArea is signed: for contours of pores it is negative.",
+      "advanced": true
+    },
+    {
+      "value_type": "numbers",
+      "name": "containing_rectangle",
+      "caption": "containing rectangles",
+      "hint": "For rectangle x₁≤x≤x₂, y₁≤y≤y₂, we return 4 numbers (x₁+x₂)/2, (y₁+y₂)/2, x₂−x₁, y₂−y₁ (i.e. center and sizes)."
+    },
+    {
+      "value_type": "numbers",
+      "name": "inside_representative",
+      "caption": "inside representative",
+      "hint": "A point, lying strictly inside every contour, or 1st contour point if it is degenerated (has zero area).",
+      "advanced": true
+    },
+    {
+      "value_type": "numbers",
+      "name": "degenerated",
+      "caption": "degenerated",
+      "hint": "Indicator of degenerated contour: 1 if it is degenerated, i.e. has no any points, lying strictly inside the contour, or 0 in other case.\nNote that such contour always has zero strict area. However, non-degenerated contour also can have zero area (if it is self-intersecting).",
+      "advanced": true
+    },
+    {
+      "value_type": "numbers",
+      "name": "internal_boundary",
+      "caption": "internal boundary",
+      "hint": "Indicator of internal contour: 1 for internal contour, 0 for external contour."
+    },
+    {
+      "value_type": "numbers",
+      "name": "matrix_boundary_flags",
+      "caption": "matrix boundary flags",
+      "hint": "4 indicator for each contour, whether it touches matrix boundary: left, right, top and bottom.",
+      "advanced": true
+    },
+    {
+      "value_type": "numbers",
+      "name": "frame_id",
+      "caption": "frame IDs",
+      "hint": "Frame ID, or -1 if a contour does not have associated frame ID.",
+      "advanced": true
+    },
+    {
+      "value_type": "numbers",
+      "name": "contour_offsets",
+      "caption": "contour offsets",
+      "hint": "Offsets of the first point of each contour in the source serialized array.\n(It is not the offset if the HEADER of contours, but offset of their first points!)",
+      "advanced": true
+    },
+    {
+      "value_type": "numbers",
+      "name": "sorted_indexes_by_label",
+      "caption": "sorted indexes by label",
+      "hint": "Indexes of contours, sorted by increasing their label.\nFor the same label, internal contours will be after extrernal ones.",
+      "advanced": true
+    },
+    {
+      "value_type": "numbers",
+      "name": "sorted_indexes_by_area",
+      "caption": "sorted indexes by area",
+      "hint": "Indexes of contours, sorted by increasing their area.\nHere we use absolute value of precise area, unlike \"strict_area\" above.",
+      "advanced": true
+    },
+    {
+      "value_type": "numbers",
+      "name": "containing_all_rectangle",
+      "caption": "rectangle, containing all contours",
+      "hint": "Minimal rectangle, containing all contours.\nNote: unlike \"containing rectangles\", we return minimal and maximal x, then minimal and maximal y\n(for rectangle x₁≤x≤x₂, y₁≤y≤y₂ it will array of 4 numbers x₁, x₂, y₁, y₂)."
+    },
+    {
+      "value_type": "scalar",
+      "name": "number_of_objects",
+      "caption": "number of objects",
+      "hint": "Total number of contours."
+    }
+  ],
+  "controls": [
+    {
+      "name": "needToAnalyseNestingForDiagonals",
+      "caption": "Analyse nesting for diagonals",
+      "description": "If set, this function allows to process also non-horizontal and non-vertical segments of the contours (when they exists). It is is important only for \"parent contours indexes\" and \"nesting level\" results; all other outputs will be processed correcly always regardless this flag.\nBut if you need of 2 specified results AND you are SURE that your contours does not contain diagonal segments (it is a usual situation), please clear this flag: it can optimize processing. (In this mode, the contours with diagonal segments will lead to an exception.)",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "pixelCoordinatesForRectangles",
+      "caption": "Pixel coordinates for rectangles",
+      "description": "If set, the result \"containing rectangles\" will be specified in pixel coordinate system, where the center of top left pixel has coordinates (0,0) (it is interpreted as a square −0.5≤x,y≤+0.5).\nIf cleared, the result \"containing rectangles\" will be specified in contours coordinate system, where the center of top left pixel has coordinates (0.5,0.5) (it is interpreted as a square 0≤x,y≤1).",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "visibleResult",
+      "caption": "Visible result",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "object_label",
+          "caption": "object labels"
+        },
+        {
+          "value": "parent_contour_index",
+          "caption": "parent contours indexes"
+        },
+        {
+          "value": "strict_area",
+          "caption": "areas"
+        },
+        {
+          "value": "segment_centers_area",
+          "caption": "segment-centers areas"
+        },
+        {
+          "value": "strict_perimeter",
+          "caption": "perimeters"
+        },
+        {
+          "value": "segment_centers_perimeter",
+          "caption": "segment-centers perimeters"
+        },
+        {
+          "value": "precise_doubled_area",
+          "caption": "precise doubled area"
+        },
+        {
+          "value": "containing_rectangle",
+          "caption": "containing rectangles"
+        },
+        {
+          "value": "inside_representative",
+          "caption": "inside representative"
+        },
+        {
+          "value": "degenerated",
+          "caption": "degenerated"
+        },
+        {
+          "value": "internal_boundary",
+          "caption": "internal boundary indicators"
+        },
+        {
+          "value": "matrix_boundary_flags",
+          "caption": "matrix boundary flags"
+        },
+        {
+          "value": "frame_id",
+          "caption": "frame IDs"
+        },
+        {
+          "value": "contour_offsets",
+          "caption": "contour offsets"
+        },
+        {
+          "value": "sorted_indexes_by_area",
+          "caption": "sorted indexes by area"
+        },
+        {
+          "value": "containing_all_rectangle",
+          "caption": "rectangle, containing all contours"
+        },
+        {
+          "value": "number_of_objects",
+          "caption": "number of objects"
+        }
+      ],
+      "default": "object_label"
+    }
+  ]
+}

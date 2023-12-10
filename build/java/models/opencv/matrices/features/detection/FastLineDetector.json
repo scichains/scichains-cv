@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.features.detection",
+  "category": "matrices.features.detection",
   "name": "Fast line detector",
   "id": "a148d4bc-09bf-4241-a6c3-2caf52a8ca46",
   "language": "java",

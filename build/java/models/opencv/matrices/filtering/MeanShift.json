@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.filtering",
+  "category": "matrices.filtering",
   "name": "Mean shift",
   "id": "a839c15e-d22a-4f98-9fa6-0d0992f35457",
   "language": "java",

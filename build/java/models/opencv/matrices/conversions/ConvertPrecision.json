@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.conversions",
+  "category": "matrices.conversions",
   "name": "Convert precision / scale",
   "id": "dd32d3d8-fc81-4ba8-bbd3-2931c8ebd5bd",
   "language": "java",

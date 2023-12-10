@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.features.detection",
+  "category": "matrices.features.detection",
   "name": "Line detection by Hough transform (probabilistic)",
   "id": "d56fb4aa-2a55-4679-9616-476aa7dfe1a5",
   "language": "java",

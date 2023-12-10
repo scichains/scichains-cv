@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.ml.training",
+  "category": "matrices.ml.training",
   "name": "Train normal Bayes classifier",
   "id": "b44bab90-f8f3-4c43-bf07-1d16c695bd4a",
   "language": "java",

@@ -1,0 +1,203 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.objects.binary.boundaries",
+  "name": "Scan objects and extract contours to array",
+  "id": "6c167335-6cfc-4b4c-b027-933aaacaedff",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.boundaries.ScanAndExtractContours"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "objects"
+    },
+    {
+      "value_type": "numbers",
+      "name": "position",
+      "hint": "[Optional] Point, describing the start position.\nIf specified, it will be used instead of \"Start X/Y\" parameters.\nAlso can contain 4 numbers min_x, max_x, min_y, max_y (rectangle); then its left top corner will be the position."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "labels",
+      "hint": "New labels matrix: index of the boundary, surrounding this object.\nNote: these labels are started FROM 1, not from 0!"
+    },
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Contours: serialized array of points"
+    },
+    {
+      "value_type": "numbers",
+      "name": "object_label",
+      "hint": "Label of object: pixel value of the source matrix"
+    },
+    {
+      "value_type": "numbers",
+      "name": "strict_area",
+      "hint": "Strict area: number of pixels inside objects' boundary"
+    },
+    {
+      "value_type": "numbers",
+      "name": "segment_centers_area",
+      "hint": "Area inside the polyline between middles of boundary segments"
+    },
+    {
+      "value_type": "numbers",
+      "name": "strict_perimeter",
+      "hint": "Strict perimeter (contour length): number of boundary segments (every segment has length 1.0)"
+    },
+    {
+      "value_type": "numbers",
+      "name": "segment_centers_perimeter",
+      "hint": "Length of the polyline between middles of boundary segments"
+    },
+    {
+      "value_type": "numbers",
+      "name": "internal_boundary",
+      "caption": "internal boundary",
+      "hint": "Indicator of internal boundary: 1 for internal boundary, 0 for external boundary"
+    },
+    {
+      "value_type": "scalar",
+      "name": "number_of_objects",
+      "hint": "Total number of extracted contours (it is equal to the maximal index of the returned labels)"
+    }
+  ],
+  "controls": [
+    {
+      "name": "connectivityType",
+      "caption": "Connectivity type",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "STRAIGHT_AND_DIAGONAL",
+          "caption": "8-connectivity"
+        },
+        {
+          "value": "STRAIGHT_ONLY",
+          "caption": "4-connectivity"
+        }
+      ],
+      "default": "STRAIGHT_ONLY"
+    },
+    {
+      "name": "boundaryType",
+      "caption": "Boundary type",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "MAIN_BOUNDARIES",
+          "caption": "main boundaries (pores ignored)"
+        },
+        {
+          "value": "ALL_BOUNDARIES",
+          "caption": "all boundaries (objects and pores)"
+        },
+        {
+          "value": "ALL_EXTERNAL_BOUNDARIES",
+          "caption": "externals boundaries (objects)"
+        },
+        {
+          "value": "ALL_INTERNAL_BOUNDARIES",
+          "caption": "internals boundaries (pores)"
+        }
+      ],
+      "default": "ALL_BOUNDARIES"
+    },
+    {
+      "name": "objectsInterpretation",
+      "caption": "What to do with non-binary image?",
+      "description": "Convert to binary: its intensity is automatically converted to binary matrix (0 into bit 0, all other values into bit 1).\nNon-zero labelled objects: the source matrix must be binary or must contain integer labels of objects; this function analyses their boundaries. In this case, the matrix must be 1-channel, elements must be integer, zero labels (0) means background.\nLabelled objects: the same, but zero labels is interpreted as a usual object. (In previous mode boundaries of the background areas are not processed.)\nFor binary source this function always use the 1st mode.\nNote: while scanning labels, the \"nesting level\" is not correct.",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "BINARY",
+          "caption": "Convert to binary"
+        },
+        {
+          "value": "NON_ZERO_LABELS",
+          "caption": "Labelled objects (non-zero)"
+        },
+        {
+          "value": "LABELS",
+          "caption": "Labelled objects"
+        }
+      ],
+      "default": "NON_ZERO_LABELS"
+    },
+    {
+      "caption": "Frame ID",
+      "name": "frameId",
+      "description": "If specified, it must contain some 32-bit ID of the processed frame (submatrix) in the large image.",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "caption": "Start X",
+      "name": "startX",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "caption": "Start Y",
+      "name": "startY",
+      "description": "Start X/Y are added to every contour point. It is necessary when we scan contours from some frame (submatrix) of the large image.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "caption": "Optimize collinear steps",
+      "name": "optimizeCollinearSteps",
+      "description": "If set, the contour replace sequences of collinear (horizontal or vertical) segments of length 1 with single seqment with length >1.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "visibleResult",
+      "caption": "Visible result",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "labels"
+        },
+        {
+          "value": "contours"
+        },
+        {
+          "value": "object_label"
+        },
+        {
+          "value": "strict_area"
+        },
+        {
+          "value": "segment_centers_area"
+        },
+        {
+          "value": "strict_perimeter"
+        },
+        {
+          "value": "segment_centers_perimeter"
+        },
+        {
+          "value": "internal_boundary"
+        },
+        {
+          "value": "number_of_objects"
+        }
+      ],
+      "default": "labels"
+    }
+  ]
+}

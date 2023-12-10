@@ -1,0 +1,83 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.pixels",
+  "name": "Set pixels",
+  "id": "e827bf37-dcc0-4593-840b-78551643d466",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.pixels.SetPixels"
+  },
+  "in_ports": [
+    {
+      "value_type": "numbers",
+      "name": "pixel_values",
+      "caption": "pixel values"
+    },
+    {
+      "value_type": "mat",
+      "name": "mask",
+      "hint": "[Optional] Binary mask: if specified, only non-zero pixels at this matrix are set in the result matrix"
+    },
+    {
+      "value_type": "mat",
+      "name": "background"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "elementType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "boolean",
+          "caption": "boolean"
+        },
+        {
+          "value": "byte",
+          "caption": "byte"
+        },
+        {
+          "value": "short",
+          "caption": "short"
+        },
+        {
+          "value": "int",
+          "caption": "int"
+        },
+        {
+          "value": "float",
+          "caption": "float"
+        },
+        {
+          "value": "double",
+          "caption": "double"
+        }
+      ],
+      "default": "float"
+    },
+    {
+      "caption": "Raw pixel values",
+      "name": "rawPixelValues",
+      "description": "If true, the pixel values are written as-is. If false, the pixel values are supposed to be normalized in the range 0..1.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Always true mask",
+      "name": "supposeMaskAlwaysTrue",
+      "description": "Supposes that the mask is always true (its content ignored, input array must contain all pixels).",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

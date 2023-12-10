@@ -1,0 +1,83 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.thresholds",
+  "name": "Simple threshold",
+  "id": "5593ecf0-cf87-4224-a79a-29f932f96e73",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.thresholds.SimpleThreshold"
+  },
+  "tags": [
+    "java",
+    "images",
+    "express"
+  ],
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    },
+    {
+      "value_type": "mat",
+      "name": "mask",
+      "hint": "If specified, the result of thresholding is combined with this mask by AND operation"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "min",
+      "hint": "If not set (an empty string), it is considered to be −∞ (not checked).",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": "0.5"
+    },
+    {
+      "name": "max",
+      "hint": "If not set (an empty string), it is considered to be +∞ (not checked).",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "name": "invert",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "hysteresis",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "hysteresisMin",
+      "hint": "If not set (an empty string), it is considered to be −∞ (not checked).",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": "0.2"
+    },
+    {
+      "name": "hysteresisMax",
+      "hint": "If not set (an empty string), it is considered to be +∞ (not checked).",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "name": "rawValues",
+      "caption": "Raw values",
+      "description": "If set, all min/max values above are \"raw\" (not normalized): these values are used as-is. If cleared, they should be normalized values in 0..1 range.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

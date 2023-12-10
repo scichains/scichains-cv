@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.segmentation",
+  "category": "matrices.segmentation",
   "name": "Graph segmentation",
   "id": "e147bcba-704d-4836-a6a5-983d84ce498c",
   "language": "java",

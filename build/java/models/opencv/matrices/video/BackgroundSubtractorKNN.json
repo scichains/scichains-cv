@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.video",
+  "category": "matrices.video",
   "name": "BackgroundSubtractorKNN",
   "id": "ebc1e2f6-8d1d-4b77-bdb9-85cfec95f1fb",
   "language": "java",

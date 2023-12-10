@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.segmentation",
+  "category": "matrices.segmentation",
   "name": "Watershed-based nearest pixels",
   "id": "beb58cfc-12f5-4b5a-80e1-ba669b92d3b7",
   "language": "java",

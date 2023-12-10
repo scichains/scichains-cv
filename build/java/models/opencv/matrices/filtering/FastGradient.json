@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.filtering",
+  "category": "matrices.filtering",
   "name": "Fast gradient (Sobel-based)",
   "id": "f9ae5b66-5b91-4462-853d-abea243c4b2c",
   "language": "java",

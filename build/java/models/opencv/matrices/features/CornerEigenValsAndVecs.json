@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.features",
+  "category": "matrices.features",
   "name": "Corner eigenvalues and eigenvectors",
   "id": "b279183c-43d2-435d-9a81-30acfc6c09fe",
   "language": "java",

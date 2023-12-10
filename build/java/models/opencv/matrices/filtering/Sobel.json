@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.filtering",
+  "category": "matrices.filtering",
   "name": "Sobel",
   "id": "ad4f247f-7e9d-4182-861c-881b1dc99ac6",
   "language": "java",

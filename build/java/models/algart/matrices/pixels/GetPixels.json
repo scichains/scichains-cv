@@ -1,0 +1,39 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.pixels",
+  "name": "Get pixels",
+  "id": "22dc2c9e-63e4-483e-8d7f-88023a5ef25b",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.pixels.GetPixels"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    },
+    {
+      "value_type": "mat",
+      "name": "mask",
+      "hint": "[Optional] Binary mask: if specified, only non-zero pixels at this matrix are read from the input matrix"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "pixel_values",
+      "caption": "pixel values"
+    }
+  ],
+  "controls": [
+    {
+      "caption": "Raw pixel values",
+      "name": "rawPixelValues",
+      "description": "If true, the pixel values are read as-is. If false, the pixel values are normalized to the range 0..1.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

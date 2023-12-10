@@ -1,0 +1,54 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.objects",
+  "name": "Get values of first pixel at labelled objects",
+  "id": "fe84711f-dc47-444b-85af-998ec6c314e6",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.GetLabelledObjects"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    },
+    {
+      "value_type": "mat",
+      "name": "labels"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "output"
+    },
+    {
+      "value_type": "mat",
+      "name": "paint_labelled"
+    }
+  ],
+  "controls": [
+    {
+      "name": "rawValues",
+      "caption": "use raw values (not normalized)",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "paintLabelledOnSource",
+      "caption": "use input matrix as background for paint_labelled port (if it's requested)",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "visiblePaintLabelled",
+      "caption": "paint_labelled port is visible (intead of result numbers)",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

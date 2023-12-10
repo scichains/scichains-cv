@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.filtering",
+  "category": "matrices.filtering",
   "name": "Guided filter",
   "id": "62780b44-0d86-4981-a7e1-81b13737aa9e",
   "language": "java",

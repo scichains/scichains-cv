@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.segmentation",
+  "category": "matrices.segmentation",
   "name": "Superpixel LSC (Linear Spectral Clustering)",
   "id": "505a2a3f-1dc1-4620-b74b-9f539063b2a0",
   "language": "java",

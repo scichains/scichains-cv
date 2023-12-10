@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.misc",
+  "category": "matrices.misc",
   "name": "FloodFill",
   "id": "ff6438bb-1813-4867-a6cf-60503905d144",
   "language": "java",

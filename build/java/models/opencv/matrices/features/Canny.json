@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.features",
+  "category": "matrices.features",
   "name": "Canny",
   "id": "d7cb7c5b-b652-4693-bc6e-dfc19fc4179b",
   "language": "java",

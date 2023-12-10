@@ -1,0 +1,80 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.filtering",
+  "name": "Average by rectangle",
+  "id": "b354256c-b0ac-4964-af1e-0e8f20bd0cd4",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.filtering.AverageByRectangle"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "sizeX",
+      "caption": "X-size",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 15
+    },
+    {
+      "name": "sizeY",
+      "caption": "Y-size",
+      "description": "This function averages the matrix by rectangle X-size x Y-size. If Y-size=0, X-size is used instead (square). X-size cannot be 0.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "centerX",
+      "caption": "Center X",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "centerY",
+      "caption": "Center Y",
+      "description": "Position of the center of the rectangle. This function averages by rectangle [x1..x2]x[y1..y2], where x1 = center X - X-size/2, y1 = center Y - Y-size/2 (truncated division for odd integers), x2-x1+1 = X-size, y2-y1+1 = Y-size. If X-size=Y-size=1, this function just shifts the image right and downward to (Center X, Center Y).",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "strictDivision",
+      "caption": "Strict division",
+      "description": "If set, the average value α of N numbers a1,a2,...,aN is calculated as α=(a1+a2+...+aN)/N: division operation is used.\nIf cleared, it is calculated as α=(a1+a2+...+aN)*μ, where μ=1.0/N is a real value (double type): multiplication operation is used. Usually it is faster, especially for floating-point elements, but results may be little different.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "name": "rounding",
+      "caption": "Rounding",
+      "description": "This flag is used for integer matrix elements.\nIf set, the real average value α is converted into integer result as (int)(α+0.5) or (long)(α+0.5) — usual Java cast of double value to integer type. For non-negative values (usual situation), it means rounding to the floor (⌊α+0.5⌋).\nIf cleared, this function does not add 0.5 and use simple cast (int)α or (long)α: it is little faster.\nNote: this flag is also ignored for 64-bit long integers.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
+      "name": "twoStage",
+      "caption": "Two-stage mode",
+      "description": "This flag used rarely. If set, this function calculates the average value in two stages: first, it averages rows, second, it averages elements of (already averaged) row. It can help to provide 100% compatibility with another averaging algorithms.\nUsually should cleared.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false,
+      "advanced": true
+    }
+  ]
+}

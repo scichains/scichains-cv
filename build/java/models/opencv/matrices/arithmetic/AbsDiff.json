@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.arithmetic",
+  "category": "matrices.arithmetic",
   "name": "AbsDiff: |x−y|",
   "id": "abdbe1e3-f4cf-4ef5-bbbe-ad1c5798cd14",
   "language": "java",

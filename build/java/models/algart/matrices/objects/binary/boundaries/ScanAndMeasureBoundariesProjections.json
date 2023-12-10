@@ -1,0 +1,321 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.objects.binary.boundaries",
+  "name": "Scan/measure objects' projections by boundaries",
+  "id": "fb355541-fc8f-4eae-b083-1316dd8a1ffb",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.boundaries.ScanAndMeasureBoundariesProjections"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "objects"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "labels",
+      "hint": "New labels matrix: index of the boundary, surrounding this object.\nNote: these labels are started FROM 1, not from 0!"
+    },
+    {
+      "value_type": "numbers",
+      "name": "object_label",
+      "hint": "Label of object: pixel value of the source matrix.\nUsed while scanning non-binary label matrix."
+    },
+    {
+      "value_type": "numbers",
+      "name": "area"
+    },
+    {
+      "value_type": "numbers",
+      "name": "perimeter"
+    },
+    {
+      "value_type": "numbers",
+      "name": "all_projections",
+      "hint": "N numbers, N = \"number of directions\" argument: length of all N projection, starting from the specified \"start direction angle\""
+    },
+    {
+      "value_type": "numbers",
+      "name": "selected_projection",
+      "hint": "3 numbers: selected projection (first from \"all_projection\", see \"start direction angle\" parameter), relation with its orthogonal projection and the optional angle of this projection (see function settings)"
+    },
+    {
+      "value_type": "numbers",
+      "name": "mean_projection",
+      "hint": "The mean projection"
+    },
+    {
+      "value_type": "numbers",
+      "name": "max_projection",
+      "hint": "3 numbers: maximal projection, relation with its orthogonal projection and the optional angle of maximal projection (see function settings)"
+    },
+    {
+      "value_type": "numbers",
+      "name": "min_projection",
+      "hint": "3 numbers: minimal projection, relation with its orthogonal projection and the optional angle of minimal projection (see function settings)"
+
+    },
+    {
+      "value_type": "numbers",
+      "name": "max_size_relation",
+      "hint": "3 numbers: projection with maximal relation this_projection/its_orthogonal_projection, relation with its orthogonal projection and the optional angle of this projection (see function settings)"
+    },
+    {
+      "value_type": "numbers",
+      "name": "min_circumscribed_square_side",
+      "hint": "3 numbers: minimal projection, that the square, built on this projection, fully contains the object; relation with its orthogonal projection and the optional angle of this projection (see function settings)"
+    },
+    {
+      "value_type": "numbers",
+      "name": "shape_factor",
+      "hint": "Shape factor: sqrt(4πS)/P, S — area, P — perimeter"
+    },
+    {
+      "value_type": "numbers",
+      "name": "compact_factor",
+      "hint": "Compactness factor: S/(¼πm²), S — area, m — mean_projection (¼πm² is the area of a circle with mean_projection as a diameter)"
+    },
+    {
+      "value_type": "numbers",
+      "name": "irregularity_factor",
+      "hint": "Irregularity factor: πm/P, m — mean_projection, P — perimeter"
+    },
+    {
+      "value_type": "numbers",
+      "name": "internal_boundary",
+      "caption": "internal boundary",
+      "hint": "Indicator of internal boundary: 1 for internal boundary, 0 for external boundary"
+    },
+    {
+      "value_type": "numbers",
+      "name": "nesting_level",
+      "hint": "Nesting level: 1 for a particle, 2 for its pores, 3 for particles inside the pores, etc."
+    },
+    {
+      "value_type": "scalar",
+      "name": "number_of_objects",
+      "hint": "Total number of measured objects (it is equal to the maximal index of the returned labels)"
+    }
+  ],
+  "controls": [
+    {
+      "name": "pixelSize",
+      "caption": "Pixel size",
+      "description": "The side of every pixel in some units, for example, in microns. All parameters of objects will be measured in this units (microns or square microns).",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "name": "connectivityType",
+      "caption": "Connectivity type",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "STRAIGHT_AND_DIAGONAL",
+          "caption": "8-connectivity"
+        },
+        {
+          "value": "STRAIGHT_ONLY",
+          "caption": "4-connectivity"
+        }
+      ],
+      "default": "STRAIGHT_AND_DIAGONAL"
+    },
+    {
+      "name": "boundaryType",
+      "caption": "Boundary type",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "MAIN_BOUNDARIES",
+          "caption": "main boundaries (pores ignored)"
+        },
+        {
+          "value": "ALL_BOUNDARIES",
+          "caption": "all boundaries (objects and pores)"
+        },
+        {
+          "value": "ALL_EXTERNAL_BOUNDARIES",
+          "caption": "externals boundaries (objects)"
+        },
+        {
+          "value": "ALL_INTERNAL_BOUNDARIES",
+          "caption": "internals boundaries (pores)"
+        }
+      ],
+      "default": "MAIN_BOUNDARIES"
+    },
+    {
+      "name": "contourLineType",
+      "caption": "Model of object boundaries",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "STRICT_BOUNDARY",
+          "caption": "strict boundary: polyline, consisting of sides of square pixeles, separating objects and background"
+        },
+        {
+          "value": "PIXEL_CENTERS_POLYLINE",
+          "caption": "polyline between centers of boundary pixels"
+        },
+        {
+          "value": "SEGMENT_CENTERS_POLYLINE",
+          "caption": "polyline between middles of segments — sides of square pixels, separating objects and background"
+        }
+      ],
+      "default": "STRICT_BOUNDARY"
+    },
+    {
+      "name": "maxLabelLevel",
+      "caption": "Maximal nesting level",
+      "description": "Maximal nesting level of drawn labels: 0 to draw all objects and pores (so, this argument is ignored), 1 to draw only main objects (pores are filled), 2 to draw objects and their pores (withouts little objects inside pores), 3 to draw objects, their pores and objects inside pores with filled next-level pores, etc.",
+      "hint": "Note: in the mode \"externals boundaries\" all pores are always 0 in the resulting labels.\nSo, this limit can lead to multicomponent object, for example,\nif it is 1, we will have the single label for the main objects TOGETHER with all particles in its pores.\nAnd the analogous situation in the mode \"internal boundaries\".",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "objectsInterpretation",
+      "caption": "What to do with non-binary image?",
+      "description": "Convert to binary: its intensity is automatically converted to binary matrix (0 into bit 0, all other values into bit 1).\nNon-zero labelled objects: the source matrix must be binary or must contain integer labels of objects; this function analyses their boundaries. In this case, the matrix must be 1-channel, elements must be integer, zero labels (0) means background.\nLabelled objects: the same, but zero labels is interpreted as a usual object. (In previous mode boundaries of the background areas are not processed.)\nFor binary source this function always use the 1st mode.\nNote: while scanning labels, the \"nesting level\" is not correct.",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "BINARY",
+          "caption": "Convert to binary"
+        },
+        {
+          "value": "NON_ZERO_LABELS",
+          "caption": "Labelled objects (non-zero)"
+        },
+        {
+          "value": "LABELS",
+          "caption": "Labelled objects"
+        }
+      ],
+      "default": "BINARY"
+    },
+    {
+      "name": "secondProjectionValue",
+      "caption": "2nd projection value",
+      "description": "What to return as 2nd value in projection blocks (1st is the projection value)",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "ORTHOGONAL_PROJECTION",
+          "caption": "projection, orthogonal to this one"
+        },
+        {
+          "value": "THIS_PROJECTION_DIVIDED_BY_ORTHOGONAL",
+          "caption": "(this projection) / (orthogonal projection)"
+        },
+        {
+          "value": "ORTHOGONAL_PROJECTION_DIVIDED_BY_THIS",
+          "caption": "(orthogonal projection) / (current projection)"
+        }
+      ],
+      "default": "ORTHOGONAL_PROJECTION_DIVIDED_BY_THIS"
+    },
+    {
+      "name": "thirdProjectionValue",
+      "caption": "3rd projection value",
+      "description": "What to return as 3rd value in projection blocks (1st is the projection value)",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "NONE",
+          "caption": "no value (2 numbers in each block)"
+        },
+        {
+          "value": "ANGLE",
+          "caption": "the angle in degree of this projection (the value of which is returned in 1st number)"
+        },
+        {
+          "value": "INDEX",
+          "caption": "the index of this projection: 0..(number of direction)−1"
+        }
+      ],
+      "default": "NONE"
+    },
+    {
+      "name": "startDirectionAngleInDegree",
+      "caption": "Start direction angle (in degree)",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.0
+    },
+    {
+      "caption": "Number of directions (≥2)",
+      "hint": "This value must be even to calculate \"min_circumscribed_square_side\"",
+      "name": "numberOfDirections",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 64
+    },
+    {
+      "name": "visibleResult",
+      "caption": "Visible result",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "labels"
+        },
+        {
+          "value": "area"
+        },
+        {
+          "value": "perimeter"
+        },
+        {
+          "value": "all_projections"
+        },
+        {
+          "value": "selected_projection"
+        },
+        {
+          "value": "mean_projection"
+        },
+        {
+          "value": "max_projection"
+        },
+        {
+          "value": "min_projection"
+        },
+        {
+          "value": "max_size_relation"
+        },
+        {
+          "value": "min_circumscribed_square_side"
+        },
+        {
+          "value": "shape_factor"
+        },
+        {
+          "value": "compact_factor"
+        },
+        {
+          "value": "irregularity_factor"
+        },
+        {
+          "value": "nesting_level"
+        },
+        {
+          "value": "number_of_objects"
+        }
+      ],
+      "default": "labels"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.ml.training",
+  "category": "matrices.ml.training",
   "name": "Train Boost",
   "id": "11d09332-b1a8-420d-85b4-113e5d1decf0",
   "language": "java",

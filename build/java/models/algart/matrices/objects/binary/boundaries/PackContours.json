@@ -1,0 +1,34 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.objects.binary.boundaries",
+  "name": "Pack (optimize) contours",
+  "id": "00ae1e35-0ac5-477a-8ad6-f5e50b3838a1",
+  "description": "Packs contours by optimizing collinear steps.",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.boundaries.PackContours"
+  },
+  "in_ports": [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Contours: serialized array of points."
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "contours",
+      "hint": "Packed (optimized) source contours."
+    },
+    {
+      "value_type": "scalar",
+      "name": "number_of_objects",
+      "caption": "number of objects",
+      "hint": "Total number of result contours."
+    }
+  ],
+  "controls": [
+  ]
+}

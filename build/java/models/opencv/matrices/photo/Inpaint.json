@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.photo",
+  "category": "matrices.photo",
   "name": "Inpaint",
   "id": "163204e2-9516-43b1-9cc7-0cfad6edb99f",
   "language": "java",

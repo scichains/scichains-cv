@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.statistics",
+  "category": "matrices.statistics",
   "name": "Min/max information",
   "description": "Calculates minimum and maximum value at the matrix (OpenCV minMaxLoc, but without position)",
   "id": "be17a76f-dcb0-46b2-8a90-f9599b38b1d4",

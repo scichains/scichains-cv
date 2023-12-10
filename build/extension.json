@@ -3,13 +3,31 @@
   "platforms": [
     {
       "id": "7c87e960-19b7-40d3-bc8b-d904228c23d3",
-      "name": "CV",
+      "name": "CV-AlgART",
       "category": "cv",
-      "description": "Computer vision base functions, Java",
+      "description": "Computer vision base functions, AlgART",
       "technology": "jvm",
       "language": "java",
       "folders": {
-        "models": "java/models",
+        "models": "java/models/algart",
+        "resources": "java/resources"
+      },
+      "configuration": {
+        "classpath": [
+          "java/lib/${artifactId}-${version}.jar",
+          "java/lib/${artifactId}-${version}-tests.jar"
+        ]
+      }
+    },
+    {
+      "id": "97fc70a0-3e99-444b-908b-50bc9fda8de1",
+      "name": "OpenCV",
+      "category": "opencv",
+      "description": "OpenCV functions",
+      "technology": "jvm",
+      "language": "java",
+      "folders": {
+        "models": "java/models/opencv",
         "resources": "java/resources"
       },
       "configuration": {
@@ -21,9 +39,7 @@
           "java/lib/javacpp/opencv-${opencv.version}.jar",
           "java/lib/javacpp/opencv-platform-${opencv.version}.jar",
           "java/lib/javacpp/opencv-platform-gpu-${opencv.version}.jar",
-          "java/lib/jai-imageio-core-1.4.0.jar",
-          "java/lib/${artifactId}-${version}.jar",
-          "java/lib/${artifactId}-${version}-tests.jar"
+          "java/lib/jai-imageio-core-1.4.0.jar"
         ],
         "classpath_windows-x86_64": [
           "java/lib/javacpp/javacpp-${javacpp.version}-windows-x86_64.jar",

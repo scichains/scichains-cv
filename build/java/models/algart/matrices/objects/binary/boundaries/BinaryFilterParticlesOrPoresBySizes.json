@@ -1,0 +1,113 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.objects.binary.boundaries",
+  "name": "(Binary) Filter of particles/pores by sizes",
+  "id": "3653ed69-0372-4426-976b-7c89b0fbbdfa",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.boundaries.BinaryFilterParticlesOrPoresBySizes"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input",
+      "hint": "Binary input matrix"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "pixelSize",
+      "caption": "Pixel size",
+      "description": "The side of every pixel in some units, for example, in microns. All parameters of objects will be measured in this units (microns or square microns).",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "caption": "Connectivity type",
+      "name": "connectivityType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "STRAIGHT_AND_DIAGONAL",
+          "caption": "8-connectivity"
+        },
+        {
+          "value": "STRAIGHT_ONLY",
+          "caption": "4-connectivity"
+        }
+      ],
+      "default": "STRAIGHT_AND_DIAGONAL"
+    },
+    {
+      "caption": "What to find?",
+      "name": "particlesOrPores",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "PARTICLES",
+          "caption": "Particles (white objects)"
+        },
+        {
+          "value": "PORES",
+          "caption": "Pores (black objects)"
+        }
+      ],
+      "default": "PORES"
+    },
+    {
+      "caption": "What to do?",
+      "name": "mode",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "REMOVE",
+          "caption": "Remove particles / fill pores"
+        },
+        {
+          "value": "FIND",
+          "caption": "Return found particles / pores"
+        },
+        {
+          "value": "FIND_FILLED",
+          "caption": "Return filled particles / pores (without pores in them)"
+        }
+      ],
+      "default": "REMOVE"
+    },
+    {
+      "name": "maxSize",
+      "caption": "Maximal size",
+      "description": "Find only particles/pores, which size is ≤maximal size. If not specified, supposed to be +∞ (i.e. ignored). Here \"size\" means the maximum from 4 values: width=max(x)−min(x)), height=max(y)−min(y)) and two diagonal dimensions (max(x+y)−min(x+y))/√2̅, (max(x−y)−min(x−y))/√2̅.",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "name": "maxArea",
+      "caption": "Maximal area",
+      "description": "Find only particles/pores, which area is ≤maximal area. If not specified, supposed to be +∞ (i.e. ignored). Here \"area\" means the number of pixels inside the boundary of a particle/pore (including any inner pores/particles).",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    },
+    {
+      "name": "maxPerimeter",
+      "caption": "Maximal perimeter",
+      "description": "Find only particles/pores, which perimeter is ≤maximal perimeter. If not specified, supposed to be +∞ (i.e. ignored). Here \"perimeter\" is the length of polyline between middles of segments — sides of square pixels, separating objects and background.",
+      "value_type": "String",
+      "edition_type": "value",
+      "default": ""
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.objects.binary",
+  "name": "Skeleton pixel types",
+  "description": "Classifies all pixels of the skeleton, as described in <a href=\"http://algart.net/java/AlgART/docs/api/index.html?net/algart/matrices/skeletons/SkeletonPixelClassifier.html\">SkeletonPixelClassifier</a> AlgART interface",
+  "id": "a2385b3d-bc08-41c7-8c5d-ab4a0cc66e80",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.SkeletonPixelTypes"
+  },
+  "tags": [
+    "java",
+    "images",
+    "express"
+  ],
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "skeleton",
+      "hint": "The source binary matrix. It is supposed that it is the result of skeletonization;\nin other cases, type code for some pixels will be TYPE_ILLEGAL=−5"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output",
+      "hint": "Check result: binary matrix, defined by \"Pixel type\" parameter"
+    },
+    {
+      "value_type": "mat",
+      "name": "type_codes",
+      "caption": "type codes",
+      "hint": "Integer type codes for every pixel of the skeleton:\nsee comments to AlgART method SkeletonPixelClassifier.asPixelTypes"
+    }
+  ],
+  "controls": [
+    {
+      "name": "algorithm",
+      "caption": "Algorithm, used for skeleton",
+      "description": "See comments to AlgART class BasicSkeletonPixelClassifier2D",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "OCTUPLE_THINNING",
+          "caption": "Octuple thinning"
+        },
+        {
+          "value": "QUADRUPLE_3_X_5_THINNING",
+          "caption": "Quadruple 3x5 thinning"
+        },
+        {
+          "value": "STRONG_QUADRUPLE_3_X_5_THINNING",
+          "caption": "Strong quadruple 3x5 thinning"
+        }
+      ],
+      "default": "STRONG_QUADRUPLE_3_X_5_THINNING"
+    },
+    {
+      "name": "pixelType",
+      "caption": "Detected pixel type",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "ILLEGAL",
+          "caption": "Illegal (cannot occur in correct skeleton for the specified algorithm)"
+        },
+        {
+          "value": "BRANCHE_OR_FREE_BRANCH_END",
+          "caption": "Branch, including branch end"
+        },
+        {
+          "value": "BRANCH_WITHOUT_FREE_BRANCHE_END",
+          "caption": "Branch, but not a free branch end"
+        },
+        {
+          "value": "NODE_OR_ISOLATED",
+          "caption": "Node or isolated"
+        },
+        {
+          "value": "NODE_OR_ISOLATED_OR_FREE_BRANCH_END",
+          "caption": "Node, isolated or free branch end"
+        },
+        {
+          "value": "USUAL_NODE",
+          "caption": "Node"
+        },
+        {
+          "value": "USUAL_BRANCH",
+          "caption": "Normal branch pixel (only 2 neighbours)"
+        },
+        {
+          "value": "ATTACHING_BRANCH",
+          "caption": "Unusual branch pixel near a node (≥3 neighbours)"
+        },
+        {
+          "value": "FREE_BRANCH_END",
+          "caption": "Free branch end"
+        },
+        {
+          "value": "ISOLATED",
+          "caption": "Isolated pixel (no neighbours)"
+        },
+        {
+          "value": "FREE_BRANCH_END_OR_ISOLATED",
+          "caption": "Free branch end or isolated"
+        }
+      ],
+      "default": "USUAL_NODE"
+    },
+    {
+      "name": "dilationSize",
+      "caption": "Dilation size",
+      "description": "If dilation size > 0, the result will be automatically dilated by circle with this diameter.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 0
+    },
+    {
+      "name": "invert",
+      "caption": "Invert check result",
+      "description": "If set, the binary result is inverted (after dilation, when dilation size > 0)",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

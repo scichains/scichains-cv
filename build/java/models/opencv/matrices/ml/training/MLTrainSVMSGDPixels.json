@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.ml.training",
+  "category": "matrices.ml.training",
   "name": "Train SVMSGD for pixels",
   "id": "1b629e5a-2218-4fab-a09c-9d969410c089",
   "language": "java",

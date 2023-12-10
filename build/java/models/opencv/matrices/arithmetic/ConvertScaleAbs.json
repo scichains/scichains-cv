@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.arithmetic",
+  "category": "matrices.arithmetic",
   "name": "ConvertScaleAbs",
   "id": "ff1fcd19-fb3b-4a2b-9767-f13609eab641",
   "language": "java",

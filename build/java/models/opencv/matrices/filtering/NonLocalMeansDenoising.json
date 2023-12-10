@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.filtering",
+  "category": "matrices.filtering",
   "name": "Non-local Means Denoising",
   "id": "ae189322-002f-4e8b-9f22-8e94d7b66714",
   "language": "java",

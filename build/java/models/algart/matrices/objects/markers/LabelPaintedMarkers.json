@@ -1,0 +1,52 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.objects.markers",
+  "name": "Label painted markers",
+  "id": "754c383e-652a-4a9a-ad5b-da18087a5880",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.markers.LabelPaintedMarkers"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "image_with_markers"
+    },
+    {
+      "value_type": "mat",
+      "name": "image_without_markers"
+    },
+    {
+      "value_type": "numbers",
+      "name": "palette"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "labels"
+    },
+    {
+      "value_type": "numbers",
+      "name": "palette"
+    }
+  ],
+  "controls": [
+    {
+      "name": "visibleResult",
+      "caption": "Visible result",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "labels"
+        },
+        {
+          "value": "palette"
+        }
+      ],
+      "default": "labels"
+    }
+  ]
+}

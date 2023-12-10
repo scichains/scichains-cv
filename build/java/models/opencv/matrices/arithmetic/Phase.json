@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.arithmetic",
+  "category": "matrices.arithmetic",
   "name": "Phase: atan(y/x)",
   "id": "76f50670-9d7f-4edc-a6b6-9465498c8784",
   "language": "java",

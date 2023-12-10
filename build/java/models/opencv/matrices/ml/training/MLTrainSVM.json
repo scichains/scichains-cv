@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.ml.training",
+  "category": "matrices.ml.training",
   "name": "Train SVM",
   "id": "5de22b7d-f57f-44c2-9b4a-58275dd315c9",
   "language": "java",

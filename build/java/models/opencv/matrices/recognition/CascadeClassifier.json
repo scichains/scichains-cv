@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.recognition",
+  "category": "matrices.recognition",
   "name": "CascadeClassifier",
   "id": "d89bed66-7ec7-4a60-9e14-021c65c63bca",
   "language": "java",

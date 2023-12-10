@@ -1,0 +1,109 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.thresholds",
+  "name": "Smooth areas threshold",
+  "description": "<p>This function finds smooth areas: regions of the image with low value of Beucher gradient (after Gaussian blur if requested). \"Smooth areas\" are the binary result of simple theshodling of the gradient by specified threshold. To remove little noise, this binary result can be also filtered by median with circle pattern.</p><p>If some mask binary image is specified, this function removes the \"smooth areas\" that are not connected with this mask. There is a very typical mask: 1-pixel boundary of the image, helping to find \"exteral smooth background\". This mask can be created and used automatically by the flag \"Image border as mask\".",
+  "id": "66a0bd29-bdd6-4c63-8c5f-77db1cc3ee48",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.thresholds.SmoothAreasThreshold"
+  },
+  "in_ports":  [
+    {
+      "value_type": "mat",
+      "name": "input"
+    },
+    {
+      "value_type": "mat",
+      "name": "mask",
+      "hint": "If specified, retains in result only areas, intersected with this mask"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "gaussianBlurKernelSize",
+      "caption": "Gaussian blur: kernel size",
+      "description": "If zero, blur is not performed",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 5
+    },
+    {
+      "caption": "Diameter for morphological gradient",
+      "name": "gradientDiameter",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 5
+    },
+    {
+      "description": "Level 1.0 means usual morphology (usual Beucher gradient), level < 1.0 means rank morphology (rank Beucher gradient).",
+      "caption": "Gradient Level",
+      "name": "gradientLevel",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "caption": "Diameter for median smoothing (0 to disable)",
+      "name": "medianDiameter",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 9
+    },
+    {
+      "caption": "Threshold",
+      "name": "threshold",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 0.01
+    },
+    {
+      "description": "Raw (not normalized) threshold value (0..255 for bytes, 0..65535 for 16-bit etc.)",
+      "caption": "Raw threshold",
+      "name": "rawValue",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "caption": "Result type",
+      "name": "resultType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "SMOOTH_AREAS",
+          "caption": "Smooth areas are 1, edges are 0"
+        },
+        {
+          "value": "EDGES_BETWEEN_AREAS",
+          "caption": "Edges are 1, smooth areas are 0"
+        }
+      ],
+      "default": "SMOOTH_AREAS"
+    },
+    {
+      "description": "Retain smooth areas touching the image border (if the mask image is not set)",
+      "caption": "Image border as mask",
+      "name": "borderAsDefaultMask",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
+      "description": "Include the mask (if the mask image exists) or border (if the flag above is set) into resulting smooth area.",
+      "caption": "Include the mask into result",
+      "name": "includeMaskInRetained",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.objects.binary.components",
+  "name": "Scan connected binary objects",
+  "id": "65b93290-851a-4c34-a7d1-c35dcb8d2ccc",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.components.ScanConnectedObjects"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "objects"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "labels"
+    }
+  ],
+  "controls": [
+    {
+      "caption": "Connectivity type",
+      "name": "connectivityType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "STRAIGHT_AND_DIAGONAL",
+          "caption": "8-connectivity"
+        },
+        {
+          "value": "STRAIGHT_ONLY",
+          "caption": "4-connectivity"
+        }
+      ],
+      "default": "STRAIGHT_AND_DIAGONAL"
+    },
+    {
+      "name": "bitScanningAlgorithm",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "QUICKEN"
+        },
+        {
+          "value": "BREADTH_FIRST"
+        },
+        {
+          "value": "DEPTH_FIRST"
+        }
+      ],
+      "default": "QUICKEN"
+    }
+  ]
+}

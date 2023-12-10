@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.geometry",
+  "category": "matrices.geometry",
   "name": "Resize",
   "id": "9a6c0405-4a1d-457b-9c1c-3364939c7de1",
   "language": "java",

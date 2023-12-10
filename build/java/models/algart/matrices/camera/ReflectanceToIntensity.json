@@ -1,0 +1,80 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.camera",
+  "name": "Convert reflectance to intensity",
+  "id": "d495d19f-5605-4de8-b4d3-1b58d6d47cd9",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.camera.ReflectanceToIntensity"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    },
+    {
+      "value_type": "scalar",
+      "caption": "reflectance settings",
+      "name": "reflectance_settings"
+    }
+  ],
+  "controls": [
+    {
+      "name": "reflectanceSettingsFile",
+      "caption": "Reflectance settings file",
+      "description": "Existing JSON file with reflectance settings.",
+      "value_type": "String",
+      "edition_type": "file",
+      "default": ""
+    },
+    {
+      "name": "elementType",
+      "caption": "Element type of result" ,
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "boolean",
+          "caption": "boolean"
+        },
+        {
+          "value": "byte",
+          "caption": "byte"
+        },
+        {
+          "value": "short",
+          "caption": "short"
+        },
+        {
+          "value": "int",
+          "caption": "int"
+        },
+        {
+          "value": "float",
+          "caption": "float"
+        },
+        {
+          "value": "double",
+          "caption": "double"
+        }
+      ],
+      "default": "float"
+    },
+    {
+      "name": "maximalPrecision",
+      "caption": "Maximal precision",
+      "description": "If set, this function works with maximal possible accuracy. In particular, for 8-bit matrices, if works directly with \"a255\" coefficient in the settings file (when it is specified).",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false,
+      "advanced": true
+    }
+  ]
+}

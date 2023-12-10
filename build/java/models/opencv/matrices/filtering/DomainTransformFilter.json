@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.filtering",
+  "category": "matrices.filtering",
   "name": "Domain transform filter",
   "id": "8821f045-8a3d-4689-98a2-6af3e5dc381d",
   "language": "java",

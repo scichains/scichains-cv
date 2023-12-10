@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.conversions",
+  "category": "matrices.conversions",
   "name": "Convert color space",
   "id": "91890b14-4a91-4b9c-89a8-72af25390663",
   "language": "java",

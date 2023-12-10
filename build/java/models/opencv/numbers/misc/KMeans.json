@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.numbers.misc",
+  "category": "numbers.misc",
   "name": "KMeans (OpenCV)",
   "id": "08266812-594e-466e-9384-5c3a3c3db7a8",
   "language": "java",

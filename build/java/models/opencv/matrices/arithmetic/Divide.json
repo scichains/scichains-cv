@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.arithmetic",
+  "category": "matrices.arithmetic",
   "name": "Divide: x/y (elementwise)",
   "id": "25bc83f4-ec9d-4cea-a10a-56f47fd0c814",
   "language": "java",

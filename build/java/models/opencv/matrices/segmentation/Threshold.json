@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.segmentation",
+  "category": "matrices.segmentation",
   "name": "Threshold",
   "id": "2645c3c9-7c81-4dda-b278-077d7be35a8b",
   "language": "java",

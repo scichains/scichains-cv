@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.ml.prediction",
+  "category": "matrices.ml.prediction",
   "name": "ML prediction",
   "id": "29418012-c1e0-45ae-81a8-d188b9e660b5",
   "language": "java",

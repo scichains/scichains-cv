@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.geometry",
+  "category": "matrices.geometry",
   "name": "CopyMakeBorder",
   "id": "0afd2dbc-570f-4f77-8f63-364fc5d49493",
   "language": "java",

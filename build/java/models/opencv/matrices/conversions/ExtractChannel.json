@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.conversions",
+  "category": "matrices.conversions",
   "name": "Extract channel",
   "id": "96933214-2ae7-4798-a9d5-851ffcf3bb47",
   "language": "java",

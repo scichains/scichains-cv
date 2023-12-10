@@ -1,0 +1,42 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.filtering",
+  "name": "Percentile by 3x3 square",
+  "id": "3b9e07f3-cc9d-4775-8434-9909b035196e",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.filtering.Percentile3x3"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "input"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "output"
+    }
+  ],
+  "controls": [
+    {
+      "name": "percentileIndex",
+      "caption": "Percentile index (0..8)",
+      "description": "Index of percentile in square 3x3. Value 4 means the median, 8 the maximum (dilation), 0 the minimum (erosion).\nNote: this function uses simple cyclic continuation mode. Other modes and other pattern shapes (besides 3x3 square) are available in the morphology \"Percentile\" function.",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 4
+    },
+    {
+      "name": "specialAlgorithmWhenPossible",
+      "caption": "Special algorithm when possible",
+      "description": "If set, this function uses a special algorithm for a case of the percentiles 0 (erosion) 4 (median) and 8 (dilation). It improves performance.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true,
+      "advanced": true
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.conversions",
+  "category": "matrices.conversions",
   "name": "LUT (translate Mat by table)",
   "id": "ea77ab44-469f-45c8-97fe-d5b404021b8b",
   "language": "java",

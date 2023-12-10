@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.arithmetic",
+  "category": "matrices.arithmetic",
   "name": "AddWeighted: αx+βy+γ",
   "id": "901d706b-d2bf-440b-9a42-19b13041f0cd",
   "language": "java",

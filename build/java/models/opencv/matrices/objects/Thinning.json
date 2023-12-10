@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.objects",
+  "category": "matrices.objects",
   "name": "Thinning (skeletonization)",
   "id": "c8004dbd-b226-4a96-83e1-3665110ae4d5",
   "language": "java",

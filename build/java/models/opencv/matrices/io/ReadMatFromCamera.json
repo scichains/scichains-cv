@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.io",
+  "category": "matrices.io",
   "name": "Read from camera (OpenCV)",
   "id": "db85bbdd-4bdd-4973-a9db-79deb930f5fd",
   "language": "java",

@@ -1,0 +1,45 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.misc",
+  "name": "Simple search for nearest centers",
+  "description": "Builds matrix, containing the index of the nearest from several <i>centers</i> (specified by their \"positions\") for every pixel of this matrix",
+  "id": "bca736fe-ae09-481c-b084-f92c1f15fb80",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.misc.SimpleNearestCenters"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "sample_image",
+      "hint": "If specified, this image defines dimensions of the result. Content of this image is ignored."
+    },
+    {
+      "value_type": "numbers",
+      "name": "positions",
+      "hint": "Positions of several points at the plane, named \"centers\", numbered from 1"
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "mat",
+      "name": "labels",
+      "hint": "Indexes of the nearest center for each pixel of the resulting matrix, numbered from 1 (zero values are impossible)"
+    }
+  ],
+  "controls": [
+    {
+      "name": "dimX",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 100
+    },
+    {
+      "name": "dimY",
+      "value_type": "int",
+      "edition_type": "value",
+      "default": 100
+    }
+  ]
+}

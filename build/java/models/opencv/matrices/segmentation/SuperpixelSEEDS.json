@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.segmentation",
+  "category": "matrices.segmentation",
   "name": "Superpixel SEEDS",
   "id": "218b889f-46dc-45a9-aade-fbceb6d09802",
   "language": "java",

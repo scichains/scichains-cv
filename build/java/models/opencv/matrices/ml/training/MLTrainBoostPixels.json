@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.ml.training",
+  "category": "matrices.ml.training",
   "name": "Train Boost for pixels",
   "id": "6ba16b05-a7fe-4beb-a5f7-2b533d9ee196",
   "language": "java",

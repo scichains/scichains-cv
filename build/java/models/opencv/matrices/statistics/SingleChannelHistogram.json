@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.statistics",
+  "category": "matrices.statistics",
   "name": "Single-channel histogram",
   "id": "ce33c446-9c0a-47d2-b3ff-c83937c620db",
   "language": "java",

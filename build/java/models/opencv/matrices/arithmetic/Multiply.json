@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.arithmetic",
+  "category": "matrices.arithmetic",
   "name": "Multiply: x*y (elementwise)",
   "id": "8878de25-3987-4a03-9690-23201fd3897b",
   "language": "java",

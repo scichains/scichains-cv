@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.arithmetic",
+  "category": "matrices.arithmetic",
   "name": "Magnitude: sqrt(x²+y²)",
   "id": "e1b748c5-f8e0-4957-86e2-6cacaf3877d4",
   "language": "java",

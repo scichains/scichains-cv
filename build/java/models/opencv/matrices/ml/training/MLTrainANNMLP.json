@@ -1,7 +1,7 @@
 {
   "app": "executor",
   "version": "0.0.1",
-  "category": "opencv.matrices.ml.training",
+  "category": "matrices.ml.training",
   "name": "Train ANN MLP",
   "id": "277c6c83-6122-4500-bc89-3e51d5ab5d84",
   "language": "java",

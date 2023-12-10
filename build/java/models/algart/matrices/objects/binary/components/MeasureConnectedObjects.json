@@ -1,0 +1,115 @@
+{
+  "app": "executor",
+  "version": "0.0.1",
+  "category": "matrices.objects.binary.components",
+  "name": "Measuring connected objects",
+  "id": "6bd5b0df-ba34-4adf-83c3-e095f0364a0c",
+  "language": "java",
+  "java": {
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.components.MeasureConnectedObjects"
+  },
+  "in_ports": [
+    {
+      "value_type": "mat",
+      "name": "objects",
+      "hint": "Binary matrix: its connected components are interpreted as objects."
+    },
+    {
+      "value_type": "mat",
+      "name": "mask",
+      "hint": "If set, all pixels outside this mask (zeros in this image) are also interpreted as the background, in the same way as 0 values in \"objects\""
+    }
+  ],
+  "out_ports": [
+    {
+      "value_type": "numbers",
+      "name": "area"
+    },
+    {
+      "value_type": "numbers",
+      "name": "sqrt_area",
+      "hint": "Square roots from areas"
+    },
+    {
+      "value_type": "numbers",
+      "name": "boundary",
+      "hint": "Number of 8-connected boundary pixels"
+    },
+    {
+      "value_type": "numbers",
+      "name": "thickness",
+      "hint": "Relation: area / (0.5 * boundary)"
+    },
+    {
+      "value_type": "numbers",
+      "name": "shape_factor",
+      "hint": "Shape factor: sqrt(4πS)/P, S — area, P — boundary"
+    },
+    {
+      "value_type": "numbers",
+      "name": "centroid"
+    },
+    {
+      "value_type": "numbers",
+      "name": "containing_rectangle",
+      "hint": "Minimal circumscribed rectangles for every objects (with sides, parallel to coordinate axes): center x, center y, width, height (4 numbers per rectangle)"
+    }
+  ],
+  "controls": [
+    {
+      "name": "pixelSize",
+      "caption": "Pixel size",
+      "description": "The side of every pixel in some units, for example, in microns. All parameters of objects will be measured in this units (microns or square microns).",
+      "value_type": "double",
+      "edition_type": "value",
+      "default": 1.0
+    },
+    {
+      "caption": "Connectivity type",
+      "name": "connectivityType",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "STRAIGHT_AND_DIAGONAL",
+          "caption": "8-connectivity"
+        },
+        {
+          "value": "STRAIGHT_ONLY",
+          "caption": "4-connectivity"
+        }
+      ],
+      "default": "STRAIGHT_AND_DIAGONAL"
+    },
+    {
+      "name": "visibleResult",
+      "caption": "Visible result",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "area"
+        },
+        {
+          "value": "sqrt_area"
+        },
+        {
+          "value": "boundary"
+        },
+        {
+          "value": "thickness"
+        },
+        {
+          "value": "shape_factor"
+        },
+        {
+          "value": "centroid"
+        },
+        {
+          "value": "containing_rectangle"
+        }
+      ],
+      "default": "area"
+    }
+  ]
+}
