@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "category": "$$[inputs/outputs].matrices",
   "name": "Input/read from camera",
-  "tags": [
-    "input"
-  ],
   "options": {
     "behavior": {
       "input": true
