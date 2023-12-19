@@ -4,12 +4,15 @@
   "category": "matrices.derivatives",
   "name": "Hessian eigenvalues / eigenvectors",
   "description": "Calculates eigenvalues and eigenvectors of 2x2 Hessian matrix:<blockquote><table><tr><td><sup>∂²</sup>/<sub>∂x²</sub></td><td><sup>∂²</sup>/<sub>∂x∂y</sub></td></tr><tr><td><sup>∂²</sup>/<sub>∂x∂y</sub></td><td><sup>∂²</sup>/<sub>∂y²</sub></td></tr></table></blockquote><p>Eigenvalues λ₁ and λ₂ and chosen so that λ₁≥λ₂ or, if flag \"Order eigenvalues by absolute value\" is set, that |λ₁|≥|λ₂|. In comments below, the eigenvector v₁ (vx₁,vy₁) always corresponds to eigenvalue λ₁, and the eigenvector v₂ (vx₂,vy₂) always corresponds to λ₂. Note that eigenvectors of the Hessian are always orthogonal: v₁⟂v₂.<p>In addition, this function calculates λ₁⁺=max(λ₁,0), λ₂⁺=max(λ₂,0), λ₁⁻=min(λ₁,0) and λ₂⁻=min(λ₂,0). If the flag \"Order eigenvalues by absolute value\" is set, it also swaps λ₁⁺↔λ₂⁻ if |λ₁⁺|<|λ₂⁻| and swaps λ₁⁻↔λ₂⁺ if |λ₁⁻|<|λ₂⁺|, so that in the result we always have |λ₁⁺|≥|λ₂⁻| and |λ₁⁻|≥|λ₂⁺|. Note: it is obvious that, in this case, λ₁⁺≡λ₁ (if λ₁<0, λ₁⁺ is swapped with λ₂⁻=λ₂, i.e. ordered λ₁) and λ₂⁺≡0 (if λ₂>0, then λ₂⁺ is swapped with λ₁⁻=0, if λ₂<=0, then |λ₂⁺| already has minimal possible value 0 and is not swapped).",
+  "tags": [
+    "matrices"
+  ],
   "id": "d474e488-590e-4c16-b197-10f7f906877a",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.derivatives.HessianEigenValuesAndVectors"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"

@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "Unpack optimized contours",
+  "tags": [
+    "matrices"
+  ],
   "id": "6e767795-4691-4fa4-96cb-b767b5d6473c",
   "description": "Unpacks contours, packed by optimizing collinear steps. If source contours are not optimized, result will be identical to the source.",
   "language": "java",

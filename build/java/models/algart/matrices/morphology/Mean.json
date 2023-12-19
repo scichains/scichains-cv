@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.morphology",
   "name": "Mean",
+  "tags": [
+    "matrices"
+  ],
   "id": "626a3a56-a176-4655-acb1-1d8b104ea438",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.morphology.Mean"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"

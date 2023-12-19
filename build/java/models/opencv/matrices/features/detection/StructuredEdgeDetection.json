@@ -3,17 +3,20 @@
   "version": "0.0.1",
   "category": "matrices.features.detection",
   "name": "Structured edge detection",
+  "tags": [
+    "matrices"
+  ],
   "id": "df5c5870-ff29-4c07-9ae1-c8e5dc93553c",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.features.detection.StructuredEdgeDetection"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"
     }
-   ],
+  ],
   "out_ports": [
     {
       "value_type": "mat",

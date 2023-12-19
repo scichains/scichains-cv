@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "(Binary) Filter of particles/pores by sizes",
+  "tags": [
+    "matrices"
+  ],
   "id": "3653ed69-0372-4426-976b-7c89b0fbbdfa",
   "language": "java",
   "java": {

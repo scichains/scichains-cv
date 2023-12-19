@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.filtering",
   "name": "Average by 3x3 square",
+  "tags": [
+    "matrices"
+  ],
   "id": "2ad4c1ed-6666-4c88-96e5-9aca3525394b",
   "language": "java",
   "java": {

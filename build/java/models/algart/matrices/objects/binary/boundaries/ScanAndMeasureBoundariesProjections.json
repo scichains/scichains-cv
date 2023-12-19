@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "Scan/measure objects' projections by boundaries",
+  "tags": [
+    "matrices"
+  ],
   "id": "fb355541-fc8f-4eae-b083-1316dd8a1ffb",
   "language": "java",
   "java": {
@@ -57,7 +60,6 @@
       "value_type": "numbers",
       "name": "min_projection",
       "hint": "3 numbers: minimal projection, relation with its orthogonal projection and the optional angle of minimal projection (see function settings)"
-
     },
     {
       "value_type": "numbers",

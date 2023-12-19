@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.filtering",
   "name": "Fast Global Smoother filter",
+  "tags": [
+    "matrices"
+  ],
   "id": "01672473-d570-4eb0-a4f6-4bbeb8d1356c",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.filtering.FastGlobalSmootherFilter"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"
@@ -17,7 +20,7 @@
       "value_type": "mat",
       "name": "guide"
     }
-   ],
+  ],
   "out_ports": [
     {
       "value_type": "mat",

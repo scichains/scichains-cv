@@ -3,17 +3,20 @@
   "version": "0.0.1",
   "category": "matrices.video",
   "name": "BackgroundSubtractorMOG2",
+  "tags": [
+    "matrices"
+  ],
   "id": "2841e67b-da8a-47d9-bcf3-697a6105b8e3",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.video.BackgroundSubtractorMOG2"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"
     }
-   ],
+  ],
   "out_ports": [
     {
       "value_type": "mat",

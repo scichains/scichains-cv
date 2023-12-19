@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "Fill main boundary around point (binary)",
+  "tags": [
+    "matrices"
+  ],
   "id": "55cee272-ee33-46c0-8fe1-d2a583d63952",
   "language": "java",
   "java": {

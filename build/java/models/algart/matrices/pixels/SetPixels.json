@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.pixels",
   "name": "Set pixels",
+  "tags": [
+    "matrices"
+  ],
   "id": "e827bf37-dcc0-4593-840b-78551643d466",
   "language": "java",
   "java": {

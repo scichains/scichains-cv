@@ -3,17 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.thresholds",
   "name": "Several thresholds",
+  "tags": [
+    "matrices"
+  ],
   "id": "6c746190-d34a-46f9-9edf-1b84788b3440",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.thresholds.SeveralThresholds"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"

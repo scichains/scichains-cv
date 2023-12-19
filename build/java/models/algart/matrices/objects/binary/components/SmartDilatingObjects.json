@@ -4,6 +4,9 @@
   "category": "matrices.objects.binary.components",
   "name": "Smart dilating binary objects",
   "description": "Lets <b>A</b> = \"surely\" (pixels that surely belong to the objects), <b>B</b> = \"maybe\" (pixels with less probability to be objects), <b>C</b> = \"unlikely\" (pixels, that are background with high probability).\n<ul><li>We find <b>H</b> (hysteresis): objects on <b>B</b> connected with <b>A</b>, including pixels of the matrix <b>A</b> itself (<b>H</b>⊃<b>A</b>).</li><li>Then we find <b>R</b> = (dilation of <b>A</b>) <i>AND</i> <b>H</b>: pixels in <b>H</b>, which are not too far from <b>A</b>.<br>We call this operation \"smart dilation\": it can be considered as dilating of the matrix <b>A</b> \"inside\" the matrix <b>B</b>, but only withing connected components of the union <b>A</b>∪<b>B</b>.</li><li>Then, if <b>C</b> is set, we replace <b>R</b> = <b>R</b> <i>AND NOT</i> (erosion of <b>C</b>): pixels in <b>R</b>, that are deeply inside \"unlikely\" areas <b>C</b> (\"deeply\" according to erosion pattern), are removed.</li><li>The we return <b>R</b> = <b>R</b> <i>OR</i> <b>A</b>: pixels, belonging to original <b>A</b>, are never removed.</li></ul><p>All source matrices are binary.",
+  "tags": [
+    "matrices"
+  ],
   "id": "0993bb33-f3aa-46b8-9393-8644c9b83db8",
   "language": "java",
   "java": {

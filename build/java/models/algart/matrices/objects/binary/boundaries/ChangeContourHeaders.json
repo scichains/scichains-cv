@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "Change contours' headers",
+  "tags": [
+    "matrices"
+  ],
   "id": "b103493b-5e2e-4ae1-9341-562bd16ab432",
   "language": "java",
   "java": {

@@ -4,6 +4,9 @@
   "category": "matrices.misc",
   "name": "Simple search for nearest centers",
   "description": "Builds matrix, containing the index of the nearest from several <i>centers</i> (specified by their \"positions\") for every pixel of this matrix",
+  "tags": [
+    "matrices"
+  ],
   "id": "bca736fe-ae09-481c-b084-f92c1f15fb80",
   "language": "java",
   "java": {

@@ -3,16 +3,14 @@
   "version": "0.0.1",
   "category": "matrices.filtering",
   "name": "Fast eigenvalues",
+  "tags": [
+    "matrices"
+  ],
   "id": "df8e53c7-b7ea-424b-8cc5-eda72ffcf651",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.filtering.FastEigenValues"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
   "in_ports": [
     {
       "value_type": "mat",

@@ -3,17 +3,20 @@
   "version": "0.0.1",
   "category": "matrices.filtering",
   "name": "Median",
+  "tags": [
+    "matrices"
+  ],
   "id": "2c6225cf-0c9d-4e3c-976d-3588b56866ad",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.filtering.Median"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"
     }
-   ],
+  ],
   "out_ports": [
     {
       "value_type": "mat",

@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "Add contours to array",
+  "tags": [
+    "matrices"
+  ],
   "id": "3080844a-423d-40b3-83b3-bd0bd29219a8",
   "language": "java",
   "java": {

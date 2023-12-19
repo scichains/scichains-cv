@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.morphology",
   "name": "Truncated mean",
+  "tags": [
+    "matrices"
+  ],
   "id": "6000d21d-64a2-44bc-a7af-197236dcd181",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.morphology.TruncatedMean"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"

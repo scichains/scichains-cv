@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "Fill main boundary around rectangle (binary)",
+  "tags": [
+    "matrices"
+  ],
   "id": "929b5e8e-057d-4cfa-8919-20fafe7cc575",
   "language": "java",
   "java": {

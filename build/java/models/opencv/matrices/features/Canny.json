@@ -3,16 +3,14 @@
   "version": "0.0.1",
   "category": "matrices.features",
   "name": "Canny",
+  "tags": [
+    "matrices"
+  ],
   "id": "d7cb7c5b-b652-4693-bc6e-dfc19fc4179b",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.features.Canny"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
   "in_ports": [
     {
       "value_type": "mat",

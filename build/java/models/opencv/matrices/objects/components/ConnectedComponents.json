@@ -3,16 +3,14 @@
   "version": "0.0.1",
   "category": "matrices.objects.components",
   "name": "Connected components",
+  "tags": [
+    "matrices"
+  ],
   "id": "72c62449-adc0-4509-b196-ae133df4ae25",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.objects.components.ConnectedComponents"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
   "in_ports": [
     {
       "value_type": "mat",

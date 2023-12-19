@@ -4,6 +4,9 @@
   "category": "matrices.derivatives",
   "name": "Angle gradient of the vector",
   "description": "Calculates gradient vector ∇φ = (∂φ/∂<i>x</i>, ∂φ/∂<i>y</i>) for the angular coordinate φ of some vector <i>v</i>=(<i>vx</i>,<i>vy</i>). Function returns 3 matrices: main result (the magnitude of the gradient) and its components <nobr>∂φ/∂<i>x</i>, ∂φ/∂<i>y</i></nobr>.",
+  "tags": [
+    "matrices"
+  ],
   "id": "08fe7600-800f-4762-ac2c-f49337e59c39",
   "language": "java",
   "java": {

@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.filtering",
   "name": "Average by rectangle",
+  "tags": [
+    "matrices"
+  ],
   "id": "b354256c-b0ac-4964-af1e-0e8f20bd0cd4",
   "language": "java",
   "java": {

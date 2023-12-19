@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "Scan/measure objects by boundaries",
+  "tags": [
+    "matrices"
+  ],
   "id": "d3d56bdf-07d8-4e37-ae5a-482160cd6a80",
   "language": "java",
   "java": {
@@ -55,7 +58,9 @@
       "name": "containing_octagon_area",
       "caption": "containing octagon area",
       "hint": "Area of the minimal containing octagon with sides, parallel to axes and diagonals.",
-      "alias": ["circumscribed_octagon_area"]
+      "alias": [
+        "circumscribed_octagon_area"
+      ]
     },
     {
       "value_type": "numbers",

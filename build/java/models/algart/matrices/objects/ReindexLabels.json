@@ -4,16 +4,14 @@
   "category": "matrices.objects",
   "name": "Sequentially reindex labels",
   "description": "Finds all different labels in the source integer matrix and reindex them, so that the minimal existing label will be replaced with K, the next label (in increasing order) will become K+1, the next one will be translated to K+2, ..., where the base K is specified by \"Indexing base of labels\" parameter.",
+  "tags": [
+    "matrices"
+  ],
   "id": "08cc2547-1c1c-483e-80cb-36b69417a3b5",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.objects.ReindexLabels"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
   "in_ports": [
     {
       "value_type": "mat",

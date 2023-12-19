@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary",
   "name": "Check neighbour pixels count",
+  "tags": [
+    "matrices"
+  ],
   "id": "7e90db38-ce68-4b1c-a126-9d73a775dca0",
   "language": "java",
   "java": {

@@ -3,17 +3,20 @@
   "version": "0.0.1",
   "category": "matrices.geometry",
   "name": "Resize",
+  "tags": [
+    "matrices"
+  ],
   "id": "9a6c0405-4a1d-457b-9c1c-3364939c7de1",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.geometry.Resize"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"
     }
-   ],
+  ],
   "out_ports": [
     {
       "value_type": "mat",

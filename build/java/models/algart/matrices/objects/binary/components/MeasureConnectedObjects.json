@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.components",
   "name": "Measuring connected objects",
+  "tags": [
+    "matrices"
+  ],
   "id": "6bd5b0df-ba34-4adf-83c3-e095f0364a0c",
   "language": "java",
   "java": {

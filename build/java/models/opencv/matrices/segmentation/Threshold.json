@@ -3,22 +3,20 @@
   "version": "0.0.1",
   "category": "matrices.segmentation",
   "name": "Threshold",
+  "tags": [
+    "matrices"
+  ],
   "id": "2645c3c9-7c81-4dda-b278-077d7be35a8b",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.segmentation.Threshold"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"
     }
-   ],
+  ],
   "out_ports": [
     {
       "value_type": "mat",

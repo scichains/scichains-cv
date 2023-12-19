@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.pixels",
   "name": "Get pixels",
+  "tags": [
+    "matrices"
+  ],
   "id": "22dc2c9e-63e4-483e-8d7f-88023a5ef25b",
   "language": "java",
   "java": {

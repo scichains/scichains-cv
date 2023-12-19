@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.filtering",
   "name": "Morphology",
+  "tags": [
+    "matrices"
+  ],
   "id": "c76fd9c9-106a-4c7f-849b-b09353ec03e1",
   "language": "java",
   "java": {

@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.morphology",
   "name": "Rank morphology",
+  "tags": [
+    "matrices"
+  ],
   "id": "b73ae7e0-948a-46ed-9a70-70f37384300c",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.morphology.RankMorphology"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"

@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.io",
   "name": "Read matrix (OpenCV)",
+  "tags": [
+    "matrices"
+  ],
   "id": "e63c3f8f-1f3f-43ea-83f0-e5273f21857c",
   "language": "java",
   "java": {

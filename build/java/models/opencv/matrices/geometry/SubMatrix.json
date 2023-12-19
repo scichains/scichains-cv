@@ -3,17 +3,20 @@
   "version": "0.0.1",
   "category": "matrices.geometry",
   "name": "SubMatrix",
+  "tags": [
+    "matrices"
+  ],
   "id": "483ee1a1-59ce-4640-bd52-8e89681af8cb",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.geometry.SubMatrix"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"
     }
-   ],
+  ],
   "out_ports": [
     {
       "value_type": "mat",

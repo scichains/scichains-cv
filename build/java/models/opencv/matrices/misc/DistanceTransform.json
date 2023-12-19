@@ -3,16 +3,14 @@
   "version": "0.0.1",
   "category": "matrices.misc",
   "name": "Distance transform",
+  "tags": [
+    "matrices"
+  ],
   "id": "cae24cb7-beeb-4653-ace4-497b8df930da",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.misc.DistanceTransform"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
   "in_ports": [
     {
       "value_type": "mat",
@@ -28,7 +26,6 @@
       "value_type": "mat",
       "name": "labels"
     }
-
   ],
   "controls": [
     {

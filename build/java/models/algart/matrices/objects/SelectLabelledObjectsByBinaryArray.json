@@ -3,16 +3,14 @@
   "version": "0.0.1",
   "category": "matrices.objects",
   "name": "Select labelled objects by binary array",
+  "tags": [
+    "matrices"
+  ],
   "id": "ecac2f11-5ffe-480c-b96c-58d4c1e67faf",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.objects.SelectLabelledObjectsByBinaryArray"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
   "in_ports": [
     {
       "value_type": "mat",

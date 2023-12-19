@@ -3,17 +3,20 @@
   "version": "0.0.1",
   "category": "matrices.recognition",
   "name": "CascadeClassifier",
+  "tags": [
+    "matrices"
+  ],
   "id": "d89bed66-7ec7-4a60-9e14-021c65c63bca",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.recognition.CascadeClassifier"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"
     }
-   ],
+  ],
   "out_ports": [
     {
       "value_type": "numbers",

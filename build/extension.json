@@ -23,6 +23,9 @@
       "id": "97fc70a0-3e99-444b-908b-50bc9fda8de1",
       "name": "OpenCV",
       "category": "opencv",
+      "tags": [
+        "opencv"
+      ],
       "description": "OpenCV functions",
       "technology": "jvm",
       "language": "java",

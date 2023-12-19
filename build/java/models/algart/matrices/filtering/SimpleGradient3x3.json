@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.filtering",
   "name": "Simple gradient by 3x3 cross",
+  "tags": [
+    "matrices"
+  ],
   "id": "6eb767aa-8b02-495f-aa56-1f5c9f10a7f6",
   "language": "java",
   "java": {

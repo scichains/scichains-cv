@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.markers",
   "name": "Paint labelled objects",
+  "tags": [
+    "matrices"
+  ],
   "id": "f091c447-0402-4da8-867f-15c276661c8c",
   "language": "java",
   "java": {

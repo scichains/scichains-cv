@@ -3,16 +3,14 @@
   "version": "0.0.1",
   "category": "matrices.misc",
   "name": "Test border pixels",
+  "tags": [
+    "matrices"
+  ],
   "id": "269c6906-7c25-494b-b93a-b8170b327adb",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.misc.TestBorderPixels"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
   "in_ports": [
     {
       "value_type": "mat",

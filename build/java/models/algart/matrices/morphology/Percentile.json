@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.morphology",
   "name": "Percentile",
+  "tags": [
+    "matrices"
+  ],
   "id": "e6d44d06-d361-431d-902d-a2289d44819c",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.morphology.Percentile"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"

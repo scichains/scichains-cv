@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.camera",
   "name": "Convert reflectance to intensity",
+  "tags": [
+    "matrices"
+  ],
   "id": "d495d19f-5605-4de8-b4d3-1b58d6d47cd9",
   "language": "java",
   "java": {
@@ -36,7 +39,7 @@
     },
     {
       "name": "elementType",
-      "caption": "Element type of result" ,
+      "caption": "Element type of result",
       "value_type": "String",
       "edition_type": "enum",
       "items": [

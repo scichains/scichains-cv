@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.features",
   "name": "Corner eigenvalues and eigenvectors",
+  "tags": [
+    "matrices"
+  ],
   "id": "b279183c-43d2-435d-9a81-30acfc6c09fe",
   "language": "java",
   "java": {

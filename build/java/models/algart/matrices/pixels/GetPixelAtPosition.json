@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.pixels",
   "name": "Get pixel(s) at specified position(s)",
+  "tags": [
+    "matrices"
+  ],
   "id": "0bbd26f8-310b-4b8b-9966-8ee5071c73bb",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.pixels.GetPixelAtPosition"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"

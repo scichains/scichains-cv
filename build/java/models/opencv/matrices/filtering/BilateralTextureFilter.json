@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.filtering",
   "name": "Bilateral texture filter",
+  "tags": [
+    "matrices"
+  ],
   "id": "ab832d9a-10a0-4423-9835-b2e42732b3b8",
   "language": "java",
   "java": {

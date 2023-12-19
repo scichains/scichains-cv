@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.drawing",
   "name": "Draw (infinite) straight(s)",
+  "tags": [
+    "matrices"
+  ],
   "id": "f97d9d69-3559-4ddc-ad67-ac8a413c5376",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.drawing.DrawStraight"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"

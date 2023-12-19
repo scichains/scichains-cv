@@ -4,16 +4,14 @@
   "category": "matrices.objects",
   "name": "Labels' boundaries",
   "description": "Finds (binary) boundaries between labelled objects and (if exists) background areas.",
+  "tags": [
+    "matrices"
+  ],
   "id": "dd2cd2dc-94dd-45ba-bf63-b890aa42f171",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.objects.LabelsBoundaries"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
   "in_ports": [
     {
       "value_type": "mat",

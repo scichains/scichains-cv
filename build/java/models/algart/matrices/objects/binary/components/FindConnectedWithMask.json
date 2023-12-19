@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.components",
   "name": "Find binary objects, connected with mask",
+  "tags": [
+    "matrices"
+  ],
   "id": "9fe09213-6944-43ee-8a24-ebf39b0ddfaa",
   "language": "java",
   "java": {

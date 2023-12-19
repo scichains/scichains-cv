@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects",
   "name": "Filter of particles/pores by sizes",
+  "tags": [
+    "matrices"
+  ],
   "id": "a9eaad6c-05eb-432e-8960-a5cd65e61b8f",
   "language": "java",
   "java": {

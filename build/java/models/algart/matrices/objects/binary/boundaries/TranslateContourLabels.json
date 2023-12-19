@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "Translate contours' labels",
+  "tags": [
+    "matrices"
+  ],
   "id": "7f454bdd-1fae-4a0a-9867-0aa3f0ca5a91",
   "language": "java",
   "java": {

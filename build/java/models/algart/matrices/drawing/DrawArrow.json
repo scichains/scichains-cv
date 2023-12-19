@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.drawing",
   "name": "Draw arrow",
+  "tags": [
+    "matrices"
+  ],
   "id": "a1ebe0fd-c9c5-43de-8d30-d3bcf57f953d",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.drawing.DrawArrow"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"

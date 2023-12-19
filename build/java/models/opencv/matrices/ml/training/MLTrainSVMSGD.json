@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.ml.training",
   "name": "Train SVMSGD",
+  "tags": [
+    "matrices"
+  ],
   "id": "5fc5bec8-539f-4615-9092-21370b0aee82",
   "language": "java",
   "java": {

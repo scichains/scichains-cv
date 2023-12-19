@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "Get contour from array",
+  "tags": [
+    "matrices"
+  ],
   "id": "2879276d-390e-4710-bb42-cf3fc068e939",
   "language": "java",
   "java": {

@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.filtering",
   "name": "Percentile by 3x3 square",
+  "tags": [
+    "matrices"
+  ],
   "id": "3b9e07f3-cc9d-4775-8434-9909b035196e",
   "language": "java",
   "java": {

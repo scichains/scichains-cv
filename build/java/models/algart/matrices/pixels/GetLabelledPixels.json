@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.pixels",
   "name": "Get labelled pixels",
+  "tags": [
+    "matrices"
+  ],
   "id": "b3e8070e-f40f-4a21-8d98-d3d6b4f5c9b6",
   "description": "Extracts all pixels with non-zero labels and returns pixels and/or labels in a number array.",
   "language": "java",

@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.arithmetic",
   "name": "Divide: x/y (elementwise)",
+  "tags": [
+    "matrices"
+  ],
   "id": "25bc83f4-ec9d-4cea-a10a-56f47fd0c814",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.arithmetic.Divide"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "x"

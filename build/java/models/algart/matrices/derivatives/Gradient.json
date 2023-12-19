@@ -4,12 +4,15 @@
   "category": "matrices.derivatives",
   "name": "Gradient",
   "description": "Calculates gradient vector ∇<i>z</i> = (∂<i>z</i>/∂<i>x</i>, ∂<i>z</i>/∂<i>y</i>) for all matrix channels <i>z</i>=<i>z</i>(<i>x</i>,<i>y</i>). If the matrix is not single-channel, the results for all channels are combined by \"Metric of combining channels\". Function returns 3 matrices: main result (the magnitude of the gradient) and its components <nobr>∂<i>z</i>/∂<i>x</i>, ∂<i>z</i>/∂<i>y</i></nobr>.",
+  "tags": [
+    "matrices"
+  ],
   "id": "bb5769d0-ddd5-4409-b203-8bf9153dac6f",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.derivatives.Gradient"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"

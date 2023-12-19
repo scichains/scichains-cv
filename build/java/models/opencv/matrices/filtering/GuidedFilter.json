@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.filtering",
   "name": "Guided filter",
+  "tags": [
+    "matrices"
+  ],
   "id": "62780b44-0d86-4981-a7e1-81b13737aa9e",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.filtering.GuidedFilter"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"
@@ -17,7 +20,7 @@
       "value_type": "mat",
       "name": "guide"
     }
-   ],
+  ],
   "out_ports": [
     {
       "value_type": "mat",

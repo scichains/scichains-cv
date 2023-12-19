@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.drawing",
   "name": "Draw contours",
+  "tags": [
+    "matrices"
+  ],
   "id": "f33e6de1-925e-4779-85dd-5342d1899e45",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.drawing.DrawContours"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "numbers",
       "name": "contours",

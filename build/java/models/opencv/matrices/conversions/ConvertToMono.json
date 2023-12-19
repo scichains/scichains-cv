@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.conversions",
   "name": "Convert to monochrome",
+  "tags": [
+    "matrices"
+  ],
   "id": "1a958744-75b2-4668-8fa9-ed2597314607",
   "language": "java",
   "java": {

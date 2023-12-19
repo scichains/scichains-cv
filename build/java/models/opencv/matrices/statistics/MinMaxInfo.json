@@ -4,12 +4,15 @@
   "category": "matrices.statistics",
   "name": "Min/max information",
   "description": "Calculates minimum and maximum value at the matrix (OpenCV minMaxLoc, but without position)",
+  "tags": [
+    "matrices"
+  ],
   "id": "be17a76f-dcb0-46b2-8a90-f9599b38b1d4",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.statistics.MinMaxInfo"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"

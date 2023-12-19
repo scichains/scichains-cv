@@ -3,16 +3,14 @@
   "version": "0.0.1",
   "category": "matrices.filtering",
   "name": "Gaussian blur",
+  "tags": [
+    "matrices"
+  ],
   "id": "233dae26-dcb7-4d93-979f-95be101461bd",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.filtering.GaussianBlur"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
   "in_ports": [
     {
       "value_type": "mat",

@@ -4,12 +4,15 @@
   "category": "matrices.thresholds",
   "name": "Smooth areas threshold",
   "description": "<p>This function finds smooth areas: regions of the image with low value of Beucher gradient (after Gaussian blur if requested). \"Smooth areas\" are the binary result of simple theshodling of the gradient by specified threshold. To remove little noise, this binary result can be also filtered by median with circle pattern.</p><p>If some mask binary image is specified, this function removes the \"smooth areas\" that are not connected with this mask. There is a very typical mask: 1-pixel boundary of the image, helping to find \"exteral smooth background\". This mask can be created and used automatically by the flag \"Image border as mask\".",
+  "tags": [
+    "matrices"
+  ],
   "id": "66a0bd29-bdd6-4c63-8c5f-77db1cc3ee48",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.thresholds.SmoothAreasThreshold"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"

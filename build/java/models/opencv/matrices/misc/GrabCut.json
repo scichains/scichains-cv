@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.misc",
   "name": "GrabCut",
+  "tags": [
+    "matrices"
+  ],
   "id": "5daca6a8-09e2-4b25-9a57-b5f8c5809d43",
   "language": "java",
   "java": {

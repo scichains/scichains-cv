@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "Fill pores (binary)",
+  "tags": [
+    "matrices"
+  ],
   "id": "8ddf5815-362e-418d-9c74-b154edf72801",
   "language": "java",
   "java": {

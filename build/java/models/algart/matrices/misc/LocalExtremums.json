@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.misc",
   "name": "Local extremums",
+  "tags": [
+    "matrices"
+  ],
   "id": "778dfd40-e087-40af-976f-ceae3514d4dc",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.misc.LocalExtremums"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input",

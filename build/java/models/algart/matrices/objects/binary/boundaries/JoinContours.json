@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "Join contours",
+  "tags": [
+    "matrices"
+  ],
   "id": "772741cb-20a2-4ac4-b227-6447e3195907",
   "description": "Joins all contours, having the same label and common points.<br>Note: frame ID is removed from the resulting newly created (joined) contours, because the function is typically used for joining contours from <i>different</i> frames. For contours, that are not joined with anything and are simply copied into result, existing frame ID is preserved.",
   "language": "java",

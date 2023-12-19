@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.misc",
   "name": "Selector",
+  "tags": [
+    "matrices"
+  ],
   "id": "3a0711e9-70b2-4b5a-8465-6daa75e4ac34",
   "language": "java",
   "java": {
@@ -16,52 +19,72 @@
     {
       "value_type": "mat",
       "name": "m0",
-      "alias": ["input_1"]
+      "alias": [
+        "input_1"
+      ]
     },
     {
       "value_type": "mat",
       "name": "m1",
-      "alias": ["input_2"]
+      "alias": [
+        "input_2"
+      ]
     },
     {
       "value_type": "mat",
       "name": "m2",
-      "alias": ["input_3"]
+      "alias": [
+        "input_3"
+      ]
     },
     {
       "value_type": "mat",
       "name": "m3",
-      "alias": ["input_4"]
+      "alias": [
+        "input_4"
+      ]
     },
     {
       "value_type": "mat",
       "name": "m4",
-      "alias": ["input_5"]
+      "alias": [
+        "input_5"
+      ]
     },
     {
       "value_type": "mat",
       "name": "m5",
-      "alias": ["input_6"]
+      "alias": [
+        "input_6"
+      ]
     },
     {
       "value_type": "mat",
       "name": "m6",
-      "alias": ["input_7"]
+      "alias": [
+        "input_7"
+      ]
     },
     {
       "value_type": "mat",
       "name": "m7",
-      "alias": ["input_8"]
+      "alias": [
+        "input_8"
+      ]
     },
     {
       "value_type": "mat",
       "name": "m8",
-      "alias": ["input_9"]
+      "alias": [
+        "input_9"
+      ]
     },
     {
       "value_type": "mat",
       "name": "m9",
-      "alias": ["input_10"]
+      "alias": [
+        "input_10"
+      ]
     }
   ],
   "out_ports": [

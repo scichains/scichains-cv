@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "numbers.misc",
   "name": "KMeans (OpenCV)",
+  "tags": [
+    "numbers"
+  ],
   "id": "08266812-594e-466e-9384-5c3a3c3db7a8",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.numbers.misc.KMeans"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "numbers",
       "name": "input",
@@ -19,7 +22,7 @@
       "name": "labels",
       "hint": "[Optional] Initial integer labels"
     }
-   ],
+  ],
   "out_ports": [
     {
       "value_type": "numbers",

@@ -4,16 +4,14 @@
   "category": "matrices.objects.binary",
   "name": "Skeleton pixel types",
   "description": "Classifies all pixels of the skeleton, as described in <a href=\"http://algart.net/java/AlgART/docs/api/index.html?net/algart/matrices/skeletons/SkeletonPixelClassifier.html\">SkeletonPixelClassifier</a> AlgART interface",
+  "tags": [
+    "matrices"
+  ],
   "id": "a2385b3d-bc08-41c7-8c5d-ab4a0cc66e80",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.objects.binary.SkeletonPixelTypes"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
   "in_ports": [
     {
       "value_type": "mat",

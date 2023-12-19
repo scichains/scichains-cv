@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "Fill contours",
+  "tags": [
+    "matrices"
+  ],
   "id": "f4b27f82-3754-411e-8ba4-6c7f1f035e3c",
   "description": "Fills every contour by the corresponding label.",
   "language": "java",

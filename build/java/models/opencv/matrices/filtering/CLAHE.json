@@ -4,16 +4,14 @@
   "category": "matrices.filtering",
   "name": "CLAHE (Contrast Limited Adaptive Histogram Equalization)",
   "description": "Splits up the image into tiles and equalizes those locally, then stitches them together (Bilinear interpolation is applied on the tile borders)",
+  "tags": [
+    "matrices"
+  ],
   "id": "88aa3bd0-76c1-4e46-ab4e-b03d00b8f715",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.filtering.CLAHE"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
   "in_ports": [
     {
       "value_type": "mat",

@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.conversions",
   "name": "Apply colormap to grayscale image",
+  "tags": [
+    "matrices"
+  ],
   "id": "3c7ea762-2155-4465-a2bb-238bd3041ed3",
   "language": "java",
   "java": {

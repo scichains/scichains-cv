@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.ml.training",
   "name": "Train SVM for pixels",
+  "tags": [
+    "matrices"
+  ],
   "id": "f7ccb4b7-c038-4355-8573-ed5870ba58e6",
   "language": "java",
   "java": {

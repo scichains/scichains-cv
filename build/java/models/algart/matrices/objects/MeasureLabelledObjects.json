@@ -4,16 +4,14 @@
   "category": "matrices.objects",
   "name": "Measuring labelled objects",
   "description": "Measure objects, specified by the &quot;labels&quot; input map (usually 31-bit int): all pixels with the value 1 belong to the object #1, all pixels with the value 2 belong to the object #1, etc. Note: <b>the pixels with value 0 are ignored</b> (they are considered to be a background)",
+  "tags": [
+    "matrices"
+  ],
   "id": "ff2f2763-d8ec-4848-a71a-3a8bda41d9e3",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.objects.MeasureLabelledObjects"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
   "in_ports": [
     {
       "value_type": "mat",

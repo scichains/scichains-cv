@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.segmentation",
   "name": "Watershed",
+  "tags": [
+    "matrices"
+  ],
   "id": "829bbf7e-872a-4935-9908-8e8826c343f7",
   "language": "java",
   "java": {

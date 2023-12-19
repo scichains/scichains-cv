@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.markers",
   "name": "Label painted markers",
+  "tags": [
+    "matrices"
+  ],
   "id": "754c383e-652a-4a9a-ad5b-da18087a5880",
   "language": "java",
   "java": {

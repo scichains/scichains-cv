@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.statistics",
   "name": "Single-channel histogram",
+  "tags": [
+    "matrices"
+  ],
   "id": "ce33c446-9c0a-47d2-b3ff-c83937c620db",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.statistics.SingleChannelHistogram"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"

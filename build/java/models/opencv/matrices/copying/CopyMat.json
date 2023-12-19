@@ -4,6 +4,9 @@
   "category": "matrices.copying",
   "name": "Copy Mat",
   "description": "Analog of simple Copy operation, but can provide better performance if the result should be OpenCV matrix (but the source is not OpenCV)",
+  "tags": [
+    "matrices"
+  ],
   "id": "bfc674c1-f8a6-472c-b0bf-25c968d87144",
   "language": "java",
   "java": {

@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects",
   "name": "Get values of first pixel at labelled objects",
+  "tags": [
+    "matrices"
+  ],
   "id": "fe84711f-dc47-444b-85af-998ec6c314e6",
   "language": "java",
   "java": {

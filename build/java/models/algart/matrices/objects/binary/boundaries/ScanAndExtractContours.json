@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "Scan objects and extract contours to array",
+  "tags": [
+    "matrices"
+  ],
   "id": "6c167335-6cfc-4b4c-b027-933aaacaedff",
   "language": "java",
   "java": {

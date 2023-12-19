@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.ml.training",
   "name": "Train ANN MLP",
+  "tags": [
+    "matrices"
+  ],
   "id": "277c6c83-6122-4500-bc89-3e51d5ab5d84",
   "language": "java",
   "java": {
@@ -145,7 +148,7 @@
     {
       "name": "hiddenLayerSizes",
       "caption": "Sizes of hidden layers",
-      "description": "Comma-separated list of hidden layer sizes, for example, \"5, 10\" or \"3\". The \"layerSizes\" parameter of OpenCV ANN_MLP class is built from this list by adding the number of columns N (block length) of \"samples\" array into the beginning and number of columns M (block length) of \"training responses\" array into the end. (If \"Combined samples/responses\" flag is set, N will be equal to number of columns of  \"samples\" − 1, and M will be always equal to 1.)" ,
+      "description": "Comma-separated list of hidden layer sizes, for example, \"5, 10\" or \"3\". The \"layerSizes\" parameter of OpenCV ANN_MLP class is built from this list by adding the number of columns N (block length) of \"samples\" array into the beginning and number of columns M (block length) of \"training responses\" array into the end. (If \"Combined samples/responses\" flag is set, N will be equal to number of columns of  \"samples\" − 1, and M will be always equal to 1.)",
       "value_type": "String",
       "edition_type": "value",
       "default": ""

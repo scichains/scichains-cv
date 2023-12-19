@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "Extract/remove range of contours",
+  "tags": [
+    "matrices"
+  ],
   "id": "ab22de88-bc3b-4eeb-b0d5-2d06d06594e5",
   "language": "java",
   "java": {

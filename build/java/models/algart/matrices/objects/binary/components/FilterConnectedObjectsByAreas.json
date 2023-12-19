@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.components",
   "name": "Filter connected binary objects by areas",
+  "tags": [
+    "matrices"
+  ],
   "id": "35ba7348-56eb-401f-b8f5-7f4a4d3ecd1c",
   "language": "java",
   "java": {

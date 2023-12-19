@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.ml.training",
   "name": "Train normal Bayes classifier for pixels",
+  "tags": [
+    "matrices"
+  ],
   "id": "e2d386d1-006c-4dfd-b676-3995fc58bd68",
   "language": "java",
   "java": {

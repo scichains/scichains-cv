@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.ml.training",
   "name": "Train ANN MLP for pixels",
+  "tags": [
+    "matrices"
+  ],
   "id": "94d48196-07d6-499f-89e1-7c1eb12e17ad",
   "language": "java",
   "java": {
@@ -138,7 +141,7 @@
     {
       "name": "hiddenLayerSizes",
       "caption": "Sizes of hidden layers",
-      "description": "Comma-separated list of hidden layer sizes, for example, \"5, 10\" or \"3\". The \"layerSizes\" parameter of OpenCV ANN_MLP class is built from this list by adding the number of channels N of \"samples\" matrix into the beginning and number of channels M (block length) of \"training responses\" matrix into the end." ,
+      "description": "Comma-separated list of hidden layer sizes, for example, \"5, 10\" or \"3\". The \"layerSizes\" parameter of OpenCV ANN_MLP class is built from this list by adding the number of channels N of \"samples\" matrix into the beginning and number of channels M (block length) of \"training responses\" matrix into the end.",
       "value_type": "String",
       "edition_type": "value",
       "default": ""
@@ -288,9 +291,9 @@
       "edition_type": "value",
       "default": true
     },
-   {
+    {
       "caption": "Auto-test model",
-     "description": "If set, this function tests model by OpenCV predict() method of the same samples and returns the result. If \"Calculate error\" flag is set, the result of prediction overwrites result of calcError() method. If both flags are cleared, the result array stays to be not initialized.",
+      "description": "If set, this function tests model by OpenCV predict() method of the same samples and returns the result. If \"Calculate error\" flag is set, the result of prediction overwrites result of calcError() method. If both flags are cleared, the result array stays to be not initialized.",
       "name": "testPredictTrainedSamples",
       "value_type": "boolean",
       "edition_type": "value",

@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.features.detection",
   "name": "Line detection by Hough transform (probabilistic)",
+  "tags": [
+    "matrices"
+  ],
   "id": "d56fb4aa-2a55-4679-9616-476aa7dfe1a5",
   "language": "java",
   "java": {
@@ -36,7 +39,6 @@
       "default": 1.0
     },
     {
-
       "description": "Accumulator threshold parameter. Only those lines are returned that get enough votes (>threshold).",
       "name": "threshold",
       "value_type": "int",

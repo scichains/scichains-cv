@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.drawing",
   "name": "Draw labels",
+  "tags": [
+    "matrices"
+  ],
   "id": "dbeae387-8434-4abe-b547-457d2f0874cd",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.drawing.DrawLabels"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input",

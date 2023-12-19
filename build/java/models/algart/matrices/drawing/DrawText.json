@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.drawing",
   "name": "Draw text",
+  "tags": [
+    "matrices"
+  ],
   "id": "3ad39e74-01ee-4126-8bdc-7d9934fd9c4d",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.drawing.DrawText"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"

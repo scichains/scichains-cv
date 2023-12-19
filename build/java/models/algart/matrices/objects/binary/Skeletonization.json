@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary",
   "name": "Skeletonization",
+  "tags": [
+    "matrices"
+  ],
   "id": "25e7ca8f-606b-4eb0-a7ff-92b0984ddbac",
   "language": "java",
   "java": {

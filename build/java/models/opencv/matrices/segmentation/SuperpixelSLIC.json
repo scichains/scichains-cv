@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.segmentation",
   "name": "Superpixel SLIC (Simple Linear Iterative Clustering)",
+  "tags": [
+    "matrices"
+  ],
   "id": "0a8f1bdf-f4e1-4a4d-8951-e2deb82da94b",
   "language": "java",
   "java": {

@@ -4,6 +4,9 @@
   "category": "matrices.objects.binary",
   "name": "Find nearest pixels at matrix",
   "description": "For every position from the given set, this function finds one or several unit/zero pixels at the source mask",
+  "tags": [
+    "matrices"
+  ],
   "id": "9937be33-1a57-44cb-b701-11a092a7c795",
   "language": "java",
   "java": {

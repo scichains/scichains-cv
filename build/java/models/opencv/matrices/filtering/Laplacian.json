@@ -3,16 +3,14 @@
   "version": "0.0.1",
   "category": "matrices.filtering",
   "name": "Laplacian",
+  "tags": [
+    "matrices"
+  ],
   "id": "740df8bb-3590-4feb-993a-a60e9d66bb7c",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.filtering.Laplacian"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
   "in_ports": [
     {
       "value_type": "mat",

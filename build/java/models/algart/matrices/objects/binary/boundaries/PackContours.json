@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "Pack (optimize) contours",
+  "tags": [
+    "matrices"
+  ],
   "id": "00ae1e35-0ac5-477a-8ad6-f5e50b3838a1",
   "description": "Packs contours by optimizing collinear steps.",
   "language": "java",

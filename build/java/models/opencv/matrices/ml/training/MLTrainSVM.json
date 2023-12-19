@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.ml.training",
   "name": "Train SVM",
+  "tags": [
+    "matrices"
+  ],
   "id": "5de22b7d-f57f-44c2-9b4a-58275dd315c9",
   "language": "java",
   "java": {

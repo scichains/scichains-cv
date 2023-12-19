@@ -4,12 +4,15 @@
   "category": "matrices.thresholds",
   "name": "Smart hysteresis threshold",
   "description": "Combination of 3 thresholds (2 if checkSurelyBackground is false) and \"Smart dilating objects\".<br>Lets A = \"surely\" (pixels that surely belong to the objects): surelyMin&nbsp;&le;&nbsp;intensity&nbsp;&le;surelyMax.<br>Let B = \"maybe\" (pixels with less probability to be objects): hysteresisMin&nbsp;&le;&nbsp;intensity&nbsp;&le;&nbsp;hysteresisMax.<br>And let C = \"unlikely\" (pixels, that are surely <b>not</b> background); for <i>bacgkround</i> (<i>NOT</i>&nbsp;C) we have surelyBackgroundMin&nbsp;&le;&nbsp;intensity&nbsp;&le;surelyBackgroundMax. (You may use more understandable values, if you set \"Invert background\" flag; in this case, C is the set of pixels where surelyBackgroundMin&nbsp;&le;&nbsp;intensity&nbsp;&le;surelyBackgroundMax.)<br>&nbsp;<br>We find H (hysteresis): objects on B connected with A. Then we find R&nbsp;= (dilation&nbsp;of&nbsp;A&nbsp;<i>AND</i>&nbsp;H: pixels in H not too far from A. Then, if \"Check surely background\" flag is set, we replace R&nbsp;=&nbsp;R&nbsp;<i>AND</i>&nbsp;(dilation&nbsp;of&nbsp;<i>NOT</i>&nbsp;C): pixels in R that are close enough to sure background. The we return R&nbsp;=&nbsp;R&nbsp;<i>OR</i>&nbsp;A.",
+  "tags": [
+    "matrices"
+  ],
   "id": "5738d4fb-d05a-49dd-83ea-f285fc5b368f",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.thresholds.SmartHysteresisThreshold"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"

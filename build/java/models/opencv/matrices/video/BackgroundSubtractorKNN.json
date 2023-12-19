@@ -3,17 +3,20 @@
   "version": "0.0.1",
   "category": "matrices.video",
   "name": "BackgroundSubtractorKNN",
+  "tags": [
+    "matrices"
+  ],
   "id": "ebc1e2f6-8d1d-4b77-bdb9-85cfec95f1fb",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.video.BackgroundSubtractorKNN"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"
     }
-   ],
+  ],
   "out_ports": [
     {
       "value_type": "mat",

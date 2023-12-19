@@ -4,6 +4,9 @@
   "category": "matrices.copying",
   "name": "Fill Mat with constant color",
   "description": "Analog of simple Fill operation, but can provide better performance if the result should be OpenCV matrix",
+  "tags": [
+    "matrices"
+  ],
   "id": "b251471a-ba1d-4f57-81eb-5a6a70b60e05",
   "language": "java",
   "java": {

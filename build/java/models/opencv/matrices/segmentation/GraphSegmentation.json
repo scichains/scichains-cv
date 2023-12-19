@@ -3,17 +3,20 @@
   "version": "0.0.1",
   "category": "matrices.segmentation",
   "name": "Graph segmentation",
+  "tags": [
+    "matrices"
+  ],
   "id": "e147bcba-704d-4836-a6a5-983d84ce498c",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.segmentation.GraphSegmentation"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"
     }
-   ],
+  ],
   "out_ports": [
     {
       "value_type": "mat",

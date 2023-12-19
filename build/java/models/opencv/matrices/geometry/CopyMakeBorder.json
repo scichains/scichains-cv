@@ -3,17 +3,20 @@
   "version": "0.0.1",
   "category": "matrices.geometry",
   "name": "CopyMakeBorder",
+  "tags": [
+    "matrices"
+  ],
   "id": "0afd2dbc-570f-4f77-8f63-364fc5d49493",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.geometry.CopyMakeBorder"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"
     }
-   ],
+  ],
   "out_ports": [
     {
       "value_type": "mat",

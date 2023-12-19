@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "Extract/remove contours inside the rectangle",
+  "tags": [
+    "matrices"
+  ],
   "id": "030bcba5-d420-486f-b902-6ce115db705d",
   "language": "java",
   "java": {

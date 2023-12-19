@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.derivatives",
   "name": "Derivatives",
+  "tags": [
+    "matrices"
+  ],
   "id": "c2248417-a148-4fcf-abe5-09bebc99e8d3",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.derivatives.Derivatives"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"

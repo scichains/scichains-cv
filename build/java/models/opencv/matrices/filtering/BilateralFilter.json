@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.filtering",
   "name": "Bilateral filter",
+  "tags": [
+    "matrices"
+  ],
   "id": "c7be1d62-33db-41b0-a455-9972a52fdf22",
   "language": "java",
   "java": {

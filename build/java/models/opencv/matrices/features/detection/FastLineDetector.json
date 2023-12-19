@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.features.detection",
   "name": "Fast line detector",
+  "tags": [
+    "matrices"
+  ],
   "id": "a148d4bc-09bf-4241-a6c3-2caf52a8ca46",
   "language": "java",
   "java": {
@@ -35,7 +38,6 @@
       "default": 10
     },
     {
-
       "description": "A point placed from a hypothesis line segment farther than this will be regarded as an outlier.",
       "name": "distanceThreshold",
       "value_type": "double",

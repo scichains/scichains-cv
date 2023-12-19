@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.morphology",
   "name": "Morphology transform",
+  "tags": [
+    "matrices"
+  ],
   "id": "4dcc20c7-246d-4d7b-8487-ae893fb53a8e",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.morphology.MorphologyTransform"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"

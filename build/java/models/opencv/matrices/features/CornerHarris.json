@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.features",
   "name": "Harris corner detector",
+  "tags": [
+    "matrices"
+  ],
   "id": "ebc04d33-a633-4daa-b08c-ae58eeb4fdcb",
   "language": "java",
   "java": {

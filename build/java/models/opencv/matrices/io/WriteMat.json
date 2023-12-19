@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.io",
   "name": "Write matrix (OpenCV)",
+  "tags": [
+    "matrices"
+  ],
   "id": "f0fef7b4-abe0-4ae2-b89f-6625f785dceb",
   "language": "java",
   "java": {

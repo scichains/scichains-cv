@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.components",
   "name": "Scan connected binary objects",
+  "tags": [
+    "matrices"
+  ],
   "id": "65b93290-851a-4c34-a7d1-c35dcb8d2ccc",
   "language": "java",
   "java": {

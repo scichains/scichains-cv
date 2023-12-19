@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.conversions",
   "name": "Convert precision / scale",
+  "tags": [
+    "matrices"
+  ],
   "id": "dd32d3d8-fc81-4ba8-bbd3-2931c8ebd5bd",
   "language": "java",
   "java": {

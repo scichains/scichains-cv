@@ -3,16 +3,14 @@
   "version": "0.0.1",
   "category": "matrices.filtering",
   "name": "Fast gradient (Sobel-based)",
+  "tags": [
+    "matrices"
+  ],
   "id": "f9ae5b66-5b91-4462-853d-abea243c4b2c",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.filtering.FastGradient"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
   "in_ports": [
     {
       "value_type": "mat",

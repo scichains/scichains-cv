@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.misc",
   "name": "FloodFill",
+  "tags": [
+    "matrices"
+  ],
   "id": "ff6438bb-1813-4867-a6cf-60503905d144",
   "language": "java",
   "java": {

@@ -3,16 +3,14 @@
   "version": "0.0.1",
   "category": "matrices.objects",
   "name": "Translate labels by table",
+  "tags": [
+    "matrices"
+  ],
   "id": "8f56ea3e-f3eb-469d-9d57-cfd9d363798f",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.objects.TableTranslate"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
   "in_ports": [
     {
       "value_type": "mat",

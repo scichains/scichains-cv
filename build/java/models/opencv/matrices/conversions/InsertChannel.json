@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.conversions",
   "name": "Insert channel",
+  "tags": [
+    "matrices"
+  ],
   "id": "c6a55316-77c2-4019-b9df-9892c398fdc3",
   "language": "java",
   "java": {

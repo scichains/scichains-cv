@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.features.detection",
   "name": "Circle detection by Hough transform",
+  "tags": [
+    "matrices"
+  ],
   "id": "c5b09b8b-5ae5-496c-ae1c-f8495e85d2a8",
   "language": "java",
   "java": {

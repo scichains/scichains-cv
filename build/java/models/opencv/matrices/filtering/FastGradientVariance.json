@@ -3,16 +3,14 @@
   "version": "0.0.1",
   "category": "matrices.filtering",
   "name": "Fast gradient variance",
+  "tags": [
+    "matrices"
+  ],
   "id": "58779acf-00f0-40d7-ac4f-2b338f2a1c43",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.filtering.FastGradientVariance"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
   "in_ports": [
     {
       "value_type": "mat",

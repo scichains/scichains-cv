@@ -3,16 +3,14 @@
   "version": "0.0.1",
   "category": "matrices.objects",
   "name": "Values at labelled objects",
+  "tags": [
+    "matrices"
+  ],
   "id": "edfca28a-752a-46b3-a1d8-2e0929a5ad06",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.objects.ValuesAtLabelledObjects"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
   "in_ports": [
     {
       "value_type": "mat",

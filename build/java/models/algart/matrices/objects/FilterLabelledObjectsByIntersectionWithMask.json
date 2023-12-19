@@ -3,16 +3,14 @@
   "version": "0.0.1",
   "category": "matrices.objects",
   "name": "Filter of labelled objects by intersection with mask",
+  "tags": [
+    "matrices"
+  ],
   "id": "dc46c1d7-8b97-4b6b-bc62-0bdc8bdee8d8",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.objects.FilterLabelledObjectsByIntersectionWithMask"
   },
-  "tags": [
-    "java",
-    "images",
-    "express"
-  ],
   "in_ports": [
     {
       "value_type": "mat",

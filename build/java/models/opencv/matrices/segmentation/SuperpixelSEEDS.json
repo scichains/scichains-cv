@@ -3,17 +3,20 @@
   "version": "0.0.1",
   "category": "matrices.segmentation",
   "name": "Superpixel SEEDS",
+  "tags": [
+    "matrices"
+  ],
   "id": "218b889f-46dc-45a9-aade-fbceb6d09802",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.segmentation.SuperpixelSEEDS"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"
     }
-   ],
+  ],
   "out_ports": [
     {
       "value_type": "mat",

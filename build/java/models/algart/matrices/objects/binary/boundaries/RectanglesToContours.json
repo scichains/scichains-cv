@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "Rectangles to array of contours",
+  "tags": [
+    "matrices"
+  ],
   "id": "9ca80d3f-9cfd-4da0-902c-05d6b0f8d794",
   "language": "java",
   "java": {

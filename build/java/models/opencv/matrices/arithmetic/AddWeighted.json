@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.arithmetic",
   "name": "AddWeighted: αx+βy+γ",
+  "tags": [
+    "matrices"
+  ],
   "id": "901d706b-d2bf-440b-9a42-19b13041f0cd",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.opencv.matrices.arithmetic.AddWeighted"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "x"

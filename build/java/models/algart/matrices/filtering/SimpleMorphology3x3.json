@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.filtering",
   "name": "Simple morphology by 3x3 square/cross",
+  "tags": [
+    "matrices"
+  ],
   "id": "4bae589f-42c2-4b7c-85ee-4923690b4f42",
   "language": "java",
   "java": {

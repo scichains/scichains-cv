@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.pixels",
   "name": "Pattern shape (matrix) to scalar",
+  "tags": [
+    "matrices"
+  ],
   "id": "1b7c4025-55f3-4d27-b4ef-fdc0f9a46b0e",
   "language": "java",
   "java": {

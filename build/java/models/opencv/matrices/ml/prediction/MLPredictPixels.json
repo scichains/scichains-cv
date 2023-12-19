@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.ml.prediction",
   "name": "ML prediction for pixels",
+  "tags": [
+    "matrices"
+  ],
   "id": "726fb0c3-d834-43a3-a6ef-96e58864283b",
   "language": "java",
   "java": {

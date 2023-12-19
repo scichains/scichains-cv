@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "category": "matrices.morphology",
   "name": "Percentile rank",
+  "tags": [
+    "matrices"
+  ],
   "id": "34b44c0a-8a81-42d3-99e9-8a90a2288077",
   "language": "java",
   "java": {
     "class": "net.algart.executors.modules.cv.matrices.morphology.PercentileRank"
   },
-  "in_ports":  [
+  "in_ports": [
     {
       "value_type": "mat",
       "name": "input"

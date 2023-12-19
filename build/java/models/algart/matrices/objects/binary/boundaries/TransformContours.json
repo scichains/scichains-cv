@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
   "name": "Transform contours (scale and shift)",
+  "tags": [
+    "matrices"
+  ],
   "id": "be660975-f1df-4296-9b7e-a0fd251d654a",
   "description": "Transform contours: every contour point (<i>x</i>, <i>y</i>) is replaced with ([(<i>s₁x</i>+<i>d₁</i>], [<i>s₂y</i>+<i>d₂</i>]), where [<i>a</i>] means rounding &mdash; an integer, nearest to <i>a</i> (like in <tt>Math.round</tt> Java function).",
   "language": "java",
