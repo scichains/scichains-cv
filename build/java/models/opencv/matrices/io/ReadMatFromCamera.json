@@ -4,7 +4,8 @@
   "category": "matrices.io",
   "name": "Read from camera (OpenCV)",
   "tags": [
-    "matrices"
+    "matrices",
+    "i/o"
   ],
   "id": "db85bbdd-4bdd-4973-a9db-79deb930f5fd",
   "language": "java",

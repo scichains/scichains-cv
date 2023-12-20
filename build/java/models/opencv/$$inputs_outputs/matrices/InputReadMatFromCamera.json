@@ -8,6 +8,9 @@
       "input": true
     }
   },
+  "tags": [
+    "i/o"
+  ],
   "id": "8238c847-96d8-49de-b9fc-1ae2b2e3ed28",
   "language": "java",
   "java": {
