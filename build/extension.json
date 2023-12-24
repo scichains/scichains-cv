@@ -6,6 +6,9 @@
       "name": "CV-AlgART",
       "category": "cv",
       "description": "Computer vision base functions, AlgART",
+      "tags": [
+        "$public"
+      ],
       "technology": "jvm",
       "language": "java",
       "folders": {
@@ -23,10 +26,11 @@
       "id": "97fc70a0-3e99-444b-908b-50bc9fda8de1",
       "name": "OpenCV",
       "category": "opencv",
+      "description": "OpenCV functions",
       "tags": [
+        "$public",
         "opencv"
       ],
-      "description": "OpenCV functions",
       "technology": "jvm",
       "language": "java",
       "folders": {
