@@ -30,7 +30,7 @@ import net.algart.executors.modules.core.common.matrices.MultiMatrixFilter;
 
 import java.util.Locale;
 
-public class Average3x3 extends MultiMatrixFilter {
+public final class Average3x3 extends MultiMatrixFilter {
     private boolean rounding = true;
 
     public Average3x3() {

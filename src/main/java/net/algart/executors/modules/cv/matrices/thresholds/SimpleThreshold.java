@@ -38,7 +38,7 @@ import net.algart.multimatrix.MultiMatrix;
 import java.util.Arrays;
 import java.util.Locale;
 
-public class SimpleThreshold extends MultiMatrixFilter {
+public sealed class SimpleThreshold extends MultiMatrixFilter permits SimpleThresholdAndDrawOnBackground {
     public static final String INPUT_MASK = "mask";
 
     private double min = Double.NEGATIVE_INFINITY;

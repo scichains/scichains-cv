@@ -31,7 +31,7 @@ import net.algart.executors.modules.core.common.matrices.MultiMatrixFilter;
 
 import java.util.Locale;
 
-public class AverageByRectangle extends MultiMatrixFilter {
+public final class AverageByRectangle extends MultiMatrixFilter {
     private int sizeX = 15;
     private int sizeY = 15;
     private int centerX = 0;

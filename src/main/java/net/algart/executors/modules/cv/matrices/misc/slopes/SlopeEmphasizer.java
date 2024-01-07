@@ -26,7 +26,7 @@ package net.algart.executors.modules.cv.matrices.misc.slopes;
 
 import java.util.Objects;
 
-public class SlopeEmphasizer {
+public final class SlopeEmphasizer {
     public interface ForType {
         void emphasize(Object values, int offset, int count);
 

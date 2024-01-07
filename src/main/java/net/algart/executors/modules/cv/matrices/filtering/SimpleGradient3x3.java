@@ -31,7 +31,7 @@ import net.algart.executors.modules.core.common.matrices.MultiMatrixFilter;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
-public class SimpleGradient3x3 extends MultiMatrixFilter {
+public final class SimpleGradient3x3 extends MultiMatrixFilter {
     public SimpleGradient3x3() {
     }
 

@@ -34,7 +34,7 @@ import net.algart.executors.modules.core.common.matrices.MultiMatrixFilter;
 import java.util.Locale;
 import java.util.function.Function;
 
-public class SimpleMorphology3x3 extends MultiMatrixFilter {
+public final class SimpleMorphology3x3 extends MultiMatrixFilter {
     public enum Shape {
         CROSS(matrix -> DilationByCross3x3.newInstance(matrix.elementType(), matrix.dimensions()),
                 matrix -> ErosionByCross3x3.newInstance(matrix.elementType(), matrix.dimensions())),

@@ -29,7 +29,7 @@ import net.algart.arrays.*;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
-public class MatrixBoundariesEmphasizer {
+public final class MatrixBoundariesEmphasizer {
     private static final boolean OPTIMIZE_DIRECT_ACCESSIBLE = true;
     // - should be true for good performance
 

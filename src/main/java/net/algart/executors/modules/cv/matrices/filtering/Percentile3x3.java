@@ -31,7 +31,7 @@ import net.algart.executors.modules.core.common.matrices.MultiMatrixFilter;
 
 import java.util.Locale;
 
-public class Percentile3x3 extends MultiMatrixFilter {
+public final class Percentile3x3 extends MultiMatrixFilter {
     private int percentileIndex = 4;
     private boolean specialAlgorithmWhenPossible = true;
 
