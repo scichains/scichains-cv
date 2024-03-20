@@ -24,8 +24,7 @@
 
 package net.algart.executors.modules.cv.matrices.objects;
 
-import net.algart.additions.math.IntArrayAppender;
-import net.algart.additions.math.IntArrayTranslatingAppender;
+import net.algart.math.IRangeFinder.IntArrayAppender;
 import net.algart.arrays.MutableIntArray;
 
 import java.util.ArrayList;

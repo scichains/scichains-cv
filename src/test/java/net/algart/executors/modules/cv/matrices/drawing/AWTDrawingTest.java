@@ -24,9 +24,9 @@
 
 package net.algart.executors.modules.cv.matrices.drawing;
 
-import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.api.data.SMat;
-import net.algart.executors.modules.core.common.io.FileOperation;
+import net.algart.executors.modules.opencv.util.O2SMat;
+import net.algart.external.MatrixIO;
 import org.bytedeco.opencv.global.opencv_imgcodecs;
 
 import javax.imageio.ImageIO;
@@ -67,7 +67,7 @@ public final class AWTDrawingTest {
         System.out.printf("Center pixel in BufferedImage (getRGB): 0x%X%n",
                 bufferedImage.getRGB((int) drawEllipse.getX(), (int) drawEllipse.getY()));
         System.out.printf("Writing %s%n", fileName);
-        ImageIO.write(result, FileOperation.extension(fileName, "png"), new File(fileName));
+        ImageIO.write(result, MatrixIO.extension(fileName, "png"), new File(fileName));
         SMat image = SMat.valueOf(bufferedImage);
         System.out.printf("Corner pixel in MultiMatrix (getPixel): %s%n", image.toMultiMatrix2D().getPixel(0, 0));
         System.out.printf("Center pixel in MultiMatrix (getPixel): %s%n",

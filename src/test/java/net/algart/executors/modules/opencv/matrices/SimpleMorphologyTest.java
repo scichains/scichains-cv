@@ -26,7 +26,7 @@ package net.algart.executors.modules.opencv.matrices;
 
 
 import net.algart.arrays.*;
-import net.algart.external.ExternalAlgorithmCaller;
+import net.algart.external.MatrixIO;
 import net.algart.math.IPoint;
 import net.algart.math.patterns.Patterns;
 import net.algart.math.patterns.UniformGridPattern;
@@ -108,14 +108,14 @@ public final class SimpleMorphologyTest {
         t2 = System.nanoTime();
         System.out.printf("Morphology: %.3f ms%n", (t2 - t1) * 1e-6);
         opencv_imgcodecs.imwrite(folder.resolve("dilation" + ptnRadius + ".png").toString(), dilationMat);
-        ExternalAlgorithmCaller.writeImage(folder.resolve("algart_dilation" + ptnRadius + ".png").toFile(),
+        MatrixIO.writeImage(folder.resolve("algart_dilation" + ptnRadius + ".png"),
                 Collections.singletonList(dilationMatrix));
     }
 
     private void testMedian(Mat grayMat) throws IOException {
         final Mat medianMat = new Mat(grayMat.rows(), grayMat.cols(), opencv_core.CV_8UC1);
         final Matrix<? extends PArray> m = asMatrix(grayMat);
-        ExternalAlgorithmCaller.writeImage(folder.resolve("algart_gray.png").toFile(), Collections.singletonList(m));
+        MatrixIO.writeImage(folder.resolve("algart_gray.png"), Collections.singletonList(m));
         final RankMorphology rankMorphology = BasicRankMorphology.getInstance(
                 context, 0.5, RankPrecision.BITS_8);
         System.out.println("OpenCV median...");
@@ -137,7 +137,7 @@ public final class SimpleMorphologyTest {
         t2 = System.nanoTime();
         System.out.printf("RankMorphology: %.3f ms%n", (t2 - t1) * 1e-6);
         opencv_imgcodecs.imwrite(folder.resolve("median" + ptnRadius + ".png").toString(), medianMat);
-        ExternalAlgorithmCaller.writeImage(folder.resolve("algart_median" + ptnRadius + ".png").toFile(),
+        MatrixIO.writeImage(folder.resolve("algart_median" + ptnRadius + ".png"),
                 Collections.singletonList(medianMatrix));
     }
 

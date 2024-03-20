@@ -24,17 +24,18 @@
 
 package net.algart.executors.modules;
 
-import net.algart.executors.modules.opencv.util.O2SMat;
-import net.algart.external.ExternalAlgorithmCaller;
-import net.algart.multimatrix.MultiMatrix;
 import net.algart.executors.api.data.SMat;
 import net.algart.executors.modules.core.matrices.conversions.ChangePrecision;
+import net.algart.executors.modules.opencv.util.O2SMat;
+import net.algart.external.MatrixIO;
+import net.algart.multimatrix.MultiMatrix;
 import org.bytedeco.opencv.global.opencv_core;
 import org.bytedeco.opencv.global.opencv_imgcodecs;
 import org.bytedeco.opencv.opencv_core.Mat;
 
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 
 public final class ChangePrecisionTest {
@@ -43,15 +44,15 @@ public final class ChangePrecisionTest {
             System.out.printf("Usage: %s source_image elementType%n", ChangePrecisionTest.class.getName());
             return;
         }
-        final File sourceFile = new File(args[0]);
+        final Path sourceFile = Paths.get(args[0]);
         final String elementType = args[1];
-        MultiMatrix image = MultiMatrix.valueOf2DRGBA(ExternalAlgorithmCaller.readImage(sourceFile));
+        MultiMatrix image = MultiMatrix.valueOf2DRGBA(MatrixIO.readImage(sourceFile));
         SMat m;
         Mat mat;
         try (ChangePrecision cc = new ChangePrecision()) {
             cc.setElementType(elementType);
             image = cc.process(image);
-            ExternalAlgorithmCaller.writeImage(new File(sourceFile + "." + elementType + ".aa.png"),
+            MatrixIO.writeImage(Paths.get(sourceFile + "." + elementType + ".aa.png"),
                     image.allChannelsInRGBAOrder());
             m = new SMat();
             m.setTo(image);
@@ -65,7 +66,7 @@ public final class ChangePrecisionTest {
             cc.setElementType(byte.class);
             image = cc.process(image);
         }
-        ExternalAlgorithmCaller.writeImage(new File(sourceFile + ".aa.byte.png")
+        MatrixIO.writeImage(Paths.get(sourceFile + ".aa.byte.png")
             , image.allChannelsInRGBAOrder());
         m.setTo(image);
         mat = O2SMat.toMat(m);

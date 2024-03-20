@@ -24,18 +24,20 @@
 
 package net.algart.executors.modules.util;
 
-import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.api.data.SMat;
-import net.algart.external.ExternalAlgorithmCaller;
+import net.algart.executors.modules.opencv.util.O2SMat;
+import net.algart.external.MatrixIO;
 import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;
 import org.bytedeco.opencv.global.opencv_imgcodecs;
-import org.bytedeco.opencv.opencv_core.*;
+import org.bytedeco.opencv.opencv_core.Mat;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public final class MatrixTypeConversionsTest {
     public static void main(String[] args) throws IOException {
@@ -43,15 +45,15 @@ public final class MatrixTypeConversionsTest {
             System.out.printf("Usage: %s source_image_file%n", MatrixTypeConversionsTest.class.getName());
             return;
         }
-        File sourceFile = new File(args[0]);
-        MultiMatrix2D multiMatrix = MultiMatrix.valueOf2DRGBA(ExternalAlgorithmCaller.readImage(sourceFile));
+        Path sourceFile = Paths.get(args[0]);
+        MultiMatrix2D multiMatrix = MultiMatrix.valueOf2DRGBA(MatrixIO.readImage(sourceFile));
         System.out.printf("Loaded %s%n", multiMatrix);
         final SMat m = SMat.valueOf(multiMatrix);
 
         multiMatrix = m.toMultiMatrix2D();
         System.out.printf("-> port -> multi-matrix: %s%n", multiMatrix);
-        ExternalAlgorithmCaller.writeImage(
-            new File(sourceFile + ".port2mm.png"), multiMatrix.allChannelsInRGBAOrder());
+        MatrixIO.writeImage(
+            Paths.get(sourceFile + ".port2mm.png"), multiMatrix.allChannelsInRGBAOrder());
 
         final Mat mat = O2SMat.toMat(m);
         System.out.printf("-> port -> mat: %s%n", multiMatrix);
@@ -64,7 +66,7 @@ public final class MatrixTypeConversionsTest {
         SMat tempPort = SMat.valueOf(bufferedImage);
         multiMatrix = tempPort.toMultiMatrix2D();
         System.out.printf("-> port -> BufferedImage -> port -> multi-matrix: %s%n", multiMatrix);
-        ExternalAlgorithmCaller.writeImage(
-            new File(sourceFile + ".bb2port2mm.png"), multiMatrix.allChannelsInRGBAOrder());
+        MatrixIO.writeImage(
+            Paths.get(sourceFile + ".bb2port2mm.png"), multiMatrix.allChannelsInRGBAOrder());
     }
 }

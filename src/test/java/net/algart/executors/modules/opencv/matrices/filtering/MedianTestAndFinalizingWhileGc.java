@@ -29,7 +29,7 @@ import net.algart.arrays.Matrix;
 import net.algart.arrays.PArray;
 import net.algart.arrays.ShortArray;
 import net.algart.executors.modules.opencv.util.O2SMat;
-import net.algart.external.ExternalAlgorithmCaller;
+import net.algart.external.MatrixIO;
 import net.algart.math.functions.LinearFunc;
 import net.algart.multimatrix.MultiMatrix;
 import org.bytedeco.opencv.global.opencv_imgcodecs;
@@ -37,12 +37,14 @@ import org.bytedeco.opencv.opencv_core.Mat;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class MedianTestAndFinalizingWhileGc {
-    private static void test(File sourceFile, File targetFile) throws IOException {
-        final List<Matrix<? extends PArray>> image = new ArrayList<>(ExternalAlgorithmCaller.readImage(sourceFile));
+    private static void test(Path sourceFile, Path targetFile) throws IOException {
+        final List<Matrix<? extends PArray>> image = new ArrayList<>(MatrixIO.readImage(sourceFile));
         for (int i = 0; i < image.size(); i++) {
             Matrix<? extends PArray> m = image.get(i);
             m = Matrices.asFuncMatrix(LinearFunc.getInstance(0.0, 65535.0 / 255.0), ShortArray.class, m);
@@ -75,8 +77,8 @@ public final class MedianTestAndFinalizingWhileGc {
             System.out.printf("Usage: %s source_image target_image%n", Median.class.getName());
             return;
         }
-        final File sourceFile = new File(args[0]);
-        final File targetFile = new File(args[1]);
+        final Path sourceFile = Paths.get(args[0]);
+        final Path targetFile = Paths.get(args[1]);
         test(sourceFile, targetFile);
         System.gc();
         Thread.sleep(100);
