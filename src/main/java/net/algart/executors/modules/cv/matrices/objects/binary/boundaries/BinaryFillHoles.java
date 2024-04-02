@@ -30,7 +30,7 @@ import net.algart.arrays.Matrix;
 import net.algart.arrays.PArray;
 import net.algart.matrices.scanning.ConnectivityType;
 
-public final class BinaryFillPores extends BitMultiMatrixFilter {
+public final class BinaryFillHoles extends BitMultiMatrixFilter {
     private ConnectivityType connectivityType = ConnectivityType.STRAIGHT_AND_DIAGONAL;
 
     public ConnectivityType getConnectivityType() {

@@ -2,14 +2,14 @@
   "app": "executor",
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
-  "name": "Fill pores (binary)",
+  "name": "Fill holes (binary)",
   "tags": [
     "matrices"
   ],
   "id": "8ddf5815-362e-418d-9c74-b154edf72801",
   "language": "java",
   "java": {
-    "class": "net.algart.executors.modules.cv.matrices.objects.binary.boundaries.BinaryFillPores"
+    "class": "net.algart.executors.modules.cv.matrices.objects.binary.boundaries.BinaryFillHoles"
   },
   "in_ports": [
     {
