@@ -28,7 +28,6 @@ import net.algart.executors.modules.cv.matrices.objects.labels.LabelsAnalyser;
 import net.algart.executors.modules.cv.matrices.objects.markers.PaintLabelledObjects;
 import net.algart.arrays.Arrays;
 import net.algart.arrays.*;
-import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;
 import net.algart.executors.api.Executor;
 import net.algart.executors.api.ReadOnlyExecutionInput;
@@ -512,7 +511,7 @@ public final class ValuesAtLabelledObjects extends Executor implements ReadOnlyE
                     sourceMatrix.allChannels().stream() :
                     sourceMatrix.allChannels().parallelStream();
             final List<ChannelStatistics> allChannelsResults = channelStream.map(m -> {
-                final float[] array = MultiMatrix.toFloatArray(m);
+                final float[] array = Matrices.toFloatJavaArray(m);
                 PercentilePairs percentiles = channelPercentiles ?
                         new PercentilePairs(labels, cardinalities, array, lowPercentile, highPercentileCorrected) :
                         levelsPercentiles;

@@ -24,10 +24,9 @@
 
 package net.algart.executors.modules.cv.matrices.objects.binary.boundaries;
 
+import net.algart.arrays.*;
 import net.algart.executors.modules.core.common.matrices.BitMultiMatrixFilter;
-import net.algart.arrays.BitArray;
-import net.algart.arrays.Matrix;
-import net.algart.arrays.PArray;
+import net.algart.matrices.scanning.Boundary2DScanner;
 import net.algart.matrices.scanning.ConnectivityType;
 
 public final class BinaryFillHoles extends BitMultiMatrixFilter {
@@ -43,13 +42,8 @@ public final class BinaryFillHoles extends BitMultiMatrixFilter {
 
     @Override
     protected Matrix<? extends PArray> processMatrix(Matrix<? extends PArray> objects) {
-        final BoundariesScanner scanner = new BoundariesScanner(objects.cast(BitArray.class),
-                connectivityType, BoundaryType.MAIN_BOUNDARIES, false);
-        while (scanner.nextBoundary()) {
-            scanner.scanAndProcess();
-        }
-        logDebug(() -> "Filling pores in " + scanner.objectCounter() + " boundaries, "
-                + scanner.sideCounter() + " pixel sides at " + objects);
-        return scanner.getMainBuffer();
+        var result = Boundary2DScanner.fillHoles(Arrays.SMM, objects.cast(BitArray.class), connectivityType);
+        logDebug(() -> "Filling holes in " + objects);
+        return result;
     }
 }

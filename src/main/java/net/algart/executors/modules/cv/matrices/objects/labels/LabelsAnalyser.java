@@ -83,7 +83,7 @@ public final class LabelsAnalyser {
         }
         boolean labelsMustBeImmutable = labels != null;
         if (labels == null) {
-            labels = MultiMatrix.toIntArray(labelsChannel, labelsHolder);
+            labels = Matrices.toIntJavaArray(labelsHolder.quickNew(labelsChannel), labelsChannel);
         }
         if (maskMatrix != null) {
             BitArray maskArray = maskMatrix.nonZeroPixelsMatrix(false).array();
@@ -468,9 +468,9 @@ public final class LabelsAnalyser {
             for (int k = 0; k < result.length; k++) {
                 Matrix<? extends PArray> m = channels.get(k);
                 if (!forceFloat && (m.elementType() == boolean.class || m.elementType() == byte.class)) {
-                    result[k] = MultiMatrix.toByteArray(m);
+                    result[k] = Matrices.toByteJavaArray(m);
                 } else {
-                    result[k] = MultiMatrix.toFloatArray(m);
+                    result[k] = Matrices.toFloatJavaArray(m);
                 }
             }
         }

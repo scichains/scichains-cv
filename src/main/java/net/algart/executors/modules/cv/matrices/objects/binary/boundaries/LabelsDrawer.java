@@ -26,7 +26,6 @@ package net.algart.executors.modules.cv.matrices.objects.binary.boundaries;
 
 import net.algart.arrays.*;
 import net.algart.matrices.scanning.Boundary2DScanner;
-import net.algart.multimatrix.MultiMatrix;
 
 class LabelsDrawer {
     private final BoundariesScanner scanner;
@@ -45,7 +44,7 @@ class LabelsDrawer {
         this.boundaryScanner = scanner.getBoundaryScanner();
         this.dimX = (int) scannedMatrix.dimX();
         this.dimY = (int) scannedMatrix.dimY();
-        this.labels = MultiMatrix.newCompatibleIntArray(scannedMatrix);
+        this.labels = new int[scannedMatrix.size32()];
         this.brackets = new byte[labels.length];
         // - zero-filled by Java
     }
