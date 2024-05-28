@@ -2,7 +2,7 @@
   "app": "executor",
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
-  "name": "(Binary) Filter of particles/pores by sizes",
+  "name": "Filter of particles/pores by sizes (binary)",
   "tags": [
     "matrices"
   ],
