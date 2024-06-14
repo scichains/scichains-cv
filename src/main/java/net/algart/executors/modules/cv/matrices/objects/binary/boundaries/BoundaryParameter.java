@@ -124,15 +124,8 @@ public enum BoundaryParameter {
             double pixelSize) {
         switch (this) {
             case CENTROID: {
-                if (result instanceof FloatArray) {
-                    ((MutableFloatArray) result).pushFloat((float) (measurer.centroidX() * pixelSize));
-                    ((MutableFloatArray) result).pushFloat((float) (measurer.centroidY() * pixelSize));
-                } else if (result instanceof DoubleArray) {
-                    ((MutableDoubleArray) result).pushDouble(measurer.centroidX() * pixelSize);
-                    ((MutableDoubleArray) result).pushDouble(measurer.centroidY() * pixelSize);
-                } else {
-                    throw new UnsupportedOperationException("Unsupported type of " + result);
-                }
+                result.addDouble(measurer.centroidX() * pixelSize);
+                result.addDouble(measurer.centroidY() * pixelSize);
                 break;
             }
             case CONTAINING_RECTANGLE: {
@@ -140,19 +133,11 @@ public enum BoundaryParameter {
                 double minY = measurer.minY() * pixelSize;
                 double maxX = measurer.maxX() * pixelSize;
                 double maxY = measurer.maxY() * pixelSize;
-                pushRectangle(result, minX, minY, maxX, maxY);
+                addRectangle(result, minX, minY, maxX, maxY);
                 break;
             }
             default: {
-                if (result instanceof IntArray) {
-                    ((MutableIntArray) result).pushInt((int) getStatistics(measurer, pixelSize));
-                } else if (result instanceof FloatArray) {
-                    ((MutableFloatArray) result).pushFloat((float) getStatistics(measurer, pixelSize));
-                } else if (result instanceof DoubleArray) {
-                    ((MutableDoubleArray) result).pushDouble(getStatistics(measurer, pixelSize));
-                } else {
-                    throw new UnsupportedOperationException("Unsupported type of " + result);
-                }
+                result.addDouble(getStatistics(measurer, pixelSize));
                 break;
             }
         }
@@ -166,43 +151,33 @@ public enum BoundaryParameter {
         };
     }
 
-    public static void pushRectangle(MutablePNumberArray result, double minX, double minY, double maxX, double maxY) {
-        if (result instanceof FloatArray) {
-            MutableFloatArray r = (MutableFloatArray) result;
-            r.pushFloat((float) (0.5 * (minX + maxX)));
-            r.pushFloat((float) (0.5 * (minY + maxY)));
-            r.pushFloat((float) (maxX - minX));
-            r.pushFloat((float) (maxY - minY));
-        } else if (result instanceof DoubleArray) {
-            MutableDoubleArray r = (MutableDoubleArray) result;
-            r.pushDouble(0.5 * (minX + maxX));
-            r.pushDouble(0.5 * (minY + maxY));
-            r.pushDouble(maxX - minX);
-            r.pushDouble(maxY - minY);
-        } else {
-            throw new UnsupportedOperationException("Unsupported type of " + result);
-        }
+    public static void addRectangle(MutablePNumberArray result, double minX, double minY, double maxX, double maxY) {
+        Objects.requireNonNull(result, "Null result");
+        result.addDouble(0.5 * (minX + maxX));
+        result.addDouble(0.5 * (minY + maxY));
+        result.addDouble(maxX - minX);
+        result.addDouble(maxY - minY);
     }
 
-    public static void pushRectangle(float[] result, int offset, double minX, double minY, double maxX, double maxY) {
+    public static void addRectangle(float[] result, int offset, double minX, double minY, double maxX, double maxY) {
         result[offset++] = (float) (0.5 * (minX + maxX));
         result[offset++] = (float) (0.5 * (minY + maxY));
         result[offset++] = (float) (maxX - minX);
-        result[offset++] = (float) (maxY - minY);
+        result[offset] = (float) (maxY - minY);
     }
 
-    public static void pushRectangle(double[] result, int offset, double minX, double minY, double maxX, double maxY) {
+    public static void addRectangle(double[] result, int offset, double minX, double minY, double maxX, double maxY) {
         result[offset++] = 0.5 * (minX + maxX);
         result[offset++] = 0.5 * (minY + maxY);
         result[offset++] = maxX - minX;
-        result[offset++] = maxY - minY;
+        result[offset] = maxY - minY;
     }
 
-    public static void pushRectangle(double[] result, int offset, IRectangularArea r) {
+    public static void addRectangle(double[] result, int offset, IRectangularArea r) {
         result[offset++] = 0.5 * ((double) r.minX() + (double) r.maxX());
         result[offset++] = 0.5 * ((double) r.minY() + (double) r.maxY());
         result[offset++] = r.sizeX();
-        result[offset++] = r.sizeY();
+        result[offset] = r.sizeY();
     }
 
     public static RectangularArea getRectangle(double[] array, int offset) {

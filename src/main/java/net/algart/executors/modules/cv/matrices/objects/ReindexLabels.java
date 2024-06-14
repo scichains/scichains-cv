@@ -24,9 +24,7 @@
 
 package net.algart.executors.modules.cv.matrices.objects;
 
-import net.algart.arrays.JArrays;
-import net.algart.arrays.Matrices;
-import net.algart.arrays.SimpleMemoryModel;
+import net.algart.arrays.*;
 import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;
 import net.algart.executors.modules.core.common.numbers.IndexingBase;
@@ -80,8 +78,7 @@ public final class ReindexLabels extends MultiMatrix2DFilter {
                 "Labels %s reindexed: %.3f ms",
                 labels, (t2 - t1) * 1e-6));
         getNumbers(OUTPUT_RESTORING_TABLE).setTo(reindexTable, 1);
-        return MultiMatrix.valueOf2DMono(
-                Matrices.matrix(SimpleMemoryModel.asUpdatableIntArray(labelsArray), labels.dimensions()));
+        return MultiMatrix.valueOf2DMono(Matrix.as(labelsArray, labels.dimensions()));
     }
 
     public static int[] reindex(int[] labels, int indexingBase, boolean includeReservedInRestoringTable) {

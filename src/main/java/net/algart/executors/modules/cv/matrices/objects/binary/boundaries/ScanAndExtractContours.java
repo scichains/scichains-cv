@@ -187,12 +187,12 @@ public final class ScanAndExtractContours extends MultiMatrixToNumbers {
             header.setInternalContour(boundaryScanner.orientedArea() < 0);
             contours.closeContour(header);
             if (scanner.needToAnalyseThisBoundary()) {
-                objectLabelArray.pushInt(scanner.currentLabel());
-                internalBoundaryFlags.pushBit(scanner.internalBoundary());
-                strictArea.pushLong(boundaryScanner.orientedArea());
-                segmentCentersArea.pushDouble(boundaryScanner.area(ContourLineType.SEGMENT_CENTERS_POLYLINE));
-                contourLength.pushInt((int) stepCount);
-                segmentCentersPerimeter.pushDouble(boundaryScanner.perimeter(
+                objectLabelArray.addInt(scanner.currentLabel());
+                internalBoundaryFlags.addBit(scanner.internalBoundary());
+                strictArea.addLong(boundaryScanner.orientedArea());
+                segmentCentersArea.addDouble(boundaryScanner.area(ContourLineType.SEGMENT_CENTERS_POLYLINE));
+                contourLength.addLong(stepCount);
+                segmentCentersPerimeter.addDouble(boundaryScanner.perimeter(
                         ContourLineType.SEGMENT_CENTERS_POLYLINE));
             } else {
                 contours.removeLastContour();

@@ -26,6 +26,6 @@ package net.algart.executors.build.callers;
 
 public final class Repeater {
     public static void main(String[] args) {
-        net.algart.executable.preprocessor.java.Repeater.main(args);
+        net.algart.executable.preprocessor.Repeater.main(args);
     }
 }

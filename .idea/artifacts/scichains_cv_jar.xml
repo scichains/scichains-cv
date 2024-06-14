@@ -3,7 +3,6 @@
     <output-path>$PROJECT_DIR$/out/artifacts/scichains_cv_jar</output-path>
     <root id="root">
       <element id="file-copy" path="$PROJECT_DIR$/additional/usage_examples/execute_chain.cmd" />
-      <element id="library" level="project" name="Maven: net.algart:algart:1.4.3" />
       <element id="library" level="project" name="Maven: com.github.jai-imageio:jai-imageio-core:1.4.0" />
       <element id="file-copy" path="$PROJECT_DIR$/additional/usage_examples/execute_chain_example.cmd" />
       <element id="directory" name="net.algart.executors.cv">
@@ -12,11 +11,6 @@
       <element id="directory" name="net.algart.executors.core">
         <element id="dir-copy" path="$PROJECT_DIR$/../scichains-core/build" />
       </element>
-      <element id="library" level="project" name="Maven: org.graalvm.js:js-scriptengine:23.0.0" />
-      <element id="library" level="project" name="Maven: org.graalvm.js:js:23.0.0" />
-      <element id="library" level="project" name="Maven: org.graalvm.regex:regex:23.0.0" />
-      <element id="library" level="project" name="Maven: org.graalvm.sdk:graal-sdk:23.0.0" />
-      <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-api:23.0.0" />
       <element id="library" level="project" name="Maven: jakarta.json:jakarta.json-api:2.1.3" />
       <element id="library" level="project" name="Maven: black.ninia:jep:4.2.0" />
       <element id="library" level="project" name="Maven: org.eclipse.parsson:jakarta.json:1.1.5" />
@@ -24,8 +18,8 @@
         <element id="module-output" name="scichains-cv" />
         <element id="module-test-output" name="scichains-cv" />
       </element>
-      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:4.4.2" />
-      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:test-jar:tests:4.4.2" />
+      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:4.4.3" />
+      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:test-jar:tests:4.4.3" />
       <element id="library" level="project" name="Maven: org.bytedeco:opencv-platform-gpu:4.6.0-1.5.8" />
       <element id="library" level="project" name="Maven: org.bytedeco:javacpp-platform:1.5.8" />
       <element id="library" level="project" name="Maven: org.bytedeco:javacpp:1.5.8" />
@@ -80,7 +74,21 @@
       <element id="library" level="project" name="Maven: org.bytedeco:opencv:windows-x86:4.6.0-1.5.8" />
       <element id="library" level="project" name="Maven: org.bytedeco:opencv:windows-x86_64-gpu:4.6.0-1.5.8" />
       <element id="library" level="project" name="Maven: org.bytedeco:opencv:windows-x86_64:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: com.ibm.icu:icu4j:72.1" />
+      <element id="library" level="project" name="Maven: org.graalvm.js:js-language:24.0.1" />
+      <element id="library" level="project" name="Maven: org.graalvm.js:js-scriptengine:24.0.1" />
+      <element id="library" level="project" name="Maven: org.graalvm.polyglot:polyglot:24.0.1" />
+      <element id="library" level="project" name="Maven: org.graalvm.regex:regex:24.0.1" />
+      <element id="library" level="project" name="Maven: org.graalvm.sdk:collections:24.0.1" />
+      <element id="library" level="project" name="Maven: org.graalvm.sdk:jniutils:24.0.1" />
+      <element id="library" level="project" name="Maven: org.graalvm.sdk:nativebridge:24.0.1" />
+      <element id="library" level="project" name="Maven: org.graalvm.sdk:nativeimage:24.0.1" />
+      <element id="library" level="project" name="Maven: org.graalvm.sdk:word:24.0.1" />
+      <element id="library" level="project" name="Maven: org.graalvm.shadowed:icu4j:24.0.1" />
+      <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-api:24.0.1" />
+      <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-compiler:24.0.1" />
+      <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-enterprise:24.0.1" />
+      <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-runtime:24.0.1" />
+      <element id="library" level="project" name="Maven: net.algart:algart:1.4.11" />
     </root>
   </artifact>
 </component>

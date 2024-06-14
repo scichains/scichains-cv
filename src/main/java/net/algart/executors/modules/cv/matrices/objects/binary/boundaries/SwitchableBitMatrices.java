@@ -92,6 +92,6 @@ class SwitchableBitMatrices {
     }
 
     public void setBuffer1Bit(long index) {
-        buffer1Array.setBit(index);
+        buffer1Array.setBitNoSync(index);
     }
 }

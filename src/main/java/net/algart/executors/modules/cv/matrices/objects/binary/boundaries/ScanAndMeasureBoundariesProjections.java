@@ -159,8 +159,8 @@ public final class ScanAndMeasureBoundariesProjections extends AbstractScanAndMe
         while (scanner.nextBoundary()) {
             scanner.scanAndProcess();
             if (scanner.needToAnalyseThisBoundary()) {
-                objectLabelArray.pushInt(scanner.currentLabel());
-                internalBoundaryFlags.pushBit(scanner.internalBoundary());
+                objectLabelArray.addInt(scanner.currentLabel());
+                internalBoundaryFlags.addBit(scanner.internalBoundary());
                 for (int k = 0; k < parametersArray.length; k++) {
                     parametersArray[k].getStatistics(
                             statisticsArray[k],

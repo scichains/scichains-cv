@@ -210,7 +210,7 @@ public final class NearestPixelFinder {
     }
 
     private void addPoint(int nearestX, int nearestY, MutableIntArray resultXY) {
-        resultXY.pushInt(nearestX);
-        resultXY.pushInt(nearestY);
+        resultXY.addInt(nearestX);
+        resultXY.addInt(nearestY);
     }
 }

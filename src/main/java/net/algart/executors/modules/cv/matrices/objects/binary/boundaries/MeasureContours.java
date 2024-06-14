@@ -198,7 +198,7 @@ public final class MeasureContours extends Executor implements ReadOnlyExecution
             final double correction = pixelCoordinatesForRectangles ? -0.5 : 0.0;
             for (int k = 0, offset = 0; k < n; k++, offset += 4) {
                 contours.getHeader(h, k);
-                BoundaryParameter.pushRectangle(
+                BoundaryParameter.addRectangle(
                         result,
                         offset,
                         h.minX() + correction,

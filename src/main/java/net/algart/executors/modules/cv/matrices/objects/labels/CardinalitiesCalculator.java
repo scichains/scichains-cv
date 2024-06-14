@@ -24,8 +24,8 @@
 
 package net.algart.executors.modules.cv.matrices.objects.labels;
 
+import net.algart.arrays.IntArray;
 import net.algart.arrays.JArrays;
-import net.algart.arrays.SimpleMemoryModel;
 
 import java.util.Objects;
 
@@ -37,7 +37,7 @@ class CardinalitiesCalculator extends LabelsProcessor {
     int maxLabel = -1;
 
     CardinalitiesCalculator(int[] labels) {
-        super(SimpleMemoryModel.asUpdatableIntArray(Objects.requireNonNull(labels, "Null labels")));
+        super(IntArray.as(Objects.requireNonNull(labels, "Null labels")));
         this.labels = labels;
         this.requestedCardinalities = requestClearedIntArrays(numberOfTasks());
         this.threadCardinalities = requestedCardinalities.clone();

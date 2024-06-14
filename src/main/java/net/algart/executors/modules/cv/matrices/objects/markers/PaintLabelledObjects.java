@@ -247,7 +247,7 @@ public final class PaintLabelledObjects extends MultiMatrix2DFilter {
                 }
             }
             Matrix<? extends PArray> matrix = Matrices.matrix(
-                    SimpleMemoryModel.asUpdatableFloatArray(values),
+                    FloatArray.as(values),
                     labelsMatrix.dimensions());
             if (rawValues) {
                 matrix = Matrices.asFuncMatrix(Func.IDENTITY, Arrays.type(PArray.class, elementType), matrix);

@@ -24,7 +24,7 @@
 
 package net.algart.executors.modules.cv.matrices.objects.labels;
 
-import net.algart.arrays.SimpleMemoryModel;
+import net.algart.arrays.IntArray;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -40,7 +40,7 @@ public final class LabelsListsBuilder extends LabelsProcessor {
     private int maxLabel = -1;
 
     private LabelsListsBuilder(int[] labels, int[] lists) {
-        super(SimpleMemoryModel.asUpdatableIntArray(Objects.requireNonNull(labels, "Null labels")));
+        super(IntArray.as(Objects.requireNonNull(labels, "Null labels")));
         assert labels.length == lists.length;
         this.labels = labels;
         this.lists = lists;

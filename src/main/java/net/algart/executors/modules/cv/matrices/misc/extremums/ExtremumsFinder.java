@@ -268,10 +268,11 @@ public abstract class ExtremumsFinder {
             }
         }
         if (buildListOfExtremumsXY) {
-            extremumsXY.pushInt(index0 - valuesStart);
-            extremumsXY.pushInt(y);
+            extremumsXY.addInt(index0 - valuesStart);
+            extremumsXY.addInt(y);
         }
         extremums.array().setBit(index0);
+        // - no sense to optimize this via setBitNoSync
     }
 
     private static float percentileInNeighbours(double level, float[] neighbours, int neighboursCount) {

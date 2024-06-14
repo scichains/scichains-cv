@@ -24,15 +24,14 @@
 
 package net.algart.executors.modules.cv.matrices.objects;
 
+import net.algart.arrays.Matrix;
+import net.algart.executors.api.data.SNumbers;
+import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
+import net.algart.executors.modules.core.common.numbers.IndexingBase;
+import net.algart.executors.modules.core.numbers.misc.InvertTable;
 import net.algart.executors.modules.cv.matrices.objects.labels.LabelsAnalyser;
-import net.algart.arrays.Matrices;
-import net.algart.arrays.SimpleMemoryModel;
 import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;
-import net.algart.executors.api.data.SNumbers;
-import net.algart.executors.modules.core.common.numbers.IndexingBase;
-import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
-import net.algart.executors.modules.core.numbers.misc.InvertTable;
 
 import java.util.Objects;
 import java.util.stream.IntStream;
@@ -103,14 +102,10 @@ public final class TableTranslate extends MultiMatrix2DFilter {
     @Override
     public MultiMatrix2D process(MultiMatrix2D labelsMatrix) {
         final SNumbers table = getInputNumbers(INPUT_TABLE);
-        switch (resultElementType) {
-            case INT:
-                return process(labelsMatrix, table.toIntArray());
-            case FLOAT:
-                return process(labelsMatrix, table.toFloatArray());
-            default:
-                throw new AssertionError("Unsupported " + resultElementType);
-        }
+        return switch (resultElementType) {
+            case INT -> process(labelsMatrix, table.toIntArray());
+            case FLOAT -> process(labelsMatrix, table.toFloatArray());
+        };
     }
 
     public MultiMatrix2D process(MultiMatrix2D labelsMatrix, int[] translationTable) {
@@ -142,8 +137,7 @@ public final class TableTranslate extends MultiMatrix2DFilter {
                 }
             });
         }
-        return MultiMatrix.valueOf2DMono(
-                Matrices.matrix(SimpleMemoryModel.asUpdatableIntArray(labels), labelsMatrix.dimensions()));
+        return MultiMatrix.valueOf2DMono(Matrix.as(labels, labelsMatrix.dimensions()));
     }
 
     public MultiMatrix2D process(MultiMatrix2D labelsMatrix, float[] translationTable) {
@@ -179,7 +173,6 @@ public final class TableTranslate extends MultiMatrix2DFilter {
                 }
             });
         }
-        return MultiMatrix.valueOf2DMono(
-                Matrices.matrix(SimpleMemoryModel.asUpdatableFloatArray(result), labelsMatrix.dimensions()));
+        return MultiMatrix.valueOf2DMono(Matrix.as(result, labelsMatrix.dimensions()));
     }
 }

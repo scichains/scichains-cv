@@ -97,13 +97,13 @@ public final class SimpleLambdaSpeed {
     }
 
     private static void fillIntArrayByIntConsumer(MutableIntArray array, int from, int to) {
-        IntConsumer intConsumer = k -> array.pushInt(k);
+        IntConsumer intConsumer = array::addInt;
         for (int k = from; k < to; k++) {
             intConsumer.accept(k);
         }
     }
 
-    private static List<IntUnaryOperator> list = new ArrayList<>();
+    private static final List<IntUnaryOperator> list = new ArrayList<>();
 
     private static long sumIntsTransformingClass(int[] array, int from, int to, IntUnaryOperator op) {
         class Transformed implements IntUnaryOperator {

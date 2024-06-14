@@ -52,18 +52,8 @@ public enum ProjectionParameter {
                 double pixelSize,
                 SecondProjectionValue second,
                 ThirdProjectionValue third) {
-            if (result instanceof FloatArray) {
-                final MutableFloatArray a = (MutableFloatArray) result;
-                for (int k = 0, m = measurer.numberOfDirections(); k < m; k++) {
-                    a.pushFloat((float) (measurer.projectionLength(k) * pixelSize));
-                }
-            } else if (result instanceof DoubleArray) {
-                final MutableDoubleArray a = (MutableDoubleArray) result;
-                for (int k = 0, m = measurer.numberOfDirections(); k < m; k++) {
-                    a.pushDouble(measurer.projectionLength(k) * pixelSize);
-                }
-            } else {
-                throw new UnsupportedOperationException("Unsupported type of " + result);
+            for (int k = 0, m = measurer.numberOfDirections(); k < m; k++) {
+                result.addDouble(measurer.projectionLength(k) * pixelSize);
             }
         }
     },
@@ -75,7 +65,7 @@ public enum ProjectionParameter {
                 double pixelSize,
                 SecondProjectionValue second,
                 ThirdProjectionValue third) {
-            pushProjectionPair(result, measurer, 0, pixelSize, second, third);
+            addProjectionPair(result, measurer, 0, pixelSize, second, third);
         }
     },
     MEAN_PROJECTION((measurer, third) -> 1) {
@@ -92,7 +82,7 @@ public enum ProjectionParameter {
                 double pixelSize,
                 SecondProjectionValue second,
                 ThirdProjectionValue third) {
-            pushProjectionPair(result, measurer, measurer.indexOfMaxProjectionLength(), pixelSize, second, third);
+            addProjectionPair(result, measurer, measurer.indexOfMaxProjectionLength(), pixelSize, second, third);
         }
     },
     MIN_PROJECTION((measurer, third) -> 2 + third.oneIfExist()) {
@@ -103,7 +93,7 @@ public enum ProjectionParameter {
                 double pixelSize,
                 SecondProjectionValue second,
                 ThirdProjectionValue third) {
-            pushProjectionPair(result, measurer, measurer.indexOfMinProjectionLength(), pixelSize, second, third);
+            addProjectionPair(result, measurer, measurer.indexOfMinProjectionLength(), pixelSize, second, third);
         }
     },
     MAX_SIZE_RELATION((measurer, third) -> 2 + third.oneIfExist()) {
@@ -124,7 +114,7 @@ public enum ProjectionParameter {
                     maxRelation = relation;
                 }
             }
-            pushProjectionPair(result, measurer, index, pixelSize, second, third);
+            addProjectionPair(result, measurer, index, pixelSize, second, third);
         }
     },
     MIN_CIRCUMSCRIBED_SQUARE_SIDE((measurer, third) -> 2 + third.oneIfExist()) {
@@ -135,7 +125,7 @@ public enum ProjectionParameter {
                 double pixelSize,
                 SecondProjectionValue second,
                 ThirdProjectionValue third) {
-            pushProjectionPair(
+            addProjectionPair(
                     result,
                     measurer,
                     measurer.indexOfMinCircumscribedRhombus(measurer.numberOfDirections() / 2),
@@ -187,17 +177,9 @@ public enum ProjectionParameter {
             Boundary2DProjectionMeasurer measurer,
             double pixelSize,
             SecondProjectionValue second,
-            ThirdProjectionValue third)
-    {
-        if (result instanceof IntArray) {
-            ((MutableIntArray) result).pushInt((int) getStatistics(measurer, pixelSize));
-        } else if (result instanceof FloatArray) {
-            ((MutableFloatArray) result).pushFloat((float) getStatistics(measurer, pixelSize));
-        } else if (result instanceof DoubleArray) {
-            ((MutableDoubleArray) result).pushDouble(getStatistics(measurer, pixelSize));
-        } else {
-            throw new UnsupportedOperationException("Unsupported type of " + result);
-        }
+            ThirdProjectionValue third) {
+        Objects.requireNonNull(result, "Null result");
+        result.addDouble(getStatistics(measurer, pixelSize));
     }
 
     public int parameterLength(Boundary2DProjectionMeasurer measurer, ThirdProjectionValue third) {
@@ -209,35 +191,23 @@ public enum ProjectionParameter {
         return parameters.contains(NESTING_LEVEL);
     }
 
-    private static void pushProjectionPair(
+    private static void addProjectionPair(
             MutablePNumberArray result,
             Boundary2DProjectionMeasurer measurer,
             int i1,
             double pixelSize,
             SecondProjectionValue second,
             ThirdProjectionValue third) {
+        Objects.requireNonNull(result, "Null result");
         final int m = measurer.numberOfDirections();
         final int i2 = (i1 + m / 2) % m;
         final double pr1 = measurer.projectionLength(i1) * pixelSize;
         final double pr2 = measurer.projectionLength(i2) * pixelSize;
-        if (result instanceof FloatArray) {
-            final MutableFloatArray a = (MutableFloatArray) result;
-            a.pushFloat((float) pr1);
-            a.pushFloat((float) second.secondProjectionValue(pr1, pr2));
-            final Double thirdProjectionValue = third.thirdProjectionValue(measurer, i1, pixelSize);
-            if (thirdProjectionValue != null) {
-                a.pushFloat((float) thirdProjectionValue.doubleValue());
-            }
-        } else if (result instanceof DoubleArray) {
-            final MutableDoubleArray a = (MutableDoubleArray) result;
-            a.pushDouble(pr1);
-            a.pushDouble(second.secondProjectionValue(pr1, pr2));
-            final Double thirdProjectionValue = third.thirdProjectionValue(measurer, i1, pixelSize);
-            if (thirdProjectionValue != null) {
-                a.pushDouble(thirdProjectionValue);
-            }
-        } else {
-            throw new UnsupportedOperationException("Unsupported type of " + result);
+        result.addDouble(pr1);
+        result.addDouble(second.secondProjectionValue(pr1, pr2));
+        final Double thirdProjectionValue = third.thirdProjectionValue(measurer, i1, pixelSize);
+        if (thirdProjectionValue != null) {
+            result.addDouble(thirdProjectionValue);
         }
     }
 }

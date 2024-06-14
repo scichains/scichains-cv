@@ -187,7 +187,7 @@ public final class O2SMat {
 
     public static SNumbers toRawNumbers(Mat mat, int blockLength) {
         final PArray array = toRawArray(mat);
-        if (array.length() == 0) {
+        if (array.isEmpty()) {
             return SNumbers.zeros(array.elementType(), 0, Math.max(blockLength, 1));
             // - we prefer to return empty 1-column array instead of throwing exception when blockLength=0
         }
@@ -199,7 +199,7 @@ public final class O2SMat {
 
     public static SNumbers toRawNumbers(UMat mat, int blockLength) {
         final PArray array = toRawArray(mat);
-        if (array.length() == 0) {
+        if (array.isEmpty()) {
             return SNumbers.zeros(array.elementType(), 0, Math.max(blockLength, 1));
             // - we prefer to return empty 1-column array instead of throwing exception when blockLength=0
         }
@@ -246,9 +246,8 @@ public final class O2SMat {
         if (!values.isInitialized()) {
             throw new IllegalArgumentException("Not initialized values");
         }
-        final UpdatablePArray array = (UpdatablePArray) SimpleMemoryModel.asUpdatableArray(values.getArray());
         return toMat(Matrices.matrix(
-                array,
+                PArray.as(values.getArray()),
                 1, // - 1 channel
                 values.getBlockLength(),
                 values.n()));
@@ -259,9 +258,8 @@ public final class O2SMat {
         if (!values.isInitialized()) {
             throw new IllegalArgumentException("Not initialized values");
         }
-        final UpdatablePArray array = (UpdatablePArray) SimpleMemoryModel.asUpdatableArray(values.getArray());
         return toUMat(Matrices.matrix(
-                array,
+                PArray.as(values.getArray()),
                 1, // - 1 channel
                 values.getBlockLength(),
                 values.n()));
@@ -357,8 +355,8 @@ public final class O2SMat {
             throw new IllegalArgumentException("Not initialized values");
         }
         final UpdatablePArray array = intResult ?
-                SimpleMemoryModel.asUpdatableIntArray(values.toIntArray()) :
-                SimpleMemoryModel.asUpdatableFloatArray(values.toFloatArray());
+                IntArray.as(values.toIntArray()) :
+                FloatArray.as(values.toFloatArray());
         return SMat.valueOfPackedMatrix(Matrices.matrix(
                 array,
                 1, // - 1 channel in the ML mat

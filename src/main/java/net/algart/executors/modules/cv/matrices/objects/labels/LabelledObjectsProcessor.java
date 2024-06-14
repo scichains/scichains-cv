@@ -24,7 +24,7 @@
 
 package net.algart.executors.modules.cv.matrices.objects.labels;
 
-import net.algart.arrays.SimpleMemoryModel;
+import net.algart.arrays.IntArray;
 
 import java.util.Objects;
 
@@ -41,7 +41,7 @@ public abstract class LabelledObjectsProcessor extends LabelsProcessor {
             SingleObjectProcessor processor,
             int numberOfChannels) {
         super(
-                SimpleMemoryModel.asUpdatableIntArray(Objects.requireNonNull(listHeads, "Null listHeads")),
+                IntArray.as(Objects.requireNonNull(listHeads, "Null listHeads")),
                 numberOrParticlesInBlockForParallelProcessing(listHeads.length));
         this.numberOfChannels = numberOfChannels;
         this.lists = Objects.requireNonNull(lists, "Null lists");

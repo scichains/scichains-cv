@@ -152,7 +152,7 @@ public final class FilterLabelledObjectsByIntersectionWithMask extends BitMultiM
                 }
                 break;
         }
-        return Matrices.matrix(SimpleMemoryModel.asUpdatableIntArray(labelArray), labelsMatrix.dimensions());
+        return Matrices.matrix(IntArray.as(labelArray), labelsMatrix.dimensions());
     }
 
     @Override

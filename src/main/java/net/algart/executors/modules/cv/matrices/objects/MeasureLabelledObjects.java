@@ -186,13 +186,13 @@ public final class MeasureLabelledObjects extends Executor implements ReadOnlyEx
             if (results.containsKey(ObjectParameter.AREA)) {
                 final UpdatablePNumberArray result = Arrays.SMM.newFloatArray(cardinalities.length);
                 Arrays.applyFunc(null, LinearFunc.getInstance(0.0, pixelSize * pixelSize),
-                        result, SimpleMemoryModel.asUpdatableIntArray(cardinalities));
+                        result, IntArray.as(cardinalities));
                 results.get(ObjectParameter.AREA).setTo(result, 1);
             }
             if (results.containsKey(ObjectParameter.SQRT_AREA)) {
                 final UpdatablePNumberArray result = Arrays.SMM.newFloatArray(cardinalities.length);
                 Arrays.applyFunc(null, PowerFunc.getInstance(0.5, pixelSize),
-                        result, SimpleMemoryModel.asUpdatableIntArray(cardinalities));
+                        result, IntArray.as(cardinalities));
                 results.get(ObjectParameter.SQRT_AREA).setTo(result, 1);
             }
         }
@@ -243,7 +243,7 @@ public final class MeasureLabelledObjects extends Executor implements ReadOnlyEx
             if (results.containsKey(ObjectParameter.BOUNDARY)) {
                 final UpdatablePNumberArray result = Arrays.SMM.newFloatArray(boundaries.length);
                 Arrays.applyFunc(null, LinearFunc.getInstance(0.0, pixelSize),
-                        result, SimpleMemoryModel.asUpdatableIntArray(boundaries));
+                        result, IntArray.as(boundaries));
                 results.get(ObjectParameter.BOUNDARY).setTo(result, 1);
             }
             if (results.containsKey(ObjectParameter.THICKNESS)) {
@@ -251,8 +251,8 @@ public final class MeasureLabelledObjects extends Executor implements ReadOnlyEx
                 final UpdatablePNumberArray result = Arrays.SMM.newFloatArray(boundaries.length);
                 Arrays.applyFunc(null, DividingFunc.getInstance(2.0 * pixelSize),
                         result,
-                        SimpleMemoryModel.asUpdatableIntArray(cardinalities),
-                        SimpleMemoryModel.asUpdatableIntArray(boundaries));
+                        IntArray.as(cardinalities),
+                        IntArray.as(boundaries));
                 results.get(ObjectParameter.THICKNESS).setTo(result, 1);
             }
             if (results.containsKey(ObjectParameter.SHAPE_FACTOR)) {
@@ -261,8 +261,8 @@ public final class MeasureLabelledObjects extends Executor implements ReadOnlyEx
                 Arrays.applyFunc(null, DividingFunc.getInstance(2 * StrictMath.sqrt(Math.PI)),
                         result,
                         Arrays.asFuncArray(PowerFunc.getInstance(0.5), DoubleArray.class,
-                                SimpleMemoryModel.asUpdatableIntArray(cardinalities)),
-                        SimpleMemoryModel.asUpdatableIntArray(boundaries));
+                                IntArray.as(cardinalities)),
+                        IntArray.as(boundaries));
                 results.get(ObjectParameter.SHAPE_FACTOR).setTo(result, 1);
             }
         }
@@ -286,8 +286,7 @@ public final class MeasureLabelledObjects extends Executor implements ReadOnlyEx
                 centroids[2 * k + 1] /= cardinalities[k];
             }
             final UpdatablePNumberArray result = Arrays.SMM.newFloatArray(centroids.length);
-            Arrays.applyFunc(null, LinearFunc.getInstance(0.0, pixelSize),
-                    result, SimpleMemoryModel.asUpdatableDoubleArray(centroids));
+            Arrays.applyFunc( LinearFunc.getInstance(0.0, pixelSize), result, DoubleArray.as(centroids));
             results.get(ObjectParameter.CENTROID).setTo(result, 2);
         }
         if (results.containsKey(ObjectParameter.CONTAINING_RECTANGLE)) {
@@ -432,30 +431,30 @@ public final class MeasureLabelledObjects extends Executor implements ReadOnlyEx
             }
             final long cardinality = scanner.clear(null, calculator, coordinates, false);
             pixelCounter += cardinality;
-            areas.pushFloat((float) (cardinality * (pixelSize * pixelSize)));
+            areas.addDouble(cardinality * (pixelSize * pixelSize));
             if (sqrtAreas != null) {
-                sqrtAreas.pushFloat((float) (Math.sqrt(cardinality) * pixelSize));
+                sqrtAreas.addDouble(Math.sqrt(cardinality) * pixelSize);
             }
             if (boundaries != null) {
-                boundaries.pushFloat((float) ((double) calculator.countBoundary * pixelSize));
+                boundaries.addDouble((double) calculator.countBoundary * pixelSize);
             }
             if (thicknesses != null) {
-                thicknesses.pushFloat((float) (2.0 * (double) cardinality * pixelSize
-                        / (double) calculator.countBoundary));
+                thicknesses.addDouble (2.0 * (double) cardinality * pixelSize
+                        / (double) calculator.countBoundary);
             }
             if (shapeFactors != null) {
-                shapeFactors.pushFloat((float) (2.0 * Math.sqrt(Math.PI * cardinality)
-                        / (double) calculator.countBoundary));
+                shapeFactors.addDouble(2.0 * Math.sqrt(Math.PI * cardinality)
+                        / (double) calculator.countBoundary);
             }
             if (centroids != null) {
-                centroids.pushFloat((float) (pixelSize * calculator.sumX / cardinality));
-                centroids.pushFloat((float) (pixelSize * calculator.sumY / cardinality));
+                centroids.addDouble(pixelSize * calculator.sumX / cardinality);
+                centroids.addDouble(pixelSize * calculator.sumY / cardinality);
             }
             if (rectangles != null) {
-                rectangles.pushFloat((float) (0.5 * pixelSize * (calculator.minX + calculator.maxX)));
-                rectangles.pushFloat((float) (0.5 * pixelSize * (calculator.minY + calculator.maxY)));
-                rectangles.pushFloat((float) (pixelSize * (calculator.maxX - calculator.minX + 1)));
-                rectangles.pushFloat((float) (pixelSize * (calculator.maxY - calculator.minY + 1)));
+                rectangles.addDouble(0.5 * pixelSize * (calculator.minX + calculator.maxX));
+                rectangles.addDouble(0.5 * pixelSize * (calculator.minY + calculator.maxY));
+                rectangles.addDouble(pixelSize * (calculator.maxX - calculator.minX + 1));
+                rectangles.addDouble(pixelSize * (calculator.maxY - calculator.minY + 1));
             }
         }
 

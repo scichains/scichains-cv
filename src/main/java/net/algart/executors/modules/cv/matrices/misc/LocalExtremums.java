@@ -328,6 +328,7 @@ public final class LocalExtremums extends MultiMatrixToNumbers {
         final Map<MeasureLabelledObjects.ObjectParameter, SNumbers> resultStatistics = new HashMap<>();
         final SNumbers result = new SNumbers();
         resultStatistics.put(MeasureLabelledObjects.ObjectParameter.CENTROID, result);
+        //noinspection resource
         new MeasureLabelledObjects()
                 .setAutoSplitBitInputIntoConnectedComponents(true)
                 .setBitInputConnectivityType(ConnectivityType.STRAIGHT_AND_DIAGONAL)
@@ -340,7 +341,7 @@ public final class LocalExtremums extends MultiMatrixToNumbers {
             final long y = Math.round(result.getValue(k, 1));
             if (x >= 0 && y >= 0 && x < dimX && y < dimY) {
                 // - to be on the safe side and for a case of exact rounding to dimX/dimY
-                mask.array().setBit(y * dimX + x);
+                mask.array().setBitNoSync(y * dimX + x);
             }
         }
         resultExtremumsMask = MultiMatrix.valueOf2DMono(mask);
@@ -348,6 +349,7 @@ public final class LocalExtremums extends MultiMatrixToNumbers {
     }
 
     private void dilateExtremumsMask() {
+        //noinspection resource
         this.resultExtremumsMask = new StrictMorphology()
                 .setOperation(MorphologyOperation.DILATION)
                 .setContinuationMode(ContinuationMode.ZERO_CONSTANT)

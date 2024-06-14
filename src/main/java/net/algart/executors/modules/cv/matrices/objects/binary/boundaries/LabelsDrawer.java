@@ -141,7 +141,7 @@ class LabelsDrawer {
     }
 
     Matrix<? extends PArray> getLabels() {
-        return Matrices.matrix(SimpleMemoryModel.asUpdatableIntArray(labels), dimX, dimY);
+        return Matrices.matrix(IntArray.as(labels), dimX, dimY);
     }
 
     void debuggingPrintLabels() {

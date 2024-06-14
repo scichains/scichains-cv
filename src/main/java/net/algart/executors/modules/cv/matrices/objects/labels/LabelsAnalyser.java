@@ -74,11 +74,10 @@ public final class LabelsAnalyser {
         PArray labelsArray;
         int[] labels = null;
         if ((labelsArray = labelsChannel.array()).elementType() == int.class
-                && labelsArray instanceof DirectAccessible) {
-            final DirectAccessible directAccessible = (DirectAccessible) labelsArray;
-            if (directAccessible.hasJavaArray() && directAccessible.javaArrayOffset() == 0) {
+                && labelsArray instanceof DirectAccessible da) {
+            if (da.hasJavaArray() && da.javaArrayOffset() == 0) {
                 // - non-zero offset is very improbable for matrices
-                labels = (int[]) directAccessible.javaArray();
+                labels = (int[]) da.javaArray();
             }
         }
         boolean labelsMustBeImmutable = labels != null;
@@ -91,7 +90,7 @@ public final class LabelsAnalyser {
                 labels = labelsHolder.quickClone(labels);
                 labelsMustBeImmutable = false;
             }
-            Arrays.unpackZeroBits(SimpleMemoryModel.asUpdatableIntArray(labels), maskArray, 0);
+            Arrays.unpackZeroBits(IntArray.as(labels), maskArray, 0);
         }
         this.labels = labels;
         this.labelsMustBeImmutable = labelsMustBeImmutable;
