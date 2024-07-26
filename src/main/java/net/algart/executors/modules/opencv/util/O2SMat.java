@@ -145,20 +145,20 @@ public final class O2SMat {
         return OTools.toUMat((int) m.getDimX(), (int) m.getDimY(), type, m.getByteBuffer());
     }
 
-    public static Mat toMat(Matrix<? extends PArray> packedChannels) {
-        return toMat(packedChannels, false);
+    public static Mat toMat(Matrix<? extends PArray> interleavedChannels) {
+        return toMat(interleavedChannels, false);
     }
 
-    public static Mat toMat(Matrix<? extends PArray> packedChannels, boolean autoConvertPackedBits) {
-        return toMat(SMat.valueOfPackedMatrix(packedChannels), autoConvertPackedBits);
+    public static Mat toMat(Matrix<? extends PArray> interleavedChannels, boolean autoConvertPackedBits) {
+        return toMat(SMat.valueOfInterleavedMatrix(interleavedChannels), autoConvertPackedBits);
     }
 
-    public static UMat toUMat(Matrix<? extends PArray> packedChannels) {
-        return toUMat(packedChannels, false);
+    public static UMat toUMat(Matrix<? extends PArray> interleavedChannels) {
+        return toUMat(interleavedChannels, false);
     }
 
-    public static UMat toUMat(Matrix<? extends PArray> packedChannels, boolean autoConvertPackedBits) {
-        return toUMat(SMat.valueOfPackedMatrix(packedChannels), autoConvertPackedBits);
+    public static UMat toUMat(Matrix<? extends PArray> interleavedChannels, boolean autoConvertPackedBits) {
+        return toUMat(SMat.valueOfInterleavedMatrix(interleavedChannels), autoConvertPackedBits);
     }
 
     public static SMat toSMat(Mat mat) {
@@ -174,7 +174,7 @@ public final class O2SMat {
         if (mat.rows() == 0 || mat.cols() == 0) {
             return Arrays.nPCopies(0, OTools.elementType(mat), 0.0);
         }
-        return toSMat(mat).toPackedMatrix(true).array();
+        return toSMat(mat).toInterleavedMatrix(true).array();
     }
 
     public static PArray toRawArray(UMat mat) {
@@ -182,7 +182,7 @@ public final class O2SMat {
         if (mat.rows() == 0 || mat.cols() == 0) {
             return Arrays.nPCopies(0, OTools.elementType(mat), 0.0);
         }
-        return toSMat(mat).toPackedMatrix(true).array();
+        return toSMat(mat).toInterleavedMatrix(true).array();
     }
 
     public static SNumbers toRawNumbers(Mat mat, int blockLength) {
@@ -338,7 +338,7 @@ public final class O2SMat {
             // working with standard RGB order; so, ByteBuffer in packedByRows must use the same order
         }
         final Matrix<? extends PArray> packed3d = Matrices.asPrecision(
-                values.toPackedMatrix(true),
+                values.toInterleavedMatrix(true),
                 intResult ? int.class : float.class);
         assert packed3d.dimCount() == 3;
         final Matrix<? extends PArray> packedByRows = Matrices.matrix(
@@ -346,7 +346,7 @@ public final class O2SMat {
                 1, // - 1 channel
                 packed3d.dim(0),
                 packed3d.dim(1) * packed3d.dim(2));
-        return SMat.valueOfPackedMatrix(packedByRows);
+        return SMat.valueOfInterleavedMatrix(packedByRows);
     }
 
     private static SMat numbersToMulticolumn32BitSMat(SNumbers values, boolean intResult) {
@@ -357,7 +357,7 @@ public final class O2SMat {
         final UpdatablePArray array = intResult ?
                 IntArray.as(values.toIntArray()) :
                 FloatArray.as(values.toFloatArray());
-        return SMat.valueOfPackedMatrix(Matrices.matrix(
+        return SMat.valueOfInterleavedMatrix(Matrices.matrix(
                 array,
                 1, // - 1 channel in the ML mat
                 values.getBlockLength(),

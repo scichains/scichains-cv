@@ -297,8 +297,8 @@ public final class MeasureLabelledObjects extends Executor implements ReadOnlyEx
             final int[] minY = new int[numberOfObjects];
             final int[] maxX = new int[numberOfObjects];
             final int[] maxY = new int[numberOfObjects];
-            JArrays.fillIntArray(minX, Integer.MAX_VALUE);
-            JArrays.fillIntArray(minY, Integer.MAX_VALUE);
+            JArrays.fill(minX, Integer.MAX_VALUE);
+            JArrays.fill(minY, Integer.MAX_VALUE);
             for (int y = 0, disp = 0; y < dimY; y++) {
                 for (int x = 0; x < dimX; x++, disp++) {
                     final int v = labelsArray[disp];

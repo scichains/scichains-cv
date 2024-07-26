@@ -18,8 +18,8 @@
         <element id="module-output" name="scichains-cv" />
         <element id="module-test-output" name="scichains-cv" />
       </element>
-      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:4.4.3" />
-      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:test-jar:tests:4.4.3" />
+      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:4.4.4" />
+      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:test-jar:tests:4.4.4" />
       <element id="library" level="project" name="Maven: org.bytedeco:opencv-platform-gpu:4.6.0-1.5.8" />
       <element id="library" level="project" name="Maven: org.bytedeco:javacpp-platform:1.5.8" />
       <element id="library" level="project" name="Maven: org.bytedeco:javacpp:1.5.8" />
@@ -88,7 +88,7 @@
       <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-compiler:24.0.1" />
       <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-enterprise:24.0.1" />
       <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-runtime:24.0.1" />
-      <element id="library" level="project" name="Maven: net.algart:algart:1.4.11" />
+      <element id="library" level="project" name="Maven: net.algart:algart:1.4.16" />
     </root>
   </artifact>
 </component>

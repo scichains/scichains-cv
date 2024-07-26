@@ -241,7 +241,7 @@ public final class LabelsAnalyser {
                             percentileForSingleLevel[c] = percentilesByChannels[c][p];
                         } else {
                             percentileForSingleLevel[c] = new float[maxLabel];
-                            JArrays.fillFloatArray(percentileForSingleLevel[c], Float.NaN);
+                            JArrays.fill(percentileForSingleLevel[c], Float.NaN);
                         }
                     }
                     this.groupedPercentilesByLevels[p] = combineMultiChannel(percentileForSingleLevel, scale);

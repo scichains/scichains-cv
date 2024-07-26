@@ -29,7 +29,7 @@ import net.algart.arrays.Matrix;
 import net.algart.arrays.PArray;
 import net.algart.arrays.ShortArray;
 import net.algart.executors.modules.opencv.util.O2SMat;
-import net.algart.external.MatrixIO;
+import net.algart.io.MatrixIO;
 import net.algart.math.functions.LinearFunc;
 import net.algart.multimatrix.MultiMatrix;
 import org.bytedeco.opencv.global.opencv_imgcodecs;

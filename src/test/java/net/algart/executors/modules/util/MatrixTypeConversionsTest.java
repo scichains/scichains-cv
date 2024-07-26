@@ -26,7 +26,7 @@ package net.algart.executors.modules.util;
 
 import net.algart.executors.api.data.SMat;
 import net.algart.executors.modules.opencv.util.O2SMat;
-import net.algart.external.MatrixIO;
+import net.algart.io.MatrixIO;
 import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;
 import org.bytedeco.opencv.global.opencv_imgcodecs;

@@ -26,7 +26,7 @@ package net.algart.executors.modules.opencv.matrices;
 
 
 import net.algart.arrays.*;
-import net.algart.external.MatrixIO;
+import net.algart.io.MatrixIO;
 import net.algart.math.IPoint;
 import net.algart.math.patterns.Patterns;
 import net.algart.math.patterns.UniformGridPattern;
@@ -159,7 +159,7 @@ public final class SimpleMorphologyTest {
     private static Mat makeSquare(int size) {
         final byte[] buf = new byte[size * size];
         // - x=0..size-1, y=0..size-1
-        JArrays.fillByteArray(buf, (byte) 1);
+        JArrays.fill(buf, (byte) 1);
         final Mat ptn = new Mat(size, size, opencv_core.CV_8U);
         try (final BytePointer data = ptn.data()) {
             data.put(buf);

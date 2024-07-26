@@ -155,7 +155,7 @@ public final class MeasureContours extends Executor implements ReadOnlyExecution
         if (isOutputNecessary(OUTPUT_STRICT_AREA)) {
             final float[] result = new float[contours.numberOfContours()];
             IntStream.range(0, result.length).parallel().forEach(
-                    k -> result[k] = (float) contours.strictArea(k));
+                    k -> result[k] = (float) contours.area(k));
             getNumbers(OUTPUT_STRICT_AREA).setTo(result, 1);
         }
         if (isOutputNecessary(OUTPUT_SEGMENT_CENTERS_AREA)) {
@@ -167,7 +167,7 @@ public final class MeasureContours extends Executor implements ReadOnlyExecution
         if (isOutputNecessary(OUTPUT_STRICT_PERIMETER)) {
             final float[] result = new float[contours.numberOfContours()];
             IntStream.range(0, result.length).parallel().forEach(
-                    k -> result[k] = (float) contours.strictPerimeter(k));
+                    k -> result[k] = (float) contours.perimeter(k));
             getNumbers(OUTPUT_STRICT_PERIMETER).setTo(result, 1);
         }
         if (isOutputNecessary(OUTPUT_SEGMENT_CENTERS_PERIMETER)) {
