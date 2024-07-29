@@ -200,15 +200,16 @@ public final class SlopeEmphasizer {
     }
 
     /**
-     * Emphasizes boundaries: sub-ranges of <tt>values</tt> array with high gradient. It means,
+     * Emphasizes boundaries: sub-ranges of <code>values</code> array with high gradient. It means,
      * that slopes of the function, represented by this array, with a large difference in values
      * are replaced with a step function, where the border has a width of 1.
      *
-     * <p>More formal specification. Let V(x) is the function from integer argument x, represented by <tt>values</tt>
-     * array: V(i)=<tt>values[i]</tt>, <tt>from</tt>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<tt>to</tt>.
+     * <p>More formal specification. Let V(x) is the function from integer argument x, represented by
+     * <code>values</code>
+     * array: V(i)=<code>values[i]</code>, <code>from</code>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<code>to</code>.
      * This method finds all ranges x1..x2, where:</p>
      * <ul>
-     *     <li><tt>from</tt> &le; x1 &le; x2 &lt; <tt>to</tt>;</li>
+     *     <li><code>from</code> &le; x1 &le; x2 &lt; <code>to</code>;</li>
      *     <li>the function is strictly monotone inside the range: V(x1)&lt;V(x1+1)&lt;...&lt;V(x2) or
      *     V(x1)&gt;V(x1+1)&gt;...&gt;V(x2);
      *     if property {@link #setProcessAscending(boolean) processAscending} is cleared, first type of ranges
@@ -397,15 +398,16 @@ public final class SlopeEmphasizer {
     }
 
     /**
-     * Emphasizes boundaries: sub-ranges of <tt>values</tt> array with high gradient. It means,
+     * Emphasizes boundaries: sub-ranges of <code>values</code> array with high gradient. It means,
      * that slopes of the function, represented by this array, with a large difference in values
      * are replaced with a step function, where the border has a width of 1.
      *
-     * <p>More formal specification. Let V(x) is the function from integer argument x, represented by <tt>values</tt>
-     * array: V(i)=<tt>values[i]</tt>, <tt>from</tt>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<tt>to</tt>.
+     * <p>More formal specification. Let V(x) is the function from integer argument x, represented by
+     * <code>values</code>
+     * array: V(i)=<code>values[i]</code>, <code>from</code>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<code>to</code>.
      * This method finds all ranges x1..x2, where:</p>
      * <ul>
-     *     <li><tt>from</tt> &le; x1 &le; x2 &lt; <tt>to</tt>;</li>
+     *     <li><code>from</code> &le; x1 &le; x2 &lt; <code>to</code>;</li>
      *     <li>the function is strictly monotone inside the range: V(x1)&lt;V(x1+1)&lt;...&lt;V(x2) or
      *     V(x1)&gt;V(x1+1)&gt;...&gt;V(x2);
      *     if property {@link #setProcessAscending(boolean) processAscending} is cleared, first type of ranges
@@ -592,15 +594,16 @@ public final class SlopeEmphasizer {
     }
 
     /**
-     * Emphasizes boundaries: sub-ranges of <tt>values</tt> array with high gradient. It means,
+     * Emphasizes boundaries: sub-ranges of <code>values</code> array with high gradient. It means,
      * that slopes of the function, represented by this array, with a large difference in values
      * are replaced with a step function, where the border has a width of 1.
      *
-     * <p>More formal specification. Let V(x) is the function from integer argument x, represented by <tt>values</tt>
-     * array: V(i)=<tt>values[i]</tt>, <tt>from</tt>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<tt>to</tt>.
+     * <p>More formal specification. Let V(x) is the function from integer argument x, represented by
+     * <code>values</code>
+     * array: V(i)=<code>values[i]</code>, <code>from</code>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<code>to</code>.
      * This method finds all ranges x1..x2, where:</p>
      * <ul>
-     *     <li><tt>from</tt> &le; x1 &le; x2 &lt; <tt>to</tt>;</li>
+     *     <li><code>from</code> &le; x1 &le; x2 &lt; <code>to</code>;</li>
      *     <li>the function is strictly monotone inside the range: V(x1)&lt;V(x1+1)&lt;...&lt;V(x2) or
      *     V(x1)&gt;V(x1+1)&gt;...&gt;V(x2);
      *     if property {@link #setProcessAscending(boolean) processAscending} is cleared, first type of ranges
@@ -787,15 +790,16 @@ public final class SlopeEmphasizer {
     }
 
     /**
-     * Emphasizes boundaries: sub-ranges of <tt>values</tt> array with high gradient. It means,
+     * Emphasizes boundaries: sub-ranges of <code>values</code> array with high gradient. It means,
      * that slopes of the function, represented by this array, with a large difference in values
      * are replaced with a step function, where the border has a width of 1.
      *
-     * <p>More formal specification. Let V(x) is the function from integer argument x, represented by <tt>values</tt>
-     * array: V(i)=<tt>values[i]</tt>, <tt>from</tt>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<tt>to</tt>.
+     * <p>More formal specification. Let V(x) is the function from integer argument x, represented by
+     * <code>values</code>
+     * array: V(i)=<code>values[i]</code>, <code>from</code>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<code>to</code>.
      * This method finds all ranges x1..x2, where:</p>
      * <ul>
-     *     <li><tt>from</tt> &le; x1 &le; x2 &lt; <tt>to</tt>;</li>
+     *     <li><code>from</code> &le; x1 &le; x2 &lt; <code>to</code>;</li>
      *     <li>the function is strictly monotone inside the range: V(x1)&lt;V(x1+1)&lt;...&lt;V(x2) or
      *     V(x1)&gt;V(x1+1)&gt;...&gt;V(x2);
      *     if property {@link #setProcessAscending(boolean) processAscending} is cleared, first type of ranges
@@ -982,15 +986,16 @@ public final class SlopeEmphasizer {
     }
 
     /**
-     * Emphasizes boundaries: sub-ranges of <tt>values</tt> array with high gradient. It means,
+     * Emphasizes boundaries: sub-ranges of <code>values</code> array with high gradient. It means,
      * that slopes of the function, represented by this array, with a large difference in values
      * are replaced with a step function, where the border has a width of 1.
      *
-     * <p>More formal specification. Let V(x) is the function from integer argument x, represented by <tt>values</tt>
-     * array: V(i)=<tt>values[i]</tt>, <tt>from</tt>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<tt>to</tt>.
+     * <p>More formal specification. Let V(x) is the function from integer argument x, represented by
+     * <code>values</code>
+     * array: V(i)=<code>values[i]</code>, <code>from</code>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<code>to</code>.
      * This method finds all ranges x1..x2, where:</p>
      * <ul>
-     *     <li><tt>from</tt> &le; x1 &le; x2 &lt; <tt>to</tt>;</li>
+     *     <li><code>from</code> &le; x1 &le; x2 &lt; <code>to</code>;</li>
      *     <li>the function is strictly monotone inside the range: V(x1)&lt;V(x1+1)&lt;...&lt;V(x2) or
      *     V(x1)&gt;V(x1+1)&gt;...&gt;V(x2);
      *     if property {@link #setProcessAscending(boolean) processAscending} is cleared, first type of ranges
@@ -1177,15 +1182,16 @@ public final class SlopeEmphasizer {
     }
 
     /**
-     * Emphasizes boundaries: sub-ranges of <tt>values</tt> array with high gradient. It means,
+     * Emphasizes boundaries: sub-ranges of <code>values</code> array with high gradient. It means,
      * that slopes of the function, represented by this array, with a large difference in values
      * are replaced with a step function, where the border has a width of 1.
      *
-     * <p>More formal specification. Let V(x) is the function from integer argument x, represented by <tt>values</tt>
-     * array: V(i)=<tt>values[i]</tt>, <tt>from</tt>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<tt>to</tt>.
+     * <p>More formal specification. Let V(x) is the function from integer argument x, represented by
+     * <code>values</code>
+     * array: V(i)=<code>values[i]</code>, <code>from</code>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<code>to</code>.
      * This method finds all ranges x1..x2, where:</p>
      * <ul>
-     *     <li><tt>from</tt> &le; x1 &le; x2 &lt; <tt>to</tt>;</li>
+     *     <li><code>from</code> &le; x1 &le; x2 &lt; <code>to</code>;</li>
      *     <li>the function is strictly monotone inside the range: V(x1)&lt;V(x1+1)&lt;...&lt;V(x2) or
      *     V(x1)&gt;V(x1+1)&gt;...&gt;V(x2);
      *     if property {@link #setProcessAscending(boolean) processAscending} is cleared, first type of ranges
@@ -1372,15 +1378,16 @@ public final class SlopeEmphasizer {
     }
 
     /**
-     * Emphasizes boundaries: sub-ranges of <tt>values</tt> array with high gradient. It means,
+     * Emphasizes boundaries: sub-ranges of <code>values</code> array with high gradient. It means,
      * that slopes of the function, represented by this array, with a large difference in values
      * are replaced with a step function, where the border has a width of 1.
      *
-     * <p>More formal specification. Let V(x) is the function from integer argument x, represented by <tt>values</tt>
-     * array: V(i)=<tt>values[i]</tt>, <tt>from</tt>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<tt>to</tt>.
+     * <p>More formal specification. Let V(x) is the function from integer argument x, represented by
+     * <code>values</code>
+     * array: V(i)=<code>values[i]</code>, <code>from</code>&nbsp;&le;&nbsp;i&nbsp;&lt;&nbsp;<code>to</code>.
      * This method finds all ranges x1..x2, where:</p>
      * <ul>
-     *     <li><tt>from</tt> &le; x1 &le; x2 &lt; <tt>to</tt>;</li>
+     *     <li><code>from</code> &le; x1 &le; x2 &lt; <code>to</code>;</li>
      *     <li>the function is strictly monotone inside the range: V(x1)&lt;V(x1+1)&lt;...&lt;V(x2) or
      *     V(x1)&gt;V(x1+1)&gt;...&gt;V(x2);
      *     if property {@link #setProcessAscending(boolean) processAscending} is cleared, first type of ranges
@@ -1814,7 +1821,12 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillAscendingSlope(byte[] values, int first, int last, byte leftValue, byte rightValue) {
+    private void fillAscendingSlope(
+            byte[] values,
+            int first,
+            int last,
+            byte leftValue,
+            byte rightValue) {
         assert first < last;
         final int halfSum = halfSum(leftValue, rightValue);
         // - for integer types in exactHalfSum it is ceil((leftValue+rightValue)/2)
@@ -1831,7 +1843,13 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillAscendingSlope(byte[] values, int first, int last, byte leftValue, byte rightValue, int step) {
+    private void fillAscendingSlope(
+            byte[] values,
+            int first,
+            int last,
+            byte leftValue,
+            byte rightValue,
+            int step) {
         assert first < last;
         final int halfSum = halfSum(leftValue, rightValue);
         // - for integer types in exactHalfSum it is ceil((leftValue+rightValue)/2)
@@ -1848,7 +1866,12 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillDescendingSlope(byte[] values, int first, int last, byte leftValue, byte rightValue) {
+    private void fillDescendingSlope(
+            byte[] values,
+            int first,
+            int last,
+            byte leftValue,
+            byte rightValue) {
         assert first < last;
         final int halfSum = halfSumFloor(rightValue, leftValue);
         // - halfSumFloor is important for integer types, if exact halfSum is not integer
@@ -1865,7 +1888,13 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillDescendingSlope(byte[] values, int first, int last, byte leftValue, byte rightValue, int step) {
+    private void fillDescendingSlope(
+            byte[] values,
+            int first,
+            int last,
+            byte leftValue,
+            byte rightValue,
+            int step) {
         assert first < last;
         final int halfSum = halfSumFloor(rightValue, leftValue);
         // - halfSumFloor is important for integer types, if exact halfSum is not integer
@@ -2128,7 +2157,12 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillAscendingSlope(char[] values, int first, int last, char leftValue, char rightValue) {
+    private void fillAscendingSlope(
+            char[] values,
+            int first,
+            int last,
+            char leftValue,
+            char rightValue) {
         assert first < last;
         final int halfSum = halfSum(leftValue, rightValue);
         // - for integer types in exactHalfSum it is ceil((leftValue+rightValue)/2)
@@ -2145,7 +2179,13 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillAscendingSlope(char[] values, int first, int last, char leftValue, char rightValue, int step) {
+    private void fillAscendingSlope(
+            char[] values,
+            int first,
+            int last,
+            char leftValue,
+            char rightValue,
+            int step) {
         assert first < last;
         final int halfSum = halfSum(leftValue, rightValue);
         // - for integer types in exactHalfSum it is ceil((leftValue+rightValue)/2)
@@ -2162,7 +2202,12 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillDescendingSlope(char[] values, int first, int last, char leftValue, char rightValue) {
+    private void fillDescendingSlope(
+            char[] values,
+            int first,
+            int last,
+            char leftValue,
+            char rightValue) {
         assert first < last;
         final int halfSum = halfSumFloor(rightValue, leftValue);
         // - halfSumFloor is important for integer types, if exact halfSum is not integer
@@ -2179,7 +2224,13 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillDescendingSlope(char[] values, int first, int last, char leftValue, char rightValue, int step) {
+    private void fillDescendingSlope(
+            char[] values,
+            int first,
+            int last,
+            char leftValue,
+            char rightValue,
+            int step) {
         assert first < last;
         final int halfSum = halfSumFloor(rightValue, leftValue);
         // - halfSumFloor is important for integer types, if exact halfSum is not integer
@@ -2440,7 +2491,12 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillAscendingSlope(short[] values, int first, int last, short leftValue, short rightValue) {
+    private void fillAscendingSlope(
+            short[] values,
+            int first,
+            int last,
+            short leftValue,
+            short rightValue) {
         assert first < last;
         final int halfSum = halfSum(leftValue, rightValue);
         // - for integer types in exactHalfSum it is ceil((leftValue+rightValue)/2)
@@ -2457,7 +2513,13 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillAscendingSlope(short[] values, int first, int last, short leftValue, short rightValue, int step) {
+    private void fillAscendingSlope(
+            short[] values,
+            int first,
+            int last,
+            short leftValue,
+            short rightValue,
+            int step) {
         assert first < last;
         final int halfSum = halfSum(leftValue, rightValue);
         // - for integer types in exactHalfSum it is ceil((leftValue+rightValue)/2)
@@ -2474,7 +2536,12 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillDescendingSlope(short[] values, int first, int last, short leftValue, short rightValue) {
+    private void fillDescendingSlope(
+            short[] values,
+            int first,
+            int last,
+            short leftValue,
+            short rightValue) {
         assert first < last;
         final int halfSum = halfSumFloor(rightValue, leftValue);
         // - halfSumFloor is important for integer types, if exact halfSum is not integer
@@ -2491,7 +2558,13 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillDescendingSlope(short[] values, int first, int last, short leftValue, short rightValue, int step) {
+    private void fillDescendingSlope(
+            short[] values,
+            int first,
+            int last,
+            short leftValue,
+            short rightValue,
+            int step) {
         assert first < last;
         final int halfSum = halfSumFloor(rightValue, leftValue);
         // - halfSumFloor is important for integer types, if exact halfSum is not integer
@@ -2752,7 +2825,12 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillAscendingSlope(int[] values, int first, int last, int leftValue, int rightValue) {
+    private void fillAscendingSlope(
+            int[] values,
+            int first,
+            int last,
+            int leftValue,
+            int rightValue) {
         assert first < last;
         final int halfSum = halfSum(leftValue, rightValue);
         // - for integer types in exactHalfSum it is ceil((leftValue+rightValue)/2)
@@ -2769,7 +2847,13 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillAscendingSlope(int[] values, int first, int last, int leftValue, int rightValue, int step) {
+    private void fillAscendingSlope(
+            int[] values,
+            int first,
+            int last,
+            int leftValue,
+            int rightValue,
+            int step) {
         assert first < last;
         final int halfSum = halfSum(leftValue, rightValue);
         // - for integer types in exactHalfSum it is ceil((leftValue+rightValue)/2)
@@ -2786,7 +2870,12 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillDescendingSlope(int[] values, int first, int last, int leftValue, int rightValue) {
+    private void fillDescendingSlope(
+            int[] values,
+            int first,
+            int last,
+            int leftValue,
+            int rightValue) {
         assert first < last;
         final int halfSum = halfSumFloor(rightValue, leftValue);
         // - halfSumFloor is important for integer types, if exact halfSum is not integer
@@ -2803,7 +2892,13 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillDescendingSlope(int[] values, int first, int last, int leftValue, int rightValue, int step) {
+    private void fillDescendingSlope(
+            int[] values,
+            int first,
+            int last,
+            int leftValue,
+            int rightValue,
+            int step) {
         assert first < last;
         final int halfSum = halfSumFloor(rightValue, leftValue);
         // - halfSumFloor is important for integer types, if exact halfSum is not integer
@@ -3064,7 +3159,12 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillAscendingSlope(long[] values, int first, int last, long leftValue, long rightValue) {
+    private void fillAscendingSlope(
+            long[] values,
+            int first,
+            int last,
+            long leftValue,
+            long rightValue) {
         assert first < last;
         final long halfSum = halfSum(leftValue, rightValue);
         // - for integer types in exactHalfSum it is ceil((leftValue+rightValue)/2)
@@ -3081,7 +3181,13 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillAscendingSlope(long[] values, int first, int last, long leftValue, long rightValue, int step) {
+    private void fillAscendingSlope(
+            long[] values,
+            int first,
+            int last,
+            long leftValue,
+            long rightValue,
+            int step) {
         assert first < last;
         final long halfSum = halfSum(leftValue, rightValue);
         // - for integer types in exactHalfSum it is ceil((leftValue+rightValue)/2)
@@ -3098,7 +3204,12 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillDescendingSlope(long[] values, int first, int last, long leftValue, long rightValue) {
+    private void fillDescendingSlope(
+            long[] values,
+            int first,
+            int last,
+            long leftValue,
+            long rightValue) {
         assert first < last;
         final long halfSum = halfSumFloor(rightValue, leftValue);
         // - halfSumFloor is important for integer types, if exact halfSum is not integer
@@ -3115,7 +3226,13 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillDescendingSlope(long[] values, int first, int last, long leftValue, long rightValue, int step) {
+    private void fillDescendingSlope(
+            long[] values,
+            int first,
+            int last,
+            long leftValue,
+            long rightValue,
+            int step) {
         assert first < last;
         final long halfSum = halfSumFloor(rightValue, leftValue);
         // - halfSumFloor is important for integer types, if exact halfSum is not integer
@@ -3376,7 +3493,12 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillAscendingSlope(float[] values, int first, int last, float leftValue, float rightValue) {
+    private void fillAscendingSlope(
+            float[] values,
+            int first,
+            int last,
+            float leftValue,
+            float rightValue) {
         assert first < last;
         final double halfSum = halfSum(leftValue, rightValue);
         // - for integer types in exactHalfSum it is ceil((leftValue+rightValue)/2)
@@ -3393,7 +3515,13 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillAscendingSlope(float[] values, int first, int last, float leftValue, float rightValue, int step) {
+    private void fillAscendingSlope(
+            float[] values,
+            int first,
+            int last,
+            float leftValue,
+            float rightValue,
+            int step) {
         assert first < last;
         final double halfSum = halfSum(leftValue, rightValue);
         // - for integer types in exactHalfSum it is ceil((leftValue+rightValue)/2)
@@ -3410,7 +3538,12 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillDescendingSlope(float[] values, int first, int last, float leftValue, float rightValue) {
+    private void fillDescendingSlope(
+            float[] values,
+            int first,
+            int last,
+            float leftValue,
+            float rightValue) {
         assert first < last;
         final double halfSum = halfSum(rightValue, leftValue);
         // - halfSumFloor is important for integer types, if exact halfSum is not integer
@@ -3427,7 +3560,13 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillDescendingSlope(float[] values, int first, int last, float leftValue, float rightValue, int step) {
+    private void fillDescendingSlope(
+            float[] values,
+            int first,
+            int last,
+            float leftValue,
+            float rightValue,
+            int step) {
         assert first < last;
         final double halfSum = halfSum(rightValue, leftValue);
         // - halfSumFloor is important for integer types, if exact halfSum is not integer
@@ -3688,7 +3827,12 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillAscendingSlope(double[] values, int first, int last, double leftValue, double rightValue) {
+    private void fillAscendingSlope(
+            double[] values,
+            int first,
+            int last,
+            double leftValue,
+            double rightValue) {
         assert first < last;
         final double halfSum = halfSum(leftValue, rightValue);
         // - for integer types in exactHalfSum it is ceil((leftValue+rightValue)/2)
@@ -3705,7 +3849,13 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillAscendingSlope(double[] values, int first, int last, double leftValue, double rightValue, int step) {
+    private void fillAscendingSlope(
+            double[] values,
+            int first,
+            int last,
+            double leftValue,
+            double rightValue,
+            int step) {
         assert first < last;
         final double halfSum = halfSum(leftValue, rightValue);
         // - for integer types in exactHalfSum it is ceil((leftValue+rightValue)/2)
@@ -3722,7 +3872,12 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillDescendingSlope(double[] values, int first, int last, double leftValue, double rightValue) {
+    private void fillDescendingSlope(
+            double[] values,
+            int first,
+            int last,
+            double leftValue,
+            double rightValue) {
         assert first < last;
         final double halfSum = halfSum(rightValue, leftValue);
         // - halfSumFloor is important for integer types, if exact halfSum is not integer
@@ -3739,7 +3894,13 @@ public final class SlopeEmphasizer {
         }
     }
 
-    private void fillDescendingSlope(double[] values, int first, int last, double leftValue, double rightValue, int step) {
+    private void fillDescendingSlope(
+            double[] values,
+            int first,
+            int last,
+            double leftValue,
+            double rightValue,
+            int step) {
         assert first < last;
         final double halfSum = halfSum(rightValue, leftValue);
         // - halfSumFloor is important for integer types, if exact halfSum is not integer
