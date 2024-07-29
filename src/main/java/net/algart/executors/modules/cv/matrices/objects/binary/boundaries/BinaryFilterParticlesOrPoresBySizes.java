@@ -228,11 +228,11 @@ public final class BinaryFilterParticlesOrPoresBySizes extends BitMultiMatrixFil
         // - fills last objects, brackets for which are drawn by scanBoundary above
         switch (mode) {
             case FIND -> {
-                Matrices.applyFunc(null, Func.MIN, result, source, result);
+                Matrices.applyFunc(Func.MIN, result, source, result);
                 // - restore pores on the found particles
             }
             case REMOVE -> {
-                Matrices.applyFunc(null, Func.POSITIVE_DIFF, result, source, result);
+                Matrices.applyFunc(Func.POSITIVE_DIFF, result, source, result);
                 // - remove found particles
             }
             case FIND_FILLED -> {
@@ -277,7 +277,7 @@ public final class BinaryFilterParticlesOrPoresBySizes extends BitMultiMatrixFil
             Matrix<? extends UpdatablePArray> result,
             Matrix<? extends PArray> source) {
         final double maxPossibleValue = source.array().maxPossibleValue(1.0);
-        Matrices.applyFunc(null, LinearFunc.getInstance(maxPossibleValue, -1.0), result, source);
+        Matrices.applyFunc(LinearFunc.getInstance(maxPossibleValue, -1.0), result, source);
     }
 
     private EnumSet<Boundary2DSimpleMeasurer.ObjectParameter> necessaryParameters() {

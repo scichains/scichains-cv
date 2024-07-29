@@ -175,7 +175,7 @@ public final class DrawRectangle extends MultiMatrixChannel2DFilter {
                     value = Math.min(value, maxPossibleValue);
                     // - without it, results of fillRegion will be relatively strange
                 }
-                Matrices.fillRegion(null, clone, region, value);
+                Matrices.fillRegion(clone, region, value);
             }
         }
         return clone;

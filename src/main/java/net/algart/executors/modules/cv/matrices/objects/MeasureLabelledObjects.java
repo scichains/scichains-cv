@@ -185,13 +185,13 @@ public final class MeasureLabelledObjects extends Executor implements ReadOnlyEx
             }
             if (results.containsKey(ObjectParameter.AREA)) {
                 final UpdatablePNumberArray result = Arrays.SMM.newFloatArray(cardinalities.length);
-                Arrays.applyFunc(null, LinearFunc.getInstance(0.0, pixelSize * pixelSize),
+                Arrays.applyFunc(LinearFunc.getInstance(0.0, pixelSize * pixelSize),
                         result, IntArray.as(cardinalities));
                 results.get(ObjectParameter.AREA).setTo(result, 1);
             }
             if (results.containsKey(ObjectParameter.SQRT_AREA)) {
                 final UpdatablePNumberArray result = Arrays.SMM.newFloatArray(cardinalities.length);
-                Arrays.applyFunc(null, PowerFunc.getInstance(0.5, pixelSize),
+                Arrays.applyFunc(PowerFunc.getInstance(0.5, pixelSize),
                         result, IntArray.as(cardinalities));
                 results.get(ObjectParameter.SQRT_AREA).setTo(result, 1);
             }
@@ -207,16 +207,15 @@ public final class MeasureLabelledObjects extends Executor implements ReadOnlyEx
                     int label = labelsArray[disp];
                     if (label > 0) {
                         switch (boundaryLineType) {
-                            case BOUNDARY_PIXELS: {
+                            case BOUNDARY_PIXELS -> {
                                 if (x == 0 || labelsArray[disp - 1] != label
                                         || x == dimX - 1 || labelsArray[disp + 1] != label
                                         || y == 0 || labelsArray[disp - dimX] != label
                                         || y == dimY - 1 || labelsArray[disp + dimX] != label) {
                                     boundaries[label - 1]++;
                                 }
-                                break;
                             }
-                            case BOUNDARY_INTERPIXEL_SEGMENTS: {
+                            case BOUNDARY_INTERPIXEL_SEGMENTS -> {
                                 int count = 0;
                                 if (x == 0 || labelsArray[disp - 1] != label) {
                                     count++;
@@ -231,25 +230,23 @@ public final class MeasureLabelledObjects extends Executor implements ReadOnlyEx
                                     count++;
                                 }
                                 boundaries[label - 1] += count;
-                                break;
                             }
-                            default:
-                                throw new AssertionError("Unsupported boundary line type: "
-                                        + boundaryLineType);
+                            default -> throw new AssertionError("Unsupported boundary line type: "
+                                    + boundaryLineType);
                         }
                     }
                 }
             }
             if (results.containsKey(ObjectParameter.BOUNDARY)) {
                 final UpdatablePNumberArray result = Arrays.SMM.newFloatArray(boundaries.length);
-                Arrays.applyFunc(null, LinearFunc.getInstance(0.0, pixelSize),
+                Arrays.applyFunc(LinearFunc.getInstance(0.0, pixelSize),
                         result, IntArray.as(boundaries));
                 results.get(ObjectParameter.BOUNDARY).setTo(result, 1);
             }
             if (results.containsKey(ObjectParameter.THICKNESS)) {
                 assert cardinalities != null;
                 final UpdatablePNumberArray result = Arrays.SMM.newFloatArray(boundaries.length);
-                Arrays.applyFunc(null, DividingFunc.getInstance(2.0 * pixelSize),
+                Arrays.applyFunc(DividingFunc.getInstance(2.0 * pixelSize),
                         result,
                         IntArray.as(cardinalities),
                         IntArray.as(boundaries));
@@ -258,7 +255,7 @@ public final class MeasureLabelledObjects extends Executor implements ReadOnlyEx
             if (results.containsKey(ObjectParameter.SHAPE_FACTOR)) {
                 assert cardinalities != null;
                 final UpdatablePNumberArray result = Arrays.SMM.newFloatArray(boundaries.length);
-                Arrays.applyFunc(null, DividingFunc.getInstance(2 * StrictMath.sqrt(Math.PI)),
+                Arrays.applyFunc(DividingFunc.getInstance(2 * StrictMath.sqrt(Math.PI)),
                         result,
                         Arrays.asFuncArray(PowerFunc.getInstance(0.5), DoubleArray.class,
                                 IntArray.as(cardinalities)),
