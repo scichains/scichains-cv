@@ -267,11 +267,11 @@ public final class LabelsAnalyser {
     }
 
     /**
-     * Returns maximal label index. It contains a correct value after <i>any</i> of <tt>findXxx</tt> methods.
+     * Returns maximal label index. It contains a correct value after <i>any</i> of <code>findXxx</code> methods.
      * The number of elements in arrays with parameters of objects, returned by this class,
      * like {@link #cardinalities()} or {@link #listHeads()}, is equal to this value;
-     * information about object with given <tt>label</tt> is stored in element with index <tt>label-1</tt>
-     * (<tt>label=0</tt> is impossible and skipped).
+     * information about object with given <code>label</code> is stored in element with index <code>label-1</code>
+     * (<code>label=0</code> is impossible and skipped).
      *
      * @return maximal label index.
      */
@@ -282,7 +282,7 @@ public final class LabelsAnalyser {
     /**
      * Returns labels array.
      *
-     * <p>Warning: if {@link #unsafeLabelsMustBeImmutable()} returns <tt>true</tt>, you <b>must not</b>
+     * <p>Warning: if {@link #unsafeLabelsMustBeImmutable()} returns <code>true</code>, you <b>must not</b>
      * modify the content of the returned array!
      *
      * @return labels array.

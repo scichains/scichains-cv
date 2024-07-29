@@ -131,7 +131,7 @@ public final class OTools {
     }
 
     /**
-     * Creates scalar with 3 components <tt>value</tt> and 4th zero. Don't use it in BGRA/RGBA context.
+     * Creates scalar with 3 components <code>value</code> and 4th zero. Don't use it in BGRA/RGBA context.
      *
      * @param value value of each component.
      * @return scalar.
