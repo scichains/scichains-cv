@@ -222,7 +222,7 @@ public class TestBorderPixels extends MatToNumbers implements ReadOnlyExecutionI
             result[disp] = byteBuffer.get(p);
         }
         p += dimX;
-        assert p == outsideIndent * dimX + outsideIndent;;
+        assert p == outsideIndent * dimX + outsideIndent;
         return result;
     }
 

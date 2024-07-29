@@ -24,8 +24,8 @@
 
 package net.algart.executors.modules.cv.matrices.misc.extremums;
 
-import net.algart.executors.modules.cv.matrices.misc.SortedRound2DAperture;
 import net.algart.arrays.*;
+import net.algart.executors.modules.cv.matrices.misc.SortedRound2DAperture;
 
 import java.util.Objects;
 
@@ -135,7 +135,7 @@ public abstract class ExtremumsFinder {
         this.needOppositeExtremum = minimalDepth > 0.0;
         if (deepTestSettings.ignore != null && !resultExtremums.dimEquals(deepTestSettings.ignore)) {
             throw new IllegalArgumentException("ignore matrix sizes " + deepTestSettings.ignore
-                + " do not match result extremums matrix sizes " + resultExtremums);
+                    + " do not match result extremums matrix sizes " + resultExtremums);
         }
         this.ignore = deepTestSettings.ignore == null ?
                 Arrays.nBitCopies(resultExtremums.size(), false) :
@@ -340,7 +340,7 @@ public abstract class ExtremumsFinder {
             final int dimY = ExtremumsFinder.this.dimY;
             final int[] dx = depthAperture.dx();
             final int[] dy = depthAperture.dy();
-            final int[] offsets  = depthAperture.offsets();
+            final int[] offsets = depthAperture.offsets();
             float result = Float.POSITIVE_INFINITY;
             boolean found = false;
             for (int k = 0, m = depthAperture.count(); k < m; k++) {
@@ -372,7 +372,7 @@ public abstract class ExtremumsFinder {
             final int dimY = ExtremumsFinder.this.dimY;
             final int[] dx = depthAperture.dx();
             final int[] dy = depthAperture.dy();
-            final int[] offsets  = depthAperture.offsets();
+            final int[] offsets = depthAperture.offsets();
             float result = Float.NEGATIVE_INFINITY;
             boolean found = false;
             for (int k = 0, m = depthAperture.count(); k < m; k++) {
@@ -407,7 +407,7 @@ public abstract class ExtremumsFinder {
             final int dimY = ExtremumsFinder.this.dimY;
             final int[] dx = depthAperture.dx();
             final int[] dy = depthAperture.dy();
-            final int[] offsets  = depthAperture.offsets();
+            final int[] offsets = depthAperture.offsets();
             int count = 0;
             for (int k = 0, m = depthAperture.count(); k < m; k++) {
                 final int x = x0 - dx[k];
@@ -437,7 +437,7 @@ public abstract class ExtremumsFinder {
             final int dimY = ExtremumsFinder.this.dimY;
             final int[] dx = depthAperture.dx();
             final int[] dy = depthAperture.dy();
-            final int[] offsets  = depthAperture.offsets();
+            final int[] offsets = depthAperture.offsets();
             int count = 1;
             double sum = values[index0];
             // (0,0) is not included in the aperture

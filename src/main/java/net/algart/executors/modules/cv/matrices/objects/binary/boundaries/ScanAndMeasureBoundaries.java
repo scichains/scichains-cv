@@ -25,12 +25,12 @@
 package net.algart.executors.modules.cv.matrices.objects.binary.boundaries;
 
 import net.algart.arrays.*;
+import net.algart.executors.api.Executor;
+import net.algart.executors.api.data.SNumbers;
 import net.algart.math.functions.Func;
 import net.algart.matrices.scanning.Boundary2DSimpleMeasurer;
 import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;
-import net.algart.executors.api.Executor;
-import net.algart.executors.api.data.SNumbers;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

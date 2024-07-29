@@ -24,12 +24,12 @@
 
 package net.algart.executors.modules.cv.matrices.objects.binary.boundaries;
 
-import net.algart.contours.Contours;
 import net.algart.arrays.*;
+import net.algart.contours.Contours;
+import net.algart.executors.modules.core.common.matrices.BitMultiMatrixFilter;
 import net.algart.matrices.scanning.Boundary2DScanner;
 import net.algart.matrices.scanning.ConnectivityType;
 import net.algart.multimatrix.MultiMatrix;
-import net.algart.executors.modules.core.common.matrices.BitMultiMatrixFilter;
 
 import java.util.Objects;
 
@@ -70,7 +70,7 @@ class BoundariesScanner {
             boolean needSecondBufferForBinary,
             boolean needLabels,
             long maxLevelForLabelsDrawer) {
-        this.objects  = Objects.requireNonNull(objects);
+        this.objects = Objects.requireNonNull(objects);
         this.objectsArray = objects.array();
         if (maxLevelForLabelsDrawer != Long.MAX_VALUE) {
             needSecondBufferForBinary = true;
@@ -230,7 +230,7 @@ class BoundariesScanner {
     }
 
     private boolean nextBoundaryForLabels() {
-        for (; ;) {
+        for (; ; ) {
             if (!nextSingleBoundaryForLabels()) {
                 return false;
             }

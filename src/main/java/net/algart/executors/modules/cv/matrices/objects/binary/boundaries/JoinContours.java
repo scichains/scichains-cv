@@ -27,11 +27,11 @@ package net.algart.executors.modules.cv.matrices.objects.binary.boundaries;
 import net.algart.arrays.TooLargeArrayException;
 import net.algart.contours.ContourJoiner;
 import net.algart.contours.Contours;
-import net.algart.math.IRectangularArea;
 import net.algart.executors.api.ReadOnlyExecutionInput;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.numbers.IndexingBase;
 import net.algart.executors.modules.core.common.numbers.NumbersFilter;
+import net.algart.math.IRectangularArea;
 
 import java.util.stream.IntStream;
 
@@ -122,11 +122,11 @@ public final class JoinContours extends NumbersFilter implements ReadOnlyExecuti
         final int[] joinedLabelsMap = joiningMap();
         if (joinedLabelsMap == null && defaultJoinedLabel == null) {
             throw new IllegalArgumentException("The port \"" + INPUT_JOINING_MAP + "\" has no initialized data; "
-                + "in this case, you must specify some non-empty default joined label");
+                    + "in this case, you must specify some non-empty default joined label");
         }
         final ContourJoiner contourJoiner = defaultJoinedLabel == null ?
-            ContourJoiner.newInstance(contours, gridStepLog, joinedLabelsMap) :
-            ContourJoiner.newInstance(contours, gridStepLog, joinedLabelsMap, defaultJoinedLabel);
+                ContourJoiner.newInstance(contours, gridStepLog, joinedLabelsMap) :
+                ContourJoiner.newInstance(contours, gridStepLog, joinedLabelsMap, defaultJoinedLabel);
         contourJoiner.setJoiningOrder(joiningOrder);
         contourJoiner.setPackResultContours(automaticallyPackResultContours);
         contourJoiner.setInterrupter(this::isInterrupted);

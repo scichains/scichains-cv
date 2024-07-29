@@ -24,8 +24,8 @@
 
 package net.algart.executors.modules.cv.matrices.misc;
 
-import net.algart.executors.modules.core.common.matrices.SeveralMultiMatricesChannelOperation;
 import net.algart.arrays.*;
+import net.algart.executors.modules.core.common.matrices.SeveralMultiMatricesChannelOperation;
 import net.algart.math.functions.Func;
 import net.algart.multimatrix.MultiMatrix;
 

@@ -24,8 +24,8 @@
 
 package net.algart.executors.modules.cv.matrices.objects.binary.boundaries;
 
-import net.algart.contours.Contours;
 import net.algart.arrays.IntArray;
+import net.algart.contours.Contours;
 import net.algart.executors.api.ReadOnlyExecutionInput;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.numbers.NumbersFilter;

@@ -24,14 +24,14 @@
 
 package net.algart.executors.modules.cv.matrices.objects.binary.components;
 
+import net.algart.arrays.Matrix;
+import net.algart.executors.modules.core.common.matrices.SeveralMultiMatricesOperation;
 import net.algart.executors.modules.cv.matrices.morphology.MorphologyFilter;
 import net.algart.executors.modules.cv.matrices.morphology.MorphologyOperation;
 import net.algart.executors.modules.cv.matrices.morphology.StrictMorphology;
 import net.algart.executors.modules.cv.matrices.objects.RetainOrRemoveMode;
-import net.algart.arrays.Matrix;
 import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;
-import net.algart.executors.modules.core.common.matrices.SeveralMultiMatricesOperation;
 
 import java.util.Arrays;
 import java.util.List;

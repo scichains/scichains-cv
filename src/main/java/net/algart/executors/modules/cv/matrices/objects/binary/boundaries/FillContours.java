@@ -27,15 +27,15 @@ package net.algart.executors.modules.cv.matrices.objects.binary.boundaries;
 import net.algart.arrays.Arrays;
 import net.algart.contours.ContourFiller;
 import net.algart.contours.Contours;
+import net.algart.executors.api.ReadOnlyExecutionInput;
+import net.algart.executors.api.data.SNumbers;
+import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
+import net.algart.executors.modules.core.common.matrices.MultiMatrixGenerator;
+import net.algart.executors.modules.core.common.numbers.IndexingBase;
 import net.algart.math.IPoint;
 import net.algart.math.IRectangularArea;
 import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;
-import net.algart.executors.api.ReadOnlyExecutionInput;
-import net.algart.executors.api.data.SNumbers;
-import net.algart.executors.modules.core.common.numbers.IndexingBase;
-import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
-import net.algart.executors.modules.core.common.matrices.MultiMatrixGenerator;
 
 import java.util.Locale;
 import java.util.Objects;
@@ -213,7 +213,7 @@ public final class FillContours extends MultiMatrix2DFilter implements ReadOnlyE
 
         final MultiMatrix2D result;
         final ContourFiller contourFiller = ContourFiller.newInstance(
-                contours, elementType, startX, startY, sizeX, sizeY)
+                        contours, elementType, startX, startY, sizeX, sizeY)
                 .setNeedToUnpack(!useUnpacker)
                 .setNeedToUnpackDiagonals(needToProcessDiagonals);
         long t3 = debugTime(), t4;

@@ -33,6 +33,7 @@ class PercentilesFinderByLastChannelFor5ResultChannels extends PercentilesFinder
     private final boolean separateChannels2;
     private final boolean separateChannels3;
     private final boolean separateChannels4;
+
     PercentilesFinderByLastChannelFor5ResultChannels(
             int maxLabel,
             double[][] levels,

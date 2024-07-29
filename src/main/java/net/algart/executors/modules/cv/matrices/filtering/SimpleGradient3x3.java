@@ -24,12 +24,11 @@
 
 package net.algart.executors.modules.cv.matrices.filtering;
 
+import net.algart.executors.modules.core.common.matrices.MultiMatrixFilter;
 import net.algart.matrices.filters3x3.QuickGradientByCross3x3;
 import net.algart.multimatrix.MultiMatrix;
-import net.algart.executors.modules.core.common.matrices.MultiMatrixFilter;
 
 import java.util.Locale;
-import java.util.stream.Collectors;
 
 public final class SimpleGradient3x3 extends MultiMatrixFilter {
     public SimpleGradient3x3() {

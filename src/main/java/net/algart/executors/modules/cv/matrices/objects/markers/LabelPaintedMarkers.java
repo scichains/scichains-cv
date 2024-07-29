@@ -28,12 +28,12 @@ import net.algart.arrays.Arrays;
 import net.algart.arrays.BitArray;
 import net.algart.arrays.Matrices;
 import net.algart.arrays.UpdatablePArray;
-import net.algart.multimatrix.MultiMatrix;
-import net.algart.multimatrix.MultiMatrix2D;
 import net.algart.executors.api.data.SMat;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
 import net.algart.executors.modules.core.matrices.arithmetic.CheckMatrixEquality;
+import net.algart.multimatrix.MultiMatrix;
+import net.algart.multimatrix.MultiMatrix2D;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -68,8 +68,7 @@ public final class LabelPaintedMarkers extends MultiMatrix2DFilter {
     public MultiMatrix2D process(
             MultiMatrix2D imageWithMarkers,
             MultiMatrix2D imageWithoutMarkers,
-            SNumbers colorMap)
-    {
+            SNumbers colorMap) {
         Objects.requireNonNull(imageWithMarkers, "Null imageWithMarkers");
         Objects.requireNonNull(colorMap, "Null colorMap");
         imageWithMarkers.checkDimensionEquality(imageWithoutMarkers,

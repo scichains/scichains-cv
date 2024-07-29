@@ -87,10 +87,9 @@ public final class AdaptiveManifoldFilter extends AbstractFilterWithGuideImage {
     public void process(Mat result, Mat source, Mat guide) {
         long tStart = System.nanoTime();
         try (final org.bytedeco.opencv.opencv_ximgproc.AdaptiveManifoldFilter filter = opencv_ximgproc.createAMFilter(
-            sigmaS,
-            sigmaR,
-            adjustOutliers))
-        {
+                sigmaS,
+                sigmaR,
+                adjustOutliers)) {
             addServiceTime(System.nanoTime() - tStart);
             filter.setTreeHeight(treeHeight);
             filter.setPCAIterations(numPcaIterations);
@@ -105,8 +104,7 @@ public final class AdaptiveManifoldFilter extends AbstractFilterWithGuideImage {
         try (final org.bytedeco.opencv.opencv_ximgproc.AdaptiveManifoldFilter filter = opencv_ximgproc.createAMFilter(
                 sigmaS,
                 sigmaR,
-                adjustOutliers))
-        {
+                adjustOutliers)) {
             addServiceTime(System.nanoTime() - tStart);
             filter.setTreeHeight(treeHeight);
             filter.setPCAIterations(numPcaIterations);

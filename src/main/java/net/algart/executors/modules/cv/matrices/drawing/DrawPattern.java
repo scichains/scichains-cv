@@ -24,12 +24,12 @@
 
 package net.algart.executors.modules.cv.matrices.drawing;
 
-import net.algart.executors.modules.cv.matrices.morphology.MorphologyFilter;
-import net.algart.executors.api.data.SNumbers;
 import net.algart.arrays.Arrays;
 import net.algart.arrays.Matrix;
 import net.algart.arrays.PArray;
 import net.algart.arrays.UpdatablePArray;
+import net.algart.executors.api.data.SNumbers;
+import net.algart.executors.modules.cv.matrices.morphology.MorphologyFilter;
 import net.algart.math.IPoint;
 import net.algart.math.Point;
 import net.algart.multimatrix.MultiMatrix2D;
@@ -90,7 +90,7 @@ public final class DrawPattern extends MorphologyFilter {
         final double maxPossibleValue = m.array().maxPossibleValue(1.0);
         final double defaultValue = colorChannel(color, maxPossibleValue);
         final PositionsAndColors positionsAndColors = new PositionsAndColors(
-                positions, colors, new double[] {x, y}, defaultValue, 2);
+                positions, colors, new double[]{x, y}, defaultValue, 2);
         final UpdatablePArray updatableArray =
                 clearSource ? (UpdatablePArray) Arrays.SMM.newUnresizableArray(m.array())
                         : m.array() instanceof UpdatablePArray ? (UpdatablePArray) m.array()

@@ -24,13 +24,13 @@
 
 package net.algart.executors.modules.cv.matrices.camera;
 
-import net.algart.executors.modules.cv.matrices.camera.reflectance.ReflectanceSettings;
 import net.algart.arrays.Arrays;
 import net.algart.arrays.PArray;
-import net.algart.math.functions.Func;
-import net.algart.multimatrix.MultiMatrix;
 import net.algart.executors.modules.core.common.matrices.MultiMatrixFilter;
 import net.algart.executors.modules.core.common.matrices.MultiMatrixGenerator;
+import net.algart.executors.modules.cv.matrices.camera.reflectance.ReflectanceSettings;
+import net.algart.math.functions.Func;
+import net.algart.multimatrix.MultiMatrix;
 
 public final class ReflectanceToIntensity extends MultiMatrixFilter {
     private String reflectanceSettingsFile = "";

@@ -61,8 +61,7 @@ public final class MatchTemplate extends VoidResultTwoUMatFilter {
             opencv_core.minMaxLoc(result, minVal, maxVal, minLocation, maxLocation, null);
             final double x, y;
             if (templateMatchMode == OTemplateMatchMode.TM_SQDIFF
-                    || templateMatchMode == OTemplateMatchMode.TM_SQDIFF_NORMED)
-            {
+                    || templateMatchMode == OTemplateMatchMode.TM_SQDIFF_NORMED) {
                 x = minLocation.x();
                 y = minLocation.y();
             } else {
@@ -84,8 +83,7 @@ public final class MatchTemplate extends VoidResultTwoUMatFilter {
             opencv_core.minMaxLoc(result, minVal, maxVal, minLocation, maxLocation, null);
             final double x, y;
             if (templateMatchMode == OTemplateMatchMode.TM_SQDIFF
-                    || templateMatchMode == OTemplateMatchMode.TM_SQDIFF_NORMED)
-            {
+                    || templateMatchMode == OTemplateMatchMode.TM_SQDIFF_NORMED) {
                 x = minLocation.x();
                 y = minLocation.y();
             } else {

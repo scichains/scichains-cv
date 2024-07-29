@@ -106,7 +106,7 @@ public final class MLTrainRTrees extends MLTrainDTrees {
             }
             // - should be the last operation in customization
             customizeRTrees(model, priors);
-            logDebug(() -> "Training " +  modelKind().modelName() + ": " + toString(model));
+            logDebug(() -> "Training " + modelKind().modelName() + ": " + toString(model));
             final MLStatModelTrainer trainer = new MLStatModelTrainer(model, modelKind());
             setTrainingFlags(trainer);
             train(trainer);
@@ -150,9 +150,10 @@ public final class MLTrainRTrees extends MLTrainDTrees {
 
     public static void main(String[] args) {
         RTrees model = RTrees.create();
-        SNumbers priors = SNumbers.valueOfArray(new double[] {2.0f, 1.0f}, 1);
+        SNumbers priors = SNumbers.valueOfArray(new double[]{2.0f, 1.0f}, 1);
         model.setPriors(O2SMat.numbersToMulticolumnMat(priors));
         model.setCalculateVarImportance(true);
+        @SuppressWarnings("resource")
         final MLTrainRTrees training = new MLTrainRTrees(MLSamplesType.NUMBERS);
         training.setUseGPU(false);
         training.trainNumbers(new MLStatModelTrainer(model, MLKind.StatModelBased.R_TREES),

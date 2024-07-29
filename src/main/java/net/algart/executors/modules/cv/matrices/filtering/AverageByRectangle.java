@@ -24,10 +24,10 @@
 
 package net.algart.executors.modules.cv.matrices.filtering;
 
+import net.algart.executors.modules.core.common.matrices.MultiMatrixFilter;
 import net.algart.math.IRectangularArea;
 import net.algart.matrices.morphology.Quick2DAverager;
 import net.algart.multimatrix.MultiMatrix;
-import net.algart.executors.modules.core.common.matrices.MultiMatrixFilter;
 
 import java.util.Locale;
 
@@ -109,7 +109,10 @@ public final class AverageByRectangle extends MultiMatrixFilter {
     @Override
     public MultiMatrix process(MultiMatrix source) {
         long t1 = debugTime();
-        final Quick2DAverager averager = Quick2DAverager.newInstance(source.elementType(), source.dimensions(), twoStage)
+        final Quick2DAverager averager = Quick2DAverager.newInstance(
+                        source.elementType(),
+                        source.dimensions(),
+                        twoStage)
                 .setRounding(rounding)
                 .setStrictDivision(strictDivision);
         final int sizeX = this.sizeX;

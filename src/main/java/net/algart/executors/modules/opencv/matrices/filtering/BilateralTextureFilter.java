@@ -74,15 +74,15 @@ public final class BilateralTextureFilter extends VoidResultUMatFilter {
     @Override
     public void process(Mat result, Mat source) {
         logDebug(() -> "Bilateral texture filter: fr = " + filterRadius
-            + ", sigmaAlpha = " + sigmaAlpha + ", sigmaAvg = " + sigmaAvg
-            + " (source: " + source + ")");
+                + ", sigmaAlpha = " + sigmaAlpha + ", sigmaAvg = " + sigmaAvg
+                + " (source: " + source + ")");
         opencv_ximgproc.bilateralTextureFilter(
-            source,
-            result,
-            filterRadius,
-            numberOfIterations,
-            sigmaAlpha,
-            sigmaAvg);
+                source,
+                result,
+                filterRadius,
+                numberOfIterations,
+                sigmaAlpha,
+                sigmaAvg);
     }
 
     @Override

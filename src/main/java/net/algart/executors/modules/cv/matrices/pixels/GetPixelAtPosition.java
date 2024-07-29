@@ -27,7 +27,6 @@ package net.algart.executors.modules.cv.matrices.pixels;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.matrices.MultiMatrixToNumbers;
 import net.algart.multimatrix.MultiMatrix;
-import net.algart.multimatrix.MultiMatrix2D;
 
 public final class GetPixelAtPosition extends MultiMatrixToNumbers {
     public static final String INPUT_POSITIONS = "positions";
@@ -71,7 +70,7 @@ public final class GetPixelAtPosition extends MultiMatrixToNumbers {
     }
 
     public SNumbers analyse(MultiMatrix source, SNumbers positions) {
-        long[] xy = new long[] {x, y};
+        long[] xy = new long[]{x, y};
         if (positions != null && positions.isInitialized()) {
             if (positions.getBlockLength() < 2) {
                 throw new IllegalArgumentException("Positions must contain at least 2 elements per block");

@@ -25,12 +25,12 @@
 package net.algart.executors.modules.cv.matrices.morphology;
 
 import net.algart.arrays.*;
+import net.algart.executors.modules.core.common.matrices.MultiMatrixChannel2DFilter;
+import net.algart.executors.modules.core.matrices.geometry.ContinuationMode;
 import net.algart.math.functions.LinearFunc;
 import net.algart.math.patterns.Pattern;
 import net.algart.matrices.morphology.*;
 import net.algart.multimatrix.MultiMatrix2D;
-import net.algart.executors.modules.core.common.matrices.MultiMatrixChannel2DFilter;
-import net.algart.executors.modules.core.matrices.geometry.ContinuationMode;
 
 public final class MorphologyTransform extends MultiMatrixChannel2DFilter {
     public enum TransformOperation {

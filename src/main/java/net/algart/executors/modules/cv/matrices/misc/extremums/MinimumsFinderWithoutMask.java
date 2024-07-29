@@ -24,9 +24,9 @@
 
 package net.algart.executors.modules.cv.matrices.misc.extremums;
 
-import net.algart.executors.modules.cv.matrices.misc.SortedRound2DAperture;
 import net.algart.arrays.Matrix;
 import net.algart.arrays.UpdatableBitArray;
+import net.algart.executors.modules.cv.matrices.misc.SortedRound2DAperture;
 
 class MinimumsFinderWithoutMask extends MinimumsFinder {
     MinimumsFinderWithoutMask(

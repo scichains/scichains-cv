@@ -28,10 +28,10 @@ import net.algart.arrays.Arrays;
 import net.algart.arrays.PArray;
 import net.algart.arrays.PFixedArray;
 import net.algart.arrays.TooLargeArrayException;
-import net.algart.math.functions.LinearFunc;
-import net.algart.multimatrix.MultiMatrix2D;
 import net.algart.executors.api.Executor;
 import net.algart.executors.api.ReadOnlyExecutionInput;
+import net.algart.math.functions.LinearFunc;
+import net.algart.multimatrix.MultiMatrix2D;
 
 public final class PatternShapeToScalar extends Executor implements ReadOnlyExecutionInput {
     public static final String OUTPUT_SHAPE_DESCRIPTION = "shape_specification";

@@ -24,10 +24,10 @@
 
 package net.algart.executors.modules.core.matrices.io.helpers;
 
-import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.api.Executor;
 import net.algart.executors.api.data.SMat;
 import net.algart.executors.modules.core.matrices.io.MatReader;
+import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.io.UnsupportedImageFormatException;
 import org.bytedeco.opencv.global.opencv_imgcodecs;
 import org.bytedeco.opencv.opencv_core.Mat;

@@ -111,7 +111,7 @@ public final class SubMatrix extends UMatFilter implements ReadOnlyExecutionInpu
         final int w = xTo - xFrom;
         final int h = yTo - yFrom;
         if (w > 0 && h > 0) {
-            try (Scalar scalar =  OTools.scalarBGRA(outsideColor, OTools.maxPossibleValue(source));
+            try (Scalar scalar = OTools.scalarBGRA(outsideColor, OTools.maxPossibleValue(source));
                  Rect sourceRect = new Rect(xFrom, yFrom, w, h);
                  Rect resultRect = new Rect(xFrom - this.left, yFrom - this.top, w, h)
             ) {
@@ -144,7 +144,7 @@ public final class SubMatrix extends UMatFilter implements ReadOnlyExecutionInpu
         final int w = xTo - xFrom;
         final int h = yTo - yFrom;
         if (w > 0 && h > 0) {
-            try (Scalar scalar =  OTools.scalarBGRA(outsideColor, OTools.maxPossibleValue(source));
+            try (Scalar scalar = OTools.scalarBGRA(outsideColor, OTools.maxPossibleValue(source));
                  Rect sourceRect = new Rect(xFrom, yFrom, w, h);
                  Rect resultRect = new Rect(xFrom - this.left, yFrom - this.top, w, h)
             ) {

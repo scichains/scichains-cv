@@ -210,7 +210,7 @@ public final class DrawLine extends OpenCVExecutor {
 
         final PositionsAndColors positionsAndColors = new PositionsAndColors(
                 positions, colors,
-                new double[] {defaultX1, defaultY1, defaultX2, defaultY2},
+                new double[]{defaultX1, defaultY1, defaultX2, defaultY2},
                 Double.NaN, 4);
         final double scale = OTools.maxPossibleValue(source);
         for (int k = 0, n = positionsAndColors.n(); k < n; k++) {

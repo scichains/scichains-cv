@@ -24,12 +24,12 @@
 
 package net.algart.executors.modules.cv.matrices.objects.binary.components;
 
-import net.algart.executors.modules.cv.matrices.objects.MeasureLabelledObjects;
-import net.algart.matrices.scanning.ConnectivityType;
-import net.algart.multimatrix.MultiMatrix2D;
 import net.algart.executors.api.Executor;
 import net.algart.executors.api.ReadOnlyExecutionInput;
 import net.algart.executors.api.data.SNumbers;
+import net.algart.executors.modules.cv.matrices.objects.MeasureLabelledObjects;
+import net.algart.matrices.scanning.ConnectivityType;
+import net.algart.multimatrix.MultiMatrix2D;
 
 import java.util.Map;
 

@@ -24,7 +24,10 @@
 
 package net.algart.executors.modules.cv.matrices.objects.binary.boundaries;
 
-import net.algart.arrays.*;
+import net.algart.arrays.Arrays;
+import net.algart.arrays.BitArray;
+import net.algart.arrays.Matrix;
+import net.algart.arrays.PArray;
 import net.algart.executors.modules.core.common.matrices.BitMultiMatrixFilter;
 import net.algart.matrices.scanning.Boundary2DScanner;
 import net.algart.matrices.scanning.ConnectivityType;

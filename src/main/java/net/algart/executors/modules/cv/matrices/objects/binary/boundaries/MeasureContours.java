@@ -27,9 +27,9 @@ package net.algart.executors.modules.cv.matrices.objects.binary.boundaries;
 import net.algart.contours.ContourHeader;
 import net.algart.contours.ContourNestingAnalyser;
 import net.algart.contours.Contours;
-import net.algart.math.IRectangularArea;
 import net.algart.executors.api.Executor;
 import net.algart.executors.api.ReadOnlyExecutionInput;
+import net.algart.math.IRectangularArea;
 
 import java.awt.geom.Point2D;
 import java.util.Arrays;

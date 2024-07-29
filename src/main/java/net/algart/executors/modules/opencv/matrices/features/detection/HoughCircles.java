@@ -58,7 +58,7 @@ public final class HoughCircles extends MatToNumbers {
         return dp;
     }
 
-    public HoughCircles  setDp(double dp) {
+    public HoughCircles setDp(double dp) {
         this.dp = dp;
         return this;
     }
@@ -72,7 +72,7 @@ public final class HoughCircles extends MatToNumbers {
         return minDist;
     }
 
-    public HoughCircles  setMinDist(double minDist) {
+    public HoughCircles setMinDist(double minDist) {
         this.minDist = minDist;
         return this;
     }
@@ -81,7 +81,7 @@ public final class HoughCircles extends MatToNumbers {
         return param1;
     }
 
-    public HoughCircles  setParam1(double param1) {
+    public HoughCircles setParam1(double param1) {
         this.param1 = param1;
         return this;
     }
@@ -90,7 +90,7 @@ public final class HoughCircles extends MatToNumbers {
         return param2;
     }
 
-    public HoughCircles  setParam2(double param2) {
+    public HoughCircles setParam2(double param2) {
         this.param2 = param2;
         return this;
     }
@@ -99,7 +99,7 @@ public final class HoughCircles extends MatToNumbers {
         return minRadius;
     }
 
-    public HoughCircles  setMinRadius(int minRadius) {
+    public HoughCircles setMinRadius(int minRadius) {
         this.minRadius = nonNegative(minRadius);
         return this;
     }
@@ -108,7 +108,7 @@ public final class HoughCircles extends MatToNumbers {
         return maxRadius;
     }
 
-    public HoughCircles  setMaxRadius(int maxRadius) {
+    public HoughCircles setMaxRadius(int maxRadius) {
         this.maxRadius = maxRadius;
         return this;
     }
@@ -135,7 +135,7 @@ public final class HoughCircles extends MatToNumbers {
                     // - replace radius with diameter
                 }
                 final SNumbers result = SNumbers.valueOfArray(circlesAndVotes, 4);
-                getNumbers(OUTPUT_VOTES).exchange(result.columnRange(3 ,1));
+                getNumbers(OUTPUT_VOTES).exchange(result.columnRange(3, 1));
                 return result.columnRange(0, 3);
             }
         } finally {

@@ -27,7 +27,7 @@ package net.algart.executors.modules.opencv.util.enums;
 import org.bytedeco.opencv.global.opencv_imgproc;
 
 public enum OColorMap {
-    COLORMAP_AUTUMN (opencv_imgproc.COLORMAP_AUTUMN),
+    COLORMAP_AUTUMN(opencv_imgproc.COLORMAP_AUTUMN),
     COLORMAP_BONE(opencv_imgproc.COLORMAP_BONE),
     COLORMAP_JET(opencv_imgproc.COLORMAP_JET),
     COLORMAP_WINTER(opencv_imgproc.COLORMAP_WINTER),

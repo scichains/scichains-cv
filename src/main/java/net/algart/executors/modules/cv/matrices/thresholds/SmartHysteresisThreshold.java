@@ -24,10 +24,10 @@
 
 package net.algart.executors.modules.cv.matrices.thresholds;
 
+import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
 import net.algart.executors.modules.cv.matrices.morphology.MorphologyFilter;
 import net.algart.executors.modules.cv.matrices.objects.binary.components.SmartDilatingObjects;
 import net.algart.multimatrix.MultiMatrix2D;
-import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
 
 public final class SmartHysteresisThreshold extends MultiMatrix2DFilter {
     private double surelyMin = Double.NEGATIVE_INFINITY;

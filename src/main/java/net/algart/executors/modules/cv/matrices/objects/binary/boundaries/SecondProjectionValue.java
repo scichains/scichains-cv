@@ -46,7 +46,7 @@ public enum SecondProjectionValue {
     /**
      * The 2nd number in any projection port will be (orthogonal projection) / (current projection).
      */
-    ORTHOGONAL_PROJECTION_DIVIDED_BY_THIS{
+    ORTHOGONAL_PROJECTION_DIVIDED_BY_THIS {
         @Override
         double secondProjectionValue(double thisProjection, double orthogonalProjection) {
             return orthogonalProjection / thisProjection;

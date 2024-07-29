@@ -24,9 +24,9 @@
 
 package net.algart.executors.modules.cv.matrices.objects.binary.boundaries;
 
+import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
 import net.algart.matrices.scanning.ConnectivityType;
 import net.algart.matrices.scanning.ContourLineType;
-import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
 
 abstract class AbstractScanAndMeasureBoundaries extends MultiMatrix2DFilter {
     public static final String INPUT_OBJECTS = "objects";
@@ -64,7 +64,7 @@ abstract class AbstractScanAndMeasureBoundaries extends MultiMatrix2DFilter {
         useVisibleResultParameter();
         setDefaultInputMat(INPUT_OBJECTS);
         setDefaultOutputMat(OUTPUT_LABELS);
-   }
+    }
 
     public double getPixelSize() {
         return pixelSize;

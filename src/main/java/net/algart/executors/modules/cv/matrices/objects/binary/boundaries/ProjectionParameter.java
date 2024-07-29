@@ -24,7 +24,7 @@
 
 package net.algart.executors.modules.cv.matrices.objects.binary.boundaries;
 
-import net.algart.arrays.*;
+import net.algart.arrays.MutablePNumberArray;
 import net.algart.matrices.scanning.Boundary2DProjectionMeasurer;
 
 import java.util.Collection;

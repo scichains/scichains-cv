@@ -99,49 +99,49 @@ public final class NonLocalMeansDenoising extends VoidResultUMatFilter {
         switch (algorithm) {
             case FAST_NL_MEANS:
                 opencv_photo.fastNlMeansDenoising(
-                    source,
-                    result,
-                    (float) h,
-                    blockSize,
-                    searchWindowSize);
+                        source,
+                        result,
+                        (float) h,
+                        blockSize,
+                        searchWindowSize);
                 break;
             case FAST_NL_MEANS_COLORED:
                 opencv_photo.fastNlMeansDenoisingColored(
-                    source,
-                    result,
-                    (float) h,
-                    (float) hColor,
-                    blockSize,
-                    searchWindowSize);
+                        source,
+                        result,
+                        (float) h,
+                        (float) hColor,
+                        blockSize,
+                        searchWindowSize);
                 break;
             case CUDA_NON_LOCAL_MEANS:
                 opencv_photo.nonLocalMeans(
-                    source,
-                    result,
-                    (float) h,
-                    searchWindowSize,
-                    blockSize,
-                    borderType.code(),
-                    null);
+                        source,
+                        result,
+                        (float) h,
+                        searchWindowSize,
+                        blockSize,
+                        borderType.code(),
+                        null);
                 break;
             case CUDA_FAST_NL_MEANS:
                 opencv_photo.fastNlMeansDenoising(
-                    source,
-                    result,
-                    (float) h,
-                    searchWindowSize,
-                    blockSize,
-                    null);
+                        source,
+                        result,
+                        (float) h,
+                        searchWindowSize,
+                        blockSize,
+                        null);
                 break;
             case CUDA_FAST_NL_MEANS_COLORED:
                 opencv_photo.fastNlMeansDenoisingColored(
-                    source,
-                    result,
-                    (float) h,
-                    (float) hColor,
-                    searchWindowSize,
-                    blockSize,
-                    null);
+                        source,
+                        result,
+                        (float) h,
+                        (float) hColor,
+                        searchWindowSize,
+                        blockSize,
+                        null);
                 break;
             default:
                 throw new AssertionError("Unknown algorithm");

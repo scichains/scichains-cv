@@ -28,11 +28,11 @@ import net.algart.arrays.FloatArray;
 import net.algart.arrays.Matrices;
 import net.algart.arrays.Matrix;
 import net.algart.arrays.PArray;
+import net.algart.executors.modules.core.common.matrices.SeveralMultiMatricesOperation;
+import net.algart.executors.modules.core.matrices.arithmetic.AngleDistanceMetric;
 import net.algart.math.functions.LinearFunc;
 import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;
-import net.algart.executors.modules.core.common.matrices.SeveralMultiMatricesOperation;
-import net.algart.executors.modules.core.matrices.arithmetic.AngleDistanceMetric;
 
 import java.util.Arrays;
 import java.util.List;

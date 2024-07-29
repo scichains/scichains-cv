@@ -29,7 +29,7 @@ import org.bytedeco.opencv.global.opencv_core;
 public enum OBorderType {
     BORDER_DEFAULT(opencv_core.BORDER_DEFAULT),
     BORDER_CONSTANT(opencv_core.BORDER_CONSTANT),
-    BORDER_REPLICATE (opencv_core.BORDER_REPLICATE),
+    BORDER_REPLICATE(opencv_core.BORDER_REPLICATE),
     BORDER_REFLECT(opencv_core.BORDER_REFLECT),
     BORDER_WRAP(opencv_core.BORDER_WRAP),
     BORDER_REFLECT_101(opencv_core.BORDER_REFLECT),

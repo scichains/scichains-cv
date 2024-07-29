@@ -96,20 +96,19 @@ public final class DrawArrow extends AWTDrawer {
     @Override
     public void process(Graphics2D g, int dimX, int dimY) {
         drawArrowLine(g,
-            (int) Math.round(x1), (int) Math.round(y1), (int) Math.round(x2), (int) Math.round(y2),
-            thickness, arrowLength, arrowWidth);
+                (int) Math.round(x1), (int) Math.round(y1), (int) Math.round(x2), (int) Math.round(y2),
+                thickness, arrowLength, arrowWidth);
     }
 
     public static void drawArrowLine(
-        Graphics2D graphics,
-        int x1,
-        int y1,
-        int x2,
-        int y2,
-        double thickness,
-        double arrowLength,
-        double arrowWidth)
-    {
+            Graphics2D graphics,
+            int x1,
+            int y1,
+            int x2,
+            int y2,
+            double thickness,
+            double arrowLength,
+            double arrowWidth) {
         int dx = x2 - x1, dy = y2 - y1;
         double length = Math.sqrt(dx * dx + dy * dy);
         double xm = length - arrowLength, xn = xm, ym = arrowWidth, yn = -arrowWidth;

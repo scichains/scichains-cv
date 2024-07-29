@@ -24,16 +24,16 @@
 
 package net.algart.executors.modules.cv.matrices.thresholds;
 
-import net.algart.multimatrix.MultiMatrix2D;
-import net.algart.executors.modules.core.common.matrices.MultiMatrixFilter;
-import net.algart.executors.modules.cv.matrices.objects.RetainOrRemoveMode;
-import net.algart.executors.modules.cv.matrices.objects.binary.components.FindConnectedWithMask;
 import net.algart.arrays.BitArray;
 import net.algart.arrays.Matrices;
 import net.algart.arrays.Matrix;
 import net.algart.arrays.PArray;
+import net.algart.executors.modules.core.common.matrices.MultiMatrixFilter;
+import net.algart.executors.modules.cv.matrices.objects.RetainOrRemoveMode;
+import net.algart.executors.modules.cv.matrices.objects.binary.components.FindConnectedWithMask;
 import net.algart.math.functions.RectangularFunc;
 import net.algart.multimatrix.MultiMatrix;
+import net.algart.multimatrix.MultiMatrix2D;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -157,16 +157,17 @@ public sealed class SimpleThreshold extends MultiMatrixFilter permits SimpleThre
         final double outValue = invert ? 1.0 : 0.0;
         long t1 = debugTime();
         MultiMatrix result = MultiMatrix.valueOfMono(Matrices.asFuncMatrix(
-            RectangularFunc.getInstance(min * scale, max * scale, inValue, outValue),
-            BitArray.class, intensity)).clone();
+                RectangularFunc.getInstance(min * scale, max * scale, inValue, outValue),
+                BitArray.class, intensity)).clone();
         long t2 = debugTime();
         if (hysteresis) {
             final MultiMatrix2D hysteresisResult = MultiMatrix.valueOf2DMono(Matrices.asFuncMatrix(
-                RectangularFunc.getInstance(hysteresisMin * scale, hysteresisMax * scale, inValue, outValue),
-                BitArray.class, intensity)).clone();
-            final FindConnectedWithMask filter = new FindConnectedWithMask();
-            filter.setMode(RetainOrRemoveMode.RETAIN);
-            result = filter.process(Arrays.asList(hysteresisResult, result));
+                    RectangularFunc.getInstance(hysteresisMin * scale, hysteresisMax * scale, inValue, outValue),
+                    BitArray.class, intensity)).clone();
+            try (FindConnectedWithMask filter = new FindConnectedWithMask()) {
+                filter.setMode(RetainOrRemoveMode.RETAIN);
+                result = filter.process(Arrays.asList(hysteresisResult, result));
+            }
         }
         long t3 = debugTime();
         if (mask != null) {

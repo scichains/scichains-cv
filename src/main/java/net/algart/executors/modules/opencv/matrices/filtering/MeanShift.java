@@ -86,8 +86,8 @@ public final class MeanShift extends UMatFilter {
     @Override
     public Mat process(Mat source) {
         logDebug(() -> "MeanShift segmentation: spatialRadius = " + spatialRadius
-            + ", colorRadius = " + colorRadius
-            + " (source: " + source + ")");
+                + ", colorRadius = " + colorRadius
+                + " (source: " + source + ")");
         final Mat result = new Mat();
         final TermCriteria termCriteria = OTools.termCriteria(
                 terminationMaxCount, terminationEpsilon, true);
@@ -97,12 +97,12 @@ public final class MeanShift extends UMatFilter {
                 opencv_imgproc.cvtColor(source, source, opencv_imgproc.CV_GRAY2BGR);
             }
             opencv_imgproc.pyrMeanShiftFiltering(
-                source,
-                result,
-                spatialRadius,
-                colorRadius * OTools.maxPossibleValue(source),
-                maxPyramidLevel,
-                termCriteria);
+                    source,
+                    result,
+                    spatialRadius,
+                    colorRadius * OTools.maxPossibleValue(source),
+                    maxPyramidLevel,
+                    termCriteria);
         } finally {
             if (termCriteria != null) {
                 termCriteria.close();

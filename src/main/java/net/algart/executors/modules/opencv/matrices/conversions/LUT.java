@@ -72,7 +72,8 @@ public final class LUT extends VoidResultUMatFilter implements ReadOnlyExecution
         final SNumbers lut = getInputNumbers(INPUT_TABLE).requireBlockLengthOne("table");
         if (lut.n() > 256 - indexingBase.start) {
             final TableTranslate.ResultElementType resultElementType =
-                    lut.isFloatingPoint() ? TableTranslate.ResultElementType.FLOAT : TableTranslate.ResultElementType.INT;
+                    lut.isFloatingPoint() ? TableTranslate.ResultElementType.FLOAT :
+                            TableTranslate.ResultElementType.INT;
             final TableTranslate tableTranslate = new TableTranslate()
                     .setIndexingBase(IndexingBase.ZERO_BASED)
                     .setResultElementType(resultElementType);

@@ -43,7 +43,7 @@ public interface BoundariesExtractor {
         final int shape = needThick ? opencv_imgproc.CV_SHAPE_RECT : opencv_imgproc.CV_SHAPE_CROSS;
         OTools.morphology(boundaries, opencv_imgproc.MORPH_GRADIENT, shape, 3);
         opencv_imgproc.threshold(boundaries, boundaries,
-            0, 255, opencv_imgproc.CV_THRESH_BINARY);
+                0, 255, opencv_imgproc.CV_THRESH_BINARY);
         boundaries.convertTo(boundaries, opencv_core.CV_8U);
     };
 

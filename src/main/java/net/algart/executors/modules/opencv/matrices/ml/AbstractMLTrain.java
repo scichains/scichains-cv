@@ -246,11 +246,11 @@ public abstract class AbstractMLTrain extends AbstractMLOperation {
         final int responseLength = responses.cols();
         try (final Mat varType = toMat(varType(sampleLength, responseLength));
              final TrainData trainData = TrainData.create(
-                samples, O2SMat.ML_LAYOUT, responses,
-                null,
-                null,
-                null,
-                varType)) {
+                     samples, O2SMat.ML_LAYOUT, responses,
+                     null,
+                     null,
+                     null,
+                     varType)) {
             doTrain(trainer, trainData, sampleLength, responseLength);
             if (calculateError) {
                 return doCalculateError(trainer, trainData, autoTestResults);

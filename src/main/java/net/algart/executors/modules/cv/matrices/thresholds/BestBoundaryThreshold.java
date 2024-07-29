@@ -24,8 +24,8 @@
 
 package net.algart.executors.modules.cv.matrices.thresholds;
 
-import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
 import net.algart.arrays.*;
+import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
 import net.algart.math.functions.RectangularFunc;
 import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;
@@ -67,8 +67,8 @@ public final class BestBoundaryThreshold extends MultiMatrix2DFilter {
         long[] boundaryHistogram = new long[256];
         final int thresholdMax = findThreshold(intensity, alpha, gamma, intensityIntegral, boundaryHistogram);
         logDebug(() -> "Best-boundary threshold, alpha = " + alpha + ", gamma = " + gamma
-            + "; optimal threshold found at " + thresholdMax + " (" + thresholdMax / 255.0 + ")"
-            + " for " + source);
+                + "; optimal threshold found at " + thresholdMax + " (" + thresholdMax / 255.0 + ")"
+                + " for " + source);
         final double inValue = invert ? 1.0 : 0.0;
         final double outValue = invert ? 0.0 : 1.0;
         final RectangularFunc f = RectangularFunc.getInstance(0, thresholdMax, inValue, outValue);
@@ -77,19 +77,17 @@ public final class BestBoundaryThreshold extends MultiMatrix2DFilter {
     }
 
     public int findThreshold(
-        Matrix<? extends ByteArray> m, double alpha, double gamma)
-    {
+            Matrix<? extends ByteArray> m, double alpha, double gamma) {
         return findThreshold(m, alpha, gamma, new long[256], new long[256]);
     }
 
 
     private int findThreshold(
-        Matrix<? extends ByteArray> m,
-        double alpha,
-        double gamma,
-        long[] intensityIntegral,
-        long[] boundaryHistogram)
-    {
+            Matrix<? extends ByteArray> m,
+            double alpha,
+            double gamma,
+            long[] intensityIntegral,
+            long[] boundaryHistogram) {
         final ByteArray bytes = m.array();
         long[] intensityHistogram = new long[256];
         Arrays.histogramOf(bytes, intensityHistogram, 0.0, 256.0);

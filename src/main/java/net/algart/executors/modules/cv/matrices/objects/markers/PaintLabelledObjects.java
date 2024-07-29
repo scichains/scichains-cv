@@ -25,21 +25,22 @@
 package net.algart.executors.modules.cv.matrices.objects.markers;
 
 import net.algart.arrays.*;
-import net.algart.math.functions.Func;
-import net.algart.multimatrix.MultiMatrix;
-import net.algart.multimatrix.MultiMatrix2D;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.api.data.SScalar;
 import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
 import net.algart.executors.modules.core.common.matrices.MultiMatrixGenerator;
 import net.algart.executors.modules.core.numbers.conversions.JsonToColorPalette;
+import net.algart.math.functions.Func;
+import net.algart.multimatrix.MultiMatrix;
+import net.algart.multimatrix.MultiMatrix2D;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
-// Can be used for filtering objects (like SelectLabelledObjectsByBinaryArray), if elementType is boolean and colors are 0/1
+// Can be used for filtering objects (like SelectLabelledObjectsByBinaryArray), if elementType is boolean and colors
+// are 0/1
 public final class PaintLabelledObjects extends MultiMatrix2DFilter {
     public static final String INPUT_LABELS = "labels";
     public static final String INPUT_BACKGROUND = "background";
@@ -141,13 +142,14 @@ public final class PaintLabelledObjects extends MultiMatrix2DFilter {
             final SScalar jsonPalette = getInputScalar(INPUT_JSON_PALETTE, true);
             if (jsonPalette.isInitialized()) {
                 final SScalar jsonNamedIndexes = getInputScalar(INPUT_JSON_NAMED_INDEXES, true);
-                colors = new JsonToColorPalette()
+                try (JsonToColorPalette executor = new JsonToColorPalette()
                         .setIndexingBase(indexingBase)
-                        .setNumberOfChannels(defaultNumberOfChannels)
-                        .process(jsonPalette.getValue(), jsonNamedIndexes.getValue());
+                        .setNumberOfChannels(defaultNumberOfChannels)) {
+                    colors = executor.process(jsonPalette.getValue(), jsonNamedIndexes.getValue());
+                }
             } else if (!randomPalette) {
                 throw new IllegalArgumentException("Input \"" + INPUT_PALETTE + "\" or \"" + INPUT_JSON_PALETTE
-                    + "\" must have initialized data, if random palette flag is not set");
+                        + "\" must have initialized data, if random palette flag is not set");
             }
         }
         return process(labelsMatrix, background, colors);

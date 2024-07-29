@@ -41,9 +41,8 @@ public final class ScanConnectedObjects extends ConnectedComponentScanning {
 
     @Override
     protected Matrix<? extends PArray> processMatrix(
-        List<Matrix<? extends UpdatablePArray>> bitMatrices,
-        List<MultiMatrix2D> sources)
-    {
+            List<Matrix<? extends UpdatablePArray>> bitMatrices,
+            List<MultiMatrix2D> sources) {
         final Matrix<UpdatableBitArray> objects = asBit(bitMatrices.get(0));
         final Matrix<UpdatableIntArray> result = Arrays.SMM.newIntMatrix(objects.dimensions());
         assert result.array() instanceof DirectAccessible;

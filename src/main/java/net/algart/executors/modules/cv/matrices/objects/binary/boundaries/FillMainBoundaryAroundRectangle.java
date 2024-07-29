@@ -25,11 +25,11 @@
 package net.algart.executors.modules.cv.matrices.objects.binary.boundaries;
 
 import net.algart.arrays.*;
+import net.algart.executors.modules.core.common.matrices.BitMultiMatrixFilter;
 import net.algart.math.IPoint;
 import net.algart.math.IRectangularArea;
 import net.algart.matrices.scanning.ConnectivityType;
 import net.algart.matrices.scanning.ContainingMainBoundaryFinder;
-import net.algart.executors.modules.core.common.matrices.BitMultiMatrixFilter;
 
 import java.util.Locale;
 

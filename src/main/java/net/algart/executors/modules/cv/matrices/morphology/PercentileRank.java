@@ -49,24 +49,22 @@ public final class PercentileRank extends RankMorphologyFilter {
         final Pattern pattern = getPattern(m);
         if (currentChannel() == 0) {
             logDebug(() -> "Percentile rank ("
-                + (resultInterpretation == ResultInterpretation.ABSOLUTE_INDEX ? "31-bit index)" : "normalized float)")
-                + rankMorphologyLogMessage()
-                + " with " + pattern
-                + (continuationMode == null ? "" : ", " + continuationMode)
-                + " for " + sourceMultiMatrix());
+                    + (resultInterpretation == ResultInterpretation.ABSOLUTE_INDEX ?
+                    "31-bit index)" : "normalized float)")
+                    + rankMorphologyLogMessage()
+                    + " with " + pattern
+                    + (continuationMode == null ? "" : ", " + continuationMode)
+                    + " for " + sourceMultiMatrix());
         }
         final Matrix<? extends IntArray> rank = createRankMorphology(m.elementType(), 1.0)
-            .rank(IntArray.class, m, m, pattern);
-        switch (resultInterpretation) {
-            case ABSOLUTE_INDEX:
-                return rank;
-            case NORMALIZED_0_1:
-                return Matrices.asFuncMatrix(
+                .rank(IntArray.class, m, m, pattern);
+        return switch (resultInterpretation) {
+            case ABSOLUTE_INDEX -> rank;
+            case NORMALIZED_0_1 -> Matrices.asFuncMatrix(
                     LinearFunc.getInstance(0.0, 1.0 / (double) pattern.pointCount()),
                     FloatArray.class,
                     rank);
-                default:
-                    throw new AssertionError("Unknown resultInterpretation");
-        }
+            default -> throw new AssertionError("Unknown resultInterpretation");
+        };
     }
 }

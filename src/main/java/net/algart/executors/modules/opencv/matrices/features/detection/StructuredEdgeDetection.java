@@ -51,8 +51,7 @@ public final class StructuredEdgeDetection extends VoidResultUMatFilter {
         try {
             mat = OTools.to32FIfNot(source);
             try (final org.bytedeco.opencv.opencv_ximgproc.StructuredEdgeDetection detection =
-                     opencv_ximgproc.createStructuredEdgeDetection(modelFile))
-            {
+                         opencv_ximgproc.createStructuredEdgeDetection(modelFile)) {
                 detection.detectEdges(mat, result);
             }
         } finally {
@@ -68,8 +67,7 @@ public final class StructuredEdgeDetection extends VoidResultUMatFilter {
         try {
             mat = OTools.to32FIfNot(source);
             try (final org.bytedeco.opencv.opencv_ximgproc.StructuredEdgeDetection detection =
-                         opencv_ximgproc.createStructuredEdgeDetection(modelFile))
-            {
+                         opencv_ximgproc.createStructuredEdgeDetection(modelFile)) {
                 detection.detectEdges(mat, result);
             }
         } finally {

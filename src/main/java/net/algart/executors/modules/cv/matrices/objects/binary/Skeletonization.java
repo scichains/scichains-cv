@@ -24,8 +24,8 @@
 
 package net.algart.executors.modules.cv.matrices.objects.binary;
 
-import net.algart.executors.modules.core.common.matrices.BitMultiMatrixFilter;
 import net.algart.arrays.*;
+import net.algart.executors.modules.core.common.matrices.BitMultiMatrixFilter;
 import net.algart.matrices.skeletons.OctupleThinningSkeleton2D;
 import net.algart.matrices.skeletons.Quadruple3x5ThinningSkeleton2D;
 import net.algart.matrices.skeletons.StrongQuadruple3x5ThinningSkeleton2D;
@@ -36,13 +36,12 @@ public final class Skeletonization extends BitMultiMatrixFilter {
         OCTUPLE_PLUS_QUADRUPLE_THINNING() {
             @Override
             IterativeArrayProcessor<Matrix<? extends UpdatableBitArray>> getSkeletonProcessor(
-                Matrix<? extends UpdatableBitArray> m,
-                boolean diagonalThinning,
-                boolean topological)
-            {
+                    Matrix<? extends UpdatableBitArray> m,
+                    boolean diagonalThinning,
+                    boolean topological) {
                 return OctupleThinningSkeleton2D.getInstance(
-                    null, m, diagonalThinning, topological)
-                    .chain(Quadruple3x5ThinningSkeleton2D.getInstance(null, m), 0.01);
+                                null, m, diagonalThinning, topological)
+                        .chain(Quadruple3x5ThinningSkeleton2D.getInstance(null, m), 0.01);
             }
 
             @Override
@@ -55,13 +54,12 @@ public final class Skeletonization extends BitMultiMatrixFilter {
         OCTUPLE_PLUS_STRONG_QUADRUPLE_THINNING() {
             @Override
             IterativeArrayProcessor<Matrix<? extends UpdatableBitArray>> getSkeletonProcessor(
-                Matrix<? extends UpdatableBitArray> m,
-                boolean diagonalThinning,
-                boolean topological)
-            {
+                    Matrix<? extends UpdatableBitArray> m,
+                    boolean diagonalThinning,
+                    boolean topological) {
                 return OctupleThinningSkeleton2D.getInstance(
-                    null, m, diagonalThinning, topological)
-                    .chain(StrongQuadruple3x5ThinningSkeleton2D.getInstance(null, m), 0.01);
+                                null, m, diagonalThinning, topological)
+                        .chain(StrongQuadruple3x5ThinningSkeleton2D.getInstance(null, m), 0.01);
             }
 
             @Override
@@ -74,34 +72,31 @@ public final class Skeletonization extends BitMultiMatrixFilter {
         OCTUPLE_THINNING() {
             @Override
             IterativeArrayProcessor<Matrix<? extends UpdatableBitArray>> getSkeletonProcessor(
-                Matrix<? extends UpdatableBitArray> m,
-                boolean diagonalThinning,
-                boolean topological)
-            {
+                    Matrix<? extends UpdatableBitArray> m,
+                    boolean diagonalThinning,
+                    boolean topological) {
                 return OctupleThinningSkeleton2D.getInstance(
-                    null, m, diagonalThinning, topological);
+                        null, m, diagonalThinning, topological);
             }
         },
         WEAK_OCTUPLE_THINNING() {
             @Override
             IterativeArrayProcessor<Matrix<? extends UpdatableBitArray>> getSkeletonProcessor(
-                Matrix<? extends UpdatableBitArray> m,
-            boolean diagonalThinning,
-            boolean topological)
-            {
+                    Matrix<? extends UpdatableBitArray> m,
+                    boolean diagonalThinning,
+                    boolean topological) {
                 return WeakOctupleThinningSkeleton2D.getInstance(
-                    null, m, true, diagonalThinning, topological);
+                        null, m, true, diagonalThinning, topological);
             }
         },
         QUADRUPLE_3_X_5_THINNING() {
             @Override
             IterativeArrayProcessor<Matrix<? extends UpdatableBitArray>> getSkeletonProcessor(
-                Matrix<? extends UpdatableBitArray> m,
-                boolean diagonalThinning,
-                boolean topological)
-            {
+                    Matrix<? extends UpdatableBitArray> m,
+                    boolean diagonalThinning,
+                    boolean topological) {
                 return Quadruple3x5ThinningSkeleton2D.getInstance(
-                    null, m);
+                        null, m);
             }
 
             @Override
@@ -114,12 +109,11 @@ public final class Skeletonization extends BitMultiMatrixFilter {
         STRONG_QUADRUPLE_3_X_5_THINNING() {
             @Override
             IterativeArrayProcessor<Matrix<? extends UpdatableBitArray>> getSkeletonProcessor(
-                Matrix<? extends UpdatableBitArray> m,
-                boolean diagonalThinning,
-                boolean topological)
-            {
+                    Matrix<? extends UpdatableBitArray> m,
+                    boolean diagonalThinning,
+                    boolean topological) {
                 return StrongQuadruple3x5ThinningSkeleton2D.getInstance(
-                    null, m);
+                        null, m);
             }
 
             @Override
@@ -131,9 +125,9 @@ public final class Skeletonization extends BitMultiMatrixFilter {
         };
 
         abstract IterativeArrayProcessor<Matrix<? extends UpdatableBitArray>> getSkeletonProcessor(
-            Matrix<? extends UpdatableBitArray> m,
-            boolean diagonalThinning,
-            boolean topological);
+                Matrix<? extends UpdatableBitArray> m,
+                boolean diagonalThinning,
+                boolean topological);
 
         IterativeArrayProcessor<Matrix<? extends UpdatableBitArray>> getPostprocessingTopologicalProcessor(
                 Matrix<? extends UpdatableBitArray> m,
@@ -211,10 +205,10 @@ public final class Skeletonization extends BitMultiMatrixFilter {
             drawBorder(updatableBitMatrix, zeroExtendingValue());
         }
         IterativeArrayProcessor<Matrix<? extends UpdatableBitArray>> processor =
-            algorithm.getSkeletonProcessor(updatableBitMatrix, diagonalThinning, topological)
-            .limitIterations(maxNumberOfIterations);
+                algorithm.getSkeletonProcessor(updatableBitMatrix, diagonalThinning, topological)
+                        .limitIterations(maxNumberOfIterations);
         logDebug(() -> "Skeletonization: " + processor
-            + " for " + bitMatrix);
+                + " for " + bitMatrix);
         Matrix<? extends UpdatableBitArray> result = processor.process();
         if (numberOfAdditionalTopologicalIterations != 0) {
             result = algorithm.getPostprocessingTopologicalProcessor(result, diagonalThinning)

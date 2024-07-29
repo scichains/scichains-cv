@@ -157,7 +157,7 @@ public final class SmoothAreasThreshold extends MultiMatrix2DFilter {
             mask = drawRectangle.process(source.asPrecision(boolean.class));
         }
         final MorphologyFilter morphologyGradient = gradientLevel == 1.0 ?
-                new StrictMorphology().setOperation(MorphologyOperation.BEUCHER_GRADIENT):
+                new StrictMorphology().setOperation(MorphologyOperation.BEUCHER_GRADIENT) :
                 new RankMorphology().setOperation(MorphologyOperation.BEUCHER_GRADIENT).setLevel(gradientLevel);
         morphologyGradient.setPattern(MorphologyFilter.Shape.SPHERE, gradientDiameter);
         morphologyGradient.setContinuationMode(Matrix.ContinuationMode.MIRROR_CYCLIC);

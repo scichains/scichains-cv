@@ -39,26 +39,25 @@ public enum ConnectedObjectScanningAlgorithm {
     public static final long MAX_MEMORY_FOR_QUICKEN_VERSION = Arrays.SystemSettings.maxTempJavaMemory();
 
     public ConnectedObjectScanner connectedObjectScanner(
-        Matrix<? extends UpdatableBitArray> bitMatrix,
-        ConnectivityType connectivityType,
-        boolean checked)
-    {
+            Matrix<? extends UpdatableBitArray> bitMatrix,
+            ConnectivityType connectivityType,
+            boolean checked) {
         boolean littleEnough = bitMatrix.size() <= MAX_MEMORY_FOR_QUICKEN_VERSION;
         switch (this) {
             case DEPTH_FIRST:
                 return checked ?
-                    ConnectedObjectScanner.getDepthFirstScanner(bitMatrix, connectivityType) :
-                    ConnectedObjectScanner.getUncheckedDepthFirstScanner(bitMatrix, connectivityType);
+                        ConnectedObjectScanner.getDepthFirstScanner(bitMatrix, connectivityType) :
+                        ConnectedObjectScanner.getUncheckedDepthFirstScanner(bitMatrix, connectivityType);
             case QUICKEN:
                 if (littleEnough) {
                     return checked ?
-                        ConnectedObjectScanner.getStacklessDepthFirstScanner(bitMatrix, connectivityType) :
-                        ConnectedObjectScanner.getUncheckedStacklessDepthFirstScanner(bitMatrix, connectivityType);
+                            ConnectedObjectScanner.getStacklessDepthFirstScanner(bitMatrix, connectivityType) :
+                            ConnectedObjectScanner.getUncheckedStacklessDepthFirstScanner(bitMatrix, connectivityType);
                 }
             case BREADTH_FIRST:
                 return checked ?
-                    ConnectedObjectScanner.getBreadthFirstScanner(bitMatrix, connectivityType) :
-                    ConnectedObjectScanner.getUncheckedBreadthFirstScanner(bitMatrix, connectivityType);
+                        ConnectedObjectScanner.getBreadthFirstScanner(bitMatrix, connectivityType) :
+                        ConnectedObjectScanner.getUncheckedBreadthFirstScanner(bitMatrix, connectivityType);
             default:
                 throw new AssertionError("Unknown algorithm " + this);
         }

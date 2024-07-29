@@ -24,8 +24,11 @@
 
 package net.algart.executors.modules.cv.matrices.misc;
 
+import net.algart.arrays.Arrays;
+import net.algart.arrays.Matrices;
+import net.algart.arrays.Matrix;
+import net.algart.arrays.PArray;
 import net.algart.executors.modules.cv.matrices.morphology.RankMorphologyFilter;
-import net.algart.arrays.*;
 import net.algart.math.functions.AbstractFunc;
 import net.algart.math.functions.ContrastingFunc;
 import net.algart.math.patterns.Pattern;
@@ -80,21 +83,21 @@ public final class LocalContrast extends RankMorphologyFilter {
         final Pattern pattern = getPattern(intensity);
         final RankMorphology morphology = createRankMorphology(intensity.elementType(), 1.0);
         logDebug(() -> "Local contrast of range " + fromLevel + ".." + toLevel
-            + ", minContrastedDifference = " + minContrastedDifference
-            + rankMorphologyLogMessage()
-            + " with " + pattern
-            + (getContinuationMode() == null ? "" : ", " + getContinuationMode())
-            + " for " + source);
+                + ", minContrastedDifference = " + minContrastedDifference
+                + rankMorphologyLogMessage()
+                + " with " + pattern
+                + (getContinuationMode() == null ? "" : ", " + getContinuationMode())
+                + " for " + source);
 
         final double fromPercentileIndex = fromLevel * (double) (pattern.pointCount() - 1);
         final double toPercentileIndex = toLevel * (double) (pattern.pointCount() - 1);
         final Matrix<? extends PArray> contrasted = uncompress(
-            morphology.functionOfPercentilePair(
-                compress(intensity),
-                fromPercentileIndex,
-                toPercentileIndex,
-                pattern,
-                contrastingFunc));
+                morphology.functionOfPercentilePair(
+                        compress(intensity),
+                        fromPercentileIndex,
+                        toPercentileIndex,
+                        pattern,
+                        contrastingFunc));
         if (grayscale) {
             return MultiMatrix.valueOf2DMono(contrasted);
         } else {

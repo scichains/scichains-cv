@@ -24,9 +24,9 @@
 
 package net.algart.executors.modules.cv.matrices.objects.binary.components;
 
-import net.algart.executors.modules.core.common.matrices.BitMultiMatrixOperationWithRequiredResult;
 import net.algart.arrays.Matrix;
 import net.algart.arrays.UpdatableBitArray;
+import net.algart.executors.modules.core.common.matrices.BitMultiMatrixOperationWithRequiredResult;
 import net.algart.matrices.scanning.ConnectedObjectScanner;
 import net.algart.matrices.scanning.ConnectivityType;
 

@@ -24,8 +24,8 @@
 
 package net.algart.executors.modules.cv.matrices.objects;
 
-import net.algart.executors.modules.core.common.matrices.BitMultiMatrixOperationWithRequiredResult;
 import net.algart.arrays.*;
+import net.algart.executors.modules.core.common.matrices.BitMultiMatrixOperationWithRequiredResult;
 import net.algart.math.functions.Func;
 import net.algart.multimatrix.MultiMatrix2D;
 
@@ -97,9 +97,8 @@ public final class FilterLabelledObjectsByIntersectionWithMask extends BitMultiM
 
     @Override
     protected Matrix<? extends PArray> processMatrix(
-        List<Matrix<? extends UpdatablePArray>> bitMatrices,
-        List<MultiMatrix2D> sources)
-    {
+            List<Matrix<? extends UpdatablePArray>> bitMatrices,
+            List<MultiMatrix2D> sources) {
         final MultiMatrix2D labelsMatrix = sources.get(0);
         final int[] labelArray = labelsMatrix.channelToIntArray(0);
         final Matrix<UpdatableBitArray> mask = asBit(bitMatrices.get(1));

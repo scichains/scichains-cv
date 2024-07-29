@@ -102,11 +102,11 @@ class SimpleIntPseudoStack {
         int v = pseudoStack.remove(10, -1);
         System.out.println(pseudoStack + ": " + v);
         v = pseudoStack.remove(5, -1);
-        System.out.println(pseudoStack + ": " + v+ " (removed 5)");
+        System.out.println(pseudoStack + ": " + v + " (removed 5)");
         v = pseudoStack.remove(10, -1);
         System.out.println(pseudoStack + ": " + v + " (removed 10)");
         v = pseudoStack.remove(10, -1);
-        System.out.println(pseudoStack + ": " + v+ " (removed 10)");
+        System.out.println(pseudoStack + ": " + v + " (removed 10)");
         pseudoStack.push(15);
         System.out.println(pseudoStack);
         v = pseudoStack.remove(15, -1);

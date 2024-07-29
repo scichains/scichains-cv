@@ -24,10 +24,10 @@
 
 package net.algart.executors.modules.cv.matrices.objects;
 
-import net.algart.multimatrix.MultiMatrix;
 import net.algart.executors.api.data.SMat;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.matrices.MultiMatrixToNumbers;
+import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;
 
 import java.util.HashMap;

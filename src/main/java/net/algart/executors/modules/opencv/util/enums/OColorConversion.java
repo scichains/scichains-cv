@@ -29,19 +29,27 @@ import org.bytedeco.opencv.global.opencv_imgproc;
 public enum OColorConversion {
     NONE(-1),
 
-    /** add alpha channel to RGB or BGR image */
+    /**
+     * add alpha channel to RGB or BGR image
+     */
     BGR2BGRA(opencv_imgproc.COLOR_BGR2BGRA),
 
-    /** remove alpha channel from RGB or BGR image */
+    /**
+     * remove alpha channel from RGB or BGR image
+     */
     BGRA2BGR(opencv_imgproc.COLOR_BGRA2BGR),
 
-    /** convert between RGB and BGR color spaces (with or without alpha channel) */
+    /**
+     * convert between RGB and BGR color spaces (with or without alpha channel)
+     */
     BGR2RGB_OR_RGB2BGR(opencv_imgproc.COLOR_BGR2RGB),
     BGRA2RGBA_OR_RGBA2BGRA(opencv_imgproc.COLOR_BGRA2RGBA),
     BGR2RGBA(opencv_imgproc.COLOR_BGR2RGBA),
     RGBA2BGR(opencv_imgproc.COLOR_RGBA2BGR),
 
-    /** convert between RGB/BGR and grayscale, \ref color_convert_rgb_gray "color conversions" */
+    /**
+     * convert between RGB/BGR and grayscale, \ref color_convert_rgb_gray "color conversions"
+     */
     BGR2GRAY(opencv_imgproc.COLOR_BGR2GRAY),
     RGB2GRAY(opencv_imgproc.COLOR_RGB2GRAY),
     GRAY2BGR(opencv_imgproc.COLOR_GRAY2BGR, true),
@@ -49,7 +57,9 @@ public enum OColorConversion {
     BGRA2GRAY(opencv_imgproc.COLOR_BGRA2GRAY),
     RGBA2GRAY(opencv_imgproc.COLOR_RGBA2GRAY),
 
-    /** convert between RGB/BGR and BGR565 (16-bit images) */
+    /**
+     * convert between RGB/BGR and BGR565 (16-bit images)
+     */
     BGR2BGR565(opencv_imgproc.COLOR_BGR2BGR565),
     RGB2BGR565(opencv_imgproc.COLOR_RGB2BGR565),
     BGR5652BGR(opencv_imgproc.COLOR_BGR5652BGR),
@@ -59,11 +69,15 @@ public enum OColorConversion {
     BGR5652BGRA(opencv_imgproc.COLOR_BGR5652BGRA),
     BGR5652RGBA(opencv_imgproc.COLOR_BGR5652RGBA),
 
-    /** convert between grayscale to BGR565 (16-bit images) */
+    /**
+     * convert between grayscale to BGR565 (16-bit images)
+     */
     GRAY2BGR565(opencv_imgproc.COLOR_GRAY2BGR565, true),
     BGR5652GRAY(opencv_imgproc.COLOR_BGR5652GRAY),
 
-    /** convert between RGB/BGR and BGR555 (16-bit images) */
+    /**
+     * convert between RGB/BGR and BGR555 (16-bit images)
+     */
     BGR2BGR555(opencv_imgproc.COLOR_BGR2BGR555),
     RGB2BGR555(opencv_imgproc.COLOR_RGB2BGR555),
     BGR5552BGR(opencv_imgproc.COLOR_BGR5552BGR),
@@ -73,39 +87,55 @@ public enum OColorConversion {
     BGR5552BGRA(opencv_imgproc.COLOR_BGR5552BGRA),
     BGR5552RGBA(opencv_imgproc.COLOR_BGR5552RGBA),
 
-    /** convert between grayscale and BGR555 (16-bit images) */
+    /**
+     * convert between grayscale and BGR555 (16-bit images)
+     */
     GRAY2BGR555(opencv_imgproc.COLOR_GRAY2BGR555, true),
     BGR5552GRAY(opencv_imgproc.COLOR_BGR5552GRAY),
 
-    /** convert RGB/BGR to CIE XYZ, \ref color_convert_rgb_xyz "color conversions" */
+    /**
+     * convert RGB/BGR to CIE XYZ, \ref color_convert_rgb_xyz "color conversions"
+     */
     BGR2XYZ(opencv_imgproc.COLOR_BGR2XYZ),
     RGB2XYZ(opencv_imgproc.COLOR_RGB2XYZ),
     XYZ2BGR(opencv_imgproc.COLOR_XYZ2BGR),
     XYZ2RGB(opencv_imgproc.COLOR_XYZ2RGB),
 
-    /** convert RGB/BGR to luma-chroma (aka YCC), \ref color_convert_rgb_ycrcb "color conversions" */
+    /**
+     * convert RGB/BGR to luma-chroma (aka YCC), \ref color_convert_rgb_ycrcb "color conversions"
+     */
     BGR2YCrCb(opencv_imgproc.COLOR_BGR2YCrCb),
     RGB2YCrCb(opencv_imgproc.COLOR_RGB2YCrCb),
     YCrCb2BGR(opencv_imgproc.COLOR_YCrCb2BGR),
     YCrCb2RGB(opencv_imgproc.COLOR_YCrCb2RGB),
 
-    /** convert RGB/BGR to HSV (hue saturation value), \ref color_convert_rgb_hsv "color conversions" */
+    /**
+     * convert RGB/BGR to HSV (hue saturation value), \ref color_convert_rgb_hsv "color conversions"
+     */
     BGR2HSV(opencv_imgproc.COLOR_BGR2HSV),
     RGB2HSV(opencv_imgproc.COLOR_RGB2HSV),
 
-    /** convert RGB/BGR to CIE Lab, \ref color_convert_rgb_lab "color conversions" */
+    /**
+     * convert RGB/BGR to CIE Lab, \ref color_convert_rgb_lab "color conversions"
+     */
     BGR2Lab(opencv_imgproc.COLOR_BGR2Lab),
     RGB2Lab(opencv_imgproc.COLOR_RGB2Lab),
 
-    /** convert RGB/BGR to CIE Luv, \ref color_convert_rgb_luv "color conversions" */
+    /**
+     * convert RGB/BGR to CIE Luv, \ref color_convert_rgb_luv "color conversions"
+     */
     BGR2Luv(opencv_imgproc.COLOR_BGR2Luv),
     RGB2Luv(opencv_imgproc.COLOR_RGB2Luv),
 
-    /** convert RGB/BGR to HLS (hue lightness saturation), \ref color_convert_rgb_hls "color conversions" */
+    /**
+     * convert RGB/BGR to HLS (hue lightness saturation), \ref color_convert_rgb_hls "color conversions"
+     */
     BGR2HLS(opencv_imgproc.COLOR_BGR2HLS),
     RGB2HLS(opencv_imgproc.COLOR_RGB2HLS),
 
-    /** backward conversions to RGB/BGR */
+    /**
+     * backward conversions to RGB/BGR
+     */
     HSV2BGR(opencv_imgproc.COLOR_HSV2BGR),
     HSV2RGB(opencv_imgproc.COLOR_HSV2RGB),
 
@@ -136,13 +166,17 @@ public enum OColorConversion {
     Luv2LBGR(opencv_imgproc.COLOR_Luv2LBGR),
     Luv2LRGB(opencv_imgproc.COLOR_Luv2LRGB),
 
-    /** convert between RGB/BGR and YUV */
+    /**
+     * convert between RGB/BGR and YUV
+     */
     BGR2YUV(opencv_imgproc.COLOR_BGR2YUV),
     RGB2YUV(opencv_imgproc.COLOR_RGB2YUV),
     YUV2BGR(opencv_imgproc.COLOR_YUV2BGR),
     YUV2RGB(opencv_imgproc.COLOR_YUV2RGB),
 
-    /** YUV 4:2:0 family to RGB */
+    /**
+     * YUV 4:2:0 family to RGB
+     */
     YUV2RGB_NV12(opencv_imgproc.COLOR_YUV2RGB_NV12),
     YUV2BGR_NV12(opencv_imgproc.COLOR_YUV2BGR_NV12),
     YUV2RGB_NV21(opencv_imgproc.COLOR_YUV2RGB_NV21),
@@ -165,7 +199,9 @@ public enum OColorConversion {
 
     YUV2GRAY_420(opencv_imgproc.COLOR_YUV2GRAY_420),
 
-    /** YUV 4:2:2 family to RGB */
+    /**
+     * YUV 4:2:2 family to RGB
+     */
     YUV2RGB_UYVY(opencv_imgproc.COLOR_YUV2RGB_UYVY),
     YUV2BGR_UYVY(opencv_imgproc.COLOR_YUV2BGR_UYVY),
 
@@ -185,11 +221,15 @@ public enum OColorConversion {
     YUV2GRAY_UYVY(opencv_imgproc.COLOR_YUV2GRAY_UYVY),
     YUV2GRAY_YUY2(opencv_imgproc.COLOR_YUV2GRAY_YUY2),
 
-    /** alpha premultiplication */
+    /**
+     * alpha premultiplication
+     */
     RGBA2mRGBA(opencv_imgproc.COLOR_RGBA2mRGBA),
     mRGBA2RGBA(opencv_imgproc.COLOR_mRGBA2RGBA),
 
-    /** RGB to YUV 4:2:0 family */
+    /**
+     * RGB to YUV 4:2:0 family
+     */
     RGB2YUV_I420(opencv_imgproc.COLOR_RGB2YUV_I420),
     BGR2YUV_I420(opencv_imgproc.COLOR_BGR2YUV_I420),
 
@@ -200,7 +240,9 @@ public enum OColorConversion {
     RGBA2YUV_YV12(opencv_imgproc.COLOR_RGBA2YUV_YV12),
     BGRA2YUV_YV12(opencv_imgproc.COLOR_BGRA2YUV_YV12),
 
-    /** Demosaicing */
+    /**
+     * Demosaicing
+     */
     BayerBG2BGR(opencv_imgproc.COLOR_BayerBG2BGR),
     BayerGB2BGR(opencv_imgproc.COLOR_BayerGB2BGR),
     BayerRG2BGR(opencv_imgproc.COLOR_BayerRG2BGR),
@@ -211,21 +253,27 @@ public enum OColorConversion {
     BayerRG2GRAY(opencv_imgproc.COLOR_BayerRG2GRAY),
     BayerGR2GRAY(opencv_imgproc.COLOR_BayerGR2GRAY),
 
-    /** Demosaicing using Variable Number of Gradients */
+    /**
+     * Demosaicing using Variable Number of Gradients
+     */
     BayerBG2BGR_VNG(opencv_imgproc.COLOR_BayerBG2BGR_VNG),
     BayerGB2BGR_VNG(opencv_imgproc.COLOR_BayerGB2BGR_VNG),
     BayerRG2BGR_VNG(opencv_imgproc.COLOR_BayerRG2BGR_VNG),
     BayerGR2BGR_VNG(opencv_imgproc.COLOR_BayerGR2BGR_VNG),
 
 
-    /** Edge-Aware Demosaicing */
+    /**
+     * Edge-Aware Demosaicing
+     */
     BayerBG2BGR_EA(opencv_imgproc.COLOR_BayerBG2BGR_EA),
     BayerGB2BGR_EA(opencv_imgproc.COLOR_BayerGB2BGR_EA),
     BayerRG2BGR_EA(opencv_imgproc.COLOR_BayerRG2BGR_EA),
     BayerGR2BGR_EA(opencv_imgproc.COLOR_BayerGR2BGR_EA),
 
 
-    /** Demosaicing with alpha channel */
+    /**
+     * Demosaicing with alpha channel
+     */
     BayerBG2BGRA(opencv_imgproc.COLOR_BayerBG2BGRA),
     BayerGB2BGRA(opencv_imgproc.COLOR_BayerGB2BGRA),
     BayerRG2BGRA(opencv_imgproc.COLOR_BayerRG2BGRA),

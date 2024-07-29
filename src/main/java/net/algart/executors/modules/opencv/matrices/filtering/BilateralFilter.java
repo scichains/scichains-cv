@@ -77,21 +77,21 @@ public final class BilateralFilter extends VoidResultUMatFilter implements ReadO
     @Override
     public void process(Mat result, Mat source) {
         logDebug(() -> "Bilateral filter: d = " + diameterOfNeighborhood
-            + ", sigmaSpace = " + sigmaSpace+ ", sigmaColor = " + sigmaColor
-            + ", borderType = " + borderType + " (source: " + source + ")");
+                + ", sigmaSpace = " + sigmaSpace + ", sigmaColor = " + sigmaColor
+                + ", borderType = " + borderType + " (source: " + source + ")");
         opencv_imgproc.bilateralFilter(
-            source,
-            result,
-            diameterOfNeighborhood,
-            sigmaColor * OTools.maxPossibleValue(source),
-            sigmaSpace,
-            borderType.code());
+                source,
+                result,
+                diameterOfNeighborhood,
+                sigmaColor * OTools.maxPossibleValue(source),
+                sigmaSpace,
+                borderType.code());
     }
 
     @Override
     public void process(UMat result, UMat source) {
         logDebug(() -> "Bilateral filter (GPU): d = " + diameterOfNeighborhood
-                + ", sigmaSpace = " + sigmaSpace+ ", sigmaColor = " + sigmaColor
+                + ", sigmaSpace = " + sigmaSpace + ", sigmaColor = " + sigmaColor
                 + ", borderType = " + borderType + " (source: " + source + ")");
         opencv_imgproc.bilateralFilter(
                 source,

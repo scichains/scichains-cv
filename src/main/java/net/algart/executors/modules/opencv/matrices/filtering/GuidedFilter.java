@@ -52,10 +52,9 @@ public final class GuidedFilter extends AbstractFilterWithGuideImage {
     public void process(Mat result, Mat source, Mat guide) {
         long tStart = System.nanoTime();
         try (final org.bytedeco.opencv.opencv_ximgproc.GuidedFilter filter = opencv_ximgproc.createGuidedFilter(
-            guide,
-            radius,
-            eps))
-        {
+                guide,
+                radius,
+                eps)) {
             addServiceTime(System.nanoTime() - tStart);
             filter.filter(source, result);
         }
@@ -67,8 +66,7 @@ public final class GuidedFilter extends AbstractFilterWithGuideImage {
         try (final org.bytedeco.opencv.opencv_ximgproc.GuidedFilter filter = opencv_ximgproc.createGuidedFilter(
                 guide,
                 radius,
-                eps))
-        {
+                eps)) {
             addServiceTime(System.nanoTime() - tStart);
             filter.filter(source, result);
         }

@@ -52,6 +52,7 @@ public final class HessianEigenValuesAndVectors extends MultichannelDerivativesF
     public static final String OUTPUT_GRADIENT_SCALAR_PRODUCT_2 = "gradient_v2_scalar_product";
 
     private static final Map<String, HessianOperation> HESSIAN_OPERATIONS = new LinkedHashMap<>();
+
     static {
         HESSIAN_OPERATIONS.put(OUTPUT_LAMBDA_1, HessianOperation.LAMBDA_1);
         HESSIAN_OPERATIONS.put(OUTPUT_LAMBDA_2, HessianOperation.LAMBDA_2);

@@ -25,8 +25,8 @@
 package net.algart.executors.modules.cv.matrices.drawing;
 
 import net.algart.executors.api.data.SNumbers;
-import net.algart.executors.modules.core.common.numbers.IndexingBase;
 import net.algart.executors.modules.core.common.awt.AWTDrawer;
+import net.algart.executors.modules.core.common.numbers.IndexingBase;
 
 import java.awt.*;
 
@@ -137,7 +137,7 @@ public final class DrawLine extends AWTDrawer {
 
         final PositionsAndColors positionsAndColors = new PositionsAndColors(
                 positions, colors,
-                new double[] {defaultX1, defaultY1, defaultX2, defaultY2},
+                new double[]{defaultX1, defaultY1, defaultX2, defaultY2},
                 Double.NaN, 4);
         g.setStroke(new BasicStroke((float) thickness));
         for (int k = 0; k < positionsAndColors.n; k++) {

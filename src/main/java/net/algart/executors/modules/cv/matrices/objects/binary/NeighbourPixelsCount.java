@@ -25,12 +25,12 @@
 package net.algart.executors.modules.cv.matrices.objects.binary;
 
 import net.algart.arrays.*;
+import net.algart.executors.modules.core.common.matrices.BitMultiMatrixFilter;
 import net.algart.math.functions.Func;
 import net.algart.math.functions.LinearFunc;
 import net.algart.math.functions.RectangularFunc;
 import net.algart.matrices.scanning.ConnectivityType;
 import net.algart.multimatrix.MultiMatrix;
-import net.algart.executors.modules.core.common.matrices.BitMultiMatrixFilter;
 
 import java.util.ArrayList;
 import java.util.List;

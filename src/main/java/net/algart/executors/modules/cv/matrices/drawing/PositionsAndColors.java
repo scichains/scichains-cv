@@ -112,7 +112,7 @@ public final class PositionsAndColors {
         channelIndex = Math.min(channelIndex, colorBlockLength - 1);
         final int disp = index * colorBlockLength + channelIndex;
         assert disp < colorValues.length :
-                index + " * " + colorBlockLength + " + " + channelIndex + " >= " + colorValues.length ;
+                index + " * " + colorBlockLength + " + " + channelIndex + " >= " + colorValues.length;
         return colorValues[disp] * maxPossibleValue;
     }
 }

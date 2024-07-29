@@ -24,9 +24,9 @@
 
 package net.algart.executors.modules.cv.matrices.drawing;
 
+import net.algart.arrays.*;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.matrices.MultiMatrixChannel2DFilter;
-import net.algart.arrays.*;
 import net.algart.math.IRectangularArea;
 import net.algart.multimatrix.MultiMatrix2D;
 

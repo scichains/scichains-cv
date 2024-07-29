@@ -35,10 +35,10 @@ public final class Mean extends RankMorphologyFilter {
         final Pattern pattern = getPattern(m);
         if (currentChannel() == 0) {
             logDebug(() -> "Mean"
-                + rankMorphologyLogMessage()
-                + " with " + pattern
-                + (continuationMode == null ? "" : ", " + continuationMode)
-                + " for " + sourceMultiMatrix());
+                    + rankMorphologyLogMessage()
+                    + " with " + pattern
+                    + (continuationMode == null ? "" : ", " + continuationMode)
+                    + " for " + sourceMultiMatrix());
         }
         final RankMorphology morphology = createRankMorphology(m.elementType(), 1.0);
         return morphology.mean(m, pattern);

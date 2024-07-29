@@ -24,17 +24,17 @@
 
 package net.algart.executors.modules.cv.matrices.derivatives;
 
-import net.algart.executors.modules.opencv.matrices.filtering.GaussianBlur;
 import net.algart.arrays.*;
-import net.algart.matrices.linearfiltering.BasicConvolution;
-import net.algart.matrices.linearfiltering.ContinuedConvolution;
-import net.algart.matrices.linearfiltering.Convolution;
-import net.algart.multimatrix.MultiMatrix2D;
 import net.algart.executors.api.data.SMat;
 import net.algart.executors.api.data.SScalar;
 import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
 import net.algart.executors.modules.core.matrices.conversions.ChangePrecision;
 import net.algart.executors.modules.core.matrices.geometry.ContinuationMode;
+import net.algart.executors.modules.opencv.matrices.filtering.GaussianBlur;
+import net.algart.matrices.linearfiltering.BasicConvolution;
+import net.algart.matrices.linearfiltering.ContinuedConvolution;
+import net.algart.matrices.linearfiltering.Convolution;
+import net.algart.multimatrix.MultiMatrix2D;
 
 import java.util.List;
 

@@ -24,10 +24,10 @@
 
 package net.algart.executors.modules.cv.matrices.filtering;
 
+import net.algart.executors.modules.core.common.matrices.MultiMatrixFilter;
 import net.algart.matrices.filters3x3.MedianBySquare3x3;
 import net.algart.matrices.filters3x3.PercentileBySquare3x3;
 import net.algart.multimatrix.MultiMatrix;
-import net.algart.executors.modules.core.common.matrices.MultiMatrixFilter;
 
 import java.util.Locale;
 
@@ -60,7 +60,7 @@ public final class Percentile3x3 extends MultiMatrixFilter {
     public MultiMatrix process(MultiMatrix source) {
         long t1 = debugTime();
         final PercentileBySquare3x3 percentile = PercentileBySquare3x3.newInstance(
-                        source.elementType(), source.dimensions(), percentileIndex, specialAlgorithmWhenPossible);
+                source.elementType(), source.dimensions(), percentileIndex, specialAlgorithmWhenPossible);
         long t2 = debugTime();
         final MultiMatrix result = source.mapChannels(percentile::filter);
         long t3 = debugTime();

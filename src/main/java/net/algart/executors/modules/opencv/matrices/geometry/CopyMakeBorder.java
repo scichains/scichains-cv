@@ -92,14 +92,14 @@ public final class CopyMakeBorder extends VoidResultUMatFilter implements ReadOn
         final double filler = constantValue * OTools.maxPossibleValue(source);
         try (Scalar value = OTools.scalarBGRA(filler, 0.0)) {
             opencv_core.copyMakeBorder(
-                source,
-                result,
-                topMargin,
-                bottomMargin,
-                leftMargin,
-                rightMargin,
-                borderType.code(),
-                value);
+                    source,
+                    result,
+                    topMargin,
+                    bottomMargin,
+                    leftMargin,
+                    rightMargin,
+                    borderType.code(),
+                    value);
         }
     }
 

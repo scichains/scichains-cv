@@ -24,13 +24,14 @@
 
 package net.algart.executors.modules.cv.matrices.objects.binary.boundaries;
 
-import net.algart.executors.api.data.SNumbers;
-import net.algart.arrays.Arrays;
 import net.algart.arrays.*;
+import net.algart.executors.api.data.SNumbers;
 import net.algart.matrices.scanning.Boundary2DProjectionMeasurer;
 import net.algart.multimatrix.MultiMatrix2D;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
 public final class ScanAndMeasureBoundariesProjections extends AbstractScanAndMeasureBoundaries {
     public static final String OUTPUT_AREA = "area";
@@ -147,7 +148,8 @@ public final class ScanAndMeasureBoundariesProjections extends AbstractScanAndMe
                 getMaxLabelLevelOrMaxValue());
         double normalizedStartAngleInDegree = startDirectionAngleInDegree % 180.0;
         if (normalizedStartAngleInDegree < 0.0) {
-            normalizedStartAngleInDegree += 180.0;        }
+            normalizedStartAngleInDegree += 180.0;
+        }
         final Boundary2DProjectionMeasurer measurer = Boundary2DProjectionMeasurer.getInstance(
                 scanner.getBoundaryScanner(),
                 getContourLineType(),

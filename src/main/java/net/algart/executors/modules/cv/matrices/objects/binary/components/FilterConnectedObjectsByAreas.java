@@ -24,8 +24,8 @@
 
 package net.algart.executors.modules.cv.matrices.objects.binary.components;
 
-import net.algart.executors.modules.cv.matrices.objects.RetainOrRemoveMode;
 import net.algart.arrays.*;
+import net.algart.executors.modules.cv.matrices.objects.RetainOrRemoveMode;
 import net.algart.math.functions.Func;
 import net.algart.matrices.scanning.ConnectedObjectScanner;
 import net.algart.multimatrix.MultiMatrix2D;
@@ -115,9 +115,8 @@ public final class FilterConnectedObjectsByAreas extends ConnectedComponentScann
 
     @Override
     protected Matrix<? extends PArray> processMatrix(
-        List<Matrix<? extends UpdatablePArray>> bitMatrices,
-        List<MultiMatrix2D> sources)
-    {
+            List<Matrix<? extends UpdatablePArray>> bitMatrices,
+            List<MultiMatrix2D> sources) {
         final Matrix<UpdatableBitArray> objects = asBit(bitMatrices.get(0));
         final Matrix<UpdatableBitArray> mask = asBit(bitMatrices.get(1));
         final Matrix<UpdatableBitArray> objectsClone = mode == RetainOrRemoveMode.REMOVE ? cloneBit(objects) : null;

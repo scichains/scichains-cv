@@ -38,7 +38,7 @@ public abstract class VoidResultTwoUMatFilter extends SeveralUMatOperation {
 
     protected VoidResultTwoUMatFilter(String firstInputPort, String secondInputPort) {
         this.firstInputPort = firstInputPort;
-        this.secondInputPort = Objects.requireNonNull(secondInputPort,"Null second port name");
+        this.secondInputPort = Objects.requireNonNull(secondInputPort, "Null second port name");
         addInputMat(firstInputPort == null ? DEFAULT_INPUT_PORT : firstInputPort);
         addInputMat(secondInputPort);
     }

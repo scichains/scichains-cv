@@ -24,12 +24,12 @@
 
 package net.algart.executors.modules.cv.matrices.objects;
 
-import net.algart.executors.modules.cv.matrices.objects.binary.boundaries.BinaryFilterParticlesOrPoresBySizes;
 import net.algart.arrays.*;
+import net.algart.executors.modules.core.common.matrices.MultiMatrixChannel2DFilter;
+import net.algart.executors.modules.cv.matrices.objects.binary.boundaries.BinaryFilterParticlesOrPoresBySizes;
 import net.algart.math.Range;
 import net.algart.math.functions.Func;
 import net.algart.matrices.scanning.ConnectivityType;
-import net.algart.executors.modules.core.common.matrices.MultiMatrixChannel2DFilter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -166,8 +166,8 @@ public final class FilterParticlesOrPoresBySizes extends MultiMatrixChannel2DFil
         if (objects.array() instanceof PFixedArray) {
             numberOfSlices = Math.min(numberOfSlices, (int) (range.size() + 1.0));
         }
-        @SuppressWarnings("resource")
-        final BinaryFilterParticlesOrPoresBySizes binaryFilter = new BinaryFilterParticlesOrPoresBySizes()
+        @SuppressWarnings("resource") final BinaryFilterParticlesOrPoresBySizes binaryFilter =
+                new BinaryFilterParticlesOrPoresBySizes()
                 .setPixelSize(pixelSize)
                 .setConnectivityType(connectivityType)
                 .setParticlesOrPores(particlesOrPores)

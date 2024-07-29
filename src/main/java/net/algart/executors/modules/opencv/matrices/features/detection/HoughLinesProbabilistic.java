@@ -88,7 +88,7 @@ public final class HoughLinesProbabilistic extends MatToNumbers {
     public SNumbers analyse(Mat source) {
         // source image may be modified by the function!
         try (
-            Vec4iVector linesVector = new Vec4iVector()) {
+                Vec4iVector linesVector = new Vec4iVector()) {
             opencv_imgproc.HoughLinesP(
                     source,
                     linesVector,

@@ -24,9 +24,10 @@
 
 package net.algart.executors.modules.cv.matrices.morphology;
 
-import net.algart.executors.modules.core.common.matrices.MultiMatrixChannelFilter;
 import net.algart.arrays.Matrix;
 import net.algart.arrays.PArray;
+import net.algart.executors.modules.core.common.matrices.MultiMatrixChannelFilter;
+import net.algart.executors.modules.core.matrices.geometry.ContinuationMode;
 import net.algart.math.IRange;
 import net.algart.math.Point;
 import net.algart.math.patterns.Pattern;
@@ -34,7 +35,6 @@ import net.algart.math.patterns.Patterns;
 import net.algart.matrices.morphology.BasicMorphology;
 import net.algart.matrices.morphology.ContinuedMorphology;
 import net.algart.matrices.morphology.Morphology;
-import net.algart.executors.modules.core.matrices.geometry.ContinuationMode;
 
 import java.util.Arrays;
 import java.util.Objects;

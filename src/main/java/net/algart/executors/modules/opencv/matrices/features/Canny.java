@@ -75,12 +75,12 @@ public final class Canny extends VoidResultUMatFilter implements ReadOnlyExecuti
             mat = OTools.to8UIfNot(mat);
             final double scale = OTools.maxPossibleValue(mat);
             opencv_imgproc.Canny(
-                mat,
-                result,
-                thresholdLower * scale,
-                thresholdUpper * scale,
-                kernelSizeSobel,
-                moreAccurateGradient);
+                    mat,
+                    result,
+                    thresholdLower * scale,
+                    thresholdUpper * scale,
+                    kernelSizeSobel,
+                    moreAccurateGradient);
         } finally {
             if (mat != source) {
                 mat.close();

@@ -48,7 +48,7 @@ public final class MLTrainBoost extends MLTrainDTrees {
         BoostType(int code) {
             this.code = code;
         }
-        }
+    }
 
     private BoostType boostType = BoostType.REAL;
     private int weakCount = 100;

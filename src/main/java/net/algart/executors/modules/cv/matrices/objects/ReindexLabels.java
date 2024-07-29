@@ -24,11 +24,12 @@
 
 package net.algart.executors.modules.cv.matrices.objects;
 
-import net.algart.arrays.*;
+import net.algart.arrays.JArrays;
+import net.algart.arrays.Matrix;
+import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
+import net.algart.executors.modules.core.common.numbers.IndexingBase;
 import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;
-import net.algart.executors.modules.core.common.numbers.IndexingBase;
-import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
 
 import java.util.Arrays;
 import java.util.Locale;

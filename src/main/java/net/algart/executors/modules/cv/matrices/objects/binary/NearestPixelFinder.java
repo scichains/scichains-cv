@@ -24,8 +24,8 @@
 
 package net.algart.executors.modules.cv.matrices.objects.binary;
 
-import net.algart.executors.modules.cv.matrices.misc.SortedRound2DAperture;
 import net.algart.arrays.*;
+import net.algart.executors.modules.cv.matrices.misc.SortedRound2DAperture;
 import net.algart.math.IPoint;
 import net.algart.math.patterns.Pattern;
 import net.algart.math.patterns.Patterns;

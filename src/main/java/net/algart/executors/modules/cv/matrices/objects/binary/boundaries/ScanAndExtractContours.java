@@ -24,17 +24,17 @@
 
 package net.algart.executors.modules.cv.matrices.objects.binary.boundaries;
 
-import net.algart.contours.Contours;
-import net.algart.contours.ContourHeader;
 import net.algart.arrays.*;
+import net.algart.contours.ContourHeader;
+import net.algart.contours.Contours;
+import net.algart.executors.api.data.SNumbers;
+import net.algart.executors.modules.core.common.matrices.MultiMatrixToNumbers;
 import net.algart.math.IPoint;
 import net.algart.matrices.scanning.Boundary2DScanner;
 import net.algart.matrices.scanning.Boundary2DWrapper;
 import net.algart.matrices.scanning.ConnectivityType;
 import net.algart.matrices.scanning.ContourLineType;
 import net.algart.multimatrix.MultiMatrix;
-import net.algart.executors.api.data.SNumbers;
-import net.algart.executors.modules.core.common.matrices.MultiMatrixToNumbers;
 
 public final class ScanAndExtractContours extends MultiMatrixToNumbers {
     public static final String INPUT_POSITION = "position";

@@ -24,13 +24,13 @@
 
 package net.algart.executors.modules.cv.matrices.objects.binary.boundaries;
 
-import net.algart.contours.Contours;
-import net.algart.contours.ContourHeader;
 import net.algart.arrays.Arrays;
-import net.algart.math.RectangularArea;
+import net.algart.contours.ContourHeader;
+import net.algart.contours.Contours;
 import net.algart.executors.api.ReadOnlyExecutionInput;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.numbers.NumbersFilter;
+import net.algart.math.RectangularArea;
 
 public final class RectanglesToContours extends NumbersFilter implements ReadOnlyExecutionInput {
     public static final String INPUT_RECTANGLES = "rectangles";

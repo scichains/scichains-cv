@@ -26,6 +26,9 @@ package net.algart.executors.modules.cv.matrices.misc;
 
 import net.algart.arrays.Arrays;
 import net.algart.arrays.*;
+import net.algart.executors.api.data.SNumbers;
+import net.algart.executors.modules.core.common.matrices.MultiMatrixToNumbers;
+import net.algart.executors.modules.core.matrices.geometry.ContinuationMode;
 import net.algart.executors.modules.cv.matrices.misc.extremums.ExtremumsFinder;
 import net.algart.executors.modules.cv.matrices.morphology.MorphologyFilter;
 import net.algart.executors.modules.cv.matrices.morphology.MorphologyOperation;
@@ -37,12 +40,8 @@ import net.algart.math.functions.Func;
 import net.algart.matrices.scanning.ConnectivityType;
 import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;
-import net.algart.executors.api.data.SNumbers;
-import net.algart.executors.modules.core.common.matrices.MultiMatrixToNumbers;
-import net.algart.executors.modules.core.matrices.geometry.ContinuationMode;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public final class LocalExtremums extends MultiMatrixToNumbers {
     private static final int MULTITHREADING_Y_BLOCK_LENGTH = 8; // zero value disables multithreading
@@ -253,7 +252,7 @@ public final class LocalExtremums extends MultiMatrixToNumbers {
         final float[] values = source.channelToFloatArray(0);
         final Matrix<UpdatableBitArray> extremumsMaskMatrix = Arrays.SMM.newBitMatrix(source.dimensions());
         long t4 = System.nanoTime();
-        IntArray extremumsXY = Arrays.SMM.newEmptyIntArray();
+        MutableIntArray extremumsXY = Arrays.SMM.newEmptyIntArray();
         if (source.size() > 0) {
             final long dimY = source.dimY();
             if (MULTITHREADING_Y_BLOCK_LENGTH == 0 || Arrays.SystemSettings.cpuCount() == 1) {
@@ -268,12 +267,13 @@ public final class LocalExtremums extends MultiMatrixToNumbers {
                 for (long y = 0; y < dimY; y += yBlockLength) {
                     yRanges.add(IRange.valueOf(y, Math.min(y + yBlockLength, dimY) - 1));
                 }
-                final List<IntArray> results = yRanges.parallelStream().map(
-                        range -> processRange(
-                                values, maskArray, aperture, depthAperture, ignoreMatrix, extremumsMaskMatrix, range))
-                        .collect(Collectors.toList());
+                final List<? extends IntArray> results = yRanges.parallelStream().map(
+                                range -> processRange(
+                                        values, maskArray, aperture, depthAperture, ignoreMatrix, extremumsMaskMatrix
+                                        , range))
+                        .toList();
                 for (IntArray a : results) {
-                    ((MutableIntArray) extremumsXY).append(a);
+                    extremumsXY.append(a);
                 }
             }
         }
@@ -357,7 +357,7 @@ public final class LocalExtremums extends MultiMatrixToNumbers {
                 .process(resultExtremumsMask).asMultiMatrix2D();
     }
 
-    private IntArray processRange(
+    private MutableIntArray processRange(
             float[] values,
             boolean[] mask,
             SortedRound2DAperture aperture,

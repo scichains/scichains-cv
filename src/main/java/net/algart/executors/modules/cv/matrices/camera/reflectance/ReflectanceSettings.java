@@ -24,17 +24,16 @@
 
 package net.algart.executors.modules.cv.matrices.camera.reflectance;
 
+import jakarta.json.JsonException;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonObjectBuilder;
 import net.algart.arrays.Arrays;
 import net.algart.arrays.PArray;
+import net.algart.executors.api.data.ParameterValueType;
 import net.algart.json.AbstractConvertibleToJson;
 import net.algart.json.Jsons;
 import net.algart.math.functions.AbstractFunc;
 import net.algart.math.functions.Func;
-
-import jakarta.json.JsonException;
-import jakarta.json.JsonObject;
-import jakarta.json.JsonObjectBuilder;
-import net.algart.executors.api.data.ParameterValueType;
 
 import java.io.IOException;
 import java.nio.file.Files;

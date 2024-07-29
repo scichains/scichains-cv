@@ -24,11 +24,14 @@
 
 package net.algart.executors.modules.cv.matrices.misc;
 
+import net.algart.arrays.Matrices;
+import net.algart.arrays.Matrix;
+import net.algart.arrays.PArray;
+import net.algart.arrays.UpdatablePArray;
+import net.algart.executors.modules.core.common.matrices.MultiMatrixChannel2DFilter;
 import net.algart.executors.modules.cv.matrices.misc.slopes.MatrixBoundariesEmphasizer;
 import net.algart.executors.modules.cv.matrices.misc.slopes.SlopeEmphasizer;
-import net.algart.arrays.*;
 import net.algart.multimatrix.MultiMatrix2D;
-import net.algart.executors.modules.core.common.matrices.MultiMatrixChannel2DFilter;
 
 import java.util.Locale;
 

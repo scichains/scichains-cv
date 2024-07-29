@@ -24,11 +24,12 @@
 
 package net.algart.executors.modules.cv.matrices.objects.binary;
 
-import net.algart.executors.modules.cv.matrices.morphology.MorphologyFilter;
 import net.algart.arrays.BitArray;
 import net.algart.arrays.Matrices;
 import net.algart.arrays.Matrix;
 import net.algart.arrays.PArray;
+import net.algart.executors.modules.core.common.matrices.BitMultiMatrixFilter;
+import net.algart.executors.modules.cv.matrices.morphology.MorphologyFilter;
 import net.algart.math.IRange;
 import net.algart.math.Range;
 import net.algart.math.functions.AbstractFunc;
@@ -39,7 +40,6 @@ import net.algart.matrices.morphology.Morphology;
 import net.algart.matrices.skeletons.BasicSkeletonPixelClassifier2D;
 import net.algart.matrices.skeletons.SkeletonPixelClassifier;
 import net.algart.multimatrix.MultiMatrix;
-import net.algart.executors.modules.core.common.matrices.BitMultiMatrixFilter;
 
 import static net.algart.matrices.skeletons.BasicSkeletonPixelClassifier2D.*;
 import static net.algart.matrices.skeletons.SkeletonPixelClassifier.AttachmentInformation.NEIGHBOUR_INDEX_OF_ATTACHED_NODE;
@@ -79,7 +79,7 @@ public final class SkeletonPixelTypes extends BitMultiMatrixFilter {
                 return super.isThisPixelType(pixelType) || pixelType >= 0;
             }
         },
-        BRANCH_WITHOUT_FREE_BRANCHE_END(TYPE_USUAL_BRANCH)  {
+        BRANCH_WITHOUT_FREE_BRANCHE_END(TYPE_USUAL_BRANCH) {
             @Override
             boolean isThisPixelType(double pixelType) {
                 return super.isThisPixelType(pixelType) || pixelType >= 0;

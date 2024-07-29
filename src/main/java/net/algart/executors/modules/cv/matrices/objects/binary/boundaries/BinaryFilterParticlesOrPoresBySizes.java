@@ -25,6 +25,7 @@
 package net.algart.executors.modules.cv.matrices.objects.binary.boundaries;
 
 import net.algart.arrays.*;
+import net.algart.executors.modules.core.common.matrices.BitMultiMatrixFilter;
 import net.algart.math.Range;
 import net.algart.math.functions.Func;
 import net.algart.math.functions.LinearFunc;
@@ -32,7 +33,6 @@ import net.algart.matrices.scanning.Boundary2DScanner;
 import net.algart.matrices.scanning.Boundary2DSimpleMeasurer;
 import net.algart.matrices.scanning.ConnectivityType;
 import net.algart.matrices.scanning.ContourLineType;
-import net.algart.executors.modules.core.common.matrices.BitMultiMatrixFilter;
 
 import java.util.EnumSet;
 import java.util.Objects;
@@ -191,7 +191,8 @@ public final class BinaryFilterParticlesOrPoresBySizes extends BitMultiMatrixFil
                 ContourLineType.SEGMENT_CENTERS_POLYLINE,
                 necessaryParameters());
         // SEGMENT_CENTERS_POLYLINE is necessary for correct perimeter calculation
-        final Boundary2DScanner mainScanner = Boundary2DScanner.getMainBoundariesScanner(source, result, connectivityType);
+        final Boundary2DScanner mainScanner = Boundary2DScanner.getMainBoundariesScanner(
+                source, result, connectivityType);
         final boolean checkArea = isLimitActual(maxArea);
         final boolean checkSize = isLimitActual(maxSize);
         final boolean checkPerimeter = isLimitActual(maxPerimeter);

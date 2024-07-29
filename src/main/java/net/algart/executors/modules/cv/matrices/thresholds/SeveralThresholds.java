@@ -28,11 +28,11 @@ import net.algart.arrays.IntArray;
 import net.algart.arrays.Matrices;
 import net.algart.arrays.Matrix;
 import net.algart.arrays.PArray;
+import net.algart.executors.api.data.SScalar;
+import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
 import net.algart.math.functions.AbstractFunc;
 import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;
-import net.algart.executors.api.data.SScalar;
-import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
 
 public final class SeveralThresholds extends MultiMatrix2DFilter {
     public static final String INPUT_MASK = "mask";
@@ -102,24 +102,24 @@ public final class SeveralThresholds extends MultiMatrix2DFilter {
             appendedValues[k] = k < this.values.length ? this.values[k] : k;
         }
         MultiMatrix2D result = MultiMatrix.valueOf2DMono(Matrices.asFuncMatrix(
-                    new AbstractFunc() {
-                        @Override
-                        public double get(double... x) {
-                            return get(x[0]);
-                        }
+                new AbstractFunc() {
+                    @Override
+                    public double get(double... x) {
+                        return get(x[0]);
+                    }
 
-                        @Override
-                        public double get(double x0) {
-                            int result = appendedValues[0];
-                            for (int k = 0; k < scaledThresholds.length; k++) {
-                                if (x0 >= scaledThresholds[k]) {
-                                    result = appendedValues[k + 1];
-                                }
+                    @Override
+                    public double get(double x0) {
+                        int result = appendedValues[0];
+                        for (int k = 0; k < scaledThresholds.length; k++) {
+                            if (x0 >= scaledThresholds[k]) {
+                                result = appendedValues[k + 1];
                             }
-                            return result;
                         }
-                    },
-            IntArray.class, intensity));
+                        return result;
+                    }
+                },
+                IntArray.class, intensity));
         if (mask != null) {
             result = result.min(mask.nonZeroAnyChannel());
         }

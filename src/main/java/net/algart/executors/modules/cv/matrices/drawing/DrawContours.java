@@ -24,15 +24,15 @@
 
 package net.algart.executors.modules.cv.matrices.drawing;
 
-import net.algart.executors.modules.cv.matrices.misc.Selector;
 import net.algart.arrays.*;
 import net.algart.contours.Contours;
-import net.algart.math.IPoint;
-import net.algart.multimatrix.MultiMatrix;
-import net.algart.multimatrix.MultiMatrix2D;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
 import net.algart.executors.modules.core.matrices.geometry.Resize;
+import net.algart.executors.modules.cv.matrices.misc.Selector;
+import net.algart.math.IPoint;
+import net.algart.multimatrix.MultiMatrix;
+import net.algart.multimatrix.MultiMatrix2D;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -55,6 +55,7 @@ public final class DrawContours extends MultiMatrix2DFilter {
             this.accept = accept;
         }
     }
+
     public enum DrawnFeatures {
         STRICT_BYTE_CONTOURS(byte.class, true, false),
         NOT_INTERSECTED_LABELS_OF_CONTOURS(int.class, false, false),
@@ -252,7 +253,7 @@ public final class DrawContours extends MultiMatrix2DFilter {
             for (int k = 0; k < (drawnFeatures.colored ? 3 : 1); k++) {
                 resultChannels.add(Arrays.SMM.newMatrix(
                         UpdatablePArray.class, drawnFeatures.elementType, dimX, dimY));
-            };
+            }
         }
         Random rnd = randSeed == 0 ? new Random() : new Random(randSeed);
         for (int k = 0, n = contours.numberOfContours(); k < n; k++) {
@@ -334,7 +335,7 @@ public final class DrawContours extends MultiMatrix2DFilter {
                 throw new IllegalArgumentException("Cannot draw contours containing non-horizontal "
                         + "and non-vertical segments (" + lastX + "," + lastY + " - " + x + "," + y
                         + ") between points #" + (i / 2 - 1) + " and #" + i / 2);
-            };
+            }
             lastX = x;
             lastY = y;
         }
@@ -405,7 +406,7 @@ public final class DrawContours extends MultiMatrix2DFilter {
             }
         } else {
             drawElements(result.subMatrix(
-                    minX, y, maxX + 1, y + 1, Matrix.ContinuationMode.NAN_CONSTANT)
+                            minX, y, maxX + 1, y + 1, Matrix.ContinuationMode.NAN_CONSTANT)
                     .array(), colorOrMaxValue, increment);
         }
     }
@@ -423,7 +424,7 @@ public final class DrawContours extends MultiMatrix2DFilter {
             }
         } else {
             drawElements(result.subMatrix(
-                    x, minY, x + 1, maxY + 1, Matrix.ContinuationMode.NAN_CONSTANT)
+                            x, minY, x + 1, maxY + 1, Matrix.ContinuationMode.NAN_CONSTANT)
                     .array(), colorOrMaxValue, increment);
         }
     }

@@ -80,17 +80,17 @@ public final class DistanceTransform extends VoidResultUMatFilter {
     public void process(Mat result, Mat source) {
         if (isOutputNecessary(OUTPUT_LABELS)) {
             logDebug(() -> "Distance transform with labels:"
-                + " distanceType = " + distanceType + ", maskSize = " + maskSize
-                + ", labelType = " + labelType + " (source: " + source + ")");
+                    + " distanceType = " + distanceType + ", maskSize = " + maskSize
+                    + ", labelType = " + labelType + " (source: " + source + ")");
             Mat labels = new Mat();
             opencv_imgproc.distanceTransformWithLabels(
-                source, result, labels, distanceType.code(), maskSize, labelType.code());
+                    source, result, labels, distanceType.code(), maskSize, labelType.code());
             setEndProcessingTimeStamp();
             O2SMat.setTo(getMat(OUTPUT_LABELS), labels);
-        } else{
+        } else {
             logDebug(() -> "Distance transform without labels:"
-                + " distanceType = " + distanceType + ", maskSize = " + maskSize
-                + ", resultDepth = " + resultDepth + " (source: " + source + ")");
+                    + " distanceType = " + distanceType + ", maskSize = " + maskSize
+                    + ", resultDepth = " + resultDepth + " (source: " + source + ")");
             opencv_imgproc.distanceTransform(source, result, distanceType.code(), maskSize, resultDepth.code());
         }
     }
@@ -106,7 +106,7 @@ public final class DistanceTransform extends VoidResultUMatFilter {
                     source, result, labels, distanceType.code(), maskSize, labelType.code());
             setEndProcessingTimeStamp();
             O2SMat.setTo(getMat(OUTPUT_LABELS), labels);
-        } else{
+        } else {
             logDebug(() -> "Distance transform without labels (GPU):"
                     + " distanceType = " + distanceType + ", maskSize = " + maskSize
                     + ", resultDepth = " + resultDepth + " (source: " + source + ")");

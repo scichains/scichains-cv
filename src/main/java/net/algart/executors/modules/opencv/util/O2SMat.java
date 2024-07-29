@@ -375,7 +375,7 @@ public final class O2SMat {
         final SMat.Convertible pointer = OPTIMIZE_COPYING && !serializeData ?
                 new ConvertibleMat(mat) :
                 new ConvertibleByteBufferMatrix(OTools.toByteBuffer(mat));
-        return result.setAll(new long[] {dimX, dimY}, depth, channels, pointer);
+        return result.setAll(new long[]{dimX, dimY}, depth, channels, pointer);
     }
 
     private static SMat setTo(SMat result, UMat mat, boolean serializeData) {
@@ -392,7 +392,7 @@ public final class O2SMat {
         } else {
             pointer = new ConvertibleByteBufferMatrix(OTools.toByteBuffer(mat));
         }
-        return result.setAll(new long[] {dimX, dimY}, depth, channels, pointer);
+        return result.setAll(new long[]{dimX, dimY}, depth, channels, pointer);
     }
 
     private static SMat prepareForOpenCV(SMat m, boolean autoConvertPackedBits) {

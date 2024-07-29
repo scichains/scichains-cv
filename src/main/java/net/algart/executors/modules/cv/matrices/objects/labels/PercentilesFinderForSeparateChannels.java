@@ -24,7 +24,10 @@
 
 package net.algart.executors.modules.cv.matrices.objects.labels;
 
-import net.algart.arrays.*;
+import net.algart.arrays.ArraySelector;
+import net.algart.arrays.ArraySorter;
+import net.algart.arrays.ByteArraySelector;
+import net.algart.arrays.JArrays;
 
 import java.util.Objects;
 

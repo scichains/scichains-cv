@@ -24,16 +24,16 @@
 
 package net.algart.executors.modules.cv.matrices.objects;
 
-import net.algart.executors.modules.cv.matrices.objects.labels.LabelsAnalyser;
-import net.algart.executors.modules.cv.matrices.objects.markers.PaintLabelledObjects;
 import net.algart.arrays.Arrays;
 import net.algart.arrays.*;
-import net.algart.multimatrix.MultiMatrix2D;
 import net.algart.executors.api.Executor;
 import net.algart.executors.api.ReadOnlyExecutionInput;
 import net.algart.executors.api.data.SMat;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.api.data.SScalar;
+import net.algart.executors.modules.cv.matrices.objects.labels.LabelsAnalyser;
+import net.algart.executors.modules.cv.matrices.objects.markers.PaintLabelledObjects;
+import net.algart.multimatrix.MultiMatrix2D;
 
 import java.util.*;
 import java.util.function.Supplier;
@@ -333,7 +333,7 @@ public final class ValuesAtLabelledObjects extends Executor implements ReadOnlyE
         long t2 = debugTime();
         long t3 = t2;
         if (results.containsKey(ObjectParameter.STANDARD_DEVIATION)
-            || results.containsKey(ObjectParameter.MEAN_SQUARE)) {
+                || results.containsKey(ObjectParameter.MEAN_SQUARE)) {
             analyser.findMeansAndStandardDeviationsAndCardinalities();
         } else if (results.containsKey(ObjectParameter.MEAN)) {
             analyser.findMeansAndCardinalities();
@@ -395,7 +395,8 @@ public final class ValuesAtLabelledObjects extends Executor implements ReadOnlyE
                         analyser.firstNonZeroValues(), numberOfChannels);
             } else {
                 results.get(ObjectParameter.FIRST_NON_ZERO).setTo(
-                        analyser.firstNonZeroFloatValues(true), numberOfChannels);            }
+                        analyser.firstNonZeroFloatValues(true), numberOfChannels);
+            }
         }
         long t5 = debugTime();
         if (LOGGABLE_DEBUG) {
@@ -905,13 +906,13 @@ public final class ValuesAtLabelledObjects extends Executor implements ReadOnlyE
                     levelsByLabelsList.stream() :
                     levelsByLabelsList.parallelStream();
             final List<float[]> sortedLevelsByLabelsList = sortingStream.map(
-                    ValuesAtLabelledObjects::sortValues).collect(Collectors.toList());
+                    ValuesAtLabelledObjects::sortValues).toList();
             // - relatively slow sorting
             this.lowPercentiles = sortedLevelsByLabelsList.stream().map(
-                    sorted -> findPercentile(sorted, lowPercentile))
+                            sorted -> findPercentile(sorted, lowPercentile))
                     .mapToDouble(Double::doubleValue).toArray();
             this.highPercentiles = sortedLevelsByLabelsList.stream().map(
-                    sorted -> findPercentile(sorted, highPercentile))
+                            sorted -> findPercentile(sorted, highPercentile))
                     .mapToDouble(Double::doubleValue).toArray();
             // - quick extracting
         }

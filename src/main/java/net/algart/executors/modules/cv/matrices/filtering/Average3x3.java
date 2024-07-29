@@ -24,9 +24,9 @@
 
 package net.algart.executors.modules.cv.matrices.filtering;
 
+import net.algart.executors.modules.core.common.matrices.MultiMatrixFilter;
 import net.algart.matrices.filters3x3.AverageBySquare3x3;
 import net.algart.multimatrix.MultiMatrix;
-import net.algart.executors.modules.core.common.matrices.MultiMatrixFilter;
 
 import java.util.Locale;
 

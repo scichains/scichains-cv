@@ -72,7 +72,7 @@ public final class Sobel extends UMatFilter {
     public void setKernelSize(int kernelSize) {
         if (kernelSize <= 0 && kernelSize != SCHARR_KERNEL_SIZE) {
             throw new IllegalArgumentException("Kernel size " + kernelSize
-                + " must be positive or " + SCHARR_KERNEL_SIZE);
+                    + " must be positive or " + SCHARR_KERNEL_SIZE);
         }
         this.kernelSize = kernelSize;
     }

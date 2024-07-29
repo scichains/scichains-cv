@@ -27,7 +27,7 @@ package net.algart.executors.modules.opencv.util.enums;
 import org.bytedeco.opencv.global.opencv_imgproc;
 
 public enum OHoughMode {
-    HOUGH_STANDARD (opencv_imgproc.HOUGH_STANDARD),
+    HOUGH_STANDARD(opencv_imgproc.HOUGH_STANDARD),
     HOUGH_PROBABILISTIC(opencv_imgproc.HOUGH_PROBABILISTIC),
     HOUGH_MULTI_SCALE(opencv_imgproc.HOUGH_MULTI_SCALE),
     HOUGH_GRADIENT(opencv_imgproc.HOUGH_GRADIENT),

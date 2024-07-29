@@ -24,13 +24,13 @@
 
 package net.algart.executors.modules.cv.matrices.camera;
 
-import net.algart.executors.modules.cv.matrices.camera.reflectance.ReflectanceSettings;
 import net.algart.arrays.FloatArray;
-import net.algart.math.functions.Func;
-import net.algart.multimatrix.MultiMatrix;
 import net.algart.executors.api.Executor;
 import net.algart.executors.modules.core.common.io.PathPropertyReplacement;
 import net.algart.executors.modules.core.common.matrices.MultiMatrixFilter;
+import net.algart.executors.modules.cv.matrices.camera.reflectance.ReflectanceSettings;
+import net.algart.math.functions.Func;
+import net.algart.multimatrix.MultiMatrix;
 
 import java.io.IOError;
 import java.io.IOException;

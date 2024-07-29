@@ -55,10 +55,10 @@ public final class RankMorphology extends RankMorphologyFilter {
         final Pattern pattern = getPattern(m);
         if (currentChannel() == 0) {
             logDebug(() -> "Rank " + operation + ", level " + level
-                + rankMorphologyLogMessage()
-                + " with " + pattern
-                + (continuationMode == null ? "" : ", " + continuationMode)
-                + " for " + sourceMultiMatrix());
+                    + rankMorphologyLogMessage()
+                    + " with " + pattern
+                    + (continuationMode == null ? "" : ", " + continuationMode)
+                    + " for " + sourceMultiMatrix());
         }
         return operation.perform(createRankMorphology(m.elementType(), level), m, pattern, this);
     }

@@ -27,11 +27,11 @@ package net.algart.executors.modules.cv.matrices.morphology;
 import net.algart.arrays.Matrix;
 import net.algart.arrays.PArray;
 import net.algart.arrays.UpdatablePArray;
+import net.algart.executors.api.Executor;
 import net.algart.math.Point;
 import net.algart.math.patterns.Pattern;
 import net.algart.math.patterns.Patterns;
 import net.algart.matrices.morphology.Morphology;
-import net.algart.executors.api.Executor;
 
 public enum MorphologyOperation {
     DILATION {

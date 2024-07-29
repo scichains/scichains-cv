@@ -24,8 +24,12 @@
 
 package net.algart.executors.modules.cv.matrices.objects;
 
-import net.algart.executors.modules.cv.matrices.objects.binary.components.ConnectedObjectScanningAlgorithm;
 import net.algart.arrays.*;
+import net.algart.executors.api.Executor;
+import net.algart.executors.api.ReadOnlyExecutionInput;
+import net.algart.executors.api.data.SNumbers;
+import net.algart.executors.modules.core.common.matrices.BitMultiMatrixFilter;
+import net.algart.executors.modules.cv.matrices.objects.binary.components.ConnectedObjectScanningAlgorithm;
 import net.algart.math.functions.DividingFunc;
 import net.algart.math.functions.Func;
 import net.algart.math.functions.LinearFunc;
@@ -33,10 +37,6 @@ import net.algart.math.functions.PowerFunc;
 import net.algart.matrices.scanning.ConnectedObjectScanner;
 import net.algart.matrices.scanning.ConnectivityType;
 import net.algart.multimatrix.MultiMatrix2D;
-import net.algart.executors.api.Executor;
-import net.algart.executors.api.ReadOnlyExecutionInput;
-import net.algart.executors.api.data.SNumbers;
-import net.algart.executors.modules.core.common.matrices.BitMultiMatrixFilter;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -286,7 +286,7 @@ public final class MeasureLabelledObjects extends Executor implements ReadOnlyEx
                 centroids[2 * k + 1] /= cardinalities[k];
             }
             final UpdatablePNumberArray result = Arrays.SMM.newFloatArray(centroids.length);
-            Arrays.applyFunc( LinearFunc.getInstance(0.0, pixelSize), result, DoubleArray.as(centroids));
+            Arrays.applyFunc(LinearFunc.getInstance(0.0, pixelSize), result, DoubleArray.as(centroids));
             results.get(ObjectParameter.CENTROID).setTo(result, 2);
         }
         if (results.containsKey(ObjectParameter.CONTAINING_RECTANGLE)) {
@@ -439,7 +439,7 @@ public final class MeasureLabelledObjects extends Executor implements ReadOnlyEx
                 boundaries.addDouble((double) calculator.countBoundary * pixelSize);
             }
             if (thicknesses != null) {
-                thicknesses.addDouble (2.0 * (double) cardinality * pixelSize
+                thicknesses.addDouble(2.0 * (double) cardinality * pixelSize
                         / (double) calculator.countBoundary);
             }
             if (shapeFactors != null) {

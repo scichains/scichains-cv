@@ -107,7 +107,8 @@ public final class PatternSpecificationParser {
             String[] elements;
             if (matrix01 != null) {
                 result = matrix01;
-            } else if ((elements = s.split("(\\b|\\s)mult(\\b|\\s)")).length == 2) { // "m MULT xxx" means multiplication
+            } else if ((elements = s.split("(\\b|\\s)mult(\\b|\\s)")).length == 2) { // "m MULT xxx" means
+                // multiplication
                 double mult = Double.parseDouble(elements[0].trim());         // (low priority)
                 result = parse(elements[1]).multiply(mult);
 
@@ -676,7 +677,7 @@ public final class PatternSpecificationParser {
             return Patterns.newIntegerPattern(IPoint.valueOf(x0, y0));
         } else {
             return Patterns.newMinkowskiMultiplePattern(
-                    Patterns.newIntegerPattern(IPoint.origin(2), IPoint.valueOf(dx, dy)), n - 1)
+                            Patterns.newIntegerPattern(IPoint.origin(2), IPoint.valueOf(dx, dy)), n - 1)
                     .shift(Point.valueOf(x0, y0));
         }
     }
@@ -749,7 +750,7 @@ public final class PatternSpecificationParser {
             return Patterns.newPattern(Point.valueOf(x0, y0, z0));
         } else {
             return Patterns.newMinkowskiMultiplePattern(
-                    Patterns.newPattern(Point.origin(3), Point.valueOf(dx, dy, dz)), n - 1)
+                            Patterns.newPattern(Point.origin(3), Point.valueOf(dx, dy, dz)), n - 1)
                     .shift(Point.valueOf(x0, y0, z0));
         }
     }

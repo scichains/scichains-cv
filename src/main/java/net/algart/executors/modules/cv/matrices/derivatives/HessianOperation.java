@@ -269,8 +269,8 @@ public enum HessianOperation {
                     double lambda2 = 0.5 * (a + b - d);
                     // L2-: let's compare L1+ with L2-
                     if (lambda2 >= 0.0
-                        // So, |L1| >= |L2|, we choose L2- (2nd by magnitude), and it is 0.0
-                        || lambda1 <= 0.0) {
+                            // So, |L1| >= |L2|, we choose L2- (2nd by magnitude), and it is 0.0
+                            || lambda1 <= 0.0) {
                         // So, |L2| >= |L1|, we choose L1+ (2nd by magnitude), and it is 0.0
                         return 0.0;
                     } else {

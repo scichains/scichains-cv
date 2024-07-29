@@ -24,9 +24,9 @@
 
 package net.algart.executors.modules.cv.matrices.misc;
 
+import net.algart.arrays.*;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
-import net.algart.arrays.*;
 import net.algart.math.functions.AbstractFunc;
 import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;

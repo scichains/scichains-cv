@@ -132,7 +132,7 @@ public final class DrawEllipse extends AWTDrawer {
         final double height = percents ? this.height / 100.0 * dimY : this.height;
 
         final PositionsAndColors positionsAndColors = new PositionsAndColors(
-                positions, colors, new double[] {centerX, centerY}, Double.NaN, 2);
+                positions, colors, new double[]{centerX, centerY}, Double.NaN, 2);
         for (int k = 0; k < positionsAndColors.n; k++) {
             final double[] xywh = positionsAndColors.xyAndOthers(k);
             final float[] rgb = positionsAndColors.colorRGB(k);

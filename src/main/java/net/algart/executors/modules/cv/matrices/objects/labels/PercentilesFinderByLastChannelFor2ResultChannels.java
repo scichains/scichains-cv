@@ -30,6 +30,7 @@ import net.algart.arrays.ByteArraySelector;
 class PercentilesFinderByLastChannelFor2ResultChannels extends PercentilesFinderByLastChannel {
     private final boolean separateChannels0;
     private final boolean separateChannels1;
+
     PercentilesFinderByLastChannelFor2ResultChannels(
             int maxLabel,
             double[][] levels,

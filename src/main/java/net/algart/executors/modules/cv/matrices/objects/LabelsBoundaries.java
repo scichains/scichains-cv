@@ -24,11 +24,11 @@
 
 package net.algart.executors.modules.cv.matrices.objects;
 
+import net.algart.arrays.Matrix;
+import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
 import net.algart.executors.modules.cv.matrices.morphology.MorphologyOperation;
 import net.algart.executors.modules.cv.matrices.morphology.StrictMorphology;
-import net.algart.arrays.Matrix;
 import net.algart.multimatrix.MultiMatrix2D;
-import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
 
 public final class LabelsBoundaries extends MultiMatrix2DFilter {
     public static final String INPUT_LABELS = "labels";

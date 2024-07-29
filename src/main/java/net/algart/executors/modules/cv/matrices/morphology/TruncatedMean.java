@@ -24,11 +24,11 @@
 
 package net.algart.executors.modules.cv.matrices.morphology;
 
-import net.algart.executors.modules.core.common.ChannelOperation;
 import net.algart.arrays.DoubleArray;
 import net.algart.arrays.Matrices;
 import net.algart.arrays.Matrix;
 import net.algart.arrays.PArray;
+import net.algart.executors.modules.core.common.ChannelOperation;
 import net.algart.math.patterns.Pattern;
 import net.algart.matrices.morphology.RankMorphology;
 
@@ -87,13 +87,13 @@ public final class TruncatedMean extends RankMorphologyFilter {
         final Pattern pattern = getPattern(m);
         if (currentChannel() == 0) {
             logDebug(() -> "Truncated mean"
-                + " in " + lowLimit + ".." + highLimit
-                + (limitInterpretation == LimitInterpretation.NORMALIZED_0_1_PERCENTILE ? "percentile" : "value")
-                + " range"
-                + rankMorphologyLogMessage()
-                + " with " + pattern
-                + (continuationMode == null ? "" : ", " + continuationMode)
-                + " for " + sourceMultiMatrix());
+                    + " in " + lowLimit + ".." + highLimit
+                    + (limitInterpretation == LimitInterpretation.NORMALIZED_0_1_PERCENTILE ? "percentile" : "value")
+                    + " range"
+                    + rankMorphologyLogMessage()
+                    + " with " + pattern
+                    + (continuationMode == null ? "" : ", " + continuationMode)
+                    + " for " + sourceMultiMatrix());
         }
         double scale = m.array().maxPossibleValue(1.0);
         double filler = scale * colorChannel(fillerColor);
@@ -106,9 +106,9 @@ public final class TruncatedMean extends RankMorphologyFilter {
             }
             case NORMALIZED_0_1_VALUE: {
                 Matrix<? extends PArray> minV = Matrices.constantMatrix(lowLimit * scale,
-                    DoubleArray.class, m.dimensions());
+                        DoubleArray.class, m.dimensions());
                 Matrix<? extends PArray> maxV = Matrices.constantMatrix(highLimit * scale,
-                    DoubleArray.class, m.dimensions());
+                        DoubleArray.class, m.dimensions());
                 return morphology.meanBetweenValues(m, minV, maxV, pattern, filler);
             }
             default: {

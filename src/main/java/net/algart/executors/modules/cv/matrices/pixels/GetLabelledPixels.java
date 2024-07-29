@@ -27,11 +27,11 @@ package net.algart.executors.modules.cv.matrices.pixels;
 import net.algart.arrays.Arrays;
 import net.algart.arrays.BitArray;
 import net.algart.arrays.TooLargeArrayException;
-import net.algart.multimatrix.MultiMatrix;
-import net.algart.multimatrix.MultiMatrix2D;
 import net.algart.executors.api.Executor;
 import net.algart.executors.api.ReadOnlyExecutionInput;
 import net.algart.executors.api.data.SNumbers;
+import net.algart.multimatrix.MultiMatrix;
+import net.algart.multimatrix.MultiMatrix2D;
 
 import java.util.Objects;
 

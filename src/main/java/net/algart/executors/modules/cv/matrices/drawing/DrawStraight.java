@@ -118,13 +118,13 @@ public final class DrawStraight extends AWTDrawer {
         // Note: we may create line greater than necessary
         if (Math.abs(cos) >= Math.abs(sin)) {
             // solve: (y1-y0)/(0-x0) = sin/cos, (y2-y0)/(dimX-1-x0) = sin/cos
-            double tangent = sin/cos;
+            double tangent = sin / cos;
             double y1 = y0 - tangent * x0;
             double y2 = y0 + tangent * (dimX - 1.0 - x0);
             return new double[]{0, y1, dimX - 1.0, y2};
         } else {
             // solve: (x1-x0)/(0-y0) = cos/sin, (x2-x0)/(dimY-1-y0) = cos/sin
-            double cotangent = cos/sin;
+            double cotangent = cos / sin;
             double x1 = x0 - cotangent * y0;
             double x2 = x0 + cotangent * (dimY - 1.0 - y0);
             return new double[]{x1, 0, x2, dimY - 1.0};

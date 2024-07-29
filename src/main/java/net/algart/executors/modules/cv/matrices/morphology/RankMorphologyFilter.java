@@ -57,7 +57,7 @@ public abstract class RankMorphologyFilter extends MorphologyFilter {
 
     public net.algart.matrices.morphology.RankMorphology createRankMorphology(Class<?> elementType, double level) {
         net.algart.matrices.morphology.RankMorphology morphology =
-            BasicRankMorphology.getInstance(null, level, rankPrecision(elementType));
+                BasicRankMorphology.getInstance(null, level, rankPrecision(elementType));
         if (continuationMode != null) {
             morphology = ContinuedRankMorphology.getInstance(morphology, continuationMode);
         }
@@ -78,9 +78,9 @@ public abstract class RankMorphologyFilter extends MorphologyFilter {
             newDimensions[k] = (long) (sourceMatrixDimensions[k] / optimizingScale);
         }
         Matrix<? extends UpdatablePArray> result = Arrays.SMM.newMatrix(
-            UpdatablePArray.class,
-            m.elementType(),
-            newDimensions);
+                UpdatablePArray.class,
+                m.elementType(),
+                newDimensions);
         Matrices.resize(null, Matrices.ResizingMethod.AVERAGING, result, m);
         return result;
     }
@@ -93,9 +93,9 @@ public abstract class RankMorphologyFilter extends MorphologyFilter {
             return m;
         }
         Matrix<? extends UpdatablePArray> result = Arrays.SMM.newMatrix(
-            UpdatablePArray.class,
-            m.elementType(),
-            sourceMatrixDimensions);
+                UpdatablePArray.class,
+                m.elementType(),
+                sourceMatrixDimensions);
         Matrices.resize(null, Matrices.ResizingMethod.POLYLINEAR_INTERPOLATION, result, m);
         return result;
     }
@@ -104,15 +104,15 @@ public abstract class RankMorphologyFilter extends MorphologyFilter {
 
     protected final String rankMorphologyLogMessage() {
         return (interpolatedHistogram ? ", interpolated histogram" : "")
-            + (optimizingScale == 1.0 ? "" :
-            ", compressed in " + optimizingScale + " times");
+                + (optimizingScale == 1.0 ? "" :
+                ", compressed in " + optimizingScale + " times");
     }
 
     RankPrecision rankPrecision(Class<?> elementType) {
         final long bitsPerElement = Arrays.bitsPerElement(elementType);
         RankPrecision result = bitsPerElement <= 8 ? RankPrecision.BITS_8
-            : bitsPerElement <= 16 ? RankPrecision.BITS_16_PER_8
-            : RankPrecision.BITS_22_PER_7;
+                : bitsPerElement <= 16 ? RankPrecision.BITS_16_PER_8
+                : RankPrecision.BITS_22_PER_7;
         result = result.otherInterpolation(interpolatedHistogram);
         return result;
     }

@@ -27,10 +27,10 @@ package net.algart.executors.modules.cv.matrices.objects;
 import net.algart.arrays.Arrays;
 import net.algart.arrays.Matrix;
 import net.algart.arrays.UpdatableBitArray;
-import net.algart.multimatrix.MultiMatrix;
-import net.algart.multimatrix.MultiMatrix2D;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
+import net.algart.multimatrix.MultiMatrix;
+import net.algart.multimatrix.MultiMatrix2D;
 
 import java.util.Objects;
 

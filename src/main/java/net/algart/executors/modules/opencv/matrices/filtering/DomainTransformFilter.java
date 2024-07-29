@@ -72,12 +72,11 @@ public final class DomainTransformFilter extends AbstractFilterWithGuideImage {
     public void process(Mat result, Mat source, Mat guide) {
         long tStart = System.nanoTime();
         try (final DTFilter filter = opencv_ximgproc.createDTFilter(
-            guide,
-            sigmaSpace,
-            sigmaColor * OTools.maxPossibleValue(source),
-            mode.code(),
-            numberOfIterations))
-        {
+                guide,
+                sigmaSpace,
+                sigmaColor * OTools.maxPossibleValue(source),
+                mode.code(),
+                numberOfIterations)) {
             addServiceTime(System.nanoTime() - tStart);
             filter.filter(source, result);
         }
@@ -91,8 +90,7 @@ public final class DomainTransformFilter extends AbstractFilterWithGuideImage {
                 sigmaSpace,
                 sigmaColor * OTools.maxPossibleValue(source),
                 mode.code(),
-                numberOfIterations))
-        {
+                numberOfIterations)) {
             addServiceTime(System.nanoTime() - tStart);
             filter.filter(source, result);
         }

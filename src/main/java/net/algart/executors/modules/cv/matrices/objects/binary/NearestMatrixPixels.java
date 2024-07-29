@@ -24,15 +24,15 @@
 
 package net.algart.executors.modules.cv.matrices.objects.binary;
 
-import net.algart.executors.modules.cv.matrices.misc.SortedRound2DAperture;
-import net.algart.executors.modules.cv.matrices.drawing.DrawLine;
 import net.algart.arrays.*;
-import net.algart.math.IRange;
-import net.algart.multimatrix.MultiMatrix;
-import net.algart.multimatrix.MultiMatrix2D;
 import net.algart.executors.api.data.SMat;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.matrices.MultiMatrixToNumbers;
+import net.algart.executors.modules.cv.matrices.drawing.DrawLine;
+import net.algart.executors.modules.cv.matrices.misc.SortedRound2DAperture;
+import net.algart.math.IRange;
+import net.algart.multimatrix.MultiMatrix;
+import net.algart.multimatrix.MultiMatrix2D;
 
 import java.awt.*;
 import java.util.ArrayList;

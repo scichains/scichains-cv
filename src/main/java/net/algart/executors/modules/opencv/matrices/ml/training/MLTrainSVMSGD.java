@@ -36,8 +36,8 @@ import java.util.Locale;
 
 public final class MLTrainSVMSGD extends AbstractMLTrain {
     public enum SVMSGDType {
-        SGD (SVMSGD.SGD ), // - default
-        ASGD (SVMSGD.ASGD );
+        SGD(SVMSGD.SGD), // - default
+        ASGD(SVMSGD.ASGD);
 
         private final int code;
 
@@ -51,8 +51,8 @@ public final class MLTrainSVMSGD extends AbstractMLTrain {
     }
 
     public enum MarginType {
-        SOFT_MARGIN (SVMSGD.SOFT_MARGIN),
-        HARD_MARGIN  (SVMSGD.HARD_MARGIN );
+        SOFT_MARGIN(SVMSGD.SOFT_MARGIN),
+        HARD_MARGIN(SVMSGD.HARD_MARGIN);
 
         private final int code;
 
@@ -68,8 +68,8 @@ public final class MLTrainSVMSGD extends AbstractMLTrain {
     private SVMSGDType svmSgdType = SVMSGDType.ASGD;
     private MarginType marginType = MarginType.SOFT_MARGIN;
     private boolean optimalParameters = true;
-    private double marginRegularization  = 0.00001;
-    private double initialStepSize  = 0.05;
+    private double marginRegularization = 0.00001;
+    private double initialStepSize = 0.05;
     private double stepDecreasingPower = 0.75;
     private int terminationMaxCount = 0;
     private double terminationEpsilon = 0.0;
