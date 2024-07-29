@@ -111,6 +111,14 @@
       "value_type": "String",
       "edition_type": "value",
       "default": ""
+    },
+    {
+      "name": "ignoreZeros",
+      "caption": "Ignore zero maximums",
+      "description": "If set, zero values in the three parameters above will cause the corresponding limit to be ignored, as if it had be not been specified: 0 will be interpreted as +∞. If cleared (default value), zero values for any of these limits will lead to the trivial result: nothing will be found.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
     }
   ]
 }

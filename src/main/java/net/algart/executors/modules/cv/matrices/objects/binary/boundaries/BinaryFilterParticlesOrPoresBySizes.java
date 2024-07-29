@@ -56,6 +56,7 @@ public final class BinaryFilterParticlesOrPoresBySizes extends BitMultiMatrixFil
     private double maxSize = Double.POSITIVE_INFINITY;
     private double maxArea = Double.POSITIVE_INFINITY;
     private double maxPerimeter = Double.POSITIVE_INFINITY;
+    private boolean ignoreZeros = false;
 
     public double getPixelSize() {
         return pixelSize;
@@ -136,6 +137,15 @@ public final class BinaryFilterParticlesOrPoresBySizes extends BitMultiMatrixFil
         return setMaxPerimeter(doubleOrPositiveInfinity(maxPerimeter));
     }
 
+    public boolean isIgnoreZeros() {
+        return ignoreZeros;
+    }
+
+    public BinaryFilterParticlesOrPoresBySizes setIgnoreZeros(boolean ignoreZeros) {
+        this.ignoreZeros = ignoreZeros;
+        return this;
+    }
+
     @Override
     protected Matrix<? extends PArray> processMatrix(Matrix<? extends PArray> objects) {
         logDebug(() -> "Filtering " + particlesOrPores + " at " + objects);
@@ -182,9 +192,9 @@ public final class BinaryFilterParticlesOrPoresBySizes extends BitMultiMatrixFil
                 necessaryParameters());
         // SEGMENT_CENTERS_POLYLINE is necessary for correct perimeter calculation
         final Boundary2DScanner mainScanner = Boundary2DScanner.getMainBoundariesScanner(source, result, connectivityType);
-        final boolean checkArea = maxArea != Double.POSITIVE_INFINITY;
-        final boolean checkSize = maxSize != Double.POSITIVE_INFINITY;
-        final boolean checkPerimeter = maxPerimeter != Double.POSITIVE_INFINITY;
+        final boolean checkArea = isLimitActual(maxArea);
+        final boolean checkSize = isLimitActual(maxSize);
+        final boolean checkPerimeter = isLimitActual(maxPerimeter);
         while (measurer.nextBoundary()) {
             assert measurer.get();
             measurer.scanBoundary(null);
@@ -212,22 +222,20 @@ public final class BinaryFilterParticlesOrPoresBySizes extends BitMultiMatrixFil
                 mainScanner.scanBoundary(null); // scanBoundary adds brackets to filler
             }
         }
+        //noinspection StatementWithEmptyBody
         while (mainScanner.nextBoundary()) ;
         // - fills last objects, brackets for which are drawn by scanBoundary above
         switch (mode) {
-            case FIND: {
+            case FIND -> {
                 Matrices.applyFunc(null, Func.MIN, result, source, result);
                 // - restore pores on the found particles
-                break;
             }
-            case REMOVE: {
+            case REMOVE -> {
                 Matrices.applyFunc(null, Func.POSITIVE_DIFF, result, source, result);
                 // - remove found particles
-                break;
             }
-            case FIND_FILLED: {
+            case FIND_FILLED -> {
                 // - nothing to do
-                break;
             }
         }
     }
@@ -284,5 +292,9 @@ public final class BinaryFilterParticlesOrPoresBySizes extends BitMultiMatrixFil
             result.add(Boundary2DSimpleMeasurer.ObjectParameter.PERIMETER);
         }
         return result;
+    }
+
+    private boolean isLimitActual(double value) {
+        return value != Double.POSITIVE_INFINITY && (!ignoreZeros || value != 0.0);
     }
 }

@@ -48,6 +48,7 @@ public final class FilterParticlesOrPoresBySizes extends MultiMatrixChannel2DFil
     private double maxSize = Double.POSITIVE_INFINITY;
     private double maxArea = Double.POSITIVE_INFINITY;
     private double maxPerimeter = Double.POSITIVE_INFINITY;
+    private boolean ignoreZeros = false;
     private int numberOfSlices = 256;
 
     public double getPixelSize() {
@@ -130,6 +131,15 @@ public final class FilterParticlesOrPoresBySizes extends MultiMatrixChannel2DFil
         return setMaxPerimeter(doubleOrPositiveInfinity(maxPerimeter));
     }
 
+    public boolean isIgnoreZeros() {
+        return ignoreZeros;
+    }
+
+    public FilterParticlesOrPoresBySizes setIgnoreZeros(boolean ignoreZeros) {
+        this.ignoreZeros = ignoreZeros;
+        return this;
+    }
+
     public int getNumberOfSlices() {
         return numberOfSlices;
     }
@@ -156,6 +166,7 @@ public final class FilterParticlesOrPoresBySizes extends MultiMatrixChannel2DFil
         if (objects.array() instanceof PFixedArray) {
             numberOfSlices = Math.min(numberOfSlices, (int) (range.size() + 1.0));
         }
+        @SuppressWarnings("resource")
         final BinaryFilterParticlesOrPoresBySizes binaryFilter = new BinaryFilterParticlesOrPoresBySizes()
                 .setPixelSize(pixelSize)
                 .setConnectivityType(connectivityType)
@@ -163,7 +174,8 @@ public final class FilterParticlesOrPoresBySizes extends MultiMatrixChannel2DFil
                 .setMode(BinaryFilterParticlesOrPoresBySizes.Mode.REMOVE)
                 .setMaxSize(maxSize)
                 .setMaxArea(maxArea)
-                .setMaxPerimeter(maxPerimeter);
+                .setMaxPerimeter(maxPerimeter)
+                .setIgnoreZeros(ignoreZeros);
         // Note that GeneralizedBitProcessing works correctly only if the result bits always decrease (from 1 to 0)
         // while increasing threshold. This is correct for REMOVE mode, but may be incorrect for other modes.
         final Map<Integer, Matrix<? extends UpdatableBitArray>> workMemoryPool = new HashMap<>();

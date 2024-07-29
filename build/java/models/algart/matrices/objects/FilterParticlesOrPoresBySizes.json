@@ -109,6 +109,14 @@
       "default": ""
     },
     {
+      "name": "ignoreZeros",
+      "caption": "Ignore zero maximums",
+      "description": "If set, zero values in the three parameters above will cause the corresponding limit to be ignored, as if it had be not been specified: 0 will be interpreted as +∞. If cleared (default value), zero values for any of these limits will lead to the trivial result: nothing will be found.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": false
+    },
+    {
       "name": "numberOfSlices",
       "caption": "Number of slices",
       "description": "For non-binary matrices, the result is formed by splitting the source halftone channels into the given number of slice (results of thresholding) and back assembling the filtering results. It means, for example, that value 100 provides precision not worse than 1%. Larger values increase the precision, but reduce the speed.",
