@@ -24,12 +24,12 @@
 
 package net.algart.executors.modules.cv.matrices.objects;
 
+import net.algart.arrays.Matrices;
 import net.algart.arrays.Matrix;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
 import net.algart.executors.modules.core.common.numbers.IndexingBase;
 import net.algart.executors.modules.core.numbers.misc.InvertTable;
-import net.algart.executors.modules.cv.matrices.objects.labels.LabelsAnalyser;
 import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;
 
@@ -111,7 +111,7 @@ public final class TableTranslate extends MultiMatrix2DFilter {
     public MultiMatrix2D process(MultiMatrix2D labelsMatrix, int[] translationTable) {
         Objects.requireNonNull(labelsMatrix, "Null labels");
         Objects.requireNonNull(translationTable, "Null translation table");
-        final int[] labels = new LabelsAnalyser().setLabels(labelsMatrix).labelsWithCloningIfNecessary();
+        final int[] labels = Matrices.toIntJavaArray(labelsMatrix.channel(0));
         final int[] table = invertTable ?
                 InvertTable.invert(translationTable, indexingBase.start) :
                 translationTable;
@@ -147,8 +147,8 @@ public final class TableTranslate extends MultiMatrix2DFilter {
             throw new IllegalArgumentException("\"Invert table\" mode requires \"int\" result elements, "
                     + "but \"float\" result type is specified");
         }
-        final int[] labels = new LabelsAnalyser().setLabels(labelsMatrix).unsafeLabels();
-        // - note: we don't modify labels below, so we can use unsafeLabels
+        final int[] labels = labelsMatrix.channel(0).jaInt();
+        // - note: we don't modify the labels below, so we can use jaInt()
         final float[] result = new float[labels.length];
         if (replacementForNotExisting == null) {
             IntStream.range(0, (labels.length + 255) >>> 8).parallel().forEach(block -> {
