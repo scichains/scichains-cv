@@ -100,7 +100,7 @@ public final class FilterLabelledObjectsByIntersectionWithMask extends BitMultiM
             List<Matrix<? extends UpdatablePArray>> bitMatrices,
             List<MultiMatrix2D> sources) {
         final MultiMatrix2D labelsMatrix = sources.get(0);
-        final int[] labelArray = labelsMatrix.channelToIntArray(0);
+        final int[] labelArray = labelsMatrix.channel(0).toInt();
         final Matrix<UpdatableBitArray> mask = asBit(bitMatrices.get(1));
         if (invertMask && mask != null) {
             Matrices.applyFunc(null, Func.REVERSE, mask, mask);

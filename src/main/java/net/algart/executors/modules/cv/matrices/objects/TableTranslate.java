@@ -111,7 +111,7 @@ public final class TableTranslate extends MultiMatrix2DFilter {
     public MultiMatrix2D process(MultiMatrix2D labelsMatrix, int[] translationTable) {
         Objects.requireNonNull(labelsMatrix, "Null labels");
         Objects.requireNonNull(translationTable, "Null translation table");
-        final int[] labels = Matrices.toIntJavaArray(labelsMatrix.channel(0));
+        final int[] labels = labelsMatrix.channel(0).toInt();
         final int[] table = invertTable ?
                 InvertTable.invert(translationTable, indexingBase.start) :
                 translationTable;

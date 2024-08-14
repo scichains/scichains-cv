@@ -72,7 +72,7 @@ public final class ReindexLabels extends MultiMatrix2DFilter {
     public MultiMatrix2D process(MultiMatrix2D labels) {
         Objects.requireNonNull(labels, "Null labels");
         long t1 = debugTime();
-        final int[] labelsArray = labels.channelToIntArray(0);
+        final int[] labelsArray = labels.channel(0).toInt();
         final int[] reindexTable = reindex(labelsArray, indexingBase.start, includeReservedInRestoringTable);
         long t2 = debugTime();
         logDebug(() -> String.format(Locale.US,

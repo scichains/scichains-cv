@@ -75,14 +75,14 @@ public final class LabelsAnalyser {
         int[] labels = null;
         if ((labelsArray = labelsChannel.array()).elementType() == int.class
                 && labelsArray instanceof DirectAccessible da) {
-            if (da.hasJavaArray() && da.javaArrayOffset() == 0) {
+            if (da.hasJavaArray() && da.javaArrayOffset() == 0 && da.javaArrayLength() == labelsArray.length()) {
                 // - non-zero offset is very improbable for matrices
                 labels = (int[]) da.javaArray();
             }
         }
         boolean labelsMustBeImmutable = labels != null;
         if (labels == null) {
-            labels = Matrices.toIntJavaArray(labelsHolder.quickNew(labelsChannel), labelsChannel);
+            labels = labelsChannel.toInt(labelsHolder.quickNew(labelsChannel));
         }
         if (maskMatrix != null) {
             BitArray maskArray = maskMatrix.nonZeroPixelsMatrix(false).array();
@@ -279,22 +279,15 @@ public final class LabelsAnalyser {
         return maxLabel;
     }
 
-    /**
-     * Returns labels array.
-     *
-     * <p>Warning: if {@link #unsafeLabelsMustBeImmutable()} returns <code>true</code>, you <b>must not</b>
-     * modify the content of the returned array!
-     *
-     * @return labels array.
-     */
-    public int[] unsafeLabels() {
-        return labels;
-    }
-
-    public boolean unsafeLabelsMustBeImmutable() {
-        return labelsMustBeImmutable;
-    }
-
+    // The following methods were used before adding jaInt() method to AlgART PArray
+//    public int[] unsafeLabels() {
+//        return labels;
+//    }
+//
+//    public boolean unsafeLabelsMustBeImmutable() {
+//        return labelsMustBeImmutable;
+//    }
+//
     public int[] labelsWithCloningIfNecessary() {
         return labelsMustBeImmutable ? labels.clone() : labels;
     }
@@ -467,9 +460,9 @@ public final class LabelsAnalyser {
             for (int k = 0; k < result.length; k++) {
                 Matrix<? extends PArray> m = channels.get(k);
                 if (!forceFloat && (m.elementType() == boolean.class || m.elementType() == byte.class)) {
-                    result[k] = Matrices.toByteJavaArray(m);
+                    result[k] = m.toByte();
                 } else {
-                    result[k] = Matrices.toFloatJavaArray(m);
+                    result[k] = m.toFloat();
                 }
             }
         }

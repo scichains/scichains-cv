@@ -160,7 +160,7 @@ public final class MeasureLabelledObjects extends Executor implements ReadOnlyEx
         if (mask != null) {
             labels = labels.min(mask.nonZeroRGB());
         }
-        final int[] labelsArray = labels.channelToIntArray(0);
+        final int[] labelsArray = labels.channel(0).toInt();
         int numberOfObjects = 0;
         for (int v : labelsArray) {
             if (v > numberOfObjects) {

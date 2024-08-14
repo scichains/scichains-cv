@@ -88,7 +88,7 @@ public final class SelectLabelledObjectsByBinaryArray extends MultiMatrix2DFilte
         Objects.requireNonNull(selectors, "Null selectors");
         labelsMatrix.checkDimensionEquality(baseMatrix, "labels", "base");
         final byte[] selectorsArray = selectors.column(0).toByteArray();
-        final int[] labels = labelsMatrix.channelToIntArray(0);
+        final int[] labels = labelsMatrix.channel(0).toInt();
         final boolean[] selectedArray = new boolean[labels.length];
         switch (selectorInterpretation) {
             case SELECT_NON_ZERO: {

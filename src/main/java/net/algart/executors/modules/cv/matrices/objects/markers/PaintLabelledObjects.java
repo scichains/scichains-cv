@@ -177,7 +177,7 @@ public final class PaintLabelledObjects extends MultiMatrix2DFilter {
                 background.numberOfChannels() :
                 Math.min(blockLength, MultiMatrix2D.MAX_NUMBER_OF_CHANNELS);
 
-        final int[] labels = labelsMatrix.channelToIntArray(0);
+        final int[] labels = labelsMatrix.channel(0).toInt();
         float[] paletteForMissing = null;
         if (randomPalette) {
             int maxLabel = 0;
@@ -201,8 +201,8 @@ public final class PaintLabelledObjects extends MultiMatrix2DFilter {
         for (int channelIndex = 0; channelIndex < numberOfChannels; channelIndex++) {
             final int colorChannelIndex = Math.min(channelIndex, blockLength - 1);
             final float[] values = background == null ?
-                    new float[labels.length] : // - zero-filled
-                    background.asPrecision(float.class).channelToFloatArray(channelIndex);
+                    new float[labels.length] :
+                    background.asPrecision(float.class).channel(channelIndex).toFloat();
             if (randomPalette) {
                 assert paletteForMissing != null;
                 for (int j = 0; j < paletteForMissing.length; j++) {

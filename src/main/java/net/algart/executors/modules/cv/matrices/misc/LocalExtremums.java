@@ -249,7 +249,7 @@ public final class LocalExtremums extends MultiMatrixToNumbers {
                         SortedRound2DAperture.getRing(depthApertureSize, source.dimX()) :
                         SortedRound2DAperture.getCircle(depthApertureSize, source.dimX());
         final Matrix<BitArray> ignoreMatrix = ignore == null ? null : ignore.nonZeroRGBMatrix();
-        final float[] values = source.channelToFloatArray(0);
+        final float[] values = source.channel(0).toFloat();
         final Matrix<UpdatableBitArray> extremumsMaskMatrix = Arrays.SMM.newBitMatrix(source.dimensions());
         long t4 = System.nanoTime();
         MutableIntArray extremumsXY = Arrays.SMM.newEmptyIntArray();

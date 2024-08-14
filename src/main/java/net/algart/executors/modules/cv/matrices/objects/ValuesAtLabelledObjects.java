@@ -459,7 +459,7 @@ public final class ValuesAtLabelledObjects extends Executor implements ReadOnlyE
         long t2 = debugTime();
         final int numberOfChannels = sourceMatrix.numberOfChannels();
         final double scale = rawValues ? 1.0 : 1.0 / sourceMatrix.maxPossibleValue();
-        final int[] labels = maskedLabels.channelToIntArray(0);
+        final int[] labels = maskedLabels.channel(0).toInt();
         long t3 = debugTime();
         final int[] cardinalities = findLabelCardinalities(labels);
         if (results.containsKey(ObjectParameter.CARDINALITY)) {
@@ -471,7 +471,7 @@ public final class ValuesAtLabelledObjects extends Executor implements ReadOnlyE
             final float[] result = new float[numberOfChannels * cardinalities.length];
             for (int channelIndex = 0; channelIndex < numberOfChannels; channelIndex++) {
                 float[][] values = splitByLabels(
-                        cardinalities, labels, sourceMatrix.channelToFloatArray(channelIndex));
+                        cardinalities, labels, sourceMatrix.channel(channelIndex).toFloat());
                 for (int k = 0; k < values.length; k++) {
                     result[k * numberOfChannels + channelIndex] = (float) (average(values[k]) * scale);
                 }
@@ -482,7 +482,7 @@ public final class ValuesAtLabelledObjects extends Executor implements ReadOnlyE
             final float[] result = new float[numberOfChannels * cardinalities.length];
             for (int channelIndex = 0; channelIndex < numberOfChannels; channelIndex++) {
                 float[][] values = splitByLabels(
-                        cardinalities, labels, sourceMatrix.channelToFloatArray(channelIndex));
+                        cardinalities, labels, sourceMatrix.channel(channelIndex).toFloat());
                 for (int k = 0; k < values.length; k++) {
                     double average = average(values[k]);
                     double standardDeviation = standardDeviation(values[k], average);
@@ -503,7 +503,7 @@ public final class ValuesAtLabelledObjects extends Executor implements ReadOnlyE
                     levelMatrix = levelMatrix.asMono();
                 }
             }
-            final float[] levels = channelPercentiles ? null : levelMatrix.channelToFloatArray(0);
+            final float[] levels = channelPercentiles ? null : levelMatrix.channel(0).toFloat();
             long t5 = debugTime();
             final PercentilePairs levelsPercentiles = channelPercentiles ? null : new PercentilePairs(
                     labels, cardinalities, levels, lowPercentile, highPercentileCorrected);
@@ -512,7 +512,7 @@ public final class ValuesAtLabelledObjects extends Executor implements ReadOnlyE
                     sourceMatrix.allChannels().stream() :
                     sourceMatrix.allChannels().parallelStream();
             final List<ChannelStatistics> allChannelsResults = channelStream.map(m -> {
-                final float[] array = Matrices.toFloatJavaArray(m);
+                final float[] array = m.toFloat();
                 PercentilePairs percentiles = channelPercentiles ?
                         new PercentilePairs(labels, cardinalities, array, lowPercentile, highPercentileCorrected) :
                         levelsPercentiles;
@@ -590,7 +590,7 @@ public final class ValuesAtLabelledObjects extends Executor implements ReadOnlyE
                 final int[] result = new int[numberOfChannels * cardinalities.length];
                 for (int channelIndex = 0; channelIndex < numberOfChannels; channelIndex++) {
                     int[] firstValues = firstNonZeroValueForLabels(
-                            nonZero, cardinalities.length, labels, sourceMatrix.channelToIntArray(channelIndex));
+                            nonZero, cardinalities.length, labels, sourceMatrix.channel(channelIndex).toInt());
                     for (int k = 0; k < firstValues.length; k++) {
                         result[k * numberOfChannels + channelIndex] = firstValues[k];
                     }
@@ -600,7 +600,7 @@ public final class ValuesAtLabelledObjects extends Executor implements ReadOnlyE
                 final float[] result = new float[numberOfChannels * cardinalities.length];
                 for (int channelIndex = 0; channelIndex < numberOfChannels; channelIndex++) {
                     float[] firstValues = firstNonZeroValueForLabels(
-                            nonZero, cardinalities.length, labels, sourceMatrix.channelToFloatArray(channelIndex));
+                            nonZero, cardinalities.length, labels, sourceMatrix.channel(channelIndex).toFloat());
                     for (int k = 0; k < firstValues.length; k++) {
                         result[k * numberOfChannels + channelIndex] = (float) (firstValues[k] * scale);
                     }
