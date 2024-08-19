@@ -212,7 +212,7 @@ public abstract class AbstractMLOperation extends OpenCVExecutor {
             throw new TooLargeArrayException("Too large number of required responcese: "
                     + numberOfColumns + " * " + array.length() + " >= 2^31 / sizeof(float)");
         }
-        final int[] categories = Arrays.toJavaArray((IntArray) array);
+        final int[] categories = ((IntArray) array).toJavaArray();
         final ByteBuffer byteBuffer = ByteBuffer.allocateDirect((int) capacity);
         // - zero-initialized by Java
         byteBuffer.order(ByteOrder.nativeOrder());

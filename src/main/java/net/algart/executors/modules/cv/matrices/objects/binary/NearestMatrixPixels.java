@@ -236,7 +236,7 @@ public final class NearestMatrixPixels extends MultiMatrixToNumbers {
             }
         }
         if (resultPositions == null) {
-            resultPositions = Arrays.toJavaArray(nearestXY);
+            resultPositions = nearestXY.toJavaArray();
         }
         getNumbers(OUTPUT_NUMBERS_OF_NEAREST).setTo(numbersOfNearest, 1);
         final SNumbers result = SNumbers.valueOfArray(resultPositions, returnPairsOfThisAndNearestPixel ? 4 : 2);

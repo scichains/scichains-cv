@@ -65,7 +65,7 @@ public final class NearestPixelFinder {
             SortedRound2DAperture maxAperture,
             SortedRound2DAperture neighbourhoodForNearest) {
         Objects.requireNonNull(mask, "Null mask matrix");
-        this.maskArray = Arrays.toJavaArray(mask.array());
+        this.maskArray = mask.array().toJavaArray();
         this.maxAperture = Objects.requireNonNull(maxAperture);
         this.neighbourhoodForNearest = Objects.requireNonNull(neighbourhoodForNearest);
         if (!maxAperture.isSortedByIncreasingRadius()) {
@@ -83,7 +83,7 @@ public final class NearestPixelFinder {
                 Matrix.ContinuationMode.ZERO_CONSTANT);
         final Matrix<? extends PArray> boundariesMatrix =
                 morphology.erosion(mask, CROSS_PATTERN, Morphology.SubtractionMode.SUBTRACT_RESULT_FROM_SRC);
-        this.boundaries = (boolean[]) Arrays.toJavaArray(boundariesMatrix.array());
+        this.boundaries = (boolean[]) boundariesMatrix.toJavaArray();
         // No we are sure that dimX and dimY are <=Integer.MAX_VALUE
         this.dimY = (int) mask.dimY();
         this.dimX = (int) mask.dimX();

@@ -238,7 +238,7 @@ public final class LocalExtremums extends MultiMatrixToNumbers {
             source = GaussianBlur.blur(source, gaussianBlurKernelSize, true);
         }
         long t2 = System.nanoTime();
-        final boolean[] maskArray = mask == null ? null : Arrays.toJavaArray(mask.nonZeroRGBMatrix().array());
+        final boolean[] maskArray = mask == null ? null : mask.nonZeroRGBMatrix().array().toJavaArray();
         long t3 = System.nanoTime();
         final SortedRound2DAperture aperture = SortedRound2DAperture.getCircleWithSpeciallyOrderedPointsAtAxes(
                 apertureSize, source.dimX());
@@ -320,7 +320,7 @@ public final class LocalExtremums extends MultiMatrixToNumbers {
     private SNumbers postprocess(IntArray extremumsXY) {
         if (resultAtPlateau == ResultAtPlateau.ALL_PIXELS) {
             final PArray result = Arrays.asFuncArray(Func.IDENTITY, FloatArray.class, extremumsXY);
-            return SNumbers.valueOfArray(Arrays.toJavaArray(result), 2);
+            return SNumbers.valueOfArray(result.toJavaArray(), 2);
         }
         if (resultAtPlateau == ResultAtPlateau.CENTROID_OF_CIRCLE) {
             dilateExtremumsMask();

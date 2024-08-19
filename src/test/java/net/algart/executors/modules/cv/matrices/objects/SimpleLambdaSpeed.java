@@ -24,8 +24,8 @@
 
 package net.algart.executors.modules.cv.matrices.objects;
 
-import net.algart.math.IRangeFinder.IntArrayAppender;
 import net.algart.arrays.MutableIntArray;
+import net.algart.math.IRangeFinder.IntArrayAppender;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -253,7 +253,7 @@ public final class SimpleLambdaSpeed {
             t2 = System.nanoTime();
             time("loop IntConsumer for MutableArray", t1, t2);
             someInfo += System.identityHashCode(ints);
-            if (!Arrays.equals(net.algart.arrays.Arrays.toJavaArray(intArray), progression))
+            if (!Arrays.equals(intArray.toJavaArray(), progression))
                 throw new AssertionError();
 
             Arrays.fill(ints, 0);
@@ -293,7 +293,7 @@ public final class SimpleLambdaSpeed {
             t2 = System.nanoTime();
             time("loop fillIntArrayByIntConsumer", t1, t2);
             someInfo += System.identityHashCode(intArray);
-            if (!Arrays.equals(net.algart.arrays.Arrays.toJavaArray(intArray), progression))
+            if (!Arrays.equals(intArray.toJavaArray(), progression))
                 throw new AssertionError();
         }
         System.out.printf("%nSome info: %s%n", someInfo);

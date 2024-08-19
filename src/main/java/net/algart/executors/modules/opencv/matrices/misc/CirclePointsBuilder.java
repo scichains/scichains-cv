@@ -197,7 +197,7 @@ class CirclePointsBuilder {
                 }
             } while (y <= x);
         }
-        return Arrays.toJavaArray(packedPoints);
+        return packedPoints.toJavaArray();
     }
 
     private static int finxX(double y, double rSqr) {

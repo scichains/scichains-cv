@@ -191,7 +191,7 @@ public final class O2SMat {
             return SNumbers.zeros(array.elementType(), 0, Math.max(blockLength, 1));
             // - we prefer to return empty 1-column array instead of throwing exception when blockLength=0
         }
-        final Object javaArray = Arrays.toJavaArray(array);
+        final Object javaArray = array.toJavaArray();
         // - In current version, all element types, supported by Mat, are also supported by numbers array.
         // In any case, if it is not so, the next method will throw an exception.
         return SNumbers.valueOfArray(javaArray, blockLength);
@@ -203,7 +203,7 @@ public final class O2SMat {
             return SNumbers.zeros(array.elementType(), 0, Math.max(blockLength, 1));
             // - we prefer to return empty 1-column array instead of throwing exception when blockLength=0
         }
-        final Object javaArray = Arrays.toJavaArray(array);
+        final Object javaArray = array.toJavaArray();
         // - In current version, all element types, supported by Mat, are also supported by numbers array.
         // In any case, if it is not so, the next method will throw an exception.
         return SNumbers.valueOfArray(javaArray, blockLength);

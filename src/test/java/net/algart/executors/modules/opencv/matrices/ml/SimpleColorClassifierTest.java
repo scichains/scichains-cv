@@ -24,15 +24,17 @@
 
 package net.algart.executors.modules.opencv.matrices.ml;
 
+import net.algart.arrays.Arrays;
+import net.algart.arrays.Matrix;
+import net.algart.arrays.UpdatableFloatArray;
+import net.algart.arrays.UpdatablePNumberArray;
+import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.opencv.matrices.ml.training.MLTrainSVM;
 import net.algart.executors.modules.opencv.util.O2SMat;
-import net.algart.arrays.Arrays;
-import net.algart.executors.api.data.SNumbers;
-import net.algart.arrays.*;
 import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;
 import org.bytedeco.opencv.global.opencv_ml;
-import org.bytedeco.opencv.opencv_core.*;
+import org.bytedeco.opencv.opencv_core.Mat;
 import org.bytedeco.opencv.opencv_ml.SVM;
 import org.bytedeco.opencv.opencv_ml.StatModel;
 import org.bytedeco.opencv.opencv_ml.TrainData;
@@ -74,8 +76,7 @@ public final class SimpleColorClassifierTest {
     private static void printResponse(Mat mat) {
         final MultiMatrix2D m = O2SMat.toMultiMatrix(mat);
         System.out.printf("%s%n", m);
-        SNumbers numbers = SNumbers.valueOfArray(
-                Arrays.toJavaArray(m.channel(0).array()), (int) m.dim(0));
+        SNumbers numbers = SNumbers.valueOfArray(m.channel(0).toJavaArray(), (int) m.dim(0));
         System.out.println(numbers.toString(true));
     }
 
