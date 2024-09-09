@@ -22,13 +22,14 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.modules.cv.matrices.objects.binary.boundaries;
+package net.algart.executors.modules.cv.matrices.objects.binary.boundaries.tests;
 
-import net.algart.matrices.scanning.Boundary2DScanner;
-import net.algart.multimatrix.MultiMatrix2D;
 import net.algart.executors.modules.core.matrices.io.ReadImage;
 import net.algart.executors.modules.core.matrices.io.WriteImage;
 import net.algart.executors.modules.core.matrices.misc.Contrast;
+import net.algart.executors.modules.cv.matrices.objects.binary.boundaries.ScanAndMeasureBoundaries;
+import net.algart.matrices.scanning.Boundary2DScanner;
+import net.algart.multimatrix.MultiMatrix2D;
 
 public final class ScanAndMeasureBoundariesTest {
     public static void main(String[] args) {

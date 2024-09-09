@@ -32,26 +32,6 @@ abstract class AbstractScanAndMeasureBoundaries extends MultiMatrix2DFilter {
     public static final String INPUT_OBJECTS = "objects";
     public static final String OUTPUT_LABELS = "labels";
 
-    public enum ObjectValues {
-        BINARY(false),
-        NON_ZERO_LABELS(false),
-        LABELS(true);
-
-        private final boolean processBackgroundAsObject;
-
-        ObjectValues(boolean processBackgroundAsObject) {
-            this.processBackgroundAsObject = processBackgroundAsObject;
-        }
-
-        public boolean processBackgroundAsObject() {
-            return processBackgroundAsObject;
-        }
-
-        public boolean binaryOnly() {
-            return this == BINARY;
-        }
-    }
-
     private double pixelSize = 1.0;
     private ConnectivityType connectivityType = ConnectivityType.STRAIGHT_AND_DIAGONAL;
     private BoundaryType boundaryType = BoundaryType.MAIN_BOUNDARIES;

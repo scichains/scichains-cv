@@ -46,8 +46,7 @@ public final class ScanAndExtractContours extends MultiMatrixToNumbers {
 
     private ConnectivityType connectivityType = ConnectivityType.STRAIGHT_ONLY;
     private BoundaryType boundaryType = BoundaryType.ALL_BOUNDARIES;
-    private AbstractScanAndMeasureBoundaries.ObjectValues objectsInterpretation =
-            AbstractScanAndMeasureBoundaries.ObjectValues.NON_ZERO_LABELS;
+    private ObjectValues objectsInterpretation = ObjectValues.NON_ZERO_LABELS;
     private Integer frameId = null;
     private int startX = 0;
     private int startY = 0;
@@ -86,12 +85,11 @@ public final class ScanAndExtractContours extends MultiMatrixToNumbers {
         return this;
     }
 
-    public AbstractScanAndMeasureBoundaries.ObjectValues getObjectsInterpretation() {
+    public ObjectValues getObjectsInterpretation() {
         return objectsInterpretation;
     }
 
-    public ScanAndExtractContours setObjectsInterpretation(
-            AbstractScanAndMeasureBoundaries.ObjectValues objectsInterpretation) {
+    public ScanAndExtractContours setObjectsInterpretation(ObjectValues objectsInterpretation) {
         this.objectsInterpretation = nonNull(objectsInterpretation);
         return this;
     }
