@@ -37,12 +37,17 @@ import net.algart.matrices.scanning.ContourLineType;
 import net.algart.multimatrix.MultiMatrix;
 
 public final class ScanAndExtractContours extends MultiMatrixToNumbers {
+    public static final String INPUT_OBJECTS = AbstractScanAndMeasureBoundaries.INPUT_OBJECTS;
     public static final String INPUT_POSITION = "position";
     public static final String OUTPUT_CONTOURS = "contours";
+    public static final String OUTPUT_LABELS = AbstractScanAndMeasureBoundaries.OUTPUT_LABELS;
+    public static final String OUTPUT_OBJECT_LABEL = ScanAndMeasureBoundaries.OUTPUT_OBJECT_LABEL;
     public static final String OUTPUT_STRICT_AREA = "strict_area";
     public static final String OUTPUT_SEGMENT_CENTERS_AREA = "segment_centers_area";
     public static final String OUTPUT_STRICT_PERIMETER = "strict_perimeter";
     public static final String OUTPUT_SEGMENT_CENTERS_PERIMETER = "segment_centers_perimeter";
+    public static final String OUTPUT_INTERNAL_BOUNDARY = ScanAndMeasureBoundaries.OUTPUT_INTERNAL_BOUNDARY;
+    public static final String OUTPUT_NUMBER_OF_OBJECTS = ScanAndMeasureBoundaries.OUTPUT_NUMBER_OF_OBJECTS;
 
     private ConnectivityType connectivityType = ConnectivityType.STRAIGHT_ONLY;
     private BoundaryType boundaryType = BoundaryType.ALL_BOUNDARIES;
@@ -54,17 +59,17 @@ public final class ScanAndExtractContours extends MultiMatrixToNumbers {
 
     public ScanAndExtractContours() {
         useVisibleResultParameter();
-        setDefaultInputMat(AbstractScanAndMeasureBoundaries.INPUT_OBJECTS);
+        setDefaultInputMat(INPUT_OBJECTS);
         addInputNumbers(INPUT_POSITION);
         setDefaultOutputNumbers(OUTPUT_CONTOURS);
-        addOutputMat(AbstractScanAndMeasureBoundaries.OUTPUT_LABELS);
-        addOutputNumbers(ScanAndMeasureBoundaries.OUTPUT_OBJECT_LABEL);
+        addOutputMat(OUTPUT_LABELS);
+        addOutputNumbers(OUTPUT_OBJECT_LABEL);
         addOutputNumbers(OUTPUT_STRICT_AREA);
         addOutputNumbers(OUTPUT_SEGMENT_CENTERS_AREA);
         addOutputNumbers(OUTPUT_STRICT_PERIMETER);
         addOutputNumbers(OUTPUT_SEGMENT_CENTERS_PERIMETER);
-        addOutputNumbers(ScanAndMeasureBoundaries.OUTPUT_INTERNAL_BOUNDARY);
-        addOutputScalar(ScanAndMeasureBoundaries.OUTPUT_NUMBER_OF_OBJECTS);
+        addOutputNumbers(OUTPUT_INTERNAL_BOUNDARY);
+        addOutputScalar(OUTPUT_NUMBER_OF_OBJECTS);
     }
 
     public ConnectivityType getConnectivityType() {
