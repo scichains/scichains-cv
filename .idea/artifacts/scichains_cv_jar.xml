@@ -18,8 +18,8 @@
         <element id="module-output" name="scichains-cv" />
         <element id="module-test-output" name="scichains-cv" />
       </element>
-      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:4.4.7" />
-      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:test-jar:tests:4.4.7" />
+      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:4.4.8" />
+      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:test-jar:tests:4.4.8" />
       <element id="library" level="project" name="Maven: org.bytedeco:opencv-platform-gpu:4.6.0-1.5.8" />
       <element id="library" level="project" name="Maven: org.bytedeco:javacpp-platform:1.5.8" />
       <element id="library" level="project" name="Maven: org.bytedeco:javacpp:1.5.8" />
