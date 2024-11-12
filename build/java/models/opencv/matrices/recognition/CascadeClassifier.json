@@ -37,6 +37,14 @@
       "default": "${resources}/opencv/matrices/recognition/haarcascades/haarcascade_frontalface_alt.xml"
     },
     {
+      "caption": "Relativize path",
+      "name": "relativizePath",
+      "description": "If set, the file path is relativized against the current OS directory (which is usually the product installation folder) if it is located inside this folder, for example, it is a resource file inside \"${resources}\" folder. This can be useful if we need this function to work even in the case when this folder may contain non-ASCII characters (e.g. Russian or Hebrew). The OpenCV function does not \"understand\" such paths, but relativization removes the current OS directory from the path when it is inside this directory, and this allows the OpenCV function to work normally.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
       "name": "scaleFactor",
       "value_type": "double",
       "edition_type": "value",

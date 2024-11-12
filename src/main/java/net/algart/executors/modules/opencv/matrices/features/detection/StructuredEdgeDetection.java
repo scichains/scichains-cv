@@ -24,16 +24,20 @@
 
 package net.algart.executors.modules.opencv.matrices.features.detection;
 
+import net.algart.executors.modules.core.common.io.FileOperation;
 import net.algart.executors.modules.opencv.common.VoidResultUMatFilter;
 import net.algart.executors.modules.opencv.util.OTools;
 import net.algart.executors.modules.core.common.io.PathPropertyReplacement;
 import org.bytedeco.opencv.global.opencv_ximgproc;
 import org.bytedeco.opencv.opencv_core.*;
 
+import java.nio.file.Path;
+
 // See https://stackoverflow.com/questions/33317152/model-file-for-opencvs-structured-edge-detector
 // how to get new models
 public final class StructuredEdgeDetection extends VoidResultUMatFilter {
     private String modelFile = "";
+    private boolean relativizePath = false;
 
     public String getModelFile() {
         return modelFile;
@@ -43,15 +47,25 @@ public final class StructuredEdgeDetection extends VoidResultUMatFilter {
         this.modelFile = nonNull(modelFile);
     }
 
+    public boolean isRelativizePath() {
+        return relativizePath;
+    }
+
+    public StructuredEdgeDetection setRelativizePath(boolean relativizePath) {
+        this.relativizePath = relativizePath;
+        return this;
+    }
+
     @Override
     public void process(Mat result, Mat source) {
-        String modelFile = nonEmpty(this.modelFile, "model file name");
-        modelFile = PathPropertyReplacement.translatePropertiesAndCurrentDirectory(modelFile, this).toString();
+        String file = nonEmpty(this.modelFile, "model file name");
+        Path path = PathPropertyReplacement.translatePropertiesAndCurrentDirectory(file, this);
+        path = FileOperation.simplifyOSPath(path, relativizePath);
         Mat mat = source;
         try {
             mat = OTools.to32FIfNot(source);
             try (final org.bytedeco.opencv.opencv_ximgproc.StructuredEdgeDetection detection =
-                         opencv_ximgproc.createStructuredEdgeDetection(modelFile)) {
+                         opencv_ximgproc.createStructuredEdgeDetection(path.toString())) {
                 detection.detectEdges(mat, result);
             }
         } finally {
@@ -61,13 +75,14 @@ public final class StructuredEdgeDetection extends VoidResultUMatFilter {
 
     @Override
     public void process(UMat result, UMat source) {
-        String modelFile = nonEmpty(this.modelFile, "model file name");
-        modelFile = PathPropertyReplacement.translatePropertiesAndCurrentDirectory(modelFile, this).toString();
+        String file = nonEmpty(this.modelFile, "model file name");
+        Path path = PathPropertyReplacement.translatePropertiesAndCurrentDirectory(file, this);
+        path = FileOperation.simplifyOSPath(path, relativizePath);
         UMat mat = source;
         try {
             mat = OTools.to32FIfNot(source);
             try (final org.bytedeco.opencv.opencv_ximgproc.StructuredEdgeDetection detection =
-                         opencv_ximgproc.createStructuredEdgeDetection(modelFile)) {
+                         opencv_ximgproc.createStructuredEdgeDetection(path.toString())) {
                 detection.detectEdges(mat, result);
             }
         } finally {

@@ -24,6 +24,7 @@
 
 package net.algart.executors.modules.opencv.matrices.ml;
 
+import net.algart.executors.modules.core.common.io.FileOperation;
 import net.algart.executors.modules.opencv.common.OpenCVExecutor;
 import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.modules.opencv.util.OTools;
@@ -48,8 +49,8 @@ public abstract class AbstractMLOperation extends OpenCVExecutor {
     public static final int MAX_NUMBER_OF_CATEGORICAL_RESPONSES_FOR_CONVERSION_TO_BINARY = 512;
 
     private final MLSamplesType samplesType;
-
     private String statModelFile = "";
+    private boolean relativizePath = false;
 
     protected AbstractMLOperation(MLSamplesType samplesType) {
         this.samplesType = Objects.requireNonNull(samplesType, "Null samplesType");
@@ -67,9 +68,18 @@ public abstract class AbstractMLOperation extends OpenCVExecutor {
         this.statModelFile = nonNull(statModelFile);
     }
 
+    public boolean isRelativizePath() {
+        return relativizePath;
+    }
+
+    public void setRelativizePath(boolean relativizePath) {
+        this.relativizePath = relativizePath;
+    }
+
     public Path statModelFile() {
         final String modelFileName = nonEmpty(statModelFile, "statistical model file name");
-        return PathPropertyReplacement.translatePropertiesAndCurrentDirectory(modelFileName, this);
+        final Path path = PathPropertyReplacement.translatePropertiesAndCurrentDirectory(modelFileName, this);
+        return FileOperation.simplifyOSPath(path, relativizePath);
     }
 
     public static Mat categoricalToMultiBinaryResponses(Mat categoricalResponses) {

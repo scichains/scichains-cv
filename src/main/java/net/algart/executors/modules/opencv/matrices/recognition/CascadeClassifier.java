@@ -24,6 +24,7 @@
 
 package net.algart.executors.modules.opencv.matrices.recognition;
 
+import net.algart.executors.modules.core.common.io.FileOperation;
 import net.algart.executors.modules.opencv.common.UMatToNumbers;
 import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.modules.opencv.util.OTools;
@@ -35,6 +36,7 @@ import org.bytedeco.opencv.global.opencv_imgproc;
 import org.bytedeco.opencv.opencv_core.Point;
 
 import java.awt.*;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +50,7 @@ public final class CascadeClassifier extends UMatToNumbers {
     }
 
     private String classifierFile = "";
+    private boolean relativizePath = false;
     private double scaleFactor = 1.1;
     private int minNeighbors = 3;
     private int minSizeX = 0;
@@ -70,6 +73,15 @@ public final class CascadeClassifier extends UMatToNumbers {
 
     public void setClassifierFile(String classifierFile) {
         this.classifierFile = nonNull(classifierFile);
+    }
+
+    public boolean isRelativizePath() {
+        return relativizePath;
+    }
+
+    public CascadeClassifier setRelativizePath(boolean relativizePath) {
+        this.relativizePath = relativizePath;
+        return this;
     }
 
     public double getScaleFactor() {
@@ -154,11 +166,12 @@ public final class CascadeClassifier extends UMatToNumbers {
 
     @Override
     public SNumbers analyse(Mat source) {
-        String path = nonEmpty(this.classifierFile, "classifier file name");
-        path = PathPropertyReplacement.translatePropertiesAndCurrentDirectory(path, this).toString();
+        final String file = nonEmpty(this.classifierFile, "classifier file name");
+        Path path = PathPropertyReplacement.translatePropertiesAndCurrentDirectory(file, this);
+        path = FileOperation.simplifyOSPath(path, relativizePath);
         final List<Rectangle> rectangles;
         try (org.bytedeco.opencv.opencv_objdetect.CascadeClassifier classifier =
-                     new org.bytedeco.opencv.opencv_objdetect.CascadeClassifier(path)) {
+                     new org.bytedeco.opencv.opencv_objdetect.CascadeClassifier(path.toString())) {
             rectangles = classify(classifier, source);
             logDebug(() -> "Cascade classifier found " + rectangles.size() + " objects"
                     + " (source: " + source + ")");
@@ -177,11 +190,12 @@ public final class CascadeClassifier extends UMatToNumbers {
 
     @Override
     public SNumbers analyse(UMat source) {
-        String path = nonEmpty(this.classifierFile, "classifier file name");
-        path = PathPropertyReplacement.translatePropertiesAndCurrentDirectory(path, this).toString();
+        final String file = nonEmpty(this.classifierFile, "classifier file name");
+        Path path = PathPropertyReplacement.translatePropertiesAndCurrentDirectory(file, this);
+        path = FileOperation.simplifyOSPath(path, relativizePath);
         final List<Rectangle> rectangles;
         try (org.bytedeco.opencv.opencv_objdetect.CascadeClassifier classifier =
-                     new org.bytedeco.opencv.opencv_objdetect.CascadeClassifier(path)) {
+                     new org.bytedeco.opencv.opencv_objdetect.CascadeClassifier(path.toString())) {
             rectangles = classify(classifier, source);
             logDebug(() -> "Cascade classifier (GPU) found " + rectangles.size() + " objects"
                     + " (source: " + source + ")");

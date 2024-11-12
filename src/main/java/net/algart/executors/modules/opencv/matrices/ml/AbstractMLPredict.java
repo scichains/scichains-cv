@@ -191,8 +191,8 @@ public abstract class AbstractMLPredict extends AbstractMLOperation {
     public final MLPredictor readPredictor(MLKind defaultKind, Function<String, Optional<MLKind>> modelNameToKind) {
         Objects.requireNonNull(defaultKind, "Null defaultKind");
         Objects.requireNonNull(modelNameToKind, "Null modelNameToKind function");
-        Path file = statModelFile();
-        Objects.requireNonNull(file, "Null file");
+        final Path file = statModelFile();
+        logDebug(() -> "Loading model file " + file);
         try {
             final Path metadataJsonFile = MLMetadataJson.metadataFile(file);
             MLKind kind = null;

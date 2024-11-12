@@ -35,6 +35,8 @@ import java.io.IOError;
 import java.io.IOException;
 
 public final class ReadMat extends FileOperation implements ReadOnlyExecutionInput {
+    private boolean relativizePath = false;
+
     public ReadMat() {
         addFileOperationPorts();
         addInputMat(DEFAULT_INPUT_PORT);
@@ -45,6 +47,15 @@ public final class ReadMat extends FileOperation implements ReadOnlyExecutionInp
         final ReadMat result = new ReadMat();
         result.setSecure(true);
         return result;
+    }
+
+    public boolean isRelativizePath() {
+        return relativizePath;
+    }
+
+    public ReadMat setRelativizePath(boolean relativizePath) {
+        this.relativizePath = relativizePath;
+        return this;
     }
 
     @Override
@@ -69,7 +80,7 @@ public final class ReadMat extends FileOperation implements ReadOnlyExecutionInp
     }
 
     public SMat readMat(SMat result) {
-        final String file = completeFilePath().toAbsolutePath().toString();
+        final String file = completeOSFilePath(relativizePath).toString();
         logDebug(() -> "Reading OpenCV matrix from " + file);
         final Mat mat = opencv_imgcodecs.imread(file);
         if (mat == null || mat.data() == null) {
