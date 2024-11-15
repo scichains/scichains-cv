@@ -223,12 +223,12 @@ public abstract class AbstractMLTrain extends AbstractMLOperation {
 
     protected abstract MLKind modelKind();
 
-    // Note: trainer is not actually used in current implementations
+    // Note: trainer is not used in current implementations
     protected MLMetadataJson metadata(MLTrainer trainer) {
         final Map<String, Object> parameters = new LinkedHashMap<>(parameters());
-        final Set<String> propertyNames = new HashSet<>(parameters.keySet());
-        propertyNames.stream().filter(SystemParameter::isSystemParameter).forEach(parameters::remove);
-        // - removing not interesting properties
+//        final Set<String> propertyNames = new HashSet<>(parameters.keySet());
+//        propertyNames.stream().filter(SystemParameter::isSystemParameter).forEach(parameters::remove);
+        // - removing not interesting properties - deprecated feature
         return new MLMetadataJson()
                 .setModelKind(modelKind())
                 .setCreatedBy(getClass().getCanonicalName())
