@@ -48,6 +48,8 @@ public final class FilterParticlesOrPoresBySizes extends MultiMatrixChannel2DFil
     private double maxSize = Double.POSITIVE_INFINITY;
     private double maxArea = Double.POSITIVE_INFINITY;
     private double maxPerimeter = Double.POSITIVE_INFINITY;
+    private BinaryFilterParticlesOrPoresBySizes.ConditionLogic conditionLogic =
+            BinaryFilterParticlesOrPoresBySizes.ConditionLogic.AND;
     private boolean ignoreZeros = false;
     private int numberOfSlices = 256;
 
@@ -131,6 +133,16 @@ public final class FilterParticlesOrPoresBySizes extends MultiMatrixChannel2DFil
         return setMaxPerimeter(doubleOrPositiveInfinity(maxPerimeter));
     }
 
+    public BinaryFilterParticlesOrPoresBySizes.ConditionLogic getConditionLogic() {
+        return conditionLogic;
+    }
+
+    public FilterParticlesOrPoresBySizes setConditionLogic(
+            BinaryFilterParticlesOrPoresBySizes.ConditionLogic conditionLogic) {
+        this.conditionLogic = nonNull(conditionLogic);
+        return this;
+    }
+
     public boolean isIgnoreZeros() {
         return ignoreZeros;
     }
@@ -168,16 +180,17 @@ public final class FilterParticlesOrPoresBySizes extends MultiMatrixChannel2DFil
         }
         @SuppressWarnings("resource") final BinaryFilterParticlesOrPoresBySizes binaryFilter =
                 new BinaryFilterParticlesOrPoresBySizes()
-                .setPixelSize(pixelSize)
-                .setConnectivityType(connectivityType)
-                .setParticlesOrPores(particlesOrPores)
-                .setMode(BinaryFilterParticlesOrPoresBySizes.Mode.REMOVE)
-                .setMaxSize(maxSize)
-                .setMaxArea(maxArea)
-                .setMaxPerimeter(maxPerimeter)
-                .setIgnoreZeros(ignoreZeros);
+                        .setPixelSize(pixelSize)
+                        .setConnectivityType(connectivityType)
+                        .setParticlesOrPores(particlesOrPores)
+                        .setMode(BinaryFilterParticlesOrPoresBySizes.Mode.REMOVE)
+                        .setMaxSize(maxSize)
+                        .setMaxArea(maxArea)
+                        .setMaxPerimeter(maxPerimeter)
+                        .setConditionLogic(conditionLogic)
+                        .setIgnoreZeros(ignoreZeros);
         // Note that GeneralizedBitProcessing works correctly only if the result bits always decrease (from 1 to 0)
-        // while increasing threshold. This is correct for REMOVE mode, but may be incorrect for other modes.
+        // while increasing the threshold. This is correct for REMOVE mode but may be incorrect for other modes.
         final Map<Integer, Matrix<? extends UpdatableBitArray>> workMemoryPool = new HashMap<>();
         final GeneralizedBitProcessing.SliceOperation sliceOperation = new GeneralizedBitProcessing.SliceOperation() {
             @Override

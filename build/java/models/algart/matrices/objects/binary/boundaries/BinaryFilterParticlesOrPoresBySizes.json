@@ -2,7 +2,7 @@
   "app": "executor",
   "version": "0.0.1",
   "category": "matrices.objects.binary.boundaries",
-  "name": "Filter of particles/pores by sizes (binary)",
+  "name": "Filter of small particles/pores by sizes (binary)",
   "tags": [
     "matrices"
   ],
@@ -58,11 +58,11 @@
       "items": [
         {
           "value": "PARTICLES",
-          "caption": "Particles (white objects)"
+          "caption": "Small particles (white objects)"
         },
         {
           "value": "PORES",
-          "caption": "Pores (black objects)"
+          "caption": "Small pores (black objects)"
         }
       ],
       "default": "PORES"
@@ -75,15 +75,15 @@
       "items": [
         {
           "value": "REMOVE",
-          "caption": "Remove particles / fill pores"
+          "caption": "Remove small particles / fill small pores"
         },
         {
           "value": "FIND",
-          "caption": "Return found particles / pores"
+          "caption": "Return found small particles / pores"
         },
         {
           "value": "FIND_FILLED",
-          "caption": "Return filled particles / pores (without pores in them)"
+          "caption": "Return filled small particles / pores (without pores in them)"
         }
       ],
       "default": "REMOVE"
@@ -91,7 +91,7 @@
     {
       "name": "maxSize",
       "caption": "Maximal size",
-      "description": "Find only particles/pores, which size is ≤maximal size. If not specified, supposed to be +∞ (i.e. ignored). Here \"size\" means the maximum from 4 values: width=max(x)−min(x)), height=max(y)−min(y)) and two diagonal dimensions (max(x+y)−min(x+y))/√2̅, (max(x−y)−min(x−y))/√2̅.",
+      "description": "Find only particles/pores, which size is ≤maximal size. If not specified, it is ignored, i.e. supposed to be +∞ when \"Logic of conditions\" is AND or −∞ when it is OR. Here \"size\" means the maximum from 4 values: width=max(x)−min(x)), height=max(y)−min(y)) and two diagonal dimensions (max(x+y)−min(x+y))/√2̅, (max(x−y)−min(x−y))/√2̅.",
       "value_type": "String",
       "edition_type": "value",
       "default": ""
@@ -99,7 +99,7 @@
     {
       "name": "maxArea",
       "caption": "Maximal area",
-      "description": "Find only particles/pores, which area is ≤maximal area. If not specified, supposed to be +∞ (i.e. ignored). Here \"area\" means the number of pixels inside the boundary of a particle/pore (including any inner pores/particles).",
+      "description": "Find only particles/pores, which area is ≤maximal area. If not specified, it is ignored, i.e. supposed to be +∞ when \"Logic of conditions\" is AND or −∞ when it is OR. Here \"area\" means the number of pixels inside the boundary of a particle/pore (including any inner pores/particles).",
       "value_type": "String",
       "edition_type": "value",
       "default": ""
@@ -107,15 +107,33 @@
     {
       "name": "maxPerimeter",
       "caption": "Maximal perimeter",
-      "description": "Find only particles/pores, which perimeter is ≤maximal perimeter. If not specified, supposed to be +∞ (i.e. ignored). Here \"perimeter\" is the length of polyline between middles of segments — sides of square pixels, separating objects and background.",
+      "description": "Find only particles/pores, which perimeter is ≤maximal perimeter. If not specified, it is ignored, i.e. supposed to be +∞ when \"Logic of conditions\" is AND or −∞ when it is OR. Here \"perimeter\" is the length of polyline between middles of segments — sides of square pixels, separating objects and background.",
       "value_type": "String",
       "edition_type": "value",
       "default": ""
     },
     {
+      "name": "conditionLogic",
+      "caption": "Logic of conditions",
+      "description": "What does mean \"a particle/pore is small\" (and should be filtered: found or removed).\n    AND: a particle/pore is \"small\", if ALL three conditions above are fulfilled:\nsize ≤ maximal size, and area ≤ maximal area, and perimeter ≤ maximal perimeter. If any of the limits is 0.0, no particles/pores will be found (unless you set \"Ignore zero maximums\" flag below). This is the default behaviour.\n    OR: a particle/pore is \"small\", if ANY of three conditions above is fulfilled:\nsize ≤ maximal size, or area ≤ maximal area, or perimeter ≤ maximal perimeter. If all the limits are 0.0, no particles/pores will be found. In this case, empty string for any limit means −∞ or 0 (both variants are equivalents, because correct sizes/areas/perimeters are always positive). The flag \"Ignore zero maximums\" has no effect.",
+      "value_type": "String",
+      "edition_type": "enum",
+      "items": [
+        {
+          "value": "AND",
+          "caption": "AND (all the conditions are true)"
+        },
+        {
+          "value": "OR",
+          "caption": "OR (any of the conditions is true)"
+        }
+      ],
+      "default": "AND"
+    },
+    {
       "name": "ignoreZeros",
       "caption": "Ignore zero maximums",
-      "description": "If set, zero values in the three parameters above will cause the corresponding limit to be ignored, as if it had be not been specified: 0 will be interpreted as +∞. If cleared (default value), zero values for any of these limits will lead to the trivial result: nothing will be found.",
+      "description": "If set, zero values in the three parameters above will cause the corresponding limit to be ignored, as if it had be not been specified: 0 will be interpreted as +∞ when \"Logic of conditions\" is AND or as −∞ when it is OR. If cleared (default value), zero limits are interpreted as usual. Note that this flag actually has no effect when \"Logic of conditions\" will is OR, because all measured parameters are always positive.",
       "value_type": "boolean",
       "edition_type": "value",
       "default": false

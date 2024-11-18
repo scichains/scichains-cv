@@ -39,7 +39,8 @@
           "caption": "square"
         }
       ],
-      "default": "SPHERE"
+      "default": "SPHERE",
+      "suppress_warnings": ["no_setter"]
     },
     {
       "caption": "Pattern size (0 to disable)",

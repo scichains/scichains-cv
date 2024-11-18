@@ -49,6 +49,43 @@ public final class BinaryFilterParticlesOrPoresBySizes extends BitMultiMatrixFil
         FIND_FILLED
     }
 
+    public enum ConditionLogic {
+        AND() {
+            @Override
+            public boolean combine(boolean... values) {
+                boolean result = true;
+                for (boolean b : values) {
+                    result &= b;
+                }
+                return result;
+            }
+
+            @Override
+            public boolean ignoreAbsent(boolean hasSpecifiedLimit, boolean actualValue) {
+                return !hasSpecifiedLimit || actualValue;
+            }
+        },
+        OR() {
+            @Override
+            public boolean combine(boolean... values) {
+                boolean result = false;
+                for (boolean b : values) {
+                    result |= b;
+                }
+                return result;
+            }
+
+            @Override
+            public boolean ignoreAbsent(boolean hasSpecifiedLimit, boolean actualValue) {
+                return hasSpecifiedLimit && actualValue;
+            }
+        };
+
+        public abstract boolean combine(boolean... values);
+
+        public abstract boolean ignoreAbsent(boolean hasSpecifiedLimit, boolean actualValue);
+    }
+
     private double pixelSize = 1.0;
     private ConnectivityType connectivityType = ConnectivityType.STRAIGHT_AND_DIAGONAL;
     private ParticlesOrPores particlesOrPores = ParticlesOrPores.PORES;
@@ -56,6 +93,7 @@ public final class BinaryFilterParticlesOrPoresBySizes extends BitMultiMatrixFil
     private double maxSize = Double.POSITIVE_INFINITY;
     private double maxArea = Double.POSITIVE_INFINITY;
     private double maxPerimeter = Double.POSITIVE_INFINITY;
+    private ConditionLogic conditionLogic = ConditionLogic.AND;
     private boolean ignoreZeros = false;
 
     public double getPixelSize() {
@@ -137,6 +175,15 @@ public final class BinaryFilterParticlesOrPoresBySizes extends BitMultiMatrixFil
         return setMaxPerimeter(doubleOrPositiveInfinity(maxPerimeter));
     }
 
+    public ConditionLogic getConditionLogic() {
+        return conditionLogic;
+    }
+
+    public BinaryFilterParticlesOrPoresBySizes setConditionLogic(ConditionLogic conditionLogic) {
+        this.conditionLogic = nonNull(conditionLogic);
+        return this;
+    }
+
     public boolean isIgnoreZeros() {
         return ignoreZeros;
     }
@@ -206,21 +253,25 @@ public final class BinaryFilterParticlesOrPoresBySizes extends BitMultiMatrixFil
             if (measurer.isInternalBoundary()) {
                 continue;
             }
-            if (checkArea && Math.abs(measurer.orientedArea()) * pixelSize * pixelSize > maxArea) {
-                continue;
-            }
-            if (checkSize && BoundaryParameter.octagonBasedSize(measurer) * pixelSize > maxSize) {
-                continue;
-            }
-            if (checkPerimeter && measurer.perimeter() * pixelSize > maxPerimeter) {
-                continue;
-            }
-            final long currentIndex = measurer.currentIndexInArray();
-            while (!mainScanner.isInitialized() || mainScanner.currentIndexInArray() < currentIndex) {
-                mainScanner.nextBoundary();
-            }
-            if (mainScanner.currentIndexInArray() == currentIndex) {
-                mainScanner.scanBoundary(null); // scanBoundary adds brackets to filler
+            final boolean smallArea = conditionLogic.ignoreAbsent(
+                    checkArea,
+                    Math.abs(measurer.orientedArea()) * pixelSize * pixelSize <= maxArea);
+            final boolean smallSize = conditionLogic.ignoreAbsent(
+                    checkSize,
+                    BoundaryParameter.octagonBasedSize(measurer) * pixelSize <= maxSize);
+            final boolean smallPerimeter = conditionLogic.ignoreAbsent(
+                    checkPerimeter,
+                    measurer.perimeter() * pixelSize <= maxPerimeter);
+            final boolean small = conditionLogic.combine(smallArea, smallSize, smallPerimeter);
+            if (small) {
+                final long currentIndex = measurer.currentIndexInArray();
+                while (!mainScanner.isInitialized() || mainScanner.currentIndexInArray() < currentIndex) {
+                    mainScanner.nextBoundary();
+                    // - fills previous objects between the brackets
+                }
+                if (mainScanner.currentIndexInArray() == currentIndex) {
+                    mainScanner.scanBoundary(null); // scanBoundary adds brackets to filler
+                }
             }
         }
         //noinspection StatementWithEmptyBody
@@ -296,6 +347,9 @@ public final class BinaryFilterParticlesOrPoresBySizes extends BitMultiMatrixFil
     }
 
     private boolean isLimitActual(double value) {
-        return value != Double.POSITIVE_INFINITY && (!ignoreZeros || value != 0.0);
+        return ignoreZeros ?
+                value != Double.POSITIVE_INFINITY && value != 0.0 :
+                value != Double.POSITIVE_INFINITY;
+        // if ignoreZeros, 0.0 works like POSITIVE_INFINITY
     }
 }

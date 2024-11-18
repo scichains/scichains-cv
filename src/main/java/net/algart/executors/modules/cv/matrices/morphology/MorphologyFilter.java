@@ -184,17 +184,18 @@ public abstract class MorphologyFilter extends MultiMatrixChannelFilter {
         return this;
     }
 
+    @SuppressWarnings("resource")
     @Override
     public void onChangeParameter(String name) {
         switch (name) {
-            case "shape":
+            case "shape" -> {
                 setPattern(Shape.valueOfName(parameters().getString(name).toUpperCase()), patternSize);
-                return;
-            case "patternSize":
+            }
+            case "patternSize" -> {
                 setPattern(shape, parameters().getInteger(name));
-                return;
+            }
+            default -> super.onChangeParameter(name);
         }
-        super.onChangeParameter(name);
     }
 
     public Morphology createMorphology(Matrix<? extends PArray> m) {

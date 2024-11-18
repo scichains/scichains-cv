@@ -108,7 +108,8 @@
           "caption": "2D square / 3D cube / 1D segment..."
         }
       ],
-      "default": "SPHERE"
+      "default": "SPHERE",
+      "suppress_warnings": ["no_setter"]
     },
     {
       "name": "patternSize",
