@@ -65,7 +65,7 @@
           "caption": "Small pores (black objects)"
         }
       ],
-      "default": "PORES"
+      "default": "PARTICLES"
     },
     {
       "caption": "What to do?",
