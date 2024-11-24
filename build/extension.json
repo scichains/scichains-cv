@@ -38,6 +38,7 @@
         "resources": "java/resources"
       },
       "configuration": {
+        "require_existing_paths": true,
         "classpath": [
           "java/lib/javacpp/javacpp-${javacpp.version}.jar",
           "java/lib/javacpp/javacpp-platform-${javacpp.version}.jar",
