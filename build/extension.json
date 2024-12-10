@@ -16,6 +16,7 @@
         "resources": "java/resources"
       },
       "configuration": {
+        "require_existing_paths": true,
         "classpath": [
           "java/lib/${artifactId}-${version}.jar",
           "java/lib/${artifactId}-${version}-tests.jar"
