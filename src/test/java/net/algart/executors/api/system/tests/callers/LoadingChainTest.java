@@ -22,13 +22,12 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.build.callers;
+package net.algart.executors.api.system.tests.callers;
 
+import java.io.IOException;
 
-import net.algart.executors.modules.core.build.ExecutorJsonBuilder;
-
-public final class ExecutorJsonBuilderCaller {
-    public static void main(String[] args) throws Exception {
-        ExecutorJsonBuilder.main(args);
+public final class LoadingChainTest {
+    public static void main(String[] args) throws IOException {
+        net.algart.executors.api.system.tests.LoadingChainTest.main(args);
     }
 }

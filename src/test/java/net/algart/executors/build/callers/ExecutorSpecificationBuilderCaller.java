@@ -22,12 +22,13 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.api.model.tests.callers;
+package net.algart.executors.build.callers;
 
-import java.io.IOException;
 
-public final class ExecutorJsonSetTest {
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        net.algart.executors.api.model.tests.ExecutorJsonSetTest.main(args);
+import net.algart.executors.modules.core.build.ExecutorSpecificationBuilder;
+
+public final class ExecutorSpecificationBuilderCaller {
+    public static void main(String[] args) throws Exception {
+        ExecutorSpecificationBuilder.main(args);
     }
 }

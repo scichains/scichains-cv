@@ -24,12 +24,16 @@
 
 package net.algart.executors.modules.opencv.matrices;
 
-import net.algart.executors.api.model.*;
-import net.algart.executors.modules.opencv.util.O2SMat;
-import net.algart.executors.modules.opencv.util.OTools;
 import net.algart.executors.api.ExecutionBlock;
+import net.algart.executors.api.ExecutorFactory;
 import net.algart.executors.api.data.DataType;
 import net.algart.executors.api.data.SMat;
+import net.algart.executors.api.system.Chain;
+import net.algart.executors.api.system.ChainBlock;
+import net.algart.executors.api.system.ChainInputPort;
+import net.algart.executors.api.system.ChainSpecification;
+import net.algart.executors.modules.opencv.util.O2SMat;
+import net.algart.executors.modules.opencv.util.OTools;
 import org.bytedeco.opencv.global.opencv_core;
 import org.bytedeco.opencv.global.opencv_imgcodecs;
 
@@ -46,9 +50,10 @@ public final class ExecutingChainDebugging {
         final String sourceFile = args[1];
         final int numberOfTests = 150;
 
-        final ExecutorProvider executorProvider = ExecutorProvider.newStandardInstance(SESSION_ID);
-        ChainJson chainJson = ChainJson.read(chainFile);
+        final var executorProvider = ExecutorFactory.newStandardInstance(SESSION_ID);
+        var chainJson = ChainSpecification.read(chainFile);
         System.out.printf("Reading %s%n", chainFile);
+        @SuppressWarnings("resource")
         Chain chain = Chain.valueOf(null, executorProvider, chainJson);
         chain.setMultithreading(true);
         chain.setExecuteAll(true);
@@ -71,7 +76,7 @@ public final class ExecutingChainDebugging {
                 }
             }
             chain.execute();
-            System.out.printf( "Executed %d/%d blocks%n", chain.numberOfReadyBlocks(), chain.numberOfBlocks());
+            System.out.printf("Executed %d/%d blocks%n", chain.numberOfReadyBlocks(), chain.numberOfBlocks());
             chain.freeData();
             final boolean haveOpenCL = opencv_core.haveOpenCL();
             final boolean useOpenCL = opencv_core.useOpenCL();

@@ -22,14 +22,12 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.build.callers;
-
-import net.algart.executors.modules.core.build.ExecutorJsonVerifier;
+package net.algart.executors.api.system.tests.callers;
 
 import java.io.IOException;
 
-public final class ExecutorJsonVerifierCaller {
-    public static void main(String[] args) throws IOException, InterruptedException {
-        ExecutorJsonVerifier.main(args);
+public final class ExecutorSpecificationSetTest {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        net.algart.executors.api.system.tests.ExecutorSpecificationSetTest.main(args);
     }
 }

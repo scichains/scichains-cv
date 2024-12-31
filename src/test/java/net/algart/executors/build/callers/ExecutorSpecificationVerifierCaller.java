@@ -22,12 +22,14 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.api.model.tests.callers;
+package net.algart.executors.build.callers;
+
+import net.algart.executors.modules.core.build.ExecutorSpecificationVerifier;
 
 import java.io.IOException;
 
-public final class ExecutorJsonTest {
+public final class ExecutorSpecificationVerifierCaller {
     public static void main(String[] args) throws IOException, InterruptedException {
-        net.algart.executors.api.model.tests.ExecutorJsonTest.main(args);
+        ExecutorSpecificationVerifier.main(args);
     }
 }
