@@ -14,4 +14,4 @@ echo:
 pause
 echo:
 
-execute_chain %SCICHAINS%/monitor/demo/chains/image_processing/extract_face.chain %SCICHAINS%/monitor/demo/images/lenna.png %TEMP% 1
+execute_chain %SCICHAINS%/demo/chains/image_processing/extract_face.chain %SCICHAINS%/demo/images/lenna.png %TEMP% 1
