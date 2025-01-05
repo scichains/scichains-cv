@@ -46,7 +46,7 @@ public final class ExecutingChainDebugging {
         final String sourceFile = args[1];
         final int numberOfTests = 150;
 
-        final var executorProvider = ExecutorFactory.newStandardInstance(SESSION_ID);
+        final var executorProvider = ExecutorFactory.newDefaultInstance(SESSION_ID);
         var chainJson = ChainSpecification.read(chainFile);
         System.out.printf("Reading %s%n", chainFile);
         @SuppressWarnings("resource")
