@@ -12,7 +12,7 @@
       "technology": "jvm",
       "language": "java",
       "folders": {
-        "models": "java/models/algart",
+        "specifications": "java/specifications/algart",
         "resources": "java/resources"
       },
       "configuration": {
@@ -35,7 +35,7 @@
       "technology": "jvm",
       "language": "java",
       "folders": {
-        "models": "java/models/opencv",
+        "specifications": "java/specifications/opencv",
         "resources": "java/resources"
       },
       "configuration": {
