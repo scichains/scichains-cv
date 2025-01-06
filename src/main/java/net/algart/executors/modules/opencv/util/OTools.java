@@ -24,11 +24,11 @@
 
 package net.algart.executors.modules.opencv.util;
 
+import net.algart.arrays.Arrays;
 import net.algart.arrays.SizeMismatchException;
 import net.algart.arrays.TooLargeArrayException;
 import net.algart.math.IPoint;
 import net.algart.math.IRectangularArea;
-import net.algart.executors.api.SystemEnvironment;
 import net.algart.executors.api.data.SMat;
 import net.algart.executors.modules.core.common.ChannelOperation;
 import org.bytedeco.javacpp.BytePointer;
@@ -52,8 +52,8 @@ public final class OTools {
 
     public static final String USE_GPU_PROPERTY_NAME = "net.algart.executors.modules.opencv.useGPU";
 
-    private static final boolean GPU_OPTIMIZATION_ENABLED =
-            SystemEnvironment.getBooleanProperty(USE_GPU_PROPERTY_NAME, true) && opencv_core.haveOpenCL();
+    private static final boolean GPU_OPTIMIZATION_ENABLED =  Arrays.SystemSettings.getBooleanProperty(
+            USE_GPU_PROPERTY_NAME, true) && opencv_core.haveOpenCL();
     // - Note: we check haveOpenCL(), not useOpenCL(): the last method can return varying results
     // depending on the device status. See https://github.com/bytedeco/javacpp-presets/issues/659
 
