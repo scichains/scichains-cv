@@ -26,8 +26,9 @@ package net.algart.executors.modules.opencv.matrices.features;
 
 import net.algart.executors.modules.opencv.common.VoidResultUMatFilter;
 import net.algart.executors.modules.opencv.util.enums.OBorderType;
-import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_imgproc;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public final class CornerHarris extends VoidResultUMatFilter {
     private int blockSize = 15;

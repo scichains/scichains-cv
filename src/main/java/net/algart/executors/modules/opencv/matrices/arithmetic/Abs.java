@@ -24,8 +24,8 @@
 
 package net.algart.executors.modules.opencv.matrices.arithmetic;
 
-import net.algart.executors.modules.opencv.common.UMatFilter;
 import net.algart.executors.api.ReadOnlyExecutionInput;
+import net.algart.executors.modules.opencv.common.UMatFilter;
 import org.bytedeco.opencv.global.opencv_core;
 import org.bytedeco.opencv.opencv_core.Mat;
 import org.bytedeco.opencv.opencv_core.Scalar;

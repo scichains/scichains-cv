@@ -24,11 +24,13 @@
 
 package net.algart.executors.modules.opencv.matrices.geometry;
 
+import net.algart.executors.api.ReadOnlyExecutionInput;
 import net.algart.executors.modules.opencv.common.UMatFilter;
 import net.algart.executors.modules.opencv.util.enums.OInterpolation;
-import net.algart.executors.api.ReadOnlyExecutionInput;
-import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_imgproc;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.Size;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public final class Resize extends UMatFilter implements ReadOnlyExecutionInput {
     public static final String OUTPUT_DIM_X = "dim_x";

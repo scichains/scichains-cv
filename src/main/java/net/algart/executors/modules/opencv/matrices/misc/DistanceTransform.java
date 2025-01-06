@@ -29,8 +29,9 @@ import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.modules.opencv.util.enums.ODepth;
 import net.algart.executors.modules.opencv.util.enums.ODistanceLabelType;
 import net.algart.executors.modules.opencv.util.enums.ODistanceType;
-import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_imgproc;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public final class DistanceTransform extends VoidResultUMatFilter {
     public static final String OUTPUT_LABELS = "labels";

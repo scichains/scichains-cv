@@ -24,16 +24,16 @@
 
 package net.algart.executors.modules.opencv.matrices.recognition;
 
+import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.io.FileOperation;
+import net.algart.executors.modules.core.common.io.PathPropertyReplacement;
 import net.algart.executors.modules.opencv.common.UMatToNumbers;
 import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.modules.opencv.util.OTools;
-import net.algart.executors.api.data.SNumbers;
-import net.algart.executors.modules.core.common.io.PathPropertyReplacement;
 import org.bytedeco.opencv.global.opencv_core;
-import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_imgproc;
 import org.bytedeco.opencv.opencv_core.Point;
+import org.bytedeco.opencv.opencv_core.*;
 
 import java.awt.*;
 import java.nio.file.Path;

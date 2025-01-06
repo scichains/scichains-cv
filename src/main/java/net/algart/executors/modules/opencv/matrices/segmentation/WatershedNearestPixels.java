@@ -24,16 +24,16 @@
 
 package net.algart.executors.modules.opencv.matrices.segmentation;
 
-import net.algart.executors.modules.opencv.util.O2SMat;
-import net.algart.executors.api.data.SNumbers;
-import net.algart.executors.modules.opencv.common.MatFilter;
-import net.algart.executors.modules.cv.matrices.drawing.DrawPattern;
-import net.algart.executors.modules.cv.matrices.morphology.MorphologyFilter;
 import net.algart.arrays.ByteArray;
 import net.algart.arrays.Matrices;
+import net.algart.executors.api.data.SNumbers;
+import net.algart.executors.modules.cv.matrices.drawing.DrawPattern;
+import net.algart.executors.modules.cv.matrices.morphology.MorphologyFilter;
+import net.algart.executors.modules.opencv.common.MatFilter;
+import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;
-import org.bytedeco.opencv.opencv_core.*;
+import org.bytedeco.opencv.opencv_core.Mat;
 
 public final class WatershedNearestPixels extends MatFilter {
     public static final String INPUT_SAMPLE_IMAGE = "sample_image";

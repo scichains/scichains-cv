@@ -25,8 +25,9 @@
 package net.algart.executors.modules.opencv.common;
 
 import net.algart.executors.modules.opencv.util.O2SMat;
-import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_imgproc;
+import org.bytedeco.opencv.opencv_core.Size;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public abstract class UMatFilter extends MatFilter {
     protected UMatFilter() {

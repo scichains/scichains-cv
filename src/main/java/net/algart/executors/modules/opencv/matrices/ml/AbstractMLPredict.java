@@ -24,11 +24,11 @@
 
 package net.algart.executors.modules.opencv.matrices.ml;
 
-import net.algart.executors.modules.opencv.util.O2SMat;
-import net.algart.executors.modules.opencv.util.OTools;
-import net.algart.executors.api.Port;
+import net.algart.executors.api.data.Port;
 import net.algart.executors.api.data.SMat;
 import net.algart.executors.api.data.SNumbers;
+import net.algart.executors.modules.opencv.util.O2SMat;
+import net.algart.executors.modules.opencv.util.OTools;
 import org.bytedeco.opencv.global.opencv_core;
 import org.bytedeco.opencv.opencv_core.Mat;
 import org.bytedeco.opencv.opencv_core.UMat;

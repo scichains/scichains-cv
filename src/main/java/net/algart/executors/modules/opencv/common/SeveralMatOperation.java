@@ -24,10 +24,10 @@
 
 package net.algart.executors.modules.opencv.common;
 
+import net.algart.executors.api.data.SMat;
 import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.modules.opencv.util.OTools;
-import net.algart.executors.api.data.SMat;
-import org.bytedeco.opencv.opencv_core.*;
+import org.bytedeco.opencv.opencv_core.Mat;
 
 import java.util.ArrayList;
 import java.util.List;

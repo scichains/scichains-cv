@@ -24,15 +24,16 @@
 
 package net.algart.executors.modules.opencv.matrices.misc;
 
+import net.algart.arrays.Arrays;
 import net.algart.executors.modules.opencv.common.VoidResultMatFilter;
 import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.modules.opencv.util.OTools;
 import net.algart.executors.modules.opencv.util.enums.OGrabCutMode;
-import net.algart.arrays.Arrays;
 import org.bytedeco.javacpp.PointerScope;
 import org.bytedeco.opencv.global.opencv_core;
-import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_imgproc;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.Rect;
 
 import java.util.stream.Stream;
 

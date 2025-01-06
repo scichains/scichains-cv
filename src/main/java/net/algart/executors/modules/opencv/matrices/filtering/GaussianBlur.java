@@ -24,16 +24,18 @@
 
 package net.algart.executors.modules.opencv.matrices.filtering;
 
+import net.algart.executors.api.ReadOnlyExecutionInput;
+import net.algart.executors.api.data.SMat;
+import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
 import net.algart.executors.modules.opencv.common.UMatFilter;
 import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.modules.opencv.util.OTools;
 import net.algart.executors.modules.opencv.util.enums.OBorderType;
 import net.algart.multimatrix.MultiMatrix2D;
-import net.algart.executors.api.ReadOnlyExecutionInput;
-import net.algart.executors.api.data.SMat;
-import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
-import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_imgproc;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.Size;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public class GaussianBlur extends UMatFilter {
     private int kernelSizeX = 15;

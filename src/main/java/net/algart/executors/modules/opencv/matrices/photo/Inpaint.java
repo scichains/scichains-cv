@@ -27,7 +27,8 @@ package net.algart.executors.modules.opencv.matrices.photo;
 import net.algart.executors.modules.opencv.common.VoidResultTwoUMatFilter;
 import net.algart.executors.modules.opencv.util.enums.OInpaintAlgorithm;
 import org.bytedeco.opencv.global.opencv_photo;
-import org.bytedeco.opencv.opencv_core.*;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public final class Inpaint extends VoidResultTwoUMatFilter {
     public static final String INPUT_MASK = "mask";

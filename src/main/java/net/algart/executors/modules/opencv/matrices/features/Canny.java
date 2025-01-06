@@ -24,11 +24,12 @@
 
 package net.algart.executors.modules.opencv.matrices.features;
 
+import net.algart.executors.api.ReadOnlyExecutionInput;
 import net.algart.executors.modules.opencv.common.VoidResultUMatFilter;
 import net.algart.executors.modules.opencv.util.OTools;
-import net.algart.executors.api.ReadOnlyExecutionInput;
-import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_imgproc;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public final class Canny extends VoidResultUMatFilter implements ReadOnlyExecutionInput {
     private double thresholdLower = 0.1;

@@ -24,8 +24,8 @@
 
 package net.algart.executors.modules.opencv.common;
 
-import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.api.data.SNumbers;
+import net.algart.executors.modules.opencv.util.O2SMat;
 import org.bytedeco.opencv.opencv_core.Mat;
 
 public abstract class MatToNumbers extends OpenCVExecutor {

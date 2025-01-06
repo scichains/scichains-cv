@@ -24,7 +24,10 @@
 
 package net.algart.executors.modules.cv.matrices.objects.binary;
 
-import net.algart.arrays.*;
+import net.algart.arrays.BitArray;
+import net.algart.arrays.Matrix;
+import net.algart.arrays.MutableIntArray;
+import net.algart.arrays.PArray;
 import net.algart.executors.modules.cv.matrices.misc.SortedRound2DAperture;
 import net.algart.math.IPoint;
 import net.algart.math.patterns.Pattern;

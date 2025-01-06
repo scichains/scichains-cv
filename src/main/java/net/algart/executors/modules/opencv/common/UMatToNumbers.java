@@ -24,9 +24,9 @@
 
 package net.algart.executors.modules.opencv.common;
 
-import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.api.data.SNumbers;
-import org.bytedeco.opencv.opencv_core.*;
+import net.algart.executors.modules.opencv.util.O2SMat;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public abstract class UMatToNumbers extends MatToNumbers {
     protected UMatToNumbers() {

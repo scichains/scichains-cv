@@ -24,11 +24,11 @@
 
 package net.algart.executors.modules.opencv.matrices.copying;
 
-import net.algart.executors.modules.opencv.util.ConvertibleUMat;
-import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.api.Executor;
 import net.algart.executors.api.ReadOnlyExecutionInput;
 import net.algart.executors.api.data.SMat;
+import net.algart.executors.modules.opencv.util.ConvertibleUMat;
+import net.algart.executors.modules.opencv.util.O2SMat;
 import org.bytedeco.opencv.opencv_core.Mat;
 import org.bytedeco.opencv.opencv_core.UMat;
 

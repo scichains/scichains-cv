@@ -24,12 +24,13 @@
 
 package net.algart.executors.modules.opencv.matrices.conversions;
 
+import net.algart.executors.api.ReadOnlyExecutionInput;
 import net.algart.executors.modules.opencv.common.VoidResultUMatFilter;
 import net.algart.executors.modules.opencv.util.OTools;
 import net.algart.executors.modules.opencv.util.enums.ODepth;
 import net.algart.executors.modules.opencv.util.enums.ODepthOrUnchanged;
-import net.algart.executors.api.ReadOnlyExecutionInput;
-import org.bytedeco.opencv.opencv_core.*;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public final class ConvertPrecision extends VoidResultUMatFilter implements ReadOnlyExecutionInput {
     public enum ConvertMode {

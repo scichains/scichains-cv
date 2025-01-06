@@ -24,15 +24,18 @@
 
 package net.algart.executors.modules.opencv.matrices.ml;
 
+import net.algart.arrays.Arrays;
+import net.algart.arrays.IntArray;
+import net.algart.arrays.PArray;
+import net.algart.arrays.TooLargeArrayException;
 import net.algart.executors.modules.core.common.io.FileOperation;
+import net.algart.executors.modules.core.common.io.PathPropertyReplacement;
 import net.algart.executors.modules.opencv.common.OpenCVExecutor;
 import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.modules.opencv.util.OTools;
-import net.algart.arrays.*;
-import net.algart.arrays.Arrays;
-import net.algart.executors.modules.core.common.io.PathPropertyReplacement;
 import org.bytedeco.opencv.global.opencv_core;
-import org.bytedeco.opencv.opencv_core.*;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

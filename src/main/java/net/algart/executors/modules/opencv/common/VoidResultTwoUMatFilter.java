@@ -24,7 +24,8 @@
 
 package net.algart.executors.modules.opencv.common;
 
-import org.bytedeco.opencv.opencv_core.*;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 import java.util.Objects;
 

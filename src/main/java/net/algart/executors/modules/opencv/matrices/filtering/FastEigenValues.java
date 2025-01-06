@@ -24,16 +24,18 @@
 
 package net.algart.executors.modules.opencv.matrices.filtering;
 
+import net.algart.executors.api.ReadOnlyExecutionInput;
 import net.algart.executors.modules.opencv.common.OpenCVExecutor;
 import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.modules.opencv.util.OTools;
 import net.algart.executors.modules.opencv.util.enums.OBorderType;
-import net.algart.executors.api.ReadOnlyExecutionInput;
 import org.bytedeco.javacpp.FloatPointer;
 import org.bytedeco.javacpp.Pointer;
 import org.bytedeco.opencv.global.opencv_core;
-import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_imgproc;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.Scalar;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public final class FastEigenValues extends OpenCVExecutor implements ReadOnlyExecutionInput {
 

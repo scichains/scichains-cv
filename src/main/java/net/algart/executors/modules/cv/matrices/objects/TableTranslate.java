@@ -24,7 +24,6 @@
 
 package net.algart.executors.modules.cv.matrices.objects;
 
-import net.algart.arrays.Matrices;
 import net.algart.arrays.Matrix;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;

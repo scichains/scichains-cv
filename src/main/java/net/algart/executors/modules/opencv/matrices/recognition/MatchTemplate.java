@@ -27,8 +27,10 @@ package net.algart.executors.modules.opencv.matrices.recognition;
 import net.algart.executors.modules.opencv.common.VoidResultTwoUMatFilter;
 import net.algart.executors.modules.opencv.util.enums.OTemplateMatchMode;
 import org.bytedeco.opencv.global.opencv_core;
-import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_imgproc;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.Point;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public final class MatchTemplate extends VoidResultTwoUMatFilter {
     public static final String INPUT_TEMPLATE = "template";

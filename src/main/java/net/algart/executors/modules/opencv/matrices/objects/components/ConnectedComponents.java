@@ -27,8 +27,9 @@ package net.algart.executors.modules.opencv.matrices.objects.components;
 import net.algart.executors.modules.opencv.common.VoidResultUMatFilter;
 import net.algart.executors.modules.opencv.util.enums.OConnectivity;
 import org.bytedeco.opencv.global.opencv_core;
-import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_imgproc;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public final class ConnectedComponents extends VoidResultUMatFilter {
     private OConnectivity connectivity = OConnectivity.CONNECTIVITY_8;

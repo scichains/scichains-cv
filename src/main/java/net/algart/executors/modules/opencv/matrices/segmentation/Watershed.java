@@ -24,6 +24,7 @@
 
 package net.algart.executors.modules.opencv.matrices.segmentation;
 
+import net.algart.executors.modules.core.matrices.geometry.ContinuationMode;
 import net.algart.executors.modules.cv.matrices.misc.Selector;
 import net.algart.executors.modules.cv.matrices.morphology.MorphologyFilter;
 import net.algart.executors.modules.cv.matrices.morphology.MorphologyOperation;
@@ -32,7 +33,6 @@ import net.algart.executors.modules.cv.matrices.thresholds.SimpleThreshold;
 import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.modules.opencv.util.OTools;
 import net.algart.multimatrix.MultiMatrix2D;
-import net.algart.executors.modules.core.matrices.geometry.ContinuationMode;
 import org.bytedeco.opencv.global.opencv_core;
 import org.bytedeco.opencv.global.opencv_imgproc;
 import org.bytedeco.opencv.opencv_core.Mat;

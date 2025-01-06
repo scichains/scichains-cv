@@ -24,9 +24,9 @@
 
 package net.algart.executors.modules.opencv.common;
 
+import net.algart.executors.api.Executor;
 import net.algart.executors.modules.opencv.util.OTools;
 import net.algart.multimatrix.MultiMatrix;
-import net.algart.executors.api.Executor;
 import org.bytedeco.opencv.global.opencv_core;
 
 import java.lang.ref.Cleaner;

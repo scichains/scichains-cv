@@ -26,7 +26,9 @@ package net.algart.executors.modules.opencv.matrices.copying;
 
 import net.algart.executors.modules.opencv.common.UMatFilter;
 import net.algart.executors.modules.opencv.util.OTools;
-import org.bytedeco.opencv.opencv_core.*;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.Scalar;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public final class FillMat extends UMatFilter {
     private String color = "#FFFFFF";

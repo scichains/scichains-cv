@@ -24,13 +24,13 @@
 
 package net.algart.executors.modules.opencv.numbers.misc;
 
-import net.algart.executors.modules.opencv.util.O2SMat;
-import net.algart.executors.modules.opencv.util.OTools;
 import net.algart.executors.api.ReadOnlyExecutionInput;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.numbers.IndexingBase;
 import net.algart.executors.modules.core.common.numbers.SeveralNumbersOperation;
 import net.algart.executors.modules.core.numbers.misc.ValuesDistanceMetric;
+import net.algart.executors.modules.opencv.util.O2SMat;
+import net.algart.executors.modules.opencv.util.OTools;
 import org.bytedeco.opencv.global.opencv_core;
 import org.bytedeco.opencv.opencv_core.Mat;
 import org.bytedeco.opencv.opencv_core.Scalar;

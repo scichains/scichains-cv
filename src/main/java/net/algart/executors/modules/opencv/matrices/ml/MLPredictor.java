@@ -25,7 +25,8 @@
 package net.algart.executors.modules.opencv.matrices.ml;
 
 import net.algart.executors.modules.opencv.util.OTools;
-import org.bytedeco.opencv.opencv_core.*;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public interface MLPredictor extends AutoCloseable {
     // This method is necessary to pass some flags to unknown predictor, loaded from file.

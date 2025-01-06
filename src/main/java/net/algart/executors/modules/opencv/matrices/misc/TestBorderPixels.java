@@ -24,12 +24,12 @@
 
 package net.algart.executors.modules.opencv.matrices.misc;
 
-import net.algart.executors.modules.opencv.common.MatToNumbers;
 import net.algart.arrays.TooLargeArrayException;
 import net.algart.executors.api.ReadOnlyExecutionInput;
 import net.algart.executors.api.data.SNumbers;
+import net.algart.executors.modules.opencv.common.MatToNumbers;
 import org.bytedeco.opencv.global.opencv_core;
-import org.bytedeco.opencv.opencv_core.*;
+import org.bytedeco.opencv.opencv_core.Mat;
 
 import java.nio.ByteBuffer;
 import java.util.Objects;

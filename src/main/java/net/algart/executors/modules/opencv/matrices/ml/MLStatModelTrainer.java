@@ -24,8 +24,10 @@
 
 package net.algart.executors.modules.opencv.matrices.ml;
 
-import org.bytedeco.opencv.opencv_core.*;
-import org.bytedeco.opencv.opencv_ml.*;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.UMat;
+import org.bytedeco.opencv.opencv_ml.StatModel;
+import org.bytedeco.opencv.opencv_ml.TrainData;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

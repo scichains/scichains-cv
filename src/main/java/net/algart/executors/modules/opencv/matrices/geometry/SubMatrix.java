@@ -24,10 +24,13 @@
 
 package net.algart.executors.modules.opencv.matrices.geometry;
 
+import net.algart.executors.api.ReadOnlyExecutionInput;
 import net.algart.executors.modules.opencv.common.UMatFilter;
 import net.algart.executors.modules.opencv.util.OTools;
-import net.algart.executors.api.ReadOnlyExecutionInput;
-import org.bytedeco.opencv.opencv_core.*;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.Rect;
+import org.bytedeco.opencv.opencv_core.Scalar;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public final class SubMatrix extends UMatFilter implements ReadOnlyExecutionInput {
     private int left = 0;

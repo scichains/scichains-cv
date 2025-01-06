@@ -24,10 +24,11 @@
 
 package net.algart.executors.modules.opencv.matrices.arithmetic;
 
-import net.algart.executors.modules.opencv.common.VoidResultTwoUMatFilter;
 import net.algart.executors.api.ReadOnlyExecutionInput;
+import net.algart.executors.modules.opencv.common.VoidResultTwoUMatFilter;
 import org.bytedeco.opencv.global.opencv_core;
-import org.bytedeco.opencv.opencv_core.*;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public final class Min extends VoidResultTwoUMatFilter implements ReadOnlyExecutionInput {
     @Override

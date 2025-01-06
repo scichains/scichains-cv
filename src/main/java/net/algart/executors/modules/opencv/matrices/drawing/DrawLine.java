@@ -24,14 +24,14 @@
 
 package net.algart.executors.modules.opencv.matrices.drawing;
 
-import net.algart.executors.modules.opencv.common.OpenCVExecutor;
-import net.algart.executors.modules.cv.matrices.drawing.PositionsAndColors;
-import net.algart.executors.modules.opencv.util.O2SMat;
-import net.algart.executors.modules.opencv.util.OTools;
-import net.algart.executors.modules.opencv.util.enums.OLineType;
 import net.algart.executors.api.data.SMat;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.numbers.IndexingBase;
+import net.algart.executors.modules.cv.matrices.drawing.PositionsAndColors;
+import net.algart.executors.modules.opencv.common.OpenCVExecutor;
+import net.algart.executors.modules.opencv.util.O2SMat;
+import net.algart.executors.modules.opencv.util.OTools;
+import net.algart.executors.modules.opencv.util.enums.OLineType;
 import org.bytedeco.opencv.global.opencv_core;
 import org.bytedeco.opencv.global.opencv_imgproc;
 import org.bytedeco.opencv.opencv_core.Mat;

@@ -24,13 +24,14 @@
 
 package net.algart.executors.modules.opencv.matrices.statistics;
 
+import net.algart.executors.api.ReadOnlyExecutionInput;
+import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.opencv.common.UMatToNumbers;
 import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.modules.opencv.util.OTools;
-import net.algart.executors.api.ReadOnlyExecutionInput;
-import net.algart.executors.api.data.SNumbers;
 import org.bytedeco.opencv.global.opencv_core;
-import org.bytedeco.opencv.opencv_core.*;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public final class MinMaxInfo extends UMatToNumbers implements ReadOnlyExecutionInput {
     public static final String INPUT_MASK = "mask";

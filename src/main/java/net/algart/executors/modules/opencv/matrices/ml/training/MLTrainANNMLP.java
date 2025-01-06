@@ -24,11 +24,11 @@
 
 package net.algart.executors.modules.opencv.matrices.ml.training;
 
+import net.algart.executors.api.data.SNumbers;
+import net.algart.executors.api.data.SScalar;
 import net.algart.executors.modules.opencv.matrices.ml.*;
 import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.modules.opencv.util.OTools;
-import net.algart.executors.api.data.SNumbers;
-import net.algart.executors.api.data.SScalar;
 import org.bytedeco.opencv.opencv_core.Mat;
 import org.bytedeco.opencv.opencv_core.RNG;
 import org.bytedeco.opencv.opencv_core.TermCriteria;

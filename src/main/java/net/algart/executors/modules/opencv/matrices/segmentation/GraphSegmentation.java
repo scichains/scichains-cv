@@ -25,8 +25,9 @@
 package net.algart.executors.modules.opencv.matrices.segmentation;
 
 import net.algart.executors.modules.opencv.util.OTools;
-import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_ximgproc;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public final class GraphSegmentation extends AbstractSuperpixel {
     private double sigma = 0.5;

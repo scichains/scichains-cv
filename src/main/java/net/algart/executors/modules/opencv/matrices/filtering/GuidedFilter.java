@@ -24,8 +24,9 @@
 
 package net.algart.executors.modules.opencv.matrices.filtering;
 
-import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_ximgproc;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 //TODO!! support array of guided images
 public final class GuidedFilter extends AbstractFilterWithGuideImage {

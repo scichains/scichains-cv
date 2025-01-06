@@ -26,7 +26,7 @@ package net.algart.executors.modules.opencv.matrices.video;
 
 import org.bytedeco.opencv.global.opencv_imgcodecs;
 import org.bytedeco.opencv.global.opencv_video;
-import org.bytedeco.opencv.opencv_core.*;
+import org.bytedeco.opencv.opencv_core.Mat;
 import org.bytedeco.opencv.opencv_video.BackgroundSubtractor;
 
 public final class BackgroundSubtractorKNN extends AbstractBackgroundSubtractor {

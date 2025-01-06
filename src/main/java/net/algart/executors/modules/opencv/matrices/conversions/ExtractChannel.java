@@ -24,10 +24,11 @@
 
 package net.algart.executors.modules.opencv.matrices.conversions;
 
-import net.algart.executors.modules.opencv.common.VoidResultUMatFilter;
 import net.algart.executors.api.ReadOnlyExecutionInput;
+import net.algart.executors.modules.opencv.common.VoidResultUMatFilter;
 import org.bytedeco.opencv.global.opencv_core;
-import org.bytedeco.opencv.opencv_core.*;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public final class ExtractChannel extends VoidResultUMatFilter implements ReadOnlyExecutionInput {
     private int channelIndex = 0;

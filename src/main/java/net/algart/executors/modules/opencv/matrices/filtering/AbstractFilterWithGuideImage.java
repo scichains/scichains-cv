@@ -24,9 +24,10 @@
 
 package net.algart.executors.modules.opencv.matrices.filtering;
 
-import net.algart.executors.modules.opencv.common.VoidResultTwoUMatFilter;
 import net.algart.executors.api.ReadOnlyExecutionInput;
-import org.bytedeco.opencv.opencv_core.*;
+import net.algart.executors.modules.opencv.common.VoidResultTwoUMatFilter;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 abstract class AbstractFilterWithGuideImage extends VoidResultTwoUMatFilter implements ReadOnlyExecutionInput {
     public static final String INPUT_GUIDE = "guide";

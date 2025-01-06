@@ -24,14 +24,15 @@
 
 package net.algart.executors.modules.opencv.matrices.filtering;
 
+import net.algart.executors.api.ReadOnlyExecutionInput;
 import net.algart.executors.modules.opencv.common.UMatFilter;
 import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.modules.opencv.util.OTools;
 import net.algart.executors.modules.opencv.util.enums.OBorderType;
-import net.algart.executors.api.ReadOnlyExecutionInput;
 import org.bytedeco.opencv.global.opencv_core;
-import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_imgproc;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public final class FastGradient extends UMatFilter implements ReadOnlyExecutionInput {
 

@@ -24,10 +24,10 @@
 
 package net.algart.executors.modules.opencv.matrices.ml;
 
-import net.algart.executors.modules.opencv.matrices.ml.prediction.MLPredict;
 import net.algart.executors.api.data.DataType;
 import net.algart.executors.api.data.SMat;
 import net.algart.executors.api.data.SNumbers;
+import net.algart.executors.modules.opencv.matrices.ml.prediction.MLPredict;
 
 public enum MLSamplesType {
     NUMBERS(DataType.NUMBERS) {

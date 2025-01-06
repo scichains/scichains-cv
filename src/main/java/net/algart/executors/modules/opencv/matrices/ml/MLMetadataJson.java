@@ -24,12 +24,11 @@
 
 package net.algart.executors.modules.opencv.matrices.ml;
 
-import net.algart.json.Jsons;
-
 import jakarta.json.Json;
 import jakarta.json.JsonException;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonObjectBuilder;
+import net.algart.json.Jsons;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

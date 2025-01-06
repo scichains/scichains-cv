@@ -31,9 +31,11 @@ import net.algart.executors.modules.opencv.util.enums.OConnectivity;
 import net.algart.math.IPoint;
 import net.algart.math.IRectangularArea;
 import org.bytedeco.opencv.global.opencv_core;
-import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_imgproc;
+import org.bytedeco.opencv.opencv_core.Mat;
 import org.bytedeco.opencv.opencv_core.Point;
+import org.bytedeco.opencv.opencv_core.Rect;
+import org.bytedeco.opencv.opencv_core.Scalar;
 
 import java.awt.*;
 import java.util.ConcurrentModificationException;

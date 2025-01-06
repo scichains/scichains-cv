@@ -24,10 +24,10 @@
 
 package net.algart.executors.modules.opencv.matrices.features.detection;
 
+import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.opencv.common.UMatToNumbers;
 import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.modules.opencv.util.OTools;
-import net.algart.executors.api.data.SNumbers;
 import org.bytedeco.opencv.global.opencv_ximgproc;
 import org.bytedeco.opencv.opencv_core.Mat;
 import org.bytedeco.opencv.opencv_core.UMat;

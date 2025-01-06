@@ -24,7 +24,7 @@
 
 package net.algart.executors.modules.opencv.common;
 
-import org.bytedeco.opencv.opencv_core.*;
+import org.bytedeco.opencv.opencv_core.Mat;
 
 public abstract class VoidResultMatFilter extends MatFilter {
     protected VoidResultMatFilter() {

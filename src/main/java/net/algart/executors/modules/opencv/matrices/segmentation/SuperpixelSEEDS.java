@@ -24,8 +24,9 @@
 
 package net.algart.executors.modules.opencv.matrices.segmentation;
 
-import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.global.opencv_ximgproc;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.UMat;
 
 public final class SuperpixelSEEDS extends AbstractSuperpixel {
     private int numberOfSuperpixels = 100;

@@ -25,10 +25,10 @@
 package net.algart.executors.modules.opencv.util;
 
 import net.algart.arrays.*;
-import net.algart.multimatrix.MultiMatrix2D;
 import net.algart.executors.api.data.ConvertibleByteBufferMatrix;
 import net.algart.executors.api.data.SMat;
 import net.algart.executors.api.data.SNumbers;
+import net.algart.multimatrix.MultiMatrix2D;
 import org.bytedeco.opencv.global.opencv_core;
 import org.bytedeco.opencv.global.opencv_ml;
 import org.bytedeco.opencv.opencv_core.Mat;
