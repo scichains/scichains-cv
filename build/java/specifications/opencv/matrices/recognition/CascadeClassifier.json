@@ -81,7 +81,8 @@
       "default": 0
     },
     {
-      "caption": "return only x,y (if false, result contains x,y,width,height)",
+      "caption": "Return only (x,y)",
+      "description": "If set, the result contains (x,y) pairs.\nIf cleared, the result includes (x,y,width,height).",
       "name": "finsOnlyCenters",
       "value_type": "boolean",
       "edition_type": "value",
@@ -89,12 +90,14 @@
     },
     {
       "name": "drawOnInput",
+      "caption": "Draw on input image",
       "value_type": "boolean",
       "edition_type": "value",
       "default": false
     },
     {
       "name": "resultMarkerType",
+      "caption": "Result marker type",
       "value_type": "String",
       "edition_type": "enum",
       "items": [
@@ -115,6 +118,7 @@
     },
     {
       "name": "drawingLineThickness",
+      "caption": "Drawing line thickness",
       "value_type": "int",
       "edition_type": "value",
       "default": 0

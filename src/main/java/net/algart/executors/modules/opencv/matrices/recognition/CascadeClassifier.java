@@ -179,7 +179,7 @@ public final class CascadeClassifier extends UMatToNumbers {
         if (isOutputNecessary(VISUAL_RESULTS)) {
             final Mat mask = drawOnInput ?
                     source.clone() :
-                    new Mat(source.rows(), source.cols(), opencv_core.CV_8UC1);
+                    OTools.constantMonoMat8U(source.rows(), source.cols(), 0);
             try (Scalar color = new Scalar(255, 255, 255, 255)) {
                 drawRectangles(mask, rectangles, color);
             }
@@ -203,7 +203,7 @@ public final class CascadeClassifier extends UMatToNumbers {
         if (isOutputNecessary(VISUAL_RESULTS)) {
             final Mat mask = drawOnInput ?
                     OTools.toMat(source) :
-                    new Mat(source.rows(), source.cols(), opencv_core.CV_8UC1);
+                    OTools.constantMonoMat8U(source.rows(), source.cols(), 0);
             try (Scalar color = new Scalar(255, 255, 255, 255)) {
                 drawRectangles(mask, rectangles, color);
             }
@@ -255,7 +255,7 @@ public final class CascadeClassifier extends UMatToNumbers {
         final int resultBlockLength = finsOnlyCenters ? 2 : 4;
         int[] result = new int[resultBlockLength * rectangles.size()];
         for (int k = 0, n = rectangles.size(), disp = 0; k < n; k++) {
-            Rectangle r = rectangles.get(k);
+            final Rectangle r = rectangles.get(k);
             result[disp++] = r.x + r.width / 2;
             result[disp++] = r.y + r.height / 2;
             if (!finsOnlyCenters) {
@@ -272,33 +272,27 @@ public final class CascadeClassifier extends UMatToNumbers {
                  Point center = new Point(r.x + r.width / 2, r.y + r.height / 2);
                  Size sizes = new Size(r.width / 2, r.height / 2)) {
                 switch (resultMarkerType) {
-                    case RECTANGLE:
-                        opencv_imgproc.rectangle(
-                                mat,
-                                rect,
-                                color,
-                                drawingLineThickness == 0 ? -1 : drawingLineThickness,
-                                8, 0); // 8 = opencv_imgproc.LINE_8 in new JavaCPP
-                        break;
-                    case CIRCLE:
-                        opencv_imgproc.circle(
-                                mat,
-                                center,
-                                Math.min(r.width / 2, r.height / 2),
-                                color,
-                                drawingLineThickness == 0 ? -1 : drawingLineThickness,
-                                16, 0); // opencv_imgproc.LINE_AA in new JavaCPP
-                        break;
-                    case ELLIPSE:
-                        opencv_imgproc.ellipse(
-                                mat,
-                                center,
-                                sizes,
-                                0.0, 0.0, 360.0,
-                                color,
-                                drawingLineThickness == 0 ? -1 : drawingLineThickness,
-                                16, 0); // opencv_imgproc.LINE_AA in new JavaCPP
-                        break;
+                    case RECTANGLE -> opencv_imgproc.rectangle(
+                            mat,
+                            rect,
+                            color,
+                            drawingLineThickness == 0 ? -1 : drawingLineThickness,
+                            8, 0); // 8 = opencv_imgproc.LINE_8 in new JavaCPP
+                    case CIRCLE -> opencv_imgproc.circle(
+                            mat,
+                            center,
+                            Math.min(r.width / 2, r.height / 2),
+                            color,
+                            drawingLineThickness == 0 ? -1 : drawingLineThickness,
+                            16, 0); // opencv_imgproc.LINE_AA in new JavaCPP
+                    case ELLIPSE -> opencv_imgproc.ellipse(
+                            mat,
+                            center,
+                            sizes,
+                            0.0, 0.0, 360.0,
+                            color,
+                            drawingLineThickness == 0 ? -1 : drawingLineThickness,
+                            16, 0); // opencv_imgproc.LINE_AA in new JavaCPP
                 }
             }
         }
