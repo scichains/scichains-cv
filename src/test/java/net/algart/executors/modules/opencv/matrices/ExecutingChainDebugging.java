@@ -25,9 +25,13 @@
 package net.algart.executors.modules.opencv.matrices;
 
 import net.algart.executors.api.ExecutionBlock;
+import net.algart.executors.api.chains.Chain;
+import net.algart.executors.api.chains.ChainBlock;
+import net.algart.executors.api.chains.ChainInputPort;
+import net.algart.executors.api.chains.ChainSpecification;
 import net.algart.executors.api.data.DataType;
 import net.algart.executors.api.data.SMat;
-import net.algart.executors.api.system.*;
+import net.algart.executors.api.system.ExecutorFactory;
 import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.modules.opencv.util.OTools;
 import org.bytedeco.opencv.global.opencv_core;

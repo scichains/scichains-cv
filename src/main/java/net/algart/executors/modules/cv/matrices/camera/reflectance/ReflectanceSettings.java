@@ -29,7 +29,7 @@ import jakarta.json.JsonObject;
 import jakarta.json.JsonObjectBuilder;
 import net.algart.arrays.Arrays;
 import net.algart.arrays.PArray;
-import net.algart.executors.api.data.ParameterValueType;
+import net.algart.executors.api.parameters.ParameterValueType;
 import net.algart.json.AbstractConvertibleToJson;
 import net.algart.json.Jsons;
 import net.algart.math.functions.AbstractFunc;
