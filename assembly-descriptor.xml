@@ -21,16 +21,17 @@
             <includes>
                 <include>org.bytedeco:*</include>
             </includes>
-            <excludes>
-                <!-- Excluding 32-bit version (not necessary for most applications):
-                see https://github.com/bytedeco/javacpp/issues/644 -->
-                <exclude>org.bytedeco:*:jar:windows-x86</exclude>
-                <exclude>org.bytedeco:*:jar:linux-x86</exclude>
-                <exclude>org.bytedeco:*:jar:linux-armhf</exclude>
-                <exclude>org.bytedeco:*:jar:android-x86</exclude>
-                <exclude>org.bytedeco:*:jar:android-arm</exclude>
-                <!-- (We specify all variants: ending "*x86" leads to a bug in maven-assembly-plugin 3.4.2) -->
-            </excludes>
+            <!-- Excluding 32-bit version (not necessary for most applications):
+            see https://github.com/bytedeco/javacpp/issues/644 ;
+            not necessary in 1.5.11 and later versions (they do not include 32-bit JARs) -->
+<!--            <excludes>-->
+<!--                <exclude>org.bytedeco:*:jar:windows-x86</exclude>-->
+<!--                <exclude>org.bytedeco:*:jar:linux-x86</exclude>-->
+<!--                <exclude>org.bytedeco:*:jar:linux-armhf</exclude>-->
+<!--                <exclude>org.bytedeco:*:jar:android-x86</exclude>-->
+<!--                <exclude>org.bytedeco:*:jar:android-arm</exclude>-->
+<!--                 (We specify all variants: ending "*x86" leads to a bug in maven-assembly-plugin 3.4.2) -->
+<!--            </excludes>-->
             <outputDirectory>/java/lib/javacpp</outputDirectory>
         </dependencySet>
 

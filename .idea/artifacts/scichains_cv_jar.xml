@@ -13,67 +13,51 @@
       </element>
       <element id="library" level="project" name="Maven: jakarta.json:jakarta.json-api:2.1.3" />
       <element id="library" level="project" name="Maven: black.ninia:jep:4.2.0" />
-      <element id="library" level="project" name="Maven: org.eclipse.parsson:jakarta.json:1.1.5" />
       <element id="archive" name="executors-cv.jar">
         <element id="module-output" name="scichains-cv" />
         <element id="module-test-output" name="scichains-cv" />
       </element>
-      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:4.4.12" />
-      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:test-jar:tests:4.4.12" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv-platform-gpu:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:javacpp-platform:1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:android-arm64:1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:android-arm:1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:android-x86:1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:android-x86_64:1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:ios-arm64:1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:ios-x86_64:1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:linux-arm64:1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:linux-armhf:1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:linux-ppc64le:1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:linux-x86:1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:linux-x86_64:1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:macosx-arm64:1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:macosx-x86_64:1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:windows-x86:1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:windows-x86_64:1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:openblas-platform:0.3.21-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:openblas:0.3.21-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:openblas:android-arm64:0.3.21-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:openblas:android-arm:0.3.21-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:openblas:android-x86:0.3.21-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:openblas:android-x86_64:0.3.21-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:openblas:ios-arm64:0.3.21-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:openblas:ios-x86_64:0.3.21-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:openblas:linux-arm64:0.3.21-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:openblas:linux-armhf:0.3.21-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:openblas:linux-ppc64le:0.3.21-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:openblas:linux-x86:0.3.21-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:openblas:linux-x86_64:0.3.21-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:openblas:macosx-arm64:0.3.21-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:openblas:macosx-x86_64:0.3.21-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:openblas:windows-x86:0.3.21-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:openblas:windows-x86_64:0.3.21-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv-platform:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv:android-arm64:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv:android-arm:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv:android-x86:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv:android-x86_64:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv:ios-arm64:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv:ios-x86_64:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv:linux-arm64:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv:linux-armhf:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv:linux-ppc64le:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv:linux-x86:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv:linux-x86_64-gpu:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv:linux-x86_64:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv:macosx-arm64:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv:macosx-x86_64:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv:windows-x86:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv:windows-x86_64-gpu:4.6.0-1.5.8" />
-      <element id="library" level="project" name="Maven: org.bytedeco:opencv:windows-x86_64:4.6.0-1.5.8" />
+      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:4.4.13" />
+      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:test-jar:tests:4.4.13" />
+      <element id="library" level="project" name="Maven: net.algart:algart:1.4.23" />
+      <element id="library" level="project" name="Maven: org.bytedeco:javacpp-platform:1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:android-arm64:1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:android-x86_64:1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:ios-arm64:1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:ios-x86_64:1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:linux-arm64:1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:linux-ppc64le:1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:linux-x86_64:1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:macosx-arm64:1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:macosx-x86_64:1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:javacpp:windows-x86_64:1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:openblas-platform:0.3.28-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:openblas:0.3.28-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:openblas:android-arm64:0.3.28-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:openblas:android-x86_64:0.3.28-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:openblas:ios-arm64:0.3.28-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:openblas:ios-x86_64:0.3.28-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:openblas:linux-arm64:0.3.28-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:openblas:linux-x86_64:0.3.28-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:openblas:macosx-arm64:0.3.28-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:openblas:macosx-x86_64:0.3.28-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:openblas:windows-x86_64:0.3.28-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:opencv-platform-gpu:4.10.0-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:opencv-platform:4.10.0-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:opencv:4.10.0-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:opencv:android-arm64:4.10.0-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:opencv:android-x86_64:4.10.0-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:opencv:ios-arm64:4.10.0-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:opencv:ios-x86_64:4.10.0-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:opencv:linux-arm64:4.10.0-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:opencv:linux-x86_64-gpu:4.10.0-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:opencv:linux-x86_64:4.10.0-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:opencv:macosx-arm64:4.10.0-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:opencv:macosx-x86_64:4.10.0-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:opencv:windows-x86_64-gpu:4.10.0-1.5.11" />
+      <element id="library" level="project" name="Maven: org.bytedeco:opencv:windows-x86_64:4.10.0-1.5.11" />
+      <element id="library" level="project" name="Maven: org.eclipse.parsson:jakarta.json:1.1.5" />
       <element id="library" level="project" name="Maven: org.graalvm.js:js-language:24.0.2" />
       <element id="library" level="project" name="Maven: org.graalvm.js:js-scriptengine:24.0.2" />
       <element id="library" level="project" name="Maven: org.graalvm.polyglot:polyglot:24.0.2" />
@@ -88,7 +72,6 @@
       <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-compiler:24.0.2" />
       <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-enterprise:24.0.2" />
       <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-runtime:24.0.2" />
-      <element id="library" level="project" name="Maven: net.algart:algart:1.4.23" />
     </root>
   </artifact>
 </component>
