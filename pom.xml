@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.algart.executors</groupId>
     <artifactId>scichains-cv</artifactId>
-    <version>4.4.13</version>
+    <version>4.4.14</version>
 
     <name>SciChains computer vision, base functions</name>
     <description>Open-source libraries, providing the base functions for SciChains product in area of computer vision.</description>
@@ -51,7 +51,7 @@
 
         <build.directory>${project.build.directory}/build</build.directory>
 
-        <net.algart.scichains-core.version>4.4.13</net.algart.scichains-core.version>
+        <net.algart.scichains-core.version>4.4.14</net.algart.scichains-core.version>
         <javacpp.version>1.5.11</javacpp.version>
         <opencv.version>4.10.0-1.5.11</opencv.version>
         <openblas.version>0.3.28-1.5.11</openblas.version>
