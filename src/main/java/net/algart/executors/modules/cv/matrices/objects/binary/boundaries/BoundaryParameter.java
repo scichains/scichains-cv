@@ -123,22 +123,19 @@ public enum BoundaryParameter {
             Boundary2DSimpleMeasurer measurer,
             double pixelSize) {
         switch (this) {
-            case CENTROID: {
+            case CENTROID -> {
                 result.addDouble(measurer.centroidX() * pixelSize);
                 result.addDouble(measurer.centroidY() * pixelSize);
-                break;
             }
-            case CONTAINING_RECTANGLE: {
+            case CONTAINING_RECTANGLE -> {
                 double minX = measurer.minX() * pixelSize;
                 double minY = measurer.minY() * pixelSize;
                 double maxX = measurer.maxX() * pixelSize;
                 double maxY = measurer.maxY() * pixelSize;
                 addRectangle(result, minX, minY, maxX, maxY);
-                break;
             }
-            default: {
+            default -> {
                 result.addDouble(getStatistics(measurer, pixelSize));
-                break;
             }
         }
     }
