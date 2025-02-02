@@ -105,6 +105,6 @@ public final class TransformContours extends NumbersFilter implements ReadOnlyEx
                 contours.numberOfContours(), result.numberOfContours(),
                 (t2 - t1) * 1e-6, (t2 - t1) * 1e-3 / (double) contours.numberOfContours()));
         getScalar(ScanAndMeasureBoundaries.OUTPUT_NUMBER_OF_OBJECTS).setTo(result.numberOfContours());
-        return SNumbers.valueOf(result);
+        return SNumbers.of(result);
     }
 }

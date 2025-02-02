@@ -259,10 +259,10 @@ public final class DrawContours extends MultiMatrix2DFilter {
         for (int k = 0, n = contours.numberOfContours(); k < n; k++) {
             for (Matrix<? extends UpdatablePArray> channel : resultChannels) {
                 drawContour(channel.cast(UpdatablePFixedArray.class), contours, k, originPoint, rnd);
-                // - actually element type is always byte or int
+                // - actually, the element type is always byte or int
             }
         }
-        MultiMatrix2D result = MultiMatrix.valueOf2D(resultChannels);
+        MultiMatrix2D result = MultiMatrix.of2D(resultChannels);
         if (background != null && drawnFeatures.incrementing) {
             final Selector selector = new Selector();
             selector.setSelectorType(Selector.SelectorType.BINARY_MATRIX);

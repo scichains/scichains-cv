@@ -219,6 +219,6 @@ public final class ScanAndExtractContours extends MultiMatrixToNumbers {
         if (isOutputNecessary(OUTPUT_SEGMENT_CENTERS_PERIMETER)) {
             getNumbers(OUTPUT_SEGMENT_CENTERS_PERIMETER).setTo(segmentCentersPerimeter, 1);
         }
-        return SNumbers.valueOf(contours);
+        return SNumbers.of(contours);
     }
 }

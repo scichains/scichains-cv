@@ -52,7 +52,7 @@ public final class MedianTestAndFinalizingWhileGc {
         }
         final Median median = new Median();
         median.setKernelSize(5);
-        median.getInputMatContainer().setTo(MultiMatrix.valueOf2DRGBA(image));
+        median.getInputMatContainer().setTo(MultiMatrix.of2DRGBA(image));
         median.execute();
         final Mat resMat = O2SMat.toMat(median.getMat());
         opencv_imgcodecs.imwrite(targetFile.toString(), resMat);

@@ -108,7 +108,7 @@ public final class ChangeContourHeaders extends SeveralNumbersOperation implemen
         }
         long m3 = rt.totalMemory() - rt.freeMemory();
         long t3 = debugTime();
-        final SNumbers result = SNumbers.valueOf(resultContours);
+        final SNumbers result = SNumbers.of(resultContours);
         long m4 = rt.totalMemory() - rt.freeMemory();
         long t4 = debugTime();
         logDebug(() -> String.format(Locale.US,

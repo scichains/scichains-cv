@@ -156,12 +156,12 @@ public sealed class SimpleThreshold extends MultiMatrixFilter permits SimpleThre
         final double inValue = invert ? 0.0 : 1.0;
         final double outValue = invert ? 1.0 : 0.0;
         long t1 = debugTime();
-        MultiMatrix result = MultiMatrix.valueOfMono(Matrices.asFuncMatrix(
+        MultiMatrix result = MultiMatrix.ofMono(Matrices.asFuncMatrix(
                 RectangularFunc.getInstance(min * scale, max * scale, inValue, outValue),
                 BitArray.class, intensity)).clone();
         long t2 = debugTime();
         if (hysteresis) {
-            final MultiMatrix2D hysteresisResult = MultiMatrix.valueOf2DMono(Matrices.asFuncMatrix(
+            final MultiMatrix2D hysteresisResult = MultiMatrix.of2DMono(Matrices.asFuncMatrix(
                     RectangularFunc.getInstance(hysteresisMin * scale, hysteresisMax * scale, inValue, outValue),
                     BitArray.class, intensity)).clone();
             try (FindConnectedWithMask filter = new FindConnectedWithMask()) {

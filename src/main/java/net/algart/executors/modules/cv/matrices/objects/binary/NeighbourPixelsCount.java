@@ -125,7 +125,7 @@ public final class NeighbourPixelsCount extends BitMultiMatrixFilter {
                 Matrices.asFuncMatrix(
                         LinearFunc.getNonweightedInstance(0.0, 1.0, shifted.size()),
                         IntArray.class, shifted));
-        getMat(OUTPUT_Q).setTo(MultiMatrix.valueOf2DMono(reduce(counter)));
+        getMat(OUTPUT_Q).setTo(MultiMatrix.of2DMono(reduce(counter)));
         final Matrix<BitArray> result = Matrices.asFuncMatrix(
                 RectangularFunc.getInstance(
                         minNumberOfNeighbours + 1, maxNumberOfNeighbours + 1, 1.0, 0.0),

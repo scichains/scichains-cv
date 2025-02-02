@@ -122,7 +122,7 @@ public final class UnpackContours extends NumbersFilter implements ReadOnlyExecu
                 "%d contours unpacked in %.3f ms",
                 result.numberOfContours(), (t2 - t1) * 1e-6));
         getScalar(ScanAndMeasureBoundaries.OUTPUT_NUMBER_OF_OBJECTS).setTo(result.numberOfContours());
-        return SNumbers.valueOf(result);
+        return SNumbers.of(result);
     }
 
     private void clearCache() {

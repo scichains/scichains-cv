@@ -98,7 +98,7 @@ public final class SetPixels extends Executor implements ReadOnlyExecutionInput 
 
     public MultiMatrix2D process(SNumbers pixels, long dimX, long dimY, MultiMatrix2D background) {
         final Matrix<BitArray> mask = Matrices.matrix(Arrays.nBitCopies(dimX * dimY, true), dimX, dimY);
-        return process(pixels, MultiMatrix.valueOf2DMono(mask), background);
+        return process(pixels, MultiMatrix.of2DMono(mask), background);
     }
 
     public MultiMatrix2D process(SNumbers pixels, MultiMatrix2D mask, MultiMatrix2D background) {
@@ -108,7 +108,7 @@ public final class SetPixels extends Executor implements ReadOnlyExecutionInput 
         }
         final long[] dimensions = mask != null ? mask.dimensions() : background.dimensions();
         if (mask == null) {
-            mask = MultiMatrix.valueOf2DMono(
+            mask = MultiMatrix.of2DMono(
                     Matrices.constantMatrix(1.0, BitArray.class, dimensions));
         }
         if (background != null && !mask.dimEquals(background)) {
@@ -157,6 +157,6 @@ public final class SetPixels extends Executor implements ReadOnlyExecutionInput 
             result.add(Matrices.clone(Matrices.asPrecision(channel, elementType)));
             // - cloneMatrix allows to free memory, allocated by channel matrix
         }
-        return MultiMatrix.valueOf2D(result);
+        return MultiMatrix.of2D(result);
     }
 }

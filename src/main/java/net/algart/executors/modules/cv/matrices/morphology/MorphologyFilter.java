@@ -67,7 +67,7 @@ public abstract class MorphologyFilter extends MultiMatrixChannelFilter {
 
         public abstract Pattern newPattern(int numberOfDimensions, int patternSize);
 
-        public static Shape valueOfName(String name) {
+        public static Shape of(String name) {
             for (Shape shape : values()) {
                 if (shape.name().equals(name)) {
                     return shape;
@@ -189,7 +189,7 @@ public abstract class MorphologyFilter extends MultiMatrixChannelFilter {
     public void onChangeParameter(String name) {
         switch (name) {
             case "shape" -> {
-                setPattern(Shape.valueOfName(parameters().getString(name).toUpperCase()), patternSize);
+                setPattern(Shape.of(parameters().getString(name).toUpperCase()), patternSize);
             }
             case "patternSize" -> {
                 setPattern(shape, parameters().getInteger(name));

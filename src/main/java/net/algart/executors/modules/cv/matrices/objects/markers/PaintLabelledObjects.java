@@ -256,7 +256,7 @@ public final class PaintLabelledObjects extends MultiMatrix2DFilter {
             }
             coloredChannels.add(matrix);
         }
-        final MultiMatrix2D result = MultiMatrix.valueOf2D(coloredChannels);
+        final MultiMatrix2D result = MultiMatrix.of2D(coloredChannels);
         return rawValues ? result : result.asPrecision(elementType);
     }
 }

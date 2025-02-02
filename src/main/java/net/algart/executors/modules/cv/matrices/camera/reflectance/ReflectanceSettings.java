@@ -215,7 +215,7 @@ public class ReflectanceSettings extends AbstractConvertibleToJson {
         this.reflectanceJsonFile = file;
         this.version = json.getString("version", CURRENT_VERSION);
         final String type = json.getString("type", ParameterValueType.STRING.typeName());
-        this.type = ReflectanceTranslationType.valueOfTypeNameOrNull(type);
+        this.type = ReflectanceTranslationType.ofOrNull(type);
         Jsons.requireNonNull(this.type, json,
                 "type", "unknown translation type (\"" + type + "\")", file);
         this.translation = this.type.newSettings(Jsons.reqJsonObject(json, "translation", file));
@@ -232,12 +232,12 @@ public class ReflectanceSettings extends AbstractConvertibleToJson {
         Files.writeString(reflectanceJsonFile, Jsons.toPrettyString(toJson()), options);
     }
 
-    public static ReflectanceSettings valueOf(JsonObject reflectanceJson) {
+    public static ReflectanceSettings of(JsonObject reflectanceJson) {
         return new ReflectanceSettings(reflectanceJson, null);
     }
 
-    public static ReflectanceSettings valueOf(String reflectanceJsonString) {
-        return valueOf(Jsons.toJson(reflectanceJsonString));
+    public static ReflectanceSettings of(String reflectanceJsonString) {
+        return of(Jsons.toJson(reflectanceJsonString));
     }
 
     public static boolean isReflectanceJson(JsonObject reflectanceJson) {

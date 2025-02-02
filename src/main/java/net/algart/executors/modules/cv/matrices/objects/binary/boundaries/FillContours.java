@@ -218,7 +218,7 @@ public final class FillContours extends MultiMatrix2DFilter implements ReadOnlyE
                 .setNeedToUnpackDiagonals(needToProcessDiagonals);
         long t3 = debugTime(), t4;
         if (sizeX == 0 || sizeY == 0) {
-            result = MultiMatrix.valueOf2DMono(Arrays.SMM.newIntMatrix(sizeX, sizeY));
+            result = MultiMatrix.of2DMono(Arrays.SMM.newIntMatrix(sizeX, sizeY));
             t4 = t3;
         } else {
             contourFiller.setLabelsMap(labelsMap);
@@ -230,7 +230,7 @@ public final class FillContours extends MultiMatrix2DFilter implements ReadOnlyE
             contourFiller.findAndSortNecessaryContours();
             t4 = debugTime();
             contourFiller.fillNecessaryContours();
-            result = MultiMatrix.valueOf2DMono(contourFiller.getLabels());
+            result = MultiMatrix.of2DMono(contourFiller.getLabels());
         }
         long t5 = debugTime();
         logDebug(() -> String.format(Locale.US,

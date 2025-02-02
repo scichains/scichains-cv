@@ -70,7 +70,7 @@ public interface MLKind {
             return modelName;
         }
 
-        public static Optional<MLKind> valueOfModelName(String modelName) {
+        public static Optional<MLKind> of(String modelName) {
             Objects.requireNonNull(modelName, "Null modelName");
             for (StatModelBased kind : values()) {
                 if (kind.modelName.equals(modelName)) {

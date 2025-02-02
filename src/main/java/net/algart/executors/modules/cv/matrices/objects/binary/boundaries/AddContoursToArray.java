@@ -95,7 +95,7 @@ public final class AddContoursToArray extends SeveralNumbersOperation implements
             }
         }
         getScalar(ScanAndMeasureBoundaries.OUTPUT_NUMBER_OF_OBJECTS).setTo(contours.numberOfContours());
-        return SNumbers.valueOf(contours);
+        return SNumbers.of(contours);
     }
 
     @Override

@@ -55,7 +55,7 @@ public final class Derivatives extends MultichannelDerivativesFilter {
         for (Matrix<? extends PArray> sourceChannel : sourceChannels) {
             processed.add(processChannel(sourceChannel));
         }
-        return MultiMatrix.valueOf2DMono(combineResult(source.arrayType(), processed));
+        return MultiMatrix.of2DMono(combineResult(source.arrayType(), processed));
     }
 
     public Matrix<? extends PFloatingArray> processChannel(Matrix<? extends PArray> m) {

@@ -163,7 +163,7 @@ public final class SkeletonPixelTypes extends BitMultiMatrixFilter {
         Matrix<? extends PArray> pixelTypes = Matrices.clone(
                 skeletonPixelClassifier.asPixelTypes(
                         bitMatrix.cast(BitArray.class), NEIGHBOUR_INDEX_OF_ATTACHED_NODE));
-        getMat(OUTPUT_TYPE_CODES).setTo(MultiMatrix.valueOf2DMono(reduce(pixelTypes)));
+        getMat(OUTPUT_TYPE_CODES).setTo(MultiMatrix.of2DMono(reduce(pixelTypes)));
         final double yesValue = invert ? 0.0 : 1.0;
         final double noValue = invert ? 1.0 : 0.0;
         Matrix<? extends PArray> result = Matrices.clone(Matrices.asFuncMatrix(

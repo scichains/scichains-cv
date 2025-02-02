@@ -93,7 +93,7 @@ public final class RectanglesToContours extends NumbersFilter implements ReadOnl
                 contours.addContour(header, rectangularContour);
             }
         }
-        return SNumbers.valueOf(contours);
+        return SNumbers.of(contours);
     }
 
     private static int inc(int i) {

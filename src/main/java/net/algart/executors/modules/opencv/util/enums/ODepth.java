@@ -46,7 +46,7 @@ public enum ODepth {
         return maxValue;
     }
 
-    public static ODepth valueOf(int code) {
+    public static ODepth of(int code) {
         for (ODepth value : values()) {
             if (value.code == code) {
                 return value;

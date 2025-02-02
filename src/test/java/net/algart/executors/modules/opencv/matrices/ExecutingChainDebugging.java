@@ -54,7 +54,7 @@ public final class ExecutingChainDebugging {
         var chainJson = ChainSpecification.read(chainFile);
         System.out.printf("Reading %s%n", chainFile);
         @SuppressWarnings("resource")
-        Chain chain = Chain.valueOf(null, executorProvider, chainJson);
+        Chain chain = Chain.of(null, executorProvider, chainJson);
         chain.setMultithreading(true);
         chain.setExecuteAll(true);
         chain.reinitializeAll();

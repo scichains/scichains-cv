@@ -148,7 +148,7 @@ public final class ScanAndMeasureBoundaries extends AbstractScanAndMeasureBounda
 
     static MultiMatrix2D getLabels(BoundariesScanner scanner) {
         final Matrix<? extends PArray> labels = scanner.getLabels();
-        return labels == null ? null : MultiMatrix.valueOf2DMono(labels);
+        return labels == null ? null : MultiMatrix.of2DMono(labels);
     }
 
     private static Map<BoundaryParameter, SNumbers> convertMap(Map<String, SNumbers> statistics) {

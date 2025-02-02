@@ -73,6 +73,6 @@ public final class ExtractContoursRange extends NumbersFilter implements ReadOnl
             contours.removeContoursRange(firstIndex, toIndex);
             getNumbers(OUTPUT_OTHER_CONTOURS).setTo(contours);
         }
-        return SNumbers.valueOf(result);
+        return SNumbers.of(result);
     }
 }

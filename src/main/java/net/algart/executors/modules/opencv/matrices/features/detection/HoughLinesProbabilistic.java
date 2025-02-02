@@ -97,7 +97,7 @@ public final class HoughLinesProbabilistic extends MatToNumbers {
                     threshold,
                     minLineLength,
                     maxLineGap);
-            return SNumbers.valueOfArray(OTools.toIntArray(linesVector), 4);
+            return SNumbers.ofArray(OTools.toIntArray(linesVector), 4);
         }
     }
 

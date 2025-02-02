@@ -44,6 +44,6 @@ public final class PackContours extends NumbersFilter implements ReadOnlyExecuti
         final Contours contours = Contours.deserialize(source.toIntArray());
         final Contours result = contours.packContours();
         getScalar(ScanAndMeasureBoundaries.OUTPUT_NUMBER_OF_OBJECTS).setTo(result.numberOfContours());
-        return SNumbers.valueOf(result);
+        return SNumbers.of(result);
     }
 }

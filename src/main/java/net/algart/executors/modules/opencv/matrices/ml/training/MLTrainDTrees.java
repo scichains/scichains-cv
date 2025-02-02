@@ -171,7 +171,7 @@ abstract class MLTrainDTrees extends AbstractMLTrain {
         if (priors.length == 0) {
             return null;
         }
-        final SNumbers result = SNumbers.valueOfArray(priors, 1);
+        final SNumbers result = SNumbers.ofArray(priors, 1);
         return O2SMat.numbersToMulticolumn32BitMat(result, false);
     }
 

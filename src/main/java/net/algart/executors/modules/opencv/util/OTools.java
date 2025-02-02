@@ -68,15 +68,15 @@ public final class OTools {
     }
 
     public static SMat.Depth depth(int openCVDepth) {
-        return SMat.Depth.valueOf(openCVDepth);
+        return SMat.Depth.of(openCVDepth);
     }
 
     public static SMat.Depth depth(Mat mat) {
-        return SMat.Depth.valueOf(mat.depth());
+        return SMat.Depth.of(mat.depth());
     }
 
     public static SMat.Depth depth(UMat mat) {
-        return SMat.Depth.valueOf(mat.depth());
+        return SMat.Depth.of(mat.depth());
     }
 
     public static Class<?> elementType(Mat mat) {
@@ -88,20 +88,14 @@ public final class OTools {
     }
 
     public static double maxPossibleValue(int depth) {
-        switch (depth) {
-            case opencv_core.CV_8U:
-                return 255;
-            case opencv_core.CV_8S:
-                return 127;
-            case opencv_core.CV_16U:
-                return 65535;
-            case opencv_core.CV_16S:
-                return 32767;
-            case opencv_core.CV_32S:
-                return Integer.MAX_VALUE;
-            default:
-                return 1.0;
-        }
+        return switch (depth) {
+            case opencv_core.CV_8U -> 255;
+            case opencv_core.CV_8S -> 127;
+            case opencv_core.CV_16U -> 65535;
+            case opencv_core.CV_16S -> 32767;
+            case opencv_core.CV_32S -> Integer.MAX_VALUE;
+            default -> 1.0;
+        };
     }
 
     public static boolean isFloatingPoint(int depth) {

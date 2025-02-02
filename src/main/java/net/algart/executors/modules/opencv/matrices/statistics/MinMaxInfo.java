@@ -43,14 +43,14 @@ public final class MinMaxInfo extends UMatToNumbers implements ReadOnlyExecution
 
     @Override
     public SNumbers analyse(Mat source) {
-        return SNumbers.valueOfArray(minMax(
+        return SNumbers.ofArray(minMax(
                 source,
                 O2SMat.toMat(getInputMat(INPUT_MASK, true), true)));
     }
 
     @Override
     public SNumbers analyse(UMat source) {
-        return SNumbers.valueOfArray(minMax(
+        return SNumbers.ofArray(minMax(
                 source,
                 O2SMat.toUMat(getInputMat(INPUT_MASK, true), true)));
     }

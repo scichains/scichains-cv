@@ -99,7 +99,7 @@ public final class LocalContrast extends RankMorphologyFilter {
                         pattern,
                         contrastingFunc));
         if (grayscale) {
-            return MultiMatrix.valueOf2DMono(contrasted);
+            return MultiMatrix.of2DMono(contrasted);
         } else {
             final List<Matrix<? extends PArray>> channels = new ArrayList<>();
             for (int currentChannel = 0; currentChannel < numberOfChannels; currentChannel++) {
@@ -117,13 +117,13 @@ public final class LocalContrast extends RankMorphologyFilter {
                 };
                 channels.add(Matrices.asFuncMatrix(f, m.type(PArray.class), m, contrasted, intensity));
             }
-            return MultiMatrix.valueOf(channels);
+            return MultiMatrix.of(channels);
         }
     }
 
     @Override
     protected Matrix<? extends PArray> processChannel(Matrix<? extends PArray> m) {
-        return process(MultiMatrix.valueOfMono(m)).intensityChannel();
+        return process(MultiMatrix.ofMono(m)).intensityChannel();
         // - should not be called while normal usage, but if someone call it, we provide correct result
     }
 

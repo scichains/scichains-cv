@@ -211,7 +211,7 @@ public final class ExtractContoursInRectangle extends NumbersFilter implements R
         if (otherContoursNecessary) {
             getNumbers(OUTPUT_OTHER_CONTOURS).setTo(otherContours);
         }
-        return resultNecessary ? SNumbers.valueOf(result) : null;
+        return resultNecessary ? SNumbers.of(result) : null;
     }
 
     @Override

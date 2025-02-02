@@ -83,7 +83,7 @@ public final class SimpleNearestCenters extends MultiMatrix2DFilter {
         final FindNearestPoint findingFunc = new FindNearestPoint(x, y);
         Matrices.copy(null, result, Matrices.asCoordFuncMatrix(findingFunc, IntArray.class, dimX, dimY));
         // - multithreaded filling
-        return MultiMatrix.valueOf2DMono(result);
+        return MultiMatrix.of2DMono(result);
     }
 
     @Override

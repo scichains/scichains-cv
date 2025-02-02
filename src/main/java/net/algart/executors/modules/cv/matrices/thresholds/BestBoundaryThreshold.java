@@ -73,7 +73,7 @@ public final class BestBoundaryThreshold extends MultiMatrix2DFilter {
         final double outValue = invert ? 0.0 : 1.0;
         final RectangularFunc f = RectangularFunc.getInstance(0, thresholdMax, inValue, outValue);
         final Matrix<BitArray> result = Matrices.asFuncMatrix(f, BitArray.class, intensity);
-        return MultiMatrix.valueOf2DMono(result);
+        return MultiMatrix.of2DMono(result);
     }
 
     public int findThreshold(

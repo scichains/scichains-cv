@@ -113,9 +113,9 @@ public final class AngleGradient extends SeveralMultiMatricesOperation {
                 angleDistanceMetric.asAngleDifference(vx, vy, vxDown, vyDown, FloatArray.class));
         final Matrix<? extends FloatArray> magnitude = combiningDerivativesMetric.combine(
                 FloatArray.class, Arrays.asList(angleDX, angleDY), new double[0], additionalMultiplier);
-        this.angleGradientDX = MultiMatrix.valueOf2DMono(multiply(angleDX, additionalMultiplier));
-        this.angleGradientDY = MultiMatrix.valueOf2DMono(multiply(angleDY, additionalMultiplier));
-        this.angleGradientMagnitude = MultiMatrix.valueOf2DMono(magnitude);
+        this.angleGradientDX = MultiMatrix.of2DMono(multiply(angleDX, additionalMultiplier));
+        this.angleGradientDY = MultiMatrix.of2DMono(multiply(angleDY, additionalMultiplier));
+        this.angleGradientMagnitude = MultiMatrix.of2DMono(magnitude);
         getMat(OUTPUT_ANGLE_DX).setTo(angleGradientDX);
         getMat(OUTPUT_ANGLE_DY).setTo(angleGradientDY);
         return this.angleGradientMagnitude;

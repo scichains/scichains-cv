@@ -102,7 +102,7 @@ public final class ConvertPrecision extends VoidResultUMatFilter implements Read
             case AUTO:
                 return resultDepth == ODepthOrUnchanged.UNCHANGED ?
                         1.0 :
-                        resultDepth.maxValue() / ODepth.valueOf(currentDepth).maxValue();
+                        resultDepth.maxValue() / ODepth.of(currentDepth).maxValue();
             case RAW:
                 return 1.0;
             case CUSTOM:

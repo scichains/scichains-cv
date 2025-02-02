@@ -79,7 +79,7 @@ public final class ReindexLabels extends MultiMatrix2DFilter {
                 "Labels %s reindexed: %.3f ms",
                 labels, (t2 - t1) * 1e-6));
         getNumbers(OUTPUT_RESTORING_TABLE).setTo(reindexTable, 1);
-        return MultiMatrix.valueOf2DMono(Matrix.as(labelsArray, labels.dimensions()));
+        return MultiMatrix.of2DMono(Matrix.as(labelsArray, labels.dimensions()));
     }
 
     public static int[] reindex(int[] labels, int indexingBase, boolean includeReservedInRestoringTable) {

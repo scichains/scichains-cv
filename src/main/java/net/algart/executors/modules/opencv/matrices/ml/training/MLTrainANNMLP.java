@@ -442,7 +442,7 @@ public final class MLTrainANNMLP extends AbstractMLTrain {
         System.arraycopy(hiddenLayerSizes, 0, layerSizes, 1, hiddenLayerSizes.length);
         layerSizes[0] = sampleLength;
         layerSizes[layerSizes.length - 1] = responseLength;
-        final SNumbers result = SNumbers.valueOfArray(layerSizes, 1);
+        final SNumbers result = SNumbers.ofArray(layerSizes, 1);
         return O2SMat.numbersToMulticolumn32BitMat(result, true);
     }
 
@@ -453,8 +453,8 @@ public final class MLTrainANNMLP extends AbstractMLTrain {
         training.setHiddenLayerSizes(layersSizes);
         training.setUseGPU(false);
         training.trainNumbers(new MLStatModelTrainer(model, MLKind.StatModelBased.ANN_MLP),
-                SNumbers.valueOfArray(new float[]{1.0f, 1.0f}, 1),
-                SNumbers.valueOfArray(new float[]{1.0f, 1.0f}, 1), null);
+                SNumbers.ofArray(new float[]{1.0f, 1.0f}, 1),
+                SNumbers.ofArray(new float[]{1.0f, 1.0f}, 1), null);
         System.out.println("OK 2");
         for (int k = 0; k < layersSizes.length + 2; k++) {
             final Mat weightsMat = model.getWeights(k);

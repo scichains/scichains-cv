@@ -46,7 +46,7 @@ public final class ChangePrecisionTest {
         }
         final Path sourceFile = Paths.get(args[0]);
         final String elementType = args[1];
-        MultiMatrix image = MultiMatrix.valueOf2DRGBA(MatrixIO.readImage(sourceFile));
+        MultiMatrix image = MultiMatrix.of2DRGBA(MatrixIO.readImage(sourceFile));
         SMat m;
         Mat mat;
         try (ChangePrecision cc = new ChangePrecision()) {

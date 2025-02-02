@@ -134,7 +134,7 @@ public final class HoughCircles extends MatToNumbers {
                     circlesAndVotes[disp + 2] *= 2.0;
                     // - replace radius with diameter
                 }
-                final SNumbers result = SNumbers.valueOfArray(circlesAndVotes, 4);
+                final SNumbers result = SNumbers.ofArray(circlesAndVotes, 4);
                 getNumbers(OUTPUT_VOTES).exchange(result.columnRange(3, 1));
                 return result.columnRange(0, 3);
             }

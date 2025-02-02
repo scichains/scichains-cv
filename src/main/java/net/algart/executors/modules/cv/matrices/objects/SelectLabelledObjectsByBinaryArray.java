@@ -114,7 +114,7 @@ public final class SelectLabelledObjectsByBinaryArray extends MultiMatrix2DFilte
         }
         final Matrix<UpdatableBitArray> selected = Arrays.SMM.newBitMatrix(labelsMatrix.dimensions());
         selected.array().setData(0, selectedArray);
-        final MultiMatrix2D selectedMatrix = MultiMatrix.valueOf2DMono(selected);
+        final MultiMatrix2D selectedMatrix = MultiMatrix.of2DMono(selected);
         getMat(OUTPUT_SELECTED).setTo(selectedMatrix);
         if (baseMatrix == null) {
             return actionOnBase == ActionOnBase.REMOVE_SELECTED_FROM_BASE ?

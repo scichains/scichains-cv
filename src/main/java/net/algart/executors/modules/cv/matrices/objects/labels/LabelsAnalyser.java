@@ -113,7 +113,7 @@ public final class LabelsAnalyser {
             boolean rawValues) {
         Objects.requireNonNull(image, "Null image");
         Objects.requireNonNull(levels, "Null levels");
-        image.checkDimensionEquality(MultiMatrix.valueOf2DMono(levels),
+        image.checkDimensionEquality(MultiMatrix.of2DMono(levels),
                 "image", "levels");
         List<Matrix<? extends PArray>> channelList = new ArrayList<>(image.allChannels());
         channelList.add(levels);

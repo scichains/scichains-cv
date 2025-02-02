@@ -148,7 +148,7 @@ public class TestBorderPixels extends MatToNumbers implements ReadOnlyExecutionI
         BorderStatistics statistics = findBorderStatistics(source, outsideIndent);
         getScalar(OUTPUT_DIM_X).setTo(statistics.dimX());
         getScalar(OUTPUT_DIM_Y).setTo(statistics.dimY());
-        final SNumbers result = SNumbers.valueOfArray(statistics.elementsAtBounds());
+        final SNumbers result = SNumbers.ofArray(statistics.elementsAtBounds());
         if (statistics.isEmpty()) {
             return result;
         }

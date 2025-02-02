@@ -278,7 +278,7 @@ public final class LocalExtremums extends MultiMatrixToNumbers {
             }
         }
         long t5 = System.nanoTime();
-        this.resultExtremumsMask = MultiMatrix.valueOf2DMono(extremumsMaskMatrix);
+        this.resultExtremumsMask = MultiMatrix.of2DMono(extremumsMaskMatrix);
         SNumbers result = postprocess(extremumsXY);
         dilateExtremumsMask();
         long t6 = System.nanoTime();
@@ -320,7 +320,7 @@ public final class LocalExtremums extends MultiMatrixToNumbers {
     private SNumbers postprocess(IntArray extremumsXY) {
         if (resultAtPlateau == ResultAtPlateau.ALL_PIXELS) {
             final PArray result = Arrays.asFuncArray(Func.IDENTITY, FloatArray.class, extremumsXY);
-            return SNumbers.valueOfArray(result.toJavaArray(), 2);
+            return SNumbers.ofArray(result.toJavaArray(), 2);
         }
         if (resultAtPlateau == ResultAtPlateau.CENTROID_OF_CIRCLE) {
             dilateExtremumsMask();
@@ -344,7 +344,7 @@ public final class LocalExtremums extends MultiMatrixToNumbers {
                 mask.array().setBitNoSync(y * dimX + x);
             }
         }
-        resultExtremumsMask = MultiMatrix.valueOf2DMono(mask);
+        resultExtremumsMask = MultiMatrix.of2DMono(mask);
         return result;
     }
 

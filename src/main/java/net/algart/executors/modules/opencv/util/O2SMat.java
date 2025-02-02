@@ -54,14 +54,14 @@ public final class O2SMat {
         if (multiMatrix.elementType() == boolean.class) {
             multiMatrix = multiMatrix.asPrecision(byte.class);
         }
-        return toMat(SMat.valueOf(multiMatrix));
+        return toMat(SMat.of(multiMatrix));
     }
 
     public static UMat toUMat(MultiMatrix2D multiMatrix) {
         if (multiMatrix.elementType() == boolean.class) {
             multiMatrix = multiMatrix.asPrecision(byte.class);
         }
-        return toUMat(SMat.valueOf(multiMatrix));
+        return toUMat(SMat.of(multiMatrix));
     }
 
     public static MultiMatrix2D toMultiMatrix(Mat mat) {
@@ -150,7 +150,7 @@ public final class O2SMat {
     }
 
     public static Mat toMat(Matrix<? extends PArray> interleavedChannels, boolean autoConvertPackedBits) {
-        return toMat(SMat.valueOfInterleavedMatrix(interleavedChannels), autoConvertPackedBits);
+        return toMat(SMat.ofInterleaved(interleavedChannels), autoConvertPackedBits);
     }
 
     public static UMat toUMat(Matrix<? extends PArray> interleavedChannels) {
@@ -158,7 +158,7 @@ public final class O2SMat {
     }
 
     public static UMat toUMat(Matrix<? extends PArray> interleavedChannels, boolean autoConvertPackedBits) {
-        return toUMat(SMat.valueOfInterleavedMatrix(interleavedChannels), autoConvertPackedBits);
+        return toUMat(SMat.ofInterleaved(interleavedChannels), autoConvertPackedBits);
     }
 
     public static SMat toSMat(Mat mat) {
@@ -194,7 +194,7 @@ public final class O2SMat {
         final Object javaArray = array.toJavaArray();
         // - In current version, all element types, supported by Mat, are also supported by numbers array.
         // In any case, if it is not so, the next method will throw an exception.
-        return SNumbers.valueOfArray(javaArray, blockLength);
+        return SNumbers.ofArray(javaArray, blockLength);
     }
 
     public static SNumbers toRawNumbers(UMat mat, int blockLength) {
@@ -206,7 +206,7 @@ public final class O2SMat {
         final Object javaArray = array.toJavaArray();
         // - In current version, all element types, supported by Mat, are also supported by numbers array.
         // In any case, if it is not so, the next method will throw an exception.
-        return SNumbers.valueOfArray(javaArray, blockLength);
+        return SNumbers.ofArray(javaArray, blockLength);
     }
 
     public static SMat setToOrRemove(SMat result, Mat mat) {
@@ -284,10 +284,10 @@ public final class O2SMat {
                     + " must be 1");
         }
         final int numberOfChannels = packedByRows.cols();
-        return SMat.valueOf(
+        return SMat.of(
                 dimX,
                 dimY,
-                SMat.Depth.valueOf(packedByRows.depth()),
+                SMat.Depth.of(packedByRows.depth()),
                 numberOfChannels,
                 OTools.toByteBuffer(packedByRows));
     }
@@ -303,10 +303,10 @@ public final class O2SMat {
                     + " must be 1");
         }
         final int numberOfChannels = packedByRows.cols();
-        return SMat.valueOf(
+        return SMat.of(
                 dimX,
                 dimY,
-                SMat.Depth.valueOf(packedByRows.depth()),
+                SMat.Depth.of(packedByRows.depth()),
                 numberOfChannels,
                 OTools.toByteBuffer(packedByRows));
     }
@@ -333,7 +333,7 @@ public final class O2SMat {
         }
         if (!values.isChannelsOrderCompatibleWithMultiMatrix()) {
             final MultiMatrix2D multiMatrix = values.toMultiMatrix2D(true);
-            values = SMat.valueOf(multiMatrix, SMat.ChannelOrder.ORDER_IN_PACKED_BYTE_BUFFER);
+            values = SMat.of(multiMatrix, SMat.ChannelOrder.ORDER_IN_PACKED_BYTE_BUFFER);
             // numbersToMulticolumnMat suppose that the SNumbers was get from pixel-processing functions,
             // working with standard RGB order; so, ByteBuffer in packedByRows must use the same order
         }
@@ -346,7 +346,7 @@ public final class O2SMat {
                 1, // - 1 channel
                 packed3d.dim(0),
                 packed3d.dim(1) * packed3d.dim(2));
-        return SMat.valueOfInterleavedMatrix(packedByRows);
+        return SMat.ofInterleaved(packedByRows);
     }
 
     private static SMat numbersToMulticolumn32BitSMat(SNumbers values, boolean intResult) {
@@ -357,7 +357,7 @@ public final class O2SMat {
         final UpdatablePArray array = intResult ?
                 IntArray.as(values.toIntArray()) :
                 FloatArray.as(values.toFloatArray());
-        return SMat.valueOfInterleavedMatrix(Matrices.matrix(
+        return SMat.ofInterleaved(Matrices.matrix(
                 array,
                 1, // - 1 channel in the ML mat
                 values.getBlockLength(),
@@ -370,7 +370,7 @@ public final class O2SMat {
 //        System.out.println("\n!!!!!!!!!!!!!!!!!! " + OPTIMIZE_COPYING);
         final long dimX = mat.cols();
         final long dimY = mat.rows();
-        final SMat.Depth depth = SMat.Depth.valueOf(mat.depth());
+        final SMat.Depth depth = SMat.Depth.of(mat.depth());
         final int channels = mat.channels();
         final SMat.Convertible pointer = OPTIMIZE_COPYING && !serializeData ?
                 new ConvertibleMat(mat) :
@@ -384,7 +384,7 @@ public final class O2SMat {
 //        System.out.println("\nUUUUUUUUUUUUUUUUUUU " + OPTIMIZE_COPYING);
         final long dimX = mat.cols();
         final long dimY = mat.rows();
-        final SMat.Depth depth = SMat.Depth.valueOf(mat.depth());
+        final SMat.Depth depth = SMat.Depth.of(mat.depth());
         final int channels = mat.channels();
         final SMat.Convertible pointer;
         if (OPTIMIZE_COPYING && !serializeData) {
@@ -398,7 +398,7 @@ public final class O2SMat {
     private static SMat prepareForOpenCV(SMat m, boolean autoConvertPackedBits) {
         if (!m.getDepth().isOpenCVCompatible()) {
             if (autoConvertPackedBits && OTools.isPackedBits(m)) {
-                m = SMat.valueOf(m.toMultiMatrix().toPrecisionIfNot(byte.class));
+                m = SMat.of(m.toMultiMatrix().toPrecisionIfNot(byte.class));
             } else {
                 throw new IllegalArgumentException("Matrix element depth "
                         + (m.getNumberOfChannels() == 1 ? "" : "for " + m.getNumberOfChannels() + " channels ")

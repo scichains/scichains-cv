@@ -58,7 +58,7 @@ public final class SimpleColorClassifierTest {
         for (int k = 0, disp = 0; k < colorLabels.length; k++, disp += 3) {
             m.array().setData(disp, colorLabels[k].color.getRGBColorComponents(values));
         }
-        return O2SMat.toMat(MultiMatrix.valueOf2DMono(m));
+        return O2SMat.toMat(MultiMatrix.of2DMono(m));
     }
 
     private static Mat toLabels(ColorLabel[] colorLabels) {
@@ -66,7 +66,7 @@ public final class SimpleColorClassifierTest {
         for (int k = 0; k < colorLabels.length; k++) {
             m.array().setInt(k, colorLabels[k].label);
         }
-        return O2SMat.toMat(MultiMatrix.valueOf2DMono(m));
+        return O2SMat.toMat(MultiMatrix.of2DMono(m));
     }
 
     private static void printSVM(SVM svm) {
@@ -76,7 +76,7 @@ public final class SimpleColorClassifierTest {
     private static void printResponse(Mat mat) {
         final MultiMatrix2D m = O2SMat.toMultiMatrix(mat);
         System.out.printf("%s%n", m);
-        SNumbers numbers = SNumbers.valueOfArray(m.channel(0).toJavaArray(), (int) m.dim(0));
+        SNumbers numbers = SNumbers.ofArray(m.channel(0).toJavaArray(), (int) m.dim(0));
         System.out.println(numbers.toString(true));
     }
 

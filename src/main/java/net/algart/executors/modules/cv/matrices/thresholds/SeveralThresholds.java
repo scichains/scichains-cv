@@ -101,7 +101,7 @@ public final class SeveralThresholds extends MultiMatrix2DFilter {
         for (int k = 0; k < appendedValues.length; k++) {
             appendedValues[k] = k < this.values.length ? this.values[k] : k;
         }
-        MultiMatrix2D result = MultiMatrix.valueOf2DMono(Matrices.asFuncMatrix(
+        MultiMatrix2D result = MultiMatrix.of2DMono(Matrices.asFuncMatrix(
                 new AbstractFunc() {
                     @Override
                     public double get(double... x) {

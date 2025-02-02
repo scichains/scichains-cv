@@ -79,7 +79,7 @@ public final class ReviveContourContainingRectangles extends NumbersFilter imple
                 }
             }
         }
-        final SNumbers serializedResult = SNumbers.valueOf(result);
+        final SNumbers serializedResult = SNumbers.of(result);
         if (!someRectangleWasChanged
                 && !Arrays.equals(serializedContours, (int[]) serializedResult.arrayReference())) {
             throw new AssertionError("Rectangles were not changed, but serialized form is another!");

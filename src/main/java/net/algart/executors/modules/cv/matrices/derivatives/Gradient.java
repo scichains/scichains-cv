@@ -91,9 +91,9 @@ public final class Gradient extends MultichannelDerivativesFilter {
         for (Matrix<? extends PArray> sourceChannel : sourceChannels) {
             processed.add(processChannel(sourceChannel, additionalResult1, additionalResult2));
         }
-        this.gradientMagnitude = MultiMatrix.valueOf2DMono(combineResult(source.arrayType(), processed));
-        this.gradientDX = MultiMatrix.valueOf2DMono(combineResult(source.arrayType(), additionalResult1));
-        this.gradientDY = MultiMatrix.valueOf2DMono(combineResult(source.arrayType(), additionalResult2));
+        this.gradientMagnitude = MultiMatrix.of2DMono(combineResult(source.arrayType(), processed));
+        this.gradientDX = MultiMatrix.of2DMono(combineResult(source.arrayType(), additionalResult1));
+        this.gradientDY = MultiMatrix.of2DMono(combineResult(source.arrayType(), additionalResult2));
         getMat(OUTPUT_DX).setTo(gradientDX);
         getMat(OUTPUT_DY).setTo(gradientDY);
         return gradientMagnitude;

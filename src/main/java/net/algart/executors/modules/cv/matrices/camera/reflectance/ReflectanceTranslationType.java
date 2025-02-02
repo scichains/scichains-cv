@@ -69,7 +69,7 @@ public enum ReflectanceTranslationType {
         return jsonBasedFactory.apply(json);
     }
 
-    public static ReflectanceTranslationType valueOfTypeNameOrNull(String typeName) {
+    public static ReflectanceTranslationType ofOrNull(String typeName) {
         return ALL_TYPES.get(typeName);
     }
 }

@@ -148,7 +148,7 @@ public final class HessianEigenValuesAndVectors extends MultichannelDerivativesF
         for (Map.Entry<HessianOperation, List<Matrix<? extends PArray>>> entry : resultChannels.entrySet()) {
             results.put(
                     entry.getKey(),
-                    MultiMatrix.valueOf2DMono(combineResult(source.arrayType(), entry.getValue())));
+                    MultiMatrix.of2DMono(combineResult(source.arrayType(), entry.getValue())));
         }
     }
 

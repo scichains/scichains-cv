@@ -92,7 +92,7 @@ public final class GetPixelAtPosition extends MultiMatrixToNumbers {
                         result[disp + j] = (byte) pixel.getChannel(j);
                     }
                 }
-                return SNumbers.valueOfArray(result, blockLength);
+                return SNumbers.ofArray(result, blockLength);
             } else {
                 if (source.elementType() == char.class) {
                     final float[] result = new float[n * blockLength];
@@ -102,7 +102,7 @@ public final class GetPixelAtPosition extends MultiMatrixToNumbers {
                         channels = pixel.getFloatChannels(channels);
                         System.arraycopy(channels, 0, result, disp, blockLength);
                     }
-                    return SNumbers.valueOfArray(result, blockLength);
+                    return SNumbers.ofArray(result, blockLength);
                 } else {
                     final Object result = java.lang.reflect.Array.newInstance(
                             source.elementType(), n * blockLength);
@@ -112,7 +112,7 @@ public final class GetPixelAtPosition extends MultiMatrixToNumbers {
                         channels = pixel.getChannels(channels);
                         System.arraycopy(channels, 0, result, disp, blockLength);
                     }
-                    return SNumbers.valueOfArray(result, blockLength);
+                    return SNumbers.ofArray(result, blockLength);
                 }
             }
         } else {
@@ -127,7 +127,7 @@ public final class GetPixelAtPosition extends MultiMatrixToNumbers {
                 }
                 System.arraycopy(channels, 0, result, disp, blockLength);
             }
-            return SNumbers.valueOfArray(result, blockLength);
+            return SNumbers.ofArray(result, blockLength);
         }
     }
 }

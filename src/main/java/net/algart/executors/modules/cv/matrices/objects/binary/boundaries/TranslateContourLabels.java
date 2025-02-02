@@ -73,6 +73,6 @@ public final class TranslateContourLabels extends NumbersFilter implements ReadO
                 "%d contour labels translated in %.3f ms",
                 contours.numberOfContours(), (t2 - t1) * 1e-6));
         getScalar(ScanAndMeasureBoundaries.OUTPUT_NUMBER_OF_OBJECTS).setTo(contours.numberOfContours());
-        return SNumbers.valueOf(contours);
+        return SNumbers.of(contours);
     }
 }

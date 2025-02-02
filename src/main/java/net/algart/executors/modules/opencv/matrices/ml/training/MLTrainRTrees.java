@@ -150,15 +150,15 @@ public final class MLTrainRTrees extends MLTrainDTrees {
 
     public static void main(String[] args) {
         RTrees model = RTrees.create();
-        SNumbers priors = SNumbers.valueOfArray(new double[]{2.0f, 1.0f}, 1);
+        SNumbers priors = SNumbers.ofArray(new double[]{2.0f, 1.0f}, 1);
         model.setPriors(O2SMat.numbersToMulticolumnMat(priors));
         model.setCalculateVarImportance(true);
         @SuppressWarnings("resource")
         final MLTrainRTrees training = new MLTrainRTrees(MLSamplesType.NUMBERS);
         training.setUseGPU(false);
         training.trainNumbers(new MLStatModelTrainer(model, MLKind.StatModelBased.R_TREES),
-                SNumbers.valueOfArray(new float[]{10.0f, 30.0f}, 1),
-                SNumbers.valueOfArray(new int[]{2, 3}, 1), null);
+                SNumbers.ofArray(new float[]{10.0f, 30.0f}, 1),
+                SNumbers.ofArray(new int[]{2, 3}, 1), null);
         System.out.println("OK: " + model.isClassifier());
         final Mat varImportanceMat = model.getVarImportance();
         System.out.println(OTools.toString(varImportanceMat));
@@ -169,7 +169,7 @@ public final class MLTrainRTrees extends MLTrainDTrees {
         System.out.println("priors: " + O2SMat.multicolumnMatToNumbers(priorsMat).toString(true));
 
         Mat samplesMat = O2SMat.numbersToMulticolumn32BitMat(
-                SNumbers.valueOfArray(new float[]{10.0f, 30.0f}, 1), false);
+                SNumbers.ofArray(new float[]{10.0f, 30.0f}, 1), false);
         Mat resultMat = new Mat();
         model.predict(samplesMat, resultMat, RTrees.PREDICT_MAX_VOTE);
         // - access violation!

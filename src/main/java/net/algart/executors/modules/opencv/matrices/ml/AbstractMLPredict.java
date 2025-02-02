@@ -185,7 +185,7 @@ public abstract class AbstractMLPredict extends AbstractMLOperation {
     }
 
     public final MLPredictor readStandardPredictor(MLKind defaultKind) {
-        return readPredictor(defaultKind, MLKind.StatModelBased::valueOfModelName);
+        return readPredictor(defaultKind, MLKind.StatModelBased::of);
     }
 
     public final MLPredictor readPredictor(MLKind defaultKind, Function<String, Optional<MLKind>> modelNameToKind) {

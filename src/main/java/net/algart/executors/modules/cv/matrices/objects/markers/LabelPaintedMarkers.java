@@ -95,7 +95,7 @@ public final class LabelPaintedMarkers extends MultiMatrix2DFilter {
             double[] channels = null;
             for (int k = 0, n = colorMap.n(); k < n; k++) {
                 channels = colorMap.getBlockDoubleValues(k, channels);
-                final MultiMatrix.PixelValue pixel = MultiMatrix.PixelValue.valueOf(channels);
+                final MultiMatrix.PixelValue pixel = MultiMatrix.PixelValue.of(channels);
                 if (map.putIfAbsent(pixel, markerCount + 1) == null) {
                     markerCount++;
                 }
@@ -122,6 +122,6 @@ public final class LabelPaintedMarkers extends MultiMatrix2DFilter {
             assert markerIndex - 1 < markerCount;
             colorMap.setBlockValues(markerIndex - 1, entry.getKey().getDoubleChannels());
         }
-        return MultiMatrix.valueOf2DMono(Matrices.matrix(result, imageWithMarkers.dimensions()));
+        return MultiMatrix.of2DMono(Matrices.matrix(result, imageWithMarkers.dimensions()));
     }
 }

@@ -136,7 +136,7 @@ public final class TableTranslate extends MultiMatrix2DFilter {
                 }
             });
         }
-        return MultiMatrix.valueOf2DMono(Matrix.as(labels, labelsMatrix.dimensions()));
+        return MultiMatrix.of2DMono(Matrix.as(labels, labelsMatrix.dimensions()));
     }
 
     public MultiMatrix2D process(MultiMatrix2D labelsMatrix, float[] translationTable) {
@@ -172,6 +172,6 @@ public final class TableTranslate extends MultiMatrix2DFilter {
                 }
             });
         }
-        return MultiMatrix.valueOf2DMono(Matrix.as(result, labelsMatrix.dimensions()));
+        return MultiMatrix.of2DMono(Matrix.as(result, labelsMatrix.dimensions()));
     }
 }

@@ -50,7 +50,7 @@ public final class AWTDrawingTest {
         System.out.printf("bufferedImage:        %s%n  (%s: %s)%n", bufferedImage,
                 bufferedImage.getColorModel().getClass().getName(), bufferedImage.getColorModel());
         if (BUFFERED_IMAGE_FROM_SMAT) {
-            SMat image = SMat.valueOf(bufferedImage);
+            SMat image = SMat.of(bufferedImage);
             image = new DrawRectangle()
                     .setColor("#808080").setLeft(0).setTop(0).setWidth(100).setHeight(100)
                     .process(image);
@@ -68,7 +68,7 @@ public final class AWTDrawingTest {
                 bufferedImage.getRGB((int) drawEllipse.getX(), (int) drawEllipse.getY()));
         System.out.printf("Writing %s%n", fileName);
         ImageIO.write(result, MatrixIO.extension(fileName, "png"), new File(fileName));
-        SMat image = SMat.valueOf(bufferedImage);
+        SMat image = SMat.of(bufferedImage);
         System.out.printf("Corner pixel in MultiMatrix (getPixel): %s%n", image.toMultiMatrix2D().getPixel(0, 0));
         System.out.printf("Center pixel in MultiMatrix (getPixel): %s%n",
                 image.toMultiMatrix2D().getPixel((long) drawEllipse.getX(), (long) drawEllipse.getY()));

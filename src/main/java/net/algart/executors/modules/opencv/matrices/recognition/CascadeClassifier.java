@@ -263,7 +263,7 @@ public final class CascadeClassifier extends UMatToNumbers {
                 result[disp++] = r.height;
             }
         }
-        return SNumbers.valueOfArray(result, resultBlockLength);
+        return SNumbers.ofArray(result, resultBlockLength);
     }
 
     private void drawRectangles(Mat mat, List<Rectangle> rectangles, Scalar color) {

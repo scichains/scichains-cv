@@ -83,7 +83,7 @@ public final class WatershedNearestPixels extends MatFilter {
     public Mat process(int dimX, int dimY, SNumbers positions) {
         positions = positions.columnRange(0, 2);
 
-        final MultiMatrix2D dummy = MultiMatrix.valueOf2DMono(
+        final MultiMatrix2D dummy = MultiMatrix.of2DMono(
                 Matrices.constantMatrix(0.0, ByteArray.class, dimX, dimY));
         // - its content is not important: setClearSource below
         final DrawPattern drawPattern = new DrawPattern();

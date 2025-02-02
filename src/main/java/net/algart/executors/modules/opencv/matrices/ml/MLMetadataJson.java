@@ -109,7 +109,7 @@ public final class MLMetadataJson {
         return Paths.get(mainModelFile + METADATA_FILE_SUFFIX);
     }
 
-    public static MLMetadataJson valueOf(
+    public static MLMetadataJson of(
             JsonObject mlMetadataJson,
             Function<String, Optional<MLKind>> modelNameToKind) {
         Objects.requireNonNull(modelNameToKind, "Null modelNameToKind function");

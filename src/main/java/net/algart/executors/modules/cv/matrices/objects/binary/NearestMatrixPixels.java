@@ -220,7 +220,7 @@ public final class NearestMatrixPixels extends MultiMatrixToNumbers {
                     drawLine.setConvertMonoToColor(convertMonoToColorForDrawingLines);
                     drawLine.setColor(drawingLinesColor);
                     drawLine.putNumbers(INPUT_POSITIONS, linesPositions, 4);
-                    drawLine.putMat(DEFAULT_INPUT_PORT, SMat.valueOf(sourceMask));
+                    drawLine.putMat(DEFAULT_INPUT_PORT, SMat.of(sourceMask));
                     drawLine.process();
                     mat = drawLine.getMat();
                     if (convertMonoToColorForDrawingLines) {
@@ -239,7 +239,7 @@ public final class NearestMatrixPixels extends MultiMatrixToNumbers {
             resultPositions = nearestXY.toJavaArray();
         }
         getNumbers(OUTPUT_NUMBERS_OF_NEAREST).setTo(numbersOfNearest, 1);
-        final SNumbers result = SNumbers.valueOfArray(resultPositions, returnPairsOfThisAndNearestPixel ? 4 : 2);
+        final SNumbers result = SNumbers.ofArray(resultPositions, returnPairsOfThisAndNearestPixel ? 4 : 2);
         long t4 = System.nanoTime();
         logDebug(() -> String.format(Locale.US, "Nearest matrix pixels for %d points at %s, "
                         + "aperture size %d (%d points): %.3f ms = "

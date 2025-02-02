@@ -46,9 +46,9 @@ public final class MatrixTypeConversionsTest {
             return;
         }
         Path sourceFile = Paths.get(args[0]);
-        MultiMatrix2D multiMatrix = MultiMatrix.valueOf2DRGBA(MatrixIO.readImage(sourceFile));
+        MultiMatrix2D multiMatrix = MultiMatrix.of2DRGBA(MatrixIO.readImage(sourceFile));
         System.out.printf("Loaded %s%n", multiMatrix);
-        final SMat m = SMat.valueOf(multiMatrix);
+        final SMat m = SMat.of(multiMatrix);
 
         multiMatrix = m.toMultiMatrix2D();
         System.out.printf("-> port -> multi-matrix: %s%n", multiMatrix);
@@ -63,7 +63,7 @@ public final class MatrixTypeConversionsTest {
         System.out.printf("-> port -> BufferedImage: %s%n", multiMatrix);
         ImageIO.write(bufferedImage, "png", new File(sourceFile + ".port2bb.png"));
 
-        SMat tempPort = SMat.valueOf(bufferedImage);
+        SMat tempPort = SMat.of(bufferedImage);
         multiMatrix = tempPort.toMultiMatrix2D();
         System.out.printf("-> port -> BufferedImage -> port -> multi-matrix: %s%n", multiMatrix);
         MatrixIO.writeImage(
