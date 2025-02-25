@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="ExecutingChain" type="Application" factoryName="Application">
-    <option name="MAIN_CLASS_NAME" value="net.algart.executors.api.model.tests.callers.ExecutingChain" />
+    <option name="MAIN_CLASS_NAME" value="net.algart.executors.api.tests.callers.ExecutingChain" />
     <module name="scichains-cv" />
     <option name="PROGRAM_PARAMETERS" value="-all /chains/executors-chains/examples/subchains/opencv_test.json  \chains\executors-chains\demo\images\circles_1.jpg  \tmp\extensions_tests\ 5" />
     <option name="VM_PARAMETERS" value="-Dnet.algart.executors.api.showInfo=true -Dnet.algart.executors.pathReplacementAllowed=true -Dnet.algart.executors.root=${home}\ext\ -Djava.util.logging.config.file=${home}\conf\logging.properties" />

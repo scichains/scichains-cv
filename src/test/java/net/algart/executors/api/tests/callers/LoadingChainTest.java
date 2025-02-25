@@ -22,12 +22,12 @@
  * SOFTWARE.
  */
 
-package net.algart.executors.api.system.tests.callers;
+package net.algart.executors.api.tests.callers;
 
 import java.io.IOException;
 
-public final class ExecutorSpecificationTest {
-    public static void main(String[] args) throws IOException, InterruptedException {
-        net.algart.executors.api.system.tests.ExecutorSpecificationTest.main(args);
+public final class LoadingChainTest {
+    public static void main(String[] args) throws IOException {
+        net.algart.executors.api.tests.LoadingChainTest.main(args);
     }
 }
