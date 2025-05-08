@@ -122,7 +122,7 @@ public final class AverageByRectangle extends MultiMatrixFilter {
         final IRectangularArea rectangle = IRectangularArea.valueOf(
                 minX, minY, minX + sizeX - 1, minY + sizeY - 1);
         long t2 = debugTime();
-        final MultiMatrix result = source.mapChannels(m -> averager.filter(m, rectangle));
+        final MultiMatrix result = source.apply(m -> averager.filter(m, rectangle));
         long t3 = debugTime();
         logDebug(() -> String.format(Locale.US, "Averaging of %s by %s using %s calculated in %.3f ms: "
                         + "%.3f initializing, "

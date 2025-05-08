@@ -126,7 +126,7 @@ public final class SimpleMorphology3x3 extends MultiMatrixFilter {
         final AbstractQuickFilter3x3 dilation = shape.getDilation.apply(source);
         final AbstractQuickFilter3x3 erosion = shape.getErosion.apply(source);
         long t2 = debugTime();
-        final MultiMatrix result = source.mapChannels(matrix -> operation.perform(matrix, dilation, erosion));
+        final MultiMatrix result = source.apply(matrix -> operation.perform(matrix, dilation, erosion));
         long t3 = debugTime();
         logDebug(() -> String.format(Locale.US, "Simple 3x3 %s by %s of %s calculated in %.3f ms: "
                         + "%.3f initializing, "

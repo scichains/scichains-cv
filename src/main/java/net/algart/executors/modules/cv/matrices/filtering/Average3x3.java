@@ -51,7 +51,7 @@ public final class Average3x3 extends MultiMatrixFilter {
         final AverageBySquare3x3 average = AverageBySquare3x3.newInstance(
                 source.elementType(), source.dimensions(), rounding);
         long t2 = debugTime();
-        final MultiMatrix result = source.mapChannels(average::filter);
+        final MultiMatrix result = source.apply(average::filter);
         long t3 = debugTime();
         logDebug(() -> String.format(Locale.US, "3x3 average of %s calculated in %.3f ms: "
                         + "%.3f initializing, "

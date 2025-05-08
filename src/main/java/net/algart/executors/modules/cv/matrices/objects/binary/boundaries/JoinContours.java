@@ -129,7 +129,7 @@ public final class JoinContours extends NumbersFilter implements ReadOnlyExecuti
                 ContourJoiner.newInstance(contours, gridStepLog, joinedLabelsMap, defaultJoinedLabel);
         contourJoiner.setJoiningOrder(joiningOrder);
         contourJoiner.setPackResultContours(automaticallyPackResultContours);
-        contourJoiner.setInterrupter(this::isInterrupted);
+        contourJoiner.setInterruptionChecker(this::isInterrupted);
         if (LOGGABLE_DEBUG) {
             contourJoiner.setMeasureTimingLevel(measuringTimingLevel);
         }

@@ -62,7 +62,7 @@ public final class Percentile3x3 extends MultiMatrixFilter {
         final PercentileBySquare3x3 percentile = PercentileBySquare3x3.newInstance(
                 source.elementType(), source.dimensions(), percentileIndex, specialAlgorithmWhenPossible);
         long t2 = debugTime();
-        final MultiMatrix result = source.mapChannels(percentile::filter);
+        final MultiMatrix result = source.apply(percentile::filter);
         long t3 = debugTime();
         logDebug(() -> String.format(Locale.US, "3x3 %s of %s calculated in %.3f ms: "
                         + "%.3f initializing, "

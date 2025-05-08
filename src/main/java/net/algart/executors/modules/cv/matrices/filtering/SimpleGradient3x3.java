@@ -40,7 +40,7 @@ public final class SimpleGradient3x3 extends MultiMatrixFilter {
         final QuickGradientByCross3x3 gradient = QuickGradientByCross3x3.newInstance(
                 source.elementType(), source.dimensions());
         long t2 = debugTime();
-        final MultiMatrix result = source.mapChannels(gradient::filter);
+        final MultiMatrix result = source.apply(gradient::filter);
         long t3 = debugTime();
         logDebug(() -> String.format(Locale.US, "Simple 3x3 gradient of %s calculated in %.3f ms: "
                         + "%.3f initializing, "
