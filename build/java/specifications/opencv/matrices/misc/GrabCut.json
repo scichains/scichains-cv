@@ -151,7 +151,7 @@
     },
     {
       "name": "percents",
-      "captions": "Percents of all image",
+      "captions": "Percents of the image",
       "description": "If true, start X/Y and sizes below are measured in percents of image sizes.\nNote: start X/Y and sizes are used only in \"GC_INIT_WITH_RECT\" mode.",
       "value_type": "boolean",
       "edition_type": "value",

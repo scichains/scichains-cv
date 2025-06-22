@@ -123,7 +123,7 @@
     },
     {
       "name": "percents",
-      "captions": "Percents of all image",
+      "captions": "Percents of the image",
       "description": "If set, seeding X/Y below are measured in percents of image sizes.",
       "value_type": "boolean",
       "edition_type": "value",
