@@ -26,7 +26,7 @@ package net.algart.executors.modules.cv.matrices.thresholds;
 
 import net.algart.arrays.Matrix;
 import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
-import net.algart.executors.modules.cv.matrices.drawing.DrawRectangle;
+import net.algart.executors.modules.core.matrices.drawing.DrawRectangle;
 import net.algart.executors.modules.cv.matrices.morphology.*;
 import net.algart.executors.modules.cv.matrices.objects.RetainOrRemoveMode;
 import net.algart.executors.modules.cv.matrices.objects.binary.components.FindConnectedWithMask;

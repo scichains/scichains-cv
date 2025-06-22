@@ -29,6 +29,7 @@ import net.algart.arrays.Matrix;
 import net.algart.arrays.PArray;
 import net.algart.arrays.UpdatablePArray;
 import net.algart.executors.api.data.SNumbers;
+import net.algart.executors.modules.core.matrices.drawing.PositionsAndColors;
 import net.algart.executors.modules.cv.matrices.morphology.MorphologyFilter;
 import net.algart.math.IPoint;
 import net.algart.math.Point;
@@ -99,7 +100,7 @@ public final class DrawPattern extends MorphologyFilter {
             updatableArray.fill(updatableArray.maxPossibleValue(1.0));
         }
         final Matrix<? extends UpdatablePArray> updatableMatrix = m.matrix(updatableArray);
-        for (int k = 0; k < positionsAndColors.n; k++) {
+        for (int k = 0; k < positionsAndColors.n(); k++) {
             drawPattern(
                     updatableMatrix,
                     getPattern(m),

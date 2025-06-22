@@ -28,7 +28,7 @@ import net.algart.arrays.*;
 import net.algart.executors.api.data.SMat;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.matrices.MultiMatrixToNumbers;
-import net.algart.executors.modules.cv.matrices.drawing.DrawLine;
+import net.algart.executors.modules.core.matrices.drawing.DrawLine;
 import net.algart.executors.modules.cv.matrices.misc.SortedRound2DAperture;
 import net.algart.math.IRange;
 import net.algart.multimatrix.MultiMatrix;

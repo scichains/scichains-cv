@@ -27,7 +27,7 @@ package net.algart.executors.modules.opencv.matrices.drawing;
 import net.algart.executors.api.data.SMat;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.numbers.IndexingBase;
-import net.algart.executors.modules.cv.matrices.drawing.PositionsAndColors;
+import net.algart.executors.modules.core.matrices.drawing.PositionsAndColors;
 import net.algart.executors.modules.opencv.common.OpenCVExecutor;
 import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.modules.opencv.util.OTools;
@@ -40,8 +40,8 @@ import org.bytedeco.opencv.opencv_core.Scalar;
 
 import java.awt.*;
 
-import static net.algart.executors.modules.cv.matrices.drawing.DrawLine.increaseLength;
-import static net.algart.executors.modules.cv.matrices.drawing.DrawLine.translatePairsOfIndexes;
+import static net.algart.executors.modules.core.matrices.drawing.DrawLine.increaseLength;
+import static net.algart.executors.modules.core.matrices.drawing.DrawLine.translatePairsOfIndexes;
 
 // No sense to implement UMatFilter: drawing functions work with UMat VERY slowly.
 public final class DrawLine extends OpenCVExecutor {

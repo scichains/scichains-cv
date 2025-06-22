@@ -25,6 +25,8 @@
 package net.algart.executors.modules.cv.matrices.drawing;
 
 import net.algart.executors.api.data.SMat;
+import net.algart.executors.modules.core.matrices.drawing.DrawEllipse;
+import net.algart.executors.modules.core.matrices.drawing.DrawRectangle;
 import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.io.MatrixIO;
 import org.bytedeco.opencv.global.opencv_imgcodecs;
@@ -38,6 +40,7 @@ import java.io.IOException;
 public final class AWTDrawingTest {
     private static final boolean BUFFERED_IMAGE_FROM_SMAT = true;
 
+    @SuppressWarnings("resource")
     public static void main(String[] args) throws IOException {
         if (args.length == 0) {
             System.out.printf("Usage: %s resultFile.png%n", AWTDrawingTest.class.getName());
