@@ -174,7 +174,7 @@ public final class O2SMat {
         if (mat.rows() == 0 || mat.cols() == 0) {
             return Arrays.nPCopies(0, OTools.elementType(mat), 0.0);
         }
-        return toSMat(mat).toInterleavedMatrix(true).array();
+        return toSMat(mat).toInterleavedBGRMatrix(true).array();
     }
 
     public static PArray toRawArray(UMat mat) {
@@ -182,7 +182,7 @@ public final class O2SMat {
         if (mat.rows() == 0 || mat.cols() == 0) {
             return Arrays.nPCopies(0, OTools.elementType(mat), 0.0);
         }
-        return toSMat(mat).toInterleavedMatrix(true).array();
+        return toSMat(mat).toInterleavedBGRMatrix(true).array();
     }
 
     public static SNumbers toRawNumbers(Mat mat, int blockLength) {
@@ -338,7 +338,7 @@ public final class O2SMat {
             // working with standard RGB order; so, ByteBuffer in packedByRows must use the same order
         }
         final Matrix<? extends PArray> packed3d = Matrices.asPrecision(
-                values.toInterleavedMatrix(true),
+                values.toInterleavedBGRMatrix(true),
                 intResult ? int.class : float.class);
         assert packed3d.dimCount() == 3;
         final Matrix<? extends PArray> packedByRows = Matrices.matrix(
