@@ -171,7 +171,8 @@ public final class Threshold extends UMatFilter {
         if (gaussianBlurKernelSize > 0) {
             final int correctedSize = gaussianBlurKernelSize | 0x1;
             try (Size size = new Size(correctedSize, correctedSize)) {
-                opencv_imgproc.GaussianBlur(source, source, size, 0.0, 0.0, opencv_core.BORDER_DEFAULT);
+                opencv_imgproc.GaussianBlur(source, source, size, 0.0, 0.0,
+                        opencv_core.BORDER_DEFAULT, opencv_core.ALGO_HINT_DEFAULT);
             }
         }
         final Mat result = new Mat();
@@ -219,7 +220,8 @@ public final class Threshold extends UMatFilter {
         if (gaussianBlurKernelSize > 0) {
             final int correctedSize = gaussianBlurKernelSize | 0x1;
             try (Size size = new Size(correctedSize, correctedSize)) {
-                opencv_imgproc.GaussianBlur(source, source, size, 0.0, 0.0, opencv_core.BORDER_DEFAULT);
+                opencv_imgproc.GaussianBlur(source, source, size, 0.0, 0.0,
+                        opencv_core.BORDER_DEFAULT, opencv_core.ALGO_HINT_DEFAULT);
             }
         }
         final UMat result = new UMat();

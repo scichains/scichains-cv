@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.algart.executors</groupId>
     <artifactId>scichains-cv</artifactId>
-    <version>4.4.17</version>
+    <version>4.5.0</version>
 
     <name>SciChains computer vision, base functions</name>
     <description>Open-source libraries, providing the base functions for SciChains product in area of computer vision.</description>
@@ -36,7 +36,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.release>21</maven.compiler.release>
 
         <!-- SciChains extension folder name -->
         <extension.name>net.algart.executors.cv</extension.name>
@@ -49,11 +49,11 @@
 
         <build.directory>${project.build.directory}/build</build.directory>
 
-        <net.algart.scichains-core.version>4.4.17</net.algart.scichains-core.version>
-        <javacpp.version>1.5.11</javacpp.version>
-        <opencv.version>4.10.0-1.5.11</opencv.version>
-        <openblas.version>0.3.28-1.5.11</openblas.version>
-        <!-- openblas is used by opencv: we need to specify this version to generate the correct classpath -->
+        <net.algart.scichains-core.version>4.5.0</net.algart.scichains-core.version>
+        <javacpp.version>1.5.12</javacpp.version>
+        <opencv.version>4.11.0-1.5.12</opencv.version>
+        <openblas.version>0.3.30-1.5.12</openblas.version>
+        <!-- openblas is used by opencv: we need to specify it to generate the correct classpath -->
     </properties>
 
     <dependencies>
@@ -121,7 +121,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.4.2</version>
                 <configuration>
                     <archive>
                         <compress>false</compress>
@@ -143,7 +143,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.3.1</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -157,7 +157,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.4.2</version>
+                <version>3.7.1</version>
                 <configuration>
                     <finalName>build</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
@@ -187,8 +187,9 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>3.5.0</version>
+                        <version>3.11.2</version>
                         <configuration>
+                            <release>${maven.compiler.release}</release>
                             <encoding>UTF-8</encoding>
                             <doclint>none</doclint>
                         </configuration>

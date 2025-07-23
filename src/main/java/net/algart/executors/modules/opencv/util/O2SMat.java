@@ -150,7 +150,7 @@ public final class O2SMat {
     }
 
     public static Mat toMat(Matrix<? extends PArray> interleavedChannels, boolean autoConvertPackedBits) {
-        return toMat(SMat.ofInterleaved(interleavedChannels), autoConvertPackedBits);
+        return toMat(SMat.ofInterleavedBGR(interleavedChannels), autoConvertPackedBits);
     }
 
     public static UMat toUMat(Matrix<? extends PArray> interleavedChannels) {
@@ -158,7 +158,7 @@ public final class O2SMat {
     }
 
     public static UMat toUMat(Matrix<? extends PArray> interleavedChannels, boolean autoConvertPackedBits) {
-        return toUMat(SMat.ofInterleaved(interleavedChannels), autoConvertPackedBits);
+        return toUMat(SMat.ofInterleavedBGR(interleavedChannels), autoConvertPackedBits);
     }
 
     public static SMat toSMat(Mat mat) {
@@ -174,7 +174,7 @@ public final class O2SMat {
         if (mat.rows() == 0 || mat.cols() == 0) {
             return Arrays.nPCopies(0, OTools.elementType(mat), 0.0);
         }
-        return toSMat(mat).toInterleavedBGRMatrix(true).array();
+        return toSMat(mat).toInterleavedBGR(true).array();
     }
 
     public static PArray toRawArray(UMat mat) {
@@ -182,7 +182,7 @@ public final class O2SMat {
         if (mat.rows() == 0 || mat.cols() == 0) {
             return Arrays.nPCopies(0, OTools.elementType(mat), 0.0);
         }
-        return toSMat(mat).toInterleavedBGRMatrix(true).array();
+        return toSMat(mat).toInterleavedBGR(true).array();
     }
 
     public static SNumbers toRawNumbers(Mat mat, int blockLength) {
@@ -335,10 +335,10 @@ public final class O2SMat {
             final MultiMatrix2D multiMatrix = values.toMultiMatrix2D(true);
             values = SMat.of(multiMatrix, SMat.ChannelOrder.ORDER_IN_PACKED_BYTE_BUFFER);
             // numbersToMulticolumnMat suppose that the SNumbers was get from pixel-processing functions,
-            // working with standard RGB order; so, ByteBuffer in packedByRows must use the same order
+            // working with the standard RGB order; so, ByteBuffer in packedByRows must use the same order
         }
         final Matrix<? extends PArray> packed3d = Matrices.asPrecision(
-                values.toInterleavedBGRMatrix(true),
+                values.toInterleavedBGR(true),
                 intResult ? int.class : float.class);
         assert packed3d.dimCount() == 3;
         final Matrix<? extends PArray> packedByRows = Matrices.matrix(
@@ -346,7 +346,7 @@ public final class O2SMat {
                 1, // - 1 channel
                 packed3d.dim(0),
                 packed3d.dim(1) * packed3d.dim(2));
-        return SMat.ofInterleaved(packedByRows);
+        return SMat.ofInterleavedBGR(packedByRows);
     }
 
     private static SMat numbersToMulticolumn32BitSMat(SNumbers values, boolean intResult) {
@@ -357,7 +357,7 @@ public final class O2SMat {
         final UpdatablePArray array = intResult ?
                 IntArray.as(values.toIntArray()) :
                 FloatArray.as(values.toFloatArray());
-        return SMat.ofInterleaved(Matrices.matrix(
+        return SMat.ofInterleavedBGR(Matrices.matrix(
                 array,
                 1, // - 1 channel in the ML mat
                 values.getBlockLength(),

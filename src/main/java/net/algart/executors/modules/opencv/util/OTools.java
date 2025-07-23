@@ -522,7 +522,8 @@ public final class OTools {
             opencv_imgproc.cvtColor(mask, mask, opencv_imgproc.CV_BGR2GRAY);
         }
         if (mat.channels() > 1) {
-            opencv_imgproc.cvtColor(mask, mask, opencv_imgproc.CV_GRAY2BGR, mat.channels());
+            opencv_imgproc.cvtColor(mask, mask, opencv_imgproc.CV_GRAY2BGR, mat.channels(),
+                    opencv_core.ALGO_HINT_DEFAULT);
         }
         opencv_core.bitwise_or(mat, mask, mask);
     }

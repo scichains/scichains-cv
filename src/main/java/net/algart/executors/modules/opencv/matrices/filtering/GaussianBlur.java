@@ -32,6 +32,7 @@ import net.algart.executors.modules.opencv.util.O2SMat;
 import net.algart.executors.modules.opencv.util.OTools;
 import net.algart.executors.modules.opencv.util.enums.OBorderType;
 import net.algart.multimatrix.MultiMatrix2D;
+import org.bytedeco.opencv.global.opencv_core;
 import org.bytedeco.opencv.global.opencv_imgproc;
 import org.bytedeco.opencv.opencv_core.Mat;
 import org.bytedeco.opencv.opencv_core.Size;
@@ -153,7 +154,8 @@ public class GaussianBlur extends UMatFilter {
         try (Size size = new Size(sizeX, sizeY)) {
 //            System.out.println("OpenCL existence: " + opencv_core.haveOpenCL());
 //            System.out.println("OpenCL usage: " + opencv_core.useOpenCL());
-            opencv_imgproc.GaussianBlur(source, source, size, sigmaX, sigmaY, getBorderType().code());
+            opencv_imgproc.GaussianBlur(source, source, size, sigmaX, sigmaY,
+                    getBorderType().code(), opencv_core.ALGO_HINT_DEFAULT);
             return source;
         }
     }
@@ -182,7 +184,8 @@ public class GaussianBlur extends UMatFilter {
         try (Size size = new Size(sizeX, sizeY)) {
 //            System.out.println("OpenCL existence: " + opencv_core.haveOpenCL());
 //            System.out.println("OpenCL usage: " + opencv_core.useOpenCL());
-            opencv_imgproc.GaussianBlur(source, source, size, sigmaX, sigmaY, getBorderType().code());
+            opencv_imgproc.GaussianBlur(source, source, size, sigmaX, sigmaY,
+                    getBorderType().code(), opencv_core.ALGO_HINT_DEFAULT);
             return source;
         }
     }
