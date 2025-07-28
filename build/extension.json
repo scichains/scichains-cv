@@ -103,7 +103,7 @@
           "java/lib/javacpp/opencv-${opencv.version}-ios-arm64.jar"
         ],
         "vm_options": [
-          "-D_net.algart.executors.modules.opencv.useGPU=false"
+          "#-Dnet.algart.executors.modules.opencv.useGPU=false"
         ]
       }
     },
