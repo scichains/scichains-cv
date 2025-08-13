@@ -24,7 +24,7 @@
 
 package net.algart.executors.modules.cv.matrices.thresholds;
 
-import net.algart.executors.modules.cv.matrices.misc.Selector;
+import net.algart.executors.modules.core.matrices.misc.Selector;
 import net.algart.multimatrix.MultiMatrix;
 
 public final class SimpleThresholdAndDrawOnBackground extends SimpleThreshold {

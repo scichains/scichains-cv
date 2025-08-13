@@ -29,7 +29,7 @@ import net.algart.contours.Contours;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.matrices.MultiMatrix2DFilter;
 import net.algart.executors.modules.core.matrices.geometry.Resize;
-import net.algart.executors.modules.cv.matrices.misc.Selector;
+import net.algart.executors.modules.core.matrices.misc.Selector;
 import net.algart.math.IPoint;
 import net.algart.multimatrix.MultiMatrix;
 import net.algart.multimatrix.MultiMatrix2D;

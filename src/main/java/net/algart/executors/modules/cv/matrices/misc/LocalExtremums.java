@@ -29,6 +29,7 @@ import net.algart.arrays.*;
 import net.algart.executors.api.data.SNumbers;
 import net.algart.executors.modules.core.common.matrices.MultiMatrixToNumbers;
 import net.algart.executors.modules.core.matrices.geometry.ContinuationMode;
+import net.algart.executors.modules.core.matrices.misc.Selector;
 import net.algart.executors.modules.cv.matrices.misc.extremums.ExtremumsFinder;
 import net.algart.executors.modules.cv.matrices.morphology.MorphologyFilter;
 import net.algart.executors.modules.cv.matrices.morphology.MorphologyOperation;

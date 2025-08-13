@@ -25,7 +25,7 @@
 package net.algart.executors.modules.opencv.matrices.segmentation;
 
 import net.algart.executors.modules.core.matrices.geometry.ContinuationMode;
-import net.algart.executors.modules.cv.matrices.misc.Selector;
+import net.algart.executors.modules.core.matrices.misc.Selector;
 import net.algart.executors.modules.cv.matrices.morphology.MorphologyFilter;
 import net.algart.executors.modules.cv.matrices.morphology.MorphologyOperation;
 import net.algart.executors.modules.cv.matrices.morphology.StrictMorphology;

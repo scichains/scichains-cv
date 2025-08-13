@@ -27,7 +27,7 @@ package net.algart.executors.modules.cv.matrices.drawing;
 import net.algart.arrays.Matrix;
 import net.algart.executors.modules.core.common.matrices.SeveralMultiMatricesOperation;
 import net.algart.executors.modules.core.matrices.geometry.Resize;
-import net.algart.executors.modules.cv.matrices.misc.Selector;
+import net.algart.executors.modules.core.matrices.misc.Selector;
 import net.algart.executors.modules.cv.matrices.morphology.MorphologyFilter;
 import net.algart.executors.modules.cv.matrices.morphology.MorphologyOperation;
 import net.algart.executors.modules.cv.matrices.morphology.StrictMorphology;
