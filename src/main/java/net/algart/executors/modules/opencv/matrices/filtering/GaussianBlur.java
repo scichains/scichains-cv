@@ -155,7 +155,8 @@ public class GaussianBlur extends UMatFilter {
 //            System.out.println("OpenCL existence: " + opencv_core.haveOpenCL());
 //            System.out.println("OpenCL usage: " + opencv_core.useOpenCL());
             opencv_imgproc.GaussianBlur(source, source, size, sigmaX, sigmaY,
-                    getBorderType().code(), opencv_core.ALGO_HINT_DEFAULT);
+                    getBorderType().code());
+                    //opencv_core.ALGO_HINT_DEFAULT);
             return source;
         }
     }
@@ -185,7 +186,8 @@ public class GaussianBlur extends UMatFilter {
 //            System.out.println("OpenCL existence: " + opencv_core.haveOpenCL());
 //            System.out.println("OpenCL usage: " + opencv_core.useOpenCL());
             opencv_imgproc.GaussianBlur(source, source, size, sigmaX, sigmaY,
-                    getBorderType().code(), opencv_core.ALGO_HINT_DEFAULT);
+                    getBorderType().code());
+                    // opencv_core.ALGO_HINT_DEFAULT);
             return source;
         }
     }

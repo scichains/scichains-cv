@@ -19,6 +19,23 @@
       </element>
       <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:4.5.0" />
       <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:test-jar:tests:4.5.0" />
+      <element id="library" level="project" name="Maven: org.eclipse.parsson:jakarta.json:1.1.5" />
+      <element id="library" level="project" name="Maven: net.algart:algart:1.5.0" />
+      <element id="library" level="project" name="Maven: org.graalvm.js:js-language:24.2.2" />
+      <element id="library" level="project" name="Maven: org.graalvm.js:js-scriptengine:24.2.2" />
+      <element id="library" level="project" name="Maven: org.graalvm.polyglot:polyglot:24.2.2" />
+      <element id="library" level="project" name="Maven: org.graalvm.regex:regex:24.2.2" />
+      <element id="library" level="project" name="Maven: org.graalvm.sdk:collections:24.2.2" />
+      <element id="library" level="project" name="Maven: org.graalvm.sdk:jniutils:24.2.2" />
+      <element id="library" level="project" name="Maven: org.graalvm.sdk:nativebridge:24.2.2" />
+      <element id="library" level="project" name="Maven: org.graalvm.sdk:nativeimage:24.2.2" />
+      <element id="library" level="project" name="Maven: org.graalvm.sdk:word:24.2.2" />
+      <element id="library" level="project" name="Maven: org.graalvm.shadowed:icu4j:24.2.2" />
+      <element id="library" level="project" name="Maven: org.graalvm.shadowed:xz:24.2.2" />
+      <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-api:24.2.2" />
+      <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-compiler:24.2.2" />
+      <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-enterprise:24.2.2" />
+      <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-runtime:24.2.2" />
       <element id="library" level="project" name="Maven: org.bytedeco:javacpp-platform:1.5.11" />
       <element id="library" level="project" name="Maven: org.bytedeco:javacpp:1.5.11" />
       <element id="library" level="project" name="Maven: org.bytedeco:javacpp:android-arm64:1.5.11" />
@@ -56,22 +73,6 @@
       <element id="library" level="project" name="Maven: org.bytedeco:opencv:macosx-x86_64:4.10.0-1.5.11" />
       <element id="library" level="project" name="Maven: org.bytedeco:opencv:windows-x86_64-gpu:4.10.0-1.5.11" />
       <element id="library" level="project" name="Maven: org.bytedeco:opencv:windows-x86_64:4.10.0-1.5.11" />
-      <element id="library" level="project" name="Maven: org.eclipse.parsson:jakarta.json:1.1.5" />
-      <element id="library" level="project" name="Maven: org.graalvm.js:js-language:24.0.2" />
-      <element id="library" level="project" name="Maven: org.graalvm.js:js-scriptengine:24.0.2" />
-      <element id="library" level="project" name="Maven: org.graalvm.polyglot:polyglot:24.0.2" />
-      <element id="library" level="project" name="Maven: org.graalvm.regex:regex:24.0.2" />
-      <element id="library" level="project" name="Maven: org.graalvm.sdk:collections:24.0.2" />
-      <element id="library" level="project" name="Maven: org.graalvm.sdk:jniutils:24.0.2" />
-      <element id="library" level="project" name="Maven: org.graalvm.sdk:nativebridge:24.0.2" />
-      <element id="library" level="project" name="Maven: org.graalvm.sdk:nativeimage:24.0.2" />
-      <element id="library" level="project" name="Maven: org.graalvm.sdk:word:24.0.2" />
-      <element id="library" level="project" name="Maven: org.graalvm.shadowed:icu4j:24.0.2" />
-      <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-api:24.0.2" />
-      <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-compiler:24.0.2" />
-      <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-enterprise:24.0.2" />
-      <element id="library" level="project" name="Maven: org.graalvm.truffle:truffle-runtime:24.0.2" />
-      <element id="library" level="project" name="Maven: net.algart:algart:1.5.0" />
     </root>
   </artifact>
 </component>

@@ -6,4 +6,5 @@ set properties=%properties% -Dnet.algart.executors.check.existing.paths=false
 rem - We specify JAR files below in non-standard way and much disable built-in checking of class-paths
 set cp=./*
 echo on
-java -cp %cp% %properties% net.algart.executors.api.tests.ExecutingChain %1 %2 %3 %4 %5
+java --enable-native-access=ALL-UNNAMED -cp %cp% %properties% net.algart.executors.api.tests.ExecutingChain %1 %2 %3 %4 %5
+rem --enable-native-access is necessary since JDK 24
