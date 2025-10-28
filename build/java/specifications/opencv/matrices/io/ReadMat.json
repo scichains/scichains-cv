@@ -106,6 +106,14 @@
       "default": false
     },
     {
+      "caption": "Requires existing file",
+      "name": "fileExistenceRequired",
+      "description": "If set, the input file must exist; in another case, this function will throw an exception.\nIf this flag is cleared and the file does not exist, this function does nothing (just returns non-initialized result); an empty file name leads to the same result in this case.",
+      "value_type": "boolean",
+      "edition_type": "value",
+      "default": true
+    },
+    {
       "caption": "Relativize path",
       "name": "relativizePath",
       "description": "If set, the file path is relativized against the current OS directory (which is usually the product installation folder) if it is located inside this folder, for example, it is a resource file inside \"${resources}\" folder. This can be useful if we need this function to work even in the case when this folder may contain non-ASCII characters (e.g. Russian or Hebrew). The OpenCV function does not \"understand\" such paths, but relativization removes the current OS directory from the path when it is inside this directory, and this allows the OpenCV function to work normally.",

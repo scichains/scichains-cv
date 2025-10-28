@@ -26,15 +26,16 @@ package net.algart.executors.modules.opencv.matrices.io;
 
 import net.algart.executors.api.ReadOnlyExecutionInput;
 import net.algart.executors.api.data.SMat;
-import net.algart.executors.modules.core.common.io.FileOperation;
+import net.algart.executors.modules.core.common.io.ReadFileOperation;
 import net.algart.executors.modules.opencv.util.O2SMat;
 import org.bytedeco.opencv.global.opencv_imgcodecs;
 import org.bytedeco.opencv.opencv_core.Mat;
 
 import java.io.IOError;
 import java.io.IOException;
+import java.nio.file.Path;
 
-public final class ReadMat extends FileOperation implements ReadOnlyExecutionInput {
+public final class ReadMat extends ReadFileOperation implements ReadOnlyExecutionInput {
     private boolean relativizePath = false;
 
     public ReadMat() {
@@ -80,13 +81,18 @@ public final class ReadMat extends FileOperation implements ReadOnlyExecutionInp
     }
 
     public SMat readMat(SMat result) {
-        final String file = completeOSFilePath(relativizePath).toString();
-        logDebug(() -> "Reading OpenCV matrix from " + file);
-        final Mat mat = opencv_imgcodecs.imread(file);
-        if (mat == null || mat.data() == null) {
-            throw new IOError(new IOException("Cannot read " + file));
+        final Path path = completeOSFilePath(relativizePath);
+        if (skipNonExistingFile(path)) {
+            result.remove();
+        } else {
+            final String fileName = path.toString();
+            logDebug(() -> "Reading OpenCV matrix from " + fileName);
+            final Mat mat = opencv_imgcodecs.imread(fileName);
+            if (mat == null || mat.data() == null) {
+                throw new IOError(new IOException("Cannot read " + fileName));
+            }
+            O2SMat.setTo(result, mat);
         }
-        O2SMat.setTo(result, mat);
         return result;
     }
 }
