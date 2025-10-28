@@ -26,7 +26,7 @@ package net.algart.executors.modules.opencv.matrices.io;
 
 import net.algart.executors.api.ReadOnlyExecutionInput;
 import net.algart.executors.api.data.SMat;
-import net.algart.executors.modules.core.common.io.ReadFileOperation;
+import net.algart.executors.modules.core.common.io.FileOperation;
 import net.algart.executors.modules.opencv.util.O2SMat;
 import org.bytedeco.opencv.global.opencv_imgcodecs;
 import org.bytedeco.opencv.opencv_core.Mat;
@@ -35,7 +35,7 @@ import java.io.IOError;
 import java.io.IOException;
 import java.nio.file.Path;
 
-public final class ReadMat extends ReadFileOperation implements ReadOnlyExecutionInput {
+public final class ReadMat extends FileOperation implements ReadOnlyExecutionInput {
     private boolean relativizePath = false;
 
     public ReadMat() {
