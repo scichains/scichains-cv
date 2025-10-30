@@ -37,7 +37,7 @@ import java.io.IOError;
 import java.io.IOException;
 
 public final class WriteMat extends WriteFileOperation implements ReadOnlyExecutionInput {
-    private boolean requireInput = false;
+    private boolean inputRequired = false;
 
     public WriteMat() {
         addFileOperationPorts();
@@ -51,17 +51,17 @@ public final class WriteMat extends WriteFileOperation implements ReadOnlyExecut
     }
 
     public boolean requireInput() {
-        return requireInput;
+        return inputRequired;
     }
 
-    public WriteMat setRequireInput(boolean requireInput) {
-        this.requireInput = requireInput;
+    public WriteMat setInputRequired(boolean inputRequired) {
+        this.inputRequired = inputRequired;
         return this;
     }
 
     @Override
     public void process() {
-        writeMat(getInputMat(!requireInput));
+        writeMat(getInputMat(!inputRequired));
     }
 
     public void writeMat(SMat inputMat) {
@@ -81,5 +81,10 @@ public final class WriteMat extends WriteFileOperation implements ReadOnlyExecut
     @Override
     public ExecutionVisibleResultsInformation visibleResultsInformation() {
         return defaultVisibleResultsInformation(Port.Type.INPUT, DEFAULT_INPUT_PORT);
+    }
+
+    @Override
+    public String translateLegacyParameterAlias(String name) {
+        return name.equals("requireInput") ? "inputRequired" : name;
     }
 }
