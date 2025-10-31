@@ -86,7 +86,7 @@ public final class GrabCut extends VoidResultMatFilter {
     private OGrabCutMode mode = OGrabCutMode.GC_INIT_WITH_RECT;
     private FigureKind figureKind = FigureKind.GC_FGD;
     private MaskPixelClass initialMaskFiller = MaskPixelClass.GC_PR_BGD;
-    private boolean requireNonTrivialSamples = true;
+    private boolean nonTrivialSamplesRequired = true;
     private boolean percents = false;
     private double startX = 0;
     private double startY = 0;
@@ -145,12 +145,12 @@ public final class GrabCut extends VoidResultMatFilter {
         return this;
     }
 
-    public boolean isRequireNonTrivialSamples() {
-        return requireNonTrivialSamples;
+    public boolean isNonTrivialSamplesRequired() {
+        return nonTrivialSamplesRequired;
     }
 
-    public GrabCut setRequireNonTrivialSamples(boolean requireNonTrivialSamples) {
-        this.requireNonTrivialSamples = requireNonTrivialSamples;
+    public GrabCut setNonTrivialSamplesRequired(boolean nonTrivialSamplesRequired) {
+        this.nonTrivialSamplesRequired = nonTrivialSamplesRequired;
         return this;
     }
 
@@ -276,7 +276,7 @@ public final class GrabCut extends VoidResultMatFilter {
                         source, storedMask, rect, storedBgdModel, storedFgdModel, iterCount, mode.code());
             }
         } else {
-            if (requireNonTrivialSamples) {
+            if (nonTrivialSamplesRequired) {
                 throw new IllegalArgumentException("Illegal mask"
                         + (useFigure ? " (after adding the figure)" : "")
                         + ": all samples are "
@@ -298,6 +298,11 @@ public final class GrabCut extends VoidResultMatFilter {
         storedBgdModel.close();
         storedFgdModel.close();
         super.close();
+    }
+
+    @Override
+    public String translateLegacyParameterAlias(String name) {
+        return name.equals("requireNonTrivialSamples") ? "nonTrivialSamplesRequired" : name;
     }
 
     private Rect createRect(int dimX, int dimY) {

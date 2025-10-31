@@ -142,7 +142,7 @@
       "default": "GC_PR_BGD"
     },
     {
-      "name": "requireNonTrivialSamples",
+      "name": "nonTrivialSamplesRequired",
       "caption": "Require non-trivial samples",
       "description": "If true, then in \"GC_INIT_WITH_MASK\" this function requires that the mask (maybe after drawing the \"figure\") must contain at least one GC_BGD/GC_PR_BGD and at least one GC_FGD/GC_PR_FGD element; in other case, it throws an exception. If false,  exception is not thrown in such situation; instead,  the mask is returned without changes and the result \"success\" flag will contain false.",
       "value_type": "boolean",
