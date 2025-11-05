@@ -82,16 +82,20 @@ public final class ReadMat extends FileOperation implements ReadOnlyExecutionInp
 
     public SMat readMat(SMat result) {
         final Path path = completeOSFilePath(relativizePath);
-        if (skipNonExistingFile(path)) {
-            result.remove();
-        } else {
-            final String fileName = path.toString();
-            logDebug(() -> "Reading OpenCV matrix from " + fileName);
-            final Mat mat = opencv_imgcodecs.imread(fileName);
-            if (mat == null || mat.data() == null) {
-                throw new IOError(new IOException("Cannot read " + fileName));
+        try {
+            if (skipIfMissingOrThrow(path)) {
+                result.remove();
+            } else {
+                final String fileName = path.toString();
+                logDebug(() -> "Reading OpenCV matrix from " + fileName);
+                final Mat mat = opencv_imgcodecs.imread(fileName);
+                if (mat == null || mat.data() == null) {
+                    throw new IOException("Cannot read " + fileName);
+                }
+                O2SMat.setTo(result, mat);
             }
-            O2SMat.setTo(result, mat);
+        } catch (IOException e) {
+            throw new IOError(e);
         }
         return result;
     }
