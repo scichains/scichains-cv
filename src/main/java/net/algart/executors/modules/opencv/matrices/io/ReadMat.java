@@ -83,7 +83,7 @@ public final class ReadMat extends FileOperation implements ReadOnlyExecutionInp
     public SMat readMat(SMat result) {
         final Path path = completeOSFilePath(relativizePath);
         try {
-            if (skipIfMissingOrThrow(path)) {
+            if (skipIfMissingFileOrThrow(path)) {
                 result.remove();
             } else {
                 final String fileName = path.toString();
