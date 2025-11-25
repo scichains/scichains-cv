@@ -270,7 +270,7 @@ public final class PatternSpecificationParser {
                                         double pe = p.scalarProduct(e);
                                         p = p.add(e.multiply(pe * (mult - 1)));
                                         if (p.distanceFromOrigin() <= r)
-                                            threadPoints.add(IPoint.valueOf(ix, iy));
+                                            threadPoints.add(IPoint.of(ix, iy));
                                     }
                                 }
                             }
@@ -363,9 +363,9 @@ public final class PatternSpecificationParser {
                 result = result.shift(Point.valueOf(x, y));
 
             } else if (s.equals("cross")) { // "cross"
-                result = Patterns.newIntegerPattern(IPoint.valueOf(0, 0),
-                        IPoint.valueOf(1, 0), IPoint.valueOf(0, 1),
-                        IPoint.valueOf(-1, 0), IPoint.valueOf(0, -1));
+                result = Patterns.newIntegerPattern(IPoint.of(0, 0),
+                        IPoint.of(1, 0), IPoint.of(0, 1),
+                        IPoint.of(-1, 0), IPoint.of(0, -1));
 
             } else if (s.startsWith("sphere-surface ")) { // "sphere-surface dCircle d zD [x y [z]]"
                 String[] params = s.substring("sphere-surface ".length()).split("[, ]+");
@@ -389,7 +389,7 @@ public final class PatternSpecificationParser {
                 }
                 UniformGridPattern projection = Patterns.newSphereIntegerPattern(Point.origin(2), 0.5 * dCircle);
                 Func surf = UpperHalfEllipsoidOfRevolutionFunc.getInstance(0.5 * d, 0.5 * zD, 0.0);
-                result = Patterns.newSurface(projection, surf).shift(Point.valueOf(x, y, z));
+                result = Patterns.newSurface(projection, surf).shift(Point.of(x, y, z));
                 if (integerType) {
                     result = result.round();
                 }
@@ -426,7 +426,7 @@ public final class PatternSpecificationParser {
                 result = Patterns.newSpaceSegment(projection,
                         ConstantFunc.getInstance(surf.get(0.5 * dCircle, 0.0)),
                         surf,
-                        0.0, zStep).shift(Point.valueOf(x, y, z));
+                        0.0, zStep).shift(Point.of(x, y, z));
 
             } else if (s.startsWith("hyperboloid-surface ")) { // "hyperboloid-surface dCircle d zAxis [x y [z]]"
                 String[] params = s.substring("hyperboloid-surface ".length()).split("[, ]+");
@@ -448,7 +448,7 @@ public final class PatternSpecificationParser {
                 }
                 UniformGridPattern projection = Patterns.newSphereIntegerPattern(Point.origin(2), 0.5 * dCircle);
                 Func surf = HyperboloidOfRevolutionFunc.getLowerInstance(0.5 * d, 0.5 * zAxis, 0.0);
-                result = Patterns.newSurface(projection, surf).shift(Point.valueOf(x, y, z));
+                result = Patterns.newSurface(projection, surf).shift(Point.of(x, y, z));
                 if (integerType) {
                     result = result.round();
                 }
@@ -483,7 +483,7 @@ public final class PatternSpecificationParser {
                 result = Patterns.newSpaceSegment(projection,
                         ConstantFunc.getInstance(surf.get(0.5 * dCircle, 0.0)),
                         surf,
-                        0.0, zStep).shift(Point.valueOf(x, y, z));
+                        0.0, zStep).shift(Point.of(x, y, z));
 
             } else if (s.startsWith("paraboloid-surface ")) { // "paraboloid-surface dCircle d zAxis [x y [z]]"
                 String[] params = s.substring("paraboloid-surface ".length()).split("[, ]+");
@@ -505,7 +505,7 @@ public final class PatternSpecificationParser {
                 }
                 UniformGridPattern projection = Patterns.newSphereIntegerPattern(Point.origin(2), 0.5 * dCircle);
                 Func surf = ParaboloidOfRevolutionFunc.getInstance(-zAxis / (0.5 * d * d), 0.0);
-                result = Patterns.newSurface(projection, surf).shift(Point.valueOf(x, y, z));
+                result = Patterns.newSurface(projection, surf).shift(Point.of(x, y, z));
                 if (integerType) {
                     result = result.round();
                 }
@@ -540,7 +540,7 @@ public final class PatternSpecificationParser {
                 result = Patterns.newSpaceSegment(projection,
                         ConstantFunc.getInstance(surf.get(0.5 * dCircle, 0.0)),
                         surf,
-                        0.0, zStep).shift(Point.valueOf(x, y, z));
+                        0.0, zStep).shift(Point.of(x, y, z));
 
             } else if (s.startsWith("series ")) { // "series [x0 y0] dx dy n" or "series [x0 y0 z0] dx dy dz n": points
                 String[] params = s.substring("series ".length()).split("[, ]+");
@@ -674,11 +674,11 @@ public final class PatternSpecificationParser {
         if (n < 1)
             throw new IllegalArgumentException("Zero or negative length of the series: " + n);
         if (n == 1) {
-            return Patterns.newIntegerPattern(IPoint.valueOf(x0, y0));
+            return Patterns.newIntegerPattern(IPoint.of(x0, y0));
         } else {
             return Patterns.newMinkowskiMultiplePattern(
-                            Patterns.newIntegerPattern(IPoint.origin(2), IPoint.valueOf(dx, dy)), n - 1)
-                    .shift(Point.valueOf(x0, y0));
+                            Patterns.newIntegerPattern(IPoint.origin(2), IPoint.of(dx, dy)), n - 1)
+                    .shift(Point.of(x0, y0));
         }
     }
 
@@ -731,7 +731,7 @@ public final class PatternSpecificationParser {
         for (int y = 0; y < dimY; y++) {
             for (int x = 0; x < dimX; x++) {
                 if (lines[y].charAt(x) != '0') {
-                    points.add(IPoint.valueOf(x - centerX, y - centerY));
+                    points.add(IPoint.of(x - centerX, y - centerY));
                 }
             }
         }
@@ -747,11 +747,11 @@ public final class PatternSpecificationParser {
         if (n < 1)
             throw new IllegalArgumentException("Zero or negative length of the series: " + n);
         if (n == 1) {
-            return Patterns.newPattern(Point.valueOf(x0, y0, z0));
+            return Patterns.newPattern(Point.of(x0, y0, z0));
         } else {
             return Patterns.newMinkowskiMultiplePattern(
-                            Patterns.newPattern(Point.origin(3), Point.valueOf(dx, dy, dz)), n - 1)
-                    .shift(Point.valueOf(x0, y0, z0));
+                            Patterns.newPattern(Point.origin(3), Point.of(dx, dy, dz)), n - 1)
+                    .shift(Point.of(x0, y0, z0));
         }
     }
 

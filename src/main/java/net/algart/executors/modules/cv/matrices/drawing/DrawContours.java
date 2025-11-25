@@ -228,7 +228,7 @@ public final class DrawContours extends MultiMatrix2DFilter {
                 position.toIRectangularArea().min() :
                 position.toIPoint();
         if (originPoint == null) {
-            originPoint = IPoint.valueOf(imageStartX, imageStartY);
+            originPoint = IPoint.of(imageStartX, imageStartY);
         }
         List<Matrix<? extends UpdatablePArray>> resultChannels = null;
         if (background != null && !drawnFeatures.incrementing) {

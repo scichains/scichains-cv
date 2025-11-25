@@ -458,7 +458,7 @@ public final class FloodFill extends OpenCVExecutor {
         Objects.requireNonNull(image, "Null image");
         final long seedX = Math.round(percents ? this.x / 100.0 * (image.cols() - 1) : this.x);
         final long seedY = Math.round(percents ? this.y / 100.0 * (image.rows() - 1) : this.y);
-        return IPoint.valueOf(seedX, seedY);
+        return IPoint.of(seedX, seedY);
     }
 
     // mask (not image!) is appended by 1 pixel from each side

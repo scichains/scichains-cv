@@ -166,7 +166,7 @@ public final class OTools {
     }
 
     public static IPoint toIPoint(Point point) {
-        return IPoint.valueOf(point.x(), point.y());
+        return IPoint.of(point.x(), point.y());
     }
 
     public static Rect toRect(IRectangularArea rectangularArea) {

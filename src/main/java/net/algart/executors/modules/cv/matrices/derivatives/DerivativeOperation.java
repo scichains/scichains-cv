@@ -121,7 +121,7 @@ public enum DerivativeOperation {
 
     DerivativeOperation(int minX, int minY, int maxX, int maxY, double[] weights) {
         this.weightedPattern = WeightedPatterns.newPattern(
-                Patterns.newRectangularIntegerPattern(IPoint.valueOf(minX, minY), IPoint.valueOf(maxX, maxY)),
+                Patterns.newRectangularIntegerPattern(IPoint.of(minX, minY), IPoint.of(maxX, maxY)),
                 weights);
     }
 

@@ -40,11 +40,11 @@ import java.util.Objects;
 
 public final class NearestPixelFinder {
     private static final Pattern CROSS_PATTERN = Patterns.newIntegerPattern(
-            IPoint.valueOf(0, 0),
-            IPoint.valueOf(1, 0),
-            IPoint.valueOf(0, 1),
-            IPoint.valueOf(-1, 0),
-            IPoint.valueOf(0, -1)
+            IPoint.of(0, 0),
+            IPoint.of(1, 0),
+            IPoint.of(0, 1),
+            IPoint.of(-1, 0),
+            IPoint.of(0, -1)
     );
 
     private final boolean[] maskArray;

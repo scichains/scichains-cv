@@ -98,7 +98,7 @@ public final class SimpleMorphologyTest {
         long t2 = System.nanoTime();
         System.out.printf("morphologyEx: %.3f ms%n", (t2 - t1) * 1e-6);
         final UniformGridPattern square = Patterns.newRectangularIntegerPattern(
-                IPoint.valueOf(-ptnRadius, -ptnRadius), IPoint.valueOf(ptnRadius, ptnRadius));
+                IPoint.of(-ptnRadius, -ptnRadius), IPoint.of(ptnRadius, ptnRadius));
         System.out.println("AlgART dilation...");
         morphology.dilation(m, square);
         morphology.dilation(m, square);
@@ -128,7 +128,7 @@ public final class SimpleMorphologyTest {
         System.out.printf("medianBlur: %.3f ms%n", (t2 - t1) * 1e-6);
         System.out.println("AlgART median...");
         final UniformGridPattern square = Patterns.newRectangularIntegerPattern(
-                IPoint.valueOf(-ptnRadius, -ptnRadius), IPoint.valueOf(ptnRadius, ptnRadius));
+                IPoint.of(-ptnRadius, -ptnRadius), IPoint.of(ptnRadius, ptnRadius));
         rankMorphology.dilation(m, square);
         rankMorphology.dilation(m, square);
         // warming up
