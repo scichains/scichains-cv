@@ -53,7 +53,7 @@ public abstract class MorphologyFilter extends MultiMatrixChannelFilter {
             @Override
             public Pattern newPattern(int numberOfDimensions, int patternSize) {
                 final IRange[] sides = new IRange[numberOfDimensions];
-                Arrays.fill(sides, IRange.valueOf(-patternSize / 2, -patternSize / 2 + patternSize - 1));
+                Arrays.fill(sides, IRange.of(-patternSize / 2, -patternSize / 2 + patternSize - 1));
                 return Patterns.newRectangularIntegerPattern(sides);
             }
         };

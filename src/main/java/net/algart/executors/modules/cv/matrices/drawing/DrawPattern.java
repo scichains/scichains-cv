@@ -104,7 +104,7 @@ public final class DrawPattern extends MorphologyFilter {
             drawPattern(
                     updatableMatrix,
                     getPattern(m),
-                    Point.valueOf(positionsAndColors.x(k), positionsAndColors.y(k)).toRoundedPoint(),
+                    Point.of(positionsAndColors.x(k), positionsAndColors.y(k)).toRoundedPoint(),
                     positionsAndColors.colorValue(k, currentChannel(), maxPossibleValue),
                     getContinuationMode());
         }

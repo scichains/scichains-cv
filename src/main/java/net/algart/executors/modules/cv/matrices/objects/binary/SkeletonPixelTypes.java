@@ -103,7 +103,7 @@ public final class SkeletonPixelTypes extends BitMultiMatrixFilter {
                 min = Math.min(min, list[k]);
                 max = Math.max(max, list[k]);
             }
-            this.range = IRange.valueOf(min, max).toRange();
+            this.range = IRange.of(min, max).toRange();
         }
 
         boolean isThisPixelType(double pixelType) {

@@ -259,14 +259,14 @@ public final class LocalExtremums extends MultiMatrixToNumbers {
             if (MULTITHREADING_Y_BLOCK_LENGTH == 0 || Arrays.SystemSettings.cpuCount() == 1) {
                 extremumsXY = processRange(
                         values, maskArray, aperture, depthAperture, ignoreMatrix, extremumsMaskMatrix,
-                        IRange.valueOf(0, dimY - 1));
+                        IRange.of(0, dimY - 1));
             } else {
                 final List<IRange> yRanges = new ArrayList<>();
                 final int yBlockLength = Math.max(MIN_MULTITHREADING_Y_BLOCK_LENGTH,
                         (int) Math.min(MULTITHREADING_Y_BLOCK_LENGTH,
                                 dimY / Runtime.getRuntime().availableProcessors()));
                 for (long y = 0; y < dimY; y += yBlockLength) {
-                    yRanges.add(IRange.valueOf(y, Math.min(y + yBlockLength, dimY) - 1));
+                    yRanges.add(IRange.of(y, Math.min(y + yBlockLength, dimY) - 1));
                 }
                 final List<? extends IntArray> results = yRanges.parallelStream().map(
                                 range -> processRange(

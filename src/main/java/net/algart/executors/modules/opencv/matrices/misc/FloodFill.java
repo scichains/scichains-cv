@@ -665,13 +665,13 @@ public final class FloodFill extends OpenCVExecutor {
             // - should not occur while normal usage
             return null;
         }
-        modifiedRectangle = modifiedRectangle.intersection(IRectangularArea.valueOf(0, 0, dimX, dimY));
+        modifiedRectangle = modifiedRectangle.intersection(IRectangularArea.of(0, 0, dimX, dimY));
         // - to be on the safe side
         if (modifiedRectangle == null) {
             // - should not occur while normal usage
             return null;
         }
-        return modifiedRectangle.shift(IPoint.valueOfEqualCoordinates(2, shift));
+        return modifiedRectangle.shift(IPoint.ofEqualCoordinates(2, shift));
     }
 
     private void resetMask(Mat mask) {

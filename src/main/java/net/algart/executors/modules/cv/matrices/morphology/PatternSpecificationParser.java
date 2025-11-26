@@ -175,7 +175,7 @@ public final class PatternSpecificationParser {
                 String[] params = elements[1].split("[, ]+");
                 double x = Double.parseDouble(params[0].trim());
                 double y = Double.parseDouble(params[1].trim());
-                result = parse(elements[0]).shift(Point.valueOf(x, y));
+                result = parse(elements[0]).shift(Point.of(x, y));
 
             } else if (s.startsWith("circle ")) { // "circle d [x y]"
                 String[] params = s.substring("circle ".length()).split("[, ]+");
@@ -190,7 +190,7 @@ public final class PatternSpecificationParser {
                     x = Double.parseDouble(params[1].trim());
                     y = Double.parseDouble(params[2].trim());
                 }
-                result = Patterns.newSphereIntegerPattern(Point.valueOf(0, 0), 0.5 * d).shift(Point.valueOf(x, y));
+                result = Patterns.newSphereIntegerPattern(Point.of(0, 0), 0.5 * d).shift(Point.of(x, y));
 
             } else if (s.startsWith("ring ")) { // "ring d thickness [x y]"
                 String[] params = s.substring("ring ".length()).split("[, ]+");
@@ -208,8 +208,8 @@ public final class PatternSpecificationParser {
                     x = Double.parseDouble(params[2].trim());
                     y = Double.parseDouble(params[3].trim());
                 }
-                UniformGridPattern larger = Patterns.newSphereIntegerPattern(Point.valueOf(x, y), 0.5 * d);
-                UniformGridPattern smaller = Patterns.newSphereIntegerPattern(Point.valueOf(x, y), 0.5 * d - th);
+                UniformGridPattern larger = Patterns.newSphereIntegerPattern(Point.of(x, y), 0.5 * d);
+                UniformGridPattern smaller = Patterns.newSphereIntegerPattern(Point.of(x, y), 0.5 * d - th);
                 Set<IPoint> points = new HashSet<>(larger.roundedPoints());
                 points.removeAll(smaller.roundedPoints());
                 points.addAll(larger.surface().roundedPoints());
@@ -239,7 +239,7 @@ public final class PatternSpecificationParser {
                 }
                 if (fi == 0.0) {
                     result = Patterns.newEllipsoidIntegerPattern(Point.origin(2), 0.5 * a, 0.5 * b)
-                            .shift(Point.valueOf(x, y));
+                            .shift(Point.of(x, y));
                 } else {
                     if (a < b) {
                         double temp = a;
@@ -250,7 +250,7 @@ public final class PatternSpecificationParser {
                     final Set<IPoint> points = new HashSet<>();
                     final double mult = b / a;
                     final double r = 0.5 * b;
-                    final Point e = Point.valueOf(Math.cos(fi), Math.sin(fi));
+                    final Point e = Point.of(Math.cos(fi), Math.sin(fi));
                     final int ir = (int) a + 2;
                     final int xMin = (int) x - ir;
                     final int xMax = (int) x + ir;
@@ -264,7 +264,7 @@ public final class PatternSpecificationParser {
                             for (int iy = yMin; iy <= yMax; iy++) {
                                 if ((iy - yMin) % threads.length == threadIndex) {
                                     for (int ix = xMin; ix <= xMax; ix++) {
-                                        Point p = Point.valueOf(ix - x, iy - y);
+                                        Point p = Point.of(ix - x, iy - y);
                                         // we should build q = p - e*(pe) + mult*e*(pe) = p + (mult-1)*e*pe:
                                         // p is inside the ellipse if and only if q is inside the circle with r=b/2
                                         double pe = p.scalarProduct(e);
@@ -315,8 +315,8 @@ public final class PatternSpecificationParser {
                     y += Long.parseLong(params[3].trim());
                 }
                 result = Patterns.newRectangularIntegerPattern(
-                        IRange.valueOf(x, x + width - 1),
-                        IRange.valueOf(y, y + height - 1));
+                        IRange.of(x, x + width - 1),
+                        IRange.of(y, y + height - 1));
 
             } else if (s.startsWith("square ")) { // "square size [x y]"
                 String[] params = s.substring("square ".length()).split("[, ]+");
@@ -327,8 +327,8 @@ public final class PatternSpecificationParser {
                     y += Long.parseLong(params[2].trim());
                 }
                 result = Patterns.newRectangularIntegerPattern(
-                        IRange.valueOf(x, x + size - 1),
-                        IRange.valueOf(y, y + size - 1));
+                        IRange.of(x, x + size - 1),
+                        IRange.of(y, y + size - 1));
 
             } else if (s.startsWith("octagon ")) { // "octagon size [x y]"
                 String[] params = s.substring("octagon ".length()).split("[, ]+");
@@ -347,20 +347,22 @@ public final class PatternSpecificationParser {
                 int diagSize = (int) (d / (Math.sqrt(2.0) + 2.0));
                 int nAxis = Math.max(1, diagSize < 1 ? rectSize : Math.max(1, rectSize - 2 * diagSize));
                 // each getSeries(0, 0, 1, 1, diagSize+1) below has sizes diagSize x diagSize
-                IRange axisRange = IRange.valueOf(-nAxis / 2, -nAxis / 2 + nAxis - 1);
+                IRange axisRange = IRange.of(-nAxis / 2, -nAxis / 2 + nAxis - 1);
                 result = Patterns.newRectangularIntegerPattern(axisRange, axisRange);
                 if (diagSize >= 1) {
                     Pattern diagonal = Patterns.newMinkowskiSum(
                             getSeries(0, 0, 1, 1, diagSize + 1),
                             getSeries(0, 0, 1, -1, diagSize + 1));
                     IRange xr = diagonal.roundedCoordRange(0), yr = diagonal.roundedCoordRange(1);
-                    diagonal = diagonal.shift(Point.valueOf(-(xr.min() + xr.max()) / 2, -(yr.min() + yr.max()) / 2));
+                    diagonal = diagonal.shift(Point.of(
+                            (double) (-(xr.min() + xr.max()) / 2),
+                            (double) (-(yr.min() + yr.max()) / 2)));
                     if (nAxis == 1)
                         result = Patterns.newUnion(result, diagonal);
                     else
                         result = Patterns.newMinkowskiSum(result, diagonal);
                 }
-                result = result.shift(Point.valueOf(x, y));
+                result = result.shift(Point.of((double) x, (double) y));
 
             } else if (s.equals("cross")) { // "cross"
                 result = Patterns.newIntegerPattern(IPoint.of(0, 0),

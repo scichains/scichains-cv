@@ -37,7 +37,8 @@ public final class SubtractingPatternsTest {
     private static Pattern randomRectangularPatter(int dimCount, int size, Random rnd) {
         final IRange[] sides = new IRange[dimCount];
         for (int k = 0; k < dimCount; k++) {
-            sides[k] = IRange.valueOf(rnd.nextInt(size) - size / 2, rnd.nextInt(size) + size / 2);
+            long min = rnd.nextInt(size) - size / 2;
+            sides[k] = IRange.of(min, rnd.nextInt(size) + size / 2);
         }
         return Patterns.newRectangularIntegerPattern(sides);
     }

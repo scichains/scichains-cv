@@ -181,13 +181,13 @@ public final class NearestMatrixPixels extends MultiMatrixToNumbers {
         final int[] numbersOfNearest = new int[n];
         if (n > 0) {
             if (MULTITHREADING_POSITIONS_BLOCK_LENGTH == 0 || Arrays.SystemSettings.cpuCount() == 1) {
-                nearestXY = findNearestInRange(finder, positionsArray, IRange.valueOf(0, n - 1), numbersOfNearest);
+                nearestXY = findNearestInRange(finder, positionsArray, IRange.of(0, n - 1), numbersOfNearest);
             } else {
                 final List<IRange> ranges = new ArrayList<>();
                 final int blockLength = Math.max(1, Math.min(MULTITHREADING_POSITIONS_BLOCK_LENGTH,
                         n / Runtime.getRuntime().availableProcessors()));
                 for (int i = 0; i < n; i += blockLength) {
-                    ranges.add(IRange.valueOf(i, Math.min(i + blockLength, n) - 1));
+                    ranges.add(IRange.of(i, Math.min(i + blockLength, n) - 1));
                 }
                 final List<? extends IntArray> results = ranges.parallelStream().map(
                         range -> findNearestInRange(finder, positionsArray, range, numbersOfNearest)).toList();
