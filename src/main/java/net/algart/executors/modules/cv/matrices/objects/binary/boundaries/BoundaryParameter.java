@@ -182,9 +182,7 @@ public enum BoundaryParameter {
         final double y = array[offset + 1];
         final double sizeXHalf = 0.5 * array[offset + 2];
         final double sizeYHalf = 0.5 * array[offset + 3];
-        return RectangularArea.valueOf(
-                x - sizeXHalf, y - sizeYHalf,
-                x + sizeXHalf, y + sizeYHalf);
+        return RectangularArea.of(x - sizeXHalf, y - sizeYHalf, x + sizeXHalf, y + sizeYHalf);
     }
 
     public static EnumSet<Boundary2DSimpleMeasurer.ObjectParameter> objectParameters(

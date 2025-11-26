@@ -621,9 +621,9 @@ public final class PatternSpecificationParser {
 //                && pattern1.roundedCoordRange(0).contains(pattern2.roundedCoordRange(0))
 //                && pattern1.roundedCoordRange(1).contains(pattern2.roundedCoordRange(1))
         ) {
-            // this optimization allows to avoid processing patterns with a lot of points
-            // and also increases speed of dilation / erosion in comparison with common O(D) algorithm
-            // (because this "frame" usually leads to D operations instead log D)
+            // this optimization allows avoiding processing patterns with a lot of points
+            // and also increases the speed of dilation / erosion in comparison with common O(D) algorithm
+            // (because this "frame" usually leads to D operations instead of log D)
             final IRectangularArea area1 = pattern1.roundedCoordArea();
             final IRectangularArea area2 = pattern2.roundedCoordArea();
             final List<Pattern> patternList = new ArrayList<>();
@@ -666,7 +666,7 @@ public final class PatternSpecificationParser {
  */
         } else {
             final Set<IPoint> points = new LinkedHashSet<>(pattern1.roundedPoints());
-            // - we prefer stable order of points
+            // - we prefer a stable order of points
             points.removeAll(pattern2.roundedPoints());
             return Patterns.newIntegerPattern(points);
         }
@@ -700,7 +700,7 @@ public final class PatternSpecificationParser {
                     }
                 }
             }
-            points.add(Point.valueOf(coordinates));
+            points.add(Point.of(coordinates));
         }
         result = Patterns.newPattern(points);
         return result;
