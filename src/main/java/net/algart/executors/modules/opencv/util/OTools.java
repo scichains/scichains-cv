@@ -197,9 +197,7 @@ public final class OTools {
         final int minY = rect.y();
         final int maxX = minX + rect.width() - 1;
         final int maxY = minY + rect.height() - 1;
-        return minX <= maxX && minY <= maxY ?
-                IRectangularArea.valueOf(minX, minY, maxX, maxY) :
-                null;
+        return minX <= maxX && minY <= maxY ? IRectangularArea.of(minX, minY, maxX, maxY) : null;
     }
 
     public static int[] toIntArray(Vec4iVector vector) {

@@ -212,7 +212,7 @@ public final class MeasureContours extends Executor implements ReadOnlyExecution
             }
             getNumbers(OUTPUT_CONTAINING_RECTANGLE).setTo(result, 4);
             if (n > 0) {
-                getNumbers(OUTPUT_CONTAINING_ALL_RECTANGLE).setTo(IRectangularArea.valueOf(
+                getNumbers(OUTPUT_CONTAINING_ALL_RECTANGLE).setTo(IRectangularArea.of(
                         containingAllMinX, containingAllMinY, containingAllMaxX, containingAllMaxY));
             }
         }

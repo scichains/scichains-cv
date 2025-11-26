@@ -108,6 +108,7 @@ public final class FillMainBoundaryAroundRectangle extends BitMultiMatrixFilter 
     @Override
     protected Matrix<? extends PArray> processMatrix(Matrix<? extends PArray> objects) {
         if (sizeX <= 0 || sizeY <= 0) {
+            //noinspection resource
             return new FillMainBoundaryAroundPoint()
                     .setX(startX)
                     .setY(startY)
@@ -122,8 +123,9 @@ public final class FillMainBoundaryAroundRectangle extends BitMultiMatrixFilter 
                 .setConnectivityType(connectivityType);
         final Matrix<UpdatableBitArray> result = Arrays.SMM.newBitMatrix(objects.dimensions());
         long t2 = debugTime();
-        final IRectangularArea rectangle = IRectangularArea.valueOf(
-                startX, startY, Math.addExact(startX, sizeX - 1), Math.addExact(startY, sizeY - 1));
+        final IRectangularArea rectangle = IRectangularArea.of(
+                startX, startY,
+                Math.addExact(startX, sizeX - 1), Math.addExact(startY, sizeY - 1));
         final IPoint p = mode.processRectangle(finder, result, source, rectangle);
         long t3 = debugTime();
         getScalar(OUTPUT_FOUND_X).setTo(p.x());

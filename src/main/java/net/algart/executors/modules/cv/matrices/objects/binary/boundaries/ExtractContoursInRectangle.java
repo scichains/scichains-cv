@@ -168,7 +168,7 @@ public final class ExtractContoursInRectangle extends NumbersFilter implements R
         if (height > 0) {
             y2 = Math.addExact(y1, height);
         }
-        final IRectangularArea checkedRectangle = IRectangularArea.valueOf(x1, y1, x2, y2);
+        final IRectangularArea checkedRectangle = IRectangularArea.of(x1, y1, x2, y2);
         final boolean resultNecessary = isOutputNecessary(OUTPUT_CONTOURS);
         final boolean otherContoursNecessary = isOutputNecessary(OUTPUT_OTHER_CONTOURS);
         final ContourHeader header = new ContourHeader();
@@ -204,7 +204,7 @@ public final class ExtractContoursInRectangle extends NumbersFilter implements R
         }
         if (n > 0) {
             getNumbers(OUTPUT_CONTAINING_ALL_RECTANGLE).setTo(
-                    IRectangularArea.valueOf(containingMinX, containingMinY, containingMaxX, containingMaxY));
+                    IRectangularArea.of(containingMinX, containingMinY, containingMaxX, containingMaxY));
         }
         getScalar(OUTPUT_NUMBER_OF_SOURCE_CONTOURS).setTo(n);
         getScalar(OUTPUT_NUMBER_OF_RESULT_CONTOURS).setTo(result.numberOfContours());
