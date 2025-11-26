@@ -321,7 +321,7 @@ public final class BinaryFilterParticlesOrPoresBySizes extends BitMultiMatrixFil
 
     public static Range poresToParticlesRange(Matrix<? extends PArray> particles, Range range) {
         final double maxPossibleValue = particles.array().maxPossibleValue(1.0);
-        return Range.valueOf(maxPossibleValue - range.max(), maxPossibleValue - range.min());
+        return Range.of(maxPossibleValue - range.max(), maxPossibleValue - range.min());
     }
 
     private static void switchParticlesAndPores(
