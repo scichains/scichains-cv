@@ -64,10 +64,10 @@ public final class MLMetadataJson {
         Objects.requireNonNull(modelNameToKind, "Null modelNameToKind function");
         this.mlMetadataJsonFile = file;
         this.version = json.getString("version", CURRENT_VERSION);
-        final String modelKind = json.getString("model_kind", null);
-        if (modelKind != null) {
-            this.modelKind = modelNameToKind.apply(modelKind).orElse(null);
-            Jsons.requireNonNull(this.modelKind, json, "model_kind", file);
+        final String modelKindName = json.getString("model_kind", null);
+        if (modelKindName != null) {
+            this.modelKind = modelNameToKind.apply(modelKindName).orElseThrow(
+                    () -> Jsons.unknownValueException(json, "model_kind", modelKindName, file));
         }
         this.createdBy = json.getString("created_by", null);
         this.parameters = json.getJsonObject("parameters");
@@ -96,7 +96,7 @@ public final class MLMetadataJson {
 
     public void write(Path mlMetadataJsonFile, OpenOption... options) throws IOException {
         Objects.requireNonNull(mlMetadataJsonFile, "Null mlMetadataJsonFile");
-        Files.write(mlMetadataJsonFile, Jsons.toPrettyString(toJson()).getBytes(StandardCharsets.UTF_8), options);
+        Files.writeString(mlMetadataJsonFile, Jsons.toPrettyString(toJson()), options);
     }
 
     public static Path metadataFile(Path mainModelFile) throws IOException {

@@ -27,6 +27,7 @@ package net.algart.executors.modules.cv.matrices.camera.reflectance;
 import jakarta.json.JsonObject;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -69,7 +70,7 @@ public enum ReflectanceTranslationType {
         return jsonBasedFactory.apply(json);
     }
 
-    public static ReflectanceTranslationType ofOrNull(String typeName) {
-        return ALL_TYPES.get(typeName);
+    public static Optional<ReflectanceTranslationType> fromTypeName(String typeName) {
+        return Optional.ofNullable(ALL_TYPES.get(typeName));
     }
 }
