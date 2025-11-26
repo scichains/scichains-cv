@@ -119,7 +119,7 @@ public final class AverageByRectangle extends MultiMatrixFilter {
         final int sizeY = this.sizeY <= 0 ? this.sizeX : this.sizeY;
         final int minX = centerX - sizeX / 2;
         final int minY = centerY - sizeY / 2;
-        final IRectangularArea rectangle = IRectangularArea.of(minX, minY, minX + sizeX - 1, minY + sizeY - 1);
+        final IRectangularArea rectangle = IRectangularArea.ofSize(minX, minY, sizeX, sizeY);
         long t2 = debugTime();
         final MultiMatrix result = source.apply(m -> averager.filter(m, rectangle));
         long t3 = debugTime();
