@@ -216,7 +216,7 @@ public class ReflectanceSettings extends AbstractConvertibleToJson {
         this.version = json.getString("version", CURRENT_VERSION);
         final String typeName = json.getString("type", ParameterValueType.STRING.typeName());
         this.type = ReflectanceTranslationType.fromTypeName(typeName).orElseThrow(
-                () -> Jsons.incorrectValueException(json, "type",
+                () -> Jsons.incorrectValue(json, "type",
                         "unknown reflectance translation type (\"" + typeName + "\")", file));
         this.translation = this.type.newSettings(Jsons.reqJsonObject(json, "translation", file));
     }

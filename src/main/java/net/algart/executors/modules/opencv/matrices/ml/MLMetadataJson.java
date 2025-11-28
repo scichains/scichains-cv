@@ -67,7 +67,7 @@ public final class MLMetadataJson {
         final String modelKindName = json.getString("model_kind", null);
         if (modelKindName != null) {
             this.modelKind = modelNameToKind.apply(modelKindName).orElseThrow(
-                    () -> Jsons.unknownValueException(json, "model_kind", modelKindName, file));
+                    () -> Jsons.unknownValue(json, "model_kind", modelKindName, file));
         }
         this.createdBy = json.getString("created_by", null);
         this.parameters = json.getJsonObject("parameters");
