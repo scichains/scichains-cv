@@ -29,7 +29,6 @@ import jakarta.json.JsonObject;
 import jakarta.json.JsonObjectBuilder;
 import net.algart.arrays.Arrays;
 import net.algart.arrays.PArray;
-import net.algart.executors.api.parameters.ParameterValueType;
 import net.algart.json.AbstractConvertibleToJson;
 import net.algart.json.Jsons;
 import net.algart.math.functions.AbstractFunc;
@@ -214,10 +213,9 @@ public class ReflectanceSettings extends AbstractConvertibleToJson {
         }
         this.reflectanceJsonFile = file;
         this.version = json.getString("version", CURRENT_VERSION);
-        final String typeName = json.getString("type", ParameterValueType.STRING.typeName());
+        final String typeName = json.getString("type", ReflectanceTranslationType.LINEAR.typeName());
         this.type = ReflectanceTranslationType.fromTypeName(typeName).orElseThrow(
-                () -> Jsons.incorrectValue(json, "type",
-                        "unknown reflectance translation type (\"" + typeName + "\")", file));
+                () -> Jsons.badValue(json, "type", typeName, ReflectanceTranslationType.typeNames(), file));
         this.translation = this.type.newSettings(Jsons.reqJsonObject(json, "translation", file));
     }
 

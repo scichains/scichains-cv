@@ -26,6 +26,8 @@ package net.algart.executors.modules.cv.matrices.camera.reflectance;
 
 import jakarta.json.JsonObject;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
@@ -56,6 +58,10 @@ public enum ReflectanceTranslationType {
         this.typeName = typeName;
         this.factory = factory;
         this.jsonBasedFactory = jsonBasedFactory;
+    }
+
+    public static Collection<String> typeNames() {
+        return Collections.unmodifiableCollection(ALL_TYPES.keySet());
     }
 
     public String typeName() {
