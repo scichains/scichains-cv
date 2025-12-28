@@ -50,7 +50,7 @@ public final class WriteMat extends WriteFileOperation implements ReadOnlyExecut
         return this;
     }
 
-    public boolean requireInput() {
+    public boolean isInputRequired() {
         return inputRequired;
     }
 

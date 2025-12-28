@@ -287,28 +287,25 @@ public final class PatternSpecificationParser {
                 }
 
 // Alternative, more simple, but slower algorithm, requiring much more Java memory:
-//                Point center = Point.valueOf(x, y);
-//                result = Patterns.newIntegerSpherePattern(center, 0.5 * a);
-//                Point e = Point.valueOf( -Math.sin(fi), Math.cos(fi));
+//                Point center = Point.of(x, y);
+//                result = Patterns.newSphereIntegerPattern(center, 0.5 * a);
+//                Point e = Point.of( -Math.sin(fi), Math.cos(fi));
 //                double mult = b / a;
 //                Set<IPoint> srcPoints = result.roundedPoints();
 //                Set<IPoint> destPoints = new HashSet<IPoint>();
 //                for (IPoint ip : srcPoints) {
-//                    Point p = Point.valueOf(ip).subtract(center);
+//                    Point p = Point.of(ip).subtract(center);
 //                    // we should replace p = p - e*(pe) + mult*e*(pe) = p + (mult-1)*e*pe
 //                    double pe = p.scalarProduct(e);
 //                    p = p.add(e.multiply(pe * (mult - 1)));
 //                    destPoints.add(IPoint.roundOf(p.add(center)));
 //                }
-//                result = Patterns.newIPattern(destPoints);
+//                result = Patterns.newIntegerPattern(destPoints);
 
             } else if (s.startsWith("rect ")) { // "rect width [height [centerX centerY]]"
                 String[] params = s.substring("rect ".length()).split("[, ]+");
                 long width = Long.parseLong(params[0].trim());
-                long height = width;
-                if (params.length >= 2) {
-                    height = Long.parseLong(params[1].trim());
-                }
+                long height = params.length >= 2 ? Long.parseLong(params[1].trim()) : width;
                 long x = -width / 2, y = -height / 2;
                 if (params.length >= 4) {
                     x += Long.parseLong(params[2].trim());
@@ -648,18 +645,18 @@ public final class PatternSpecificationParser {
             assert y2Max <= y1Max;
             if (y2Min > y1Min) {
                 b.add(Patterns.newRectangularIntegerPattern(pattern1.roundedCoordRange(0),
-                        IRange.valueOf(y1Min, y2Min - 1)));
+                        IRange.of(y1Min, y2Min - 1)));
             }
             if (y2Max < y1Max) {
                 b.add(Patterns.newRectangularIntegerPattern(pattern1.roundedCoordRange(0),
-                        IRange.valueOf(y2Max + 1, y1Max)));
+                        IRange.of(y2Max + 1, y1Max)));
             }
             if (x2Min > x1Min) {
-                b.add(Patterns.newRectangularIntegerPattern(IRange.valueOf(x1Min, x2Min - 1),
+                b.add(Patterns.newRectangularIntegerPattern(IRange.of(x1Min, x2Min - 1),
                         pattern2.roundedCoordRange(1)));
             }
             if (x2Max < x1Max) {
-                b.add(Patterns.newRectangularIntegerPattern(IRange.valueOf(x2Max + 1, x1Max),
+                b.add(Patterns.newRectangularIntegerPattern(IRange.of(x2Max + 1, x1Max),
                         pattern2.roundedCoordRange(1)));
             }
             return Patterns.newUnion(b.toArray(new Pattern[0]));
