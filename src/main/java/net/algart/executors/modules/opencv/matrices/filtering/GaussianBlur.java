@@ -187,7 +187,7 @@ public class GaussianBlur extends UMatFilter {
 //            System.out.println("OpenCL usage: " + opencv_core.useOpenCL());
             opencv_imgproc.GaussianBlur(source, source, size, sigmaX, sigmaY,
                     getBorderType().code());
-                    // opencv_core.ALGO_HINT_DEFAULT);
+                    //opencv_core.ALGO_HINT_DEFAULT);
             return source;
         }
     }
