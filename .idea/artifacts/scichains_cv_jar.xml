@@ -16,10 +16,10 @@
         <element id="module-output" name="scichains-cv" />
         <element id="module-test-output" name="scichains-cv" />
       </element>
-      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:4.5.1" />
-      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:test-jar:tests:4.5.1" />
+      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:4.5.2" />
+      <element id="library" level="project" name="Maven: net.algart.executors:scichains-core:test-jar:tests:4.5.2" />
       <element id="library" level="project" name="Maven: org.eclipse.parsson:jakarta.json:1.1.5" />
-      <element id="library" level="project" name="Maven: net.algart:algart:1.5.1" />
+      <element id="library" level="project" name="Maven: net.algart:algart:1.5.2" />
       <element id="library" level="project" name="Maven: org.graalvm.js:js-language:24.2.2" />
       <element id="library" level="project" name="Maven: org.graalvm.js:js-scriptengine:24.2.2" />
       <element id="library" level="project" name="Maven: org.graalvm.polyglot:polyglot:24.2.2" />
