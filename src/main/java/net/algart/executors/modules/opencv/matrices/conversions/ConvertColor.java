@@ -155,9 +155,10 @@ public final class ConvertColor extends UMatFilter {
                 }
                 if (needRawChannel) {
                     O2SMat.setTo(getMat(RAW_CHANNEL_PORTS.get(rawChannel)), needChannelForOpenCV ? m.clone() : m);
-                    // - each port must own its own matrix: with one Mat in two ports, disposing or serializing it
-                    // through the first port (copyToMemoryAndDisposePrevious) leaves the second port with a freed
-                    // matrix, and after exchange two blocks get the same buffer as their own
+                    // - each port must own its own matrix: with one Mat in two ports, disposing it through the first
+                    // port (dispose(), or serializeMemory() -> copyToMemoryAndDisposePrevious() of a ConvertibleUMat)
+                    // leaves the second port with a freed matrix, and after exchange two blocks get the same buffer
+                    // as their own
                 }
             }
         }
@@ -202,9 +203,10 @@ public final class ConvertColor extends UMatFilter {
                 }
                 if (needRawChannel) {
                     O2SMat.setTo(getMat(RAW_CHANNEL_PORTS.get(rawChannel)), needChannelForOpenCV ? m.clone() : m);
-                    // - each port must own its own matrix: with one UMat in two ports, disposing or serializing it
-                    // through the first port (copyToMemoryAndDisposePrevious) leaves the second port with a freed
-                    // matrix, and after exchange two blocks get the same buffer as their own
+                    // - each port must own its own matrix: with one UMat in two ports, disposing it through the first
+                    // port (dispose(), or serializeMemory() -> copyToMemoryAndDisposePrevious() of a ConvertibleUMat)
+                    // leaves the second port with a freed matrix, and after exchange two blocks get the same buffer
+                    // as their own
                 }
             }
         }
