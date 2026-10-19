@@ -81,7 +81,10 @@ public abstract class AbstractBackgroundSubtractor extends VoidResultUMatFilter 
             }
             createBackground();
             subtractor.getBackgroundImage(background);
-            O2SMat.setTo(getMat(OUTPUT_BACKGROUND), background);
+            O2SMat.setTo(getMat(OUTPUT_BACKGROUND), background.clone());
+            // - the port must own its own copy: the "background" field stays owned by this executor
+            // (it is closed on the next frame and in close()), and sharing it would leave the port with a freed
+            // matrix, while disposing the port would free the field
         }
     }
 
@@ -102,7 +105,10 @@ public abstract class AbstractBackgroundSubtractor extends VoidResultUMatFilter 
             }
             createBackground();
             subtractor.getBackgroundImage(background);
-            O2SMat.setTo(getMat(OUTPUT_BACKGROUND), background);
+            O2SMat.setTo(getMat(OUTPUT_BACKGROUND), background.clone());
+            // - the port must own its own copy: the "background" field stays owned by this executor
+            // (it is closed on the next frame and in close()), and sharing it would leave the port with a freed
+            // matrix, while disposing the port would free the field
         }
     }
 

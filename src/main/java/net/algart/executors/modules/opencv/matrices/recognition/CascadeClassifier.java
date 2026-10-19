@@ -179,7 +179,7 @@ public final class CascadeClassifier extends UMatToNumbers {
         if (isOutputNecessary(VISUAL_RESULTS)) {
             final Mat mask = drawOnInput ?
                     source.clone() :
-                    OTools.constantMonoMat8U(source.rows(), source.cols(), 0);
+                    OTools.constantMonoMat8U(source.cols(), source.rows(), 0);
             try (Scalar color = new Scalar(255, 255, 255, 255)) {
                 drawRectangles(mask, rectangles, color);
             }
@@ -203,7 +203,7 @@ public final class CascadeClassifier extends UMatToNumbers {
         if (isOutputNecessary(VISUAL_RESULTS)) {
             final Mat mask = drawOnInput ?
                     OTools.toMat(source) :
-                    OTools.constantMonoMat8U(source.rows(), source.cols(), 0);
+                    OTools.constantMonoMat8U(source.cols(), source.rows(), 0);
             try (Scalar color = new Scalar(255, 255, 255, 255)) {
                 drawRectangles(mask, rectangles, color);
             }

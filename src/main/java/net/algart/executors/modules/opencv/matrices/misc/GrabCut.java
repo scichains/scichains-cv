@@ -343,8 +343,11 @@ public final class GrabCut extends VoidResultMatFilter {
                     // - after this conversion we can close resultMask matrix inside "scope"
                 } else {
                     O2SMat.setTo(getMat(maskPixelClasses[k].outputPortName()), resultMask);
-                    scope.detach(resultMask);
-                    // - we need to return this mask as one of results and must not deallocate it
+                    resultMask.retainReference();
+                    // - we need to return this mask as one of results and must not deallocate it;
+                    // detach() would not help: it calls releaseReference() and deallocates the mask at once;
+                    // retainReference() raises the counter to 2, closing "scope" brings it back to 1,
+                    // and the mask is freed by the output port (ConvertibleMat.dispose() -> close())
                 }
             }
         }
