@@ -354,7 +354,12 @@ public final class Watershed extends AbstractSegmentationWithBoundaries {
                                 binaryBoundaries, resultMatrix, dilated).asMultiMatrix2D();
                         // - On boundaries we will use little dilated matrix, on other points - unchanged resultMatrix.
                     }
-                    labelsAndResult.close();
+                    OTools.closeFirstIfDiffersFromSecond(labelsAndResult, labelsAndResultOriginal);
+                    // - in SEEDING_LABELS mode labelsAndResult is the caller's labels (from process(Mat) it is
+                    // the cached Mat of the input port's ConvertibleMat), which this method does not own;
+                    // trade-off: when the input is not a ConvertibleMat (a ConvertibleUMat, a non-OpenCV producer,
+                    // packed bits), toMat gives a fresh copy, which was closed here before and is now left to GC:
+                    // a leak instead of closing a matrix owned by the port
                     labelsAndResult = O2SMat.toMat(resultMatrix);
                     break;
                 }
@@ -464,7 +469,12 @@ public final class Watershed extends AbstractSegmentationWithBoundaries {
                                 binaryBoundaries, resultMatrix, dilated).asMultiMatrix2D();
                         // - On boundaries we will use little dilated matrix, on other points - unchanged resultMatrix.
                     }
-                    labelsAndResult.close();
+                    OTools.closeFirstIfDiffersFromSecond(labelsAndResult, labelsAndResultOriginal);
+                    // - in SEEDING_LABELS mode labelsAndResult is the caller's labels (from process(UMat) it is
+                    // the cached UMat of the input port's ConvertibleUMat), which this method does not own;
+                    // trade-off: when the input is not a ConvertibleUMat (a ConvertibleMat, a non-OpenCV producer,
+                    // packed bits), toUMat gives a fresh copy, which was closed here before and is now left to GC:
+                    // a leak instead of closing a matrix owned by the port
                     labelsAndResult = O2SMat.toUMat(resultMatrix);
                     break;
                 }
