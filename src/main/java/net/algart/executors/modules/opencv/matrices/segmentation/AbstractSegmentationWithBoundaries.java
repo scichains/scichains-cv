@@ -93,6 +93,8 @@ public abstract class AbstractSegmentationWithBoundaries extends UMatFilter {
             boundaries = stretchedBoundaries;
             if (drawingBoundariesStyle.binary) {
                 getMat(OUTPUT_BOUNDARIES).setTo(O2SMat.toBinaryMatrix(boundaries));
+                boundaries.close();
+                // - owned here (a new Mat, a drawn copy or a stretched copy) and already copied into the bit matrix
             } else {
                 O2SMat.setTo(getMat(OUTPUT_BOUNDARIES), boundaries);
             }
