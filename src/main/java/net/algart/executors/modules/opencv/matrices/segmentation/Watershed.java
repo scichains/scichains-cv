@@ -355,11 +355,8 @@ public final class Watershed extends AbstractSegmentationWithBoundaries {
                         // - On boundaries we will use little dilated matrix, on other points - unchanged resultMatrix.
                     }
                     OTools.closeFirstIfDiffersFromSecond(labelsAndResult, labelsAndResultOriginal);
-                    // - in SEEDING_LABELS mode labelsAndResult is the caller's labels (from process(Mat) it is
-                    // the cached Mat of the input port's ConvertibleMat), which this method does not own;
-                    // trade-off: when the input is not a ConvertibleMat (a ConvertibleUMat, a non-OpenCV producer,
-                    // packed bits), toMat gives a fresh copy, which was closed here before and is now left to GC:
-                    // a leak instead of closing a matrix owned by the port
+                    // - in SEEDING_LABELS mode these are the caller's labels, not owned here (from process(Mat): the
+                    // input port's cached Mat); a fresh copy of a non-ConvertibleMat input is left to GC
                     labelsAndResult = O2SMat.toMat(resultMatrix);
                     break;
                 }
@@ -470,11 +467,8 @@ public final class Watershed extends AbstractSegmentationWithBoundaries {
                         // - On boundaries we will use little dilated matrix, on other points - unchanged resultMatrix.
                     }
                     OTools.closeFirstIfDiffersFromSecond(labelsAndResult, labelsAndResultOriginal);
-                    // - in SEEDING_LABELS mode labelsAndResult is the caller's labels (from process(UMat) it is
-                    // the cached UMat of the input port's ConvertibleUMat), which this method does not own;
-                    // trade-off: when the input is not a ConvertibleUMat (a ConvertibleMat, a non-OpenCV producer,
-                    // packed bits), toUMat gives a fresh copy, which was closed here before and is now left to GC:
-                    // a leak instead of closing a matrix owned by the port
+                    // - in SEEDING_LABELS mode these are the caller's labels, not owned here (from process(UMat): the
+                    // input port's cached UMat); a fresh copy of a non-ConvertibleUMat input is left to GC
                     labelsAndResult = O2SMat.toUMat(resultMatrix);
                     break;
                 }
