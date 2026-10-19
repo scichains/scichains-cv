@@ -234,13 +234,17 @@ public class GaussianBlur extends UMatFilter {
                 .setFloatResult(floatResult)
                 .setConvertToGrayscale(convertToGrayscale)) {
             if (OTools.isGPUOptimizationEnabled()) {
-                final UMat mat = O2SMat.toUMat(source);
-                // Note: do not close it! process() method works in place and returns this matrix!
-                return O2SMat.toMultiMatrix(gaussianBlur.process(mat));
+                try (UMat mat = O2SMat.toUMat(source)) {
+                    return O2SMat.toMultiMatrix(gaussianBlur.process(mat));
+                    // - process() works in place and returns this matrix; it is a fresh copy of the source,
+                    // and toMultiMatrix() copies the result into a MultiMatrix, so we close it
+                }
             } else {
-                final Mat mat = O2SMat.toMat(source);
-                // Note: do not close it! process() method works in place and returns this matrix!
-                return O2SMat.toMultiMatrix(gaussianBlur.process(mat));
+                try (Mat mat = O2SMat.toMat(source)) {
+                    return O2SMat.toMultiMatrix(gaussianBlur.process(mat));
+                    // - process() works in place and returns this matrix; it is a fresh copy of the source,
+                    // and toMultiMatrix() copies the result into a MultiMatrix, so we close it
+                }
             }
         }
     }
