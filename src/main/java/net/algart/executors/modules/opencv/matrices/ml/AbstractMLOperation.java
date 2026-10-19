@@ -37,6 +37,7 @@ import org.bytedeco.opencv.global.opencv_core;
 import org.bytedeco.opencv.opencv_core.Mat;
 import org.bytedeco.opencv.opencv_core.UMat;
 
+import java.lang.ref.Reference;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -205,6 +206,9 @@ public abstract class AbstractMLOperation extends OpenCVExecutor {
 //        long t3 = System.nanoTime();
 //        System.out.printf(java.util.Locale.US, "Selection: %.3f ms + %.3f ms%n",
 //                (t2 - t1) * 1e-6, (t3 - t2) * 1e-6);
+        Reference.reachabilityFence(multiResponses);
+        // - sourceMultiResponses does not keep multiResponses alive: without it, the native matrix
+        // could be freed while being read
         return result;
     }
 

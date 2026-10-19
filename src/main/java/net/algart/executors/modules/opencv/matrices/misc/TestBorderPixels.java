@@ -31,6 +31,7 @@ import net.algart.executors.modules.opencv.common.MatToNumbers;
 import org.bytedeco.opencv.global.opencv_core;
 import org.bytedeco.opencv.opencv_core.Mat;
 
+import java.lang.ref.Reference;
 import java.nio.ByteBuffer;
 import java.util.Objects;
 
@@ -223,6 +224,8 @@ public class TestBorderPixels extends MatToNumbers implements ReadOnlyExecutionI
         }
         p += dimX;
         assert p == outsideIndent * dimX + outsideIndent;
+        Reference.reachabilityFence(source);
+        // - byteBuffer does not keep source alive: without it, the native matrix could be freed while being read
         return result;
     }
 

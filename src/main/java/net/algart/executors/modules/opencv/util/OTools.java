@@ -40,6 +40,7 @@ import org.bytedeco.opencv.opencv_imgproc.Vec4fVector;
 import org.bytedeco.opencv.opencv_imgproc.Vec4iVector;
 
 import java.awt.*;
+import java.lang.ref.Reference;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.List;
@@ -549,14 +550,24 @@ public final class OTools {
     }
 
     public static byte[] toByteArray(Mat m) {
-        final ByteBuffer byteBuffer = asByteBuffer(m).duplicate();
-        final byte[] result = new byte[byteBuffer.capacity()];
-        byteBuffer.get(result);
-        return result;
+        try {
+            final ByteBuffer byteBuffer = asByteBuffer(m).duplicate();
+            final byte[] result = new byte[byteBuffer.capacity()];
+            byteBuffer.get(result);
+            return result;
+        } finally {
+            Reference.reachabilityFence(m);
+            // - see asByteBuffer: the buffer does not keep m alive while it is being copied
+        }
     }
 
     public static ByteBuffer toByteBuffer(Mat m) {
-        return SMat.cloneByteBuffer(asByteBuffer(m));
+        try {
+            return SMat.cloneByteBuffer(asByteBuffer(m));
+        } finally {
+            Reference.reachabilityFence(m);
+            // - see asByteBuffer: the buffer does not keep m alive while it is being copied
+        }
     }
 
     public static ByteBuffer toByteBuffer(UMat u) {
@@ -676,6 +687,11 @@ public final class OTools {
     // it is very dangerous. Maybe, we will store such buffer for long time, for example,
     // as a part of MultiMatrix (buffered memory model) or something else; when OpenCV
     // will free memory from this Mat, we will still use our reference and JVM will crash.
+    // The same is true even for the short time of cloning: neither m.data() nor the returned buffer
+    // keeps a reference to m, so if the caller does not use m after the copy, the JIT may treat m
+    // as unreachable during it, the GC may enqueue it, and the JavaCPP deallocator thread may free
+    // the native matrix while its pixels are still being read. So every caller must keep m reachable
+    // until the copy is finished, by Reference.reachabilityFence(m) in "finally".
     private static ByteBuffer asByteBuffer(Mat m) {
         Objects.requireNonNull(m, "Null Mat");
         final long arraySize = m.arraySize();
